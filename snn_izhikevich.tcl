@@ -1,3 +1,8 @@
+# Add source files
+source "block_design.tcl"
+source "add_hls_ip.tcl"
+
+
 # Define the output directory
 set outputDir ./outputs
 file mkdir $outputDir
@@ -5,8 +10,11 @@ file mkdir $outputDir
 # Configure the project
 create_project -in_memory -part xc7z020clg400-1
 
+# Add the hls snn to the IP Catalog
+tool_add_xact "hls_snn\component.xml"
+
 # Create the block design
-source [file join [file dirname [info script]] "block_design.tcl"]
+create_root_design ""
 
 # Create the wrapper
 make_wrapper -files [get_files  ./bd/mb_ex_1/mb_ex_1.bd] -top

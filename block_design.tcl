@@ -982,17 +982,3 @@ connect_bd_intf_net -intf_net [get_bd_intf_nets processing_system7_0_M_AXI_GP0] 
   save_bd_design
 }
 # End of create_root_design()
-
-
-##################################################################
-# MAIN FLOW
-##################################################################
-
-
-common::send_gid_msg -ssname BD::TCL -id 2052 -severity "CRITICAL WARNING" "This Tcl script was generated from a block design that is out-of-date/locked. It is possible that design <$design_name> may result in errors during construction."
-
-create_root_design ""
-
-
-common::send_gid_msg -ssname BD::TCL -id 2053 -severity "WARNING" "This Tcl script was generated from a block design that has not been validated. It is possible that design <$design_name> may result in errors during validation."
-
