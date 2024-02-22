@@ -11,10 +11,16 @@ all: create_bd clean
 # Targets
 create_bd: block_design
 
+create_hw: snn_hw.xsa
+
 # Dependencies
 block_design: create_block_design.tcl
 	@echo "Generating block design"
 	@$(RUN_VIVADO) -source create_block_design.tcl
+
+snn_hw.xsa: block_design
+	@echo "Generating bitstream"
+	@$(RUN_VIVADO) -source generate_bitstream.tcl
 
 # Delete temporal project files
 clean:
