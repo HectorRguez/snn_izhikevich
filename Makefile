@@ -1,10 +1,14 @@
+# Variables
+VIVADO_SETTINGS := C:/Xilinx/Vivado/2023.1/settings64.bat
+
+
 .PHONY: run_vivado
 
 # All
 all: create_bd 
 
 run_vivado: 
-	call C:/Xilinx/Vivado/2023.1/settings64.bat && \
+	@call $(VIVADO_SETTINGS) && \
 	vivado -mode batch -nojournal -nolog -source $(SOURCE)
 
 create_bd: design1.bd
