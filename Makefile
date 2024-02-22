@@ -2,11 +2,13 @@
 VIVADO_SETTINGS := C:/Xilinx/Vivado/2023.1/settings64.bat
 
 
+# Phony targets
 .PHONY: run_vivado
 
-# All
-all: create_bd 
+# Default target
+all: create_bd
 
+# Run Vivado
 run_vivado: 
 	@call $(VIVADO_SETTINGS) && \
 	vivado -mode batch -nojournal -nolog -source $(SOURCE)
