@@ -1,10 +1,11 @@
 # Configure the project
 create_project -in_memory -part xc7z020clg400-1
 
+# Read the previously created block design
+read_bd block_design/block_design.bd
 
 # Create the wrapper
-make_wrapper -files [get_files block_design.bd] -fileset -top -force
-read_verilog block_design_wrapper.v
+make_wrapper -top -files [get_files block_design/block_design.bd] -fileset . -force
 
 #If the block design does not have the output products generated, generate the output products needed for synthesis and implementation runs
 generate_target all [get_files block_design.bd]

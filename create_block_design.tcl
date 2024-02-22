@@ -752,4 +752,4 @@ update_ip_catalog
 # Create the block design
 create_bd_design -name block_design.bd -dir . 
 create_root_design
-save_bd_design -force
+save_bd_design
