@@ -6,7 +6,7 @@ RUN_VIVADO:= @call $(VIVADO_SETTINGS) && vivado -mode batch -nojournal -nolog
 .PHONY: run_vivado clean
 
 # Default target
-all: create_bd clean 
+all: create_bd create_hw clean 
 
 # Targets
 create_bd: block_design
