@@ -750,6 +750,6 @@ set_property ip_repo_paths hls_snn [current_fileset]
 update_ip_catalog
 
 # Create the block design
-create_bd_design -name -dir . block_design.bd
+create_bd_design -name block_design.bd -dir . 
 create_root_design
 save_bd_design -force
