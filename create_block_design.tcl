@@ -739,8 +739,6 @@ proc create_root_design { } {
   assign_bd_address -offset 0x00000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces axi_dma_2/Data_MM2S] [get_bd_addr_segs processing_system7_0/S_AXI_HP2/HP2_DDR_LOWOCM] -force
   assign_bd_address -offset 0x00000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces axi_dma_3/Data_MM2S] [get_bd_addr_segs processing_system7_0/S_AXI_HP3/HP3_DDR_LOWOCM] -force
 
-
-  
 }
 # End of create_root_design()
 
@@ -752,6 +750,6 @@ set_property ip_repo_paths hls_snn [current_fileset]
 update_ip_catalog
 
 # Create the block design
-create_bd_design -name block_design.bd
+create_bd_design -name -dir . block_design.bd
 create_root_design
-save_bd_design_as -dir . -force
+save_bd_design -force

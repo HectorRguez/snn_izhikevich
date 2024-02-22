@@ -22,12 +22,6 @@
       "axi_crossbar_0": "",
       "rst_ps7_0_100M": "",
       "xlconcat_0": "",
-      "ila_0": "",
-      "ila_1": "",
-      "ila_2": "",
-      "ila_3": "",
-      "ila_4": "",
-      "ila_5": "",
       "hls_snn_izikevich_0": ""
     },
     "interface_ports": {
@@ -190,7 +184,7 @@
       "processing_system7_0": {
         "vlnv": "xilinx.com:ip:processing_system7:5.5",
         "xci_name": "block_design_processing_system7_0_1",
-        "xci_path": "ip\\block_design_processing_system7_0_1\\block_design_processing_system7_0_1.xci",
+        "xci_path": "ip\\block_design_processing_system7_0_1_2\\block_design_processing_system7_0_1.xci",
         "inst_hier_path": "processing_system7_0",
         "parameters": {
           "PCW_ACT_APU_PERIPHERAL_FREQMHZ": {
@@ -630,30 +624,6 @@
           },
           "PCW_FPGA_FCLK0_ENABLE": {
             "value": "1"
-          },
-          "PCW_FTM_CTI_IN0": {
-            "value": "DISABLED"
-          },
-          "PCW_FTM_CTI_IN1": {
-            "value": "DISABLED"
-          },
-          "PCW_FTM_CTI_IN2": {
-            "value": "DISABLED"
-          },
-          "PCW_FTM_CTI_IN3": {
-            "value": "DISABLED"
-          },
-          "PCW_FTM_CTI_OUT0": {
-            "value": "BOTH"
-          },
-          "PCW_FTM_CTI_OUT1": {
-            "value": "BOTH"
-          },
-          "PCW_FTM_CTI_OUT2": {
-            "value": "BOTH"
-          },
-          "PCW_FTM_CTI_OUT3": {
-            "value": "DISABLED"
           },
           "PCW_GPIO_BASEADDR": {
             "value": "0xE000A000"
@@ -1294,9 +1264,6 @@
           "PCW_OVERRIDE_BASIC_CLOCK": {
             "value": "0"
           },
-          "PCW_P2F_CTI_INTR": {
-            "value": "0"
-          },
           "PCW_P2F_ENET0_INTR": {
             "value": "0"
           },
@@ -1805,7 +1772,7 @@
             "value": "0"
           },
           "PCW_USE_CROSS_TRIGGER": {
-            "value": "1"
+            "value": "0"
           },
           "PCW_USE_CR_FABRIC": {
             "value": "1"
@@ -2040,7 +2007,7 @@
       "axi_dma_0": {
         "vlnv": "xilinx.com:ip:axi_dma:7.1",
         "xci_name": "block_design_axi_dma_0_1",
-        "xci_path": "ip\\block_design_axi_dma_0_1\\block_design_axi_dma_0_1.xci",
+        "xci_path": "ip\\block_design_axi_dma_0_1_2\\block_design_axi_dma_0_1.xci",
         "inst_hier_path": "axi_dma_0",
         "parameters": {
           "c_include_mm2s_dre": {
@@ -2095,7 +2062,7 @@
       "axi_dma_1": {
         "vlnv": "xilinx.com:ip:axi_dma:7.1",
         "xci_name": "block_design_axi_dma_1_1",
-        "xci_path": "ip\\block_design_axi_dma_1_1\\block_design_axi_dma_1_1.xci",
+        "xci_path": "ip\\block_design_axi_dma_1_1_2\\block_design_axi_dma_1_1.xci",
         "inst_hier_path": "axi_dma_1",
         "parameters": {
           "c_include_mm2s": {
@@ -2144,7 +2111,7 @@
       "axi_dma_2": {
         "vlnv": "xilinx.com:ip:axi_dma:7.1",
         "xci_name": "block_design_axi_dma_2_1",
-        "xci_path": "ip\\block_design_axi_dma_2_1\\block_design_axi_dma_2_1.xci",
+        "xci_path": "ip\\block_design_axi_dma_2_1_2\\block_design_axi_dma_2_1.xci",
         "inst_hier_path": "axi_dma_2",
         "parameters": {
           "c_include_mm2s_dre": {
@@ -2190,7 +2157,7 @@
       "axi_dma_3": {
         "vlnv": "xilinx.com:ip:axi_dma:7.1",
         "xci_name": "block_design_axi_dma_3_1",
-        "xci_path": "ip\\block_design_axi_dma_3_1\\block_design_axi_dma_3_1.xci",
+        "xci_path": "ip\\block_design_axi_dma_3_1_2\\block_design_axi_dma_3_1.xci",
         "inst_hier_path": "axi_dma_3",
         "parameters": {
           "c_include_mm2s_dre": {
@@ -2236,7 +2203,7 @@
       "axi_protocol_convert_0": {
         "vlnv": "xilinx.com:ip:axi_protocol_converter:2.1",
         "xci_name": "block_design_axi_protocol_convert_0_1",
-        "xci_path": "ip\\block_design_axi_protocol_convert_0_1\\block_design_axi_protocol_convert_0_1.xci",
+        "xci_path": "ip\\block_design_axi_protocol_convert_0_1_2\\block_design_axi_protocol_convert_0_1.xci",
         "inst_hier_path": "axi_protocol_convert_0",
         "parameters": {
           "ADDR_WIDTH": {
@@ -2268,7 +2235,7 @@
       "axi_protocol_convert_1": {
         "vlnv": "xilinx.com:ip:axi_protocol_converter:2.1",
         "xci_name": "block_design_axi_protocol_convert_1_1",
-        "xci_path": "ip\\block_design_axi_protocol_convert_1_1\\block_design_axi_protocol_convert_1_1.xci",
+        "xci_path": "ip\\block_design_axi_protocol_convert_1_1_2\\block_design_axi_protocol_convert_1_1.xci",
         "inst_hier_path": "axi_protocol_convert_1",
         "parameters": {
           "ADDR_WIDTH": {
@@ -2300,7 +2267,7 @@
       "axi_protocol_convert_2": {
         "vlnv": "xilinx.com:ip:axi_protocol_converter:2.1",
         "xci_name": "block_design_axi_protocol_convert_2_1",
-        "xci_path": "ip\\block_design_axi_protocol_convert_2_1\\block_design_axi_protocol_convert_2_1.xci",
+        "xci_path": "ip\\block_design_axi_protocol_convert_2_1_2\\block_design_axi_protocol_convert_2_1.xci",
         "inst_hier_path": "axi_protocol_convert_2",
         "parameters": {
           "ADDR_WIDTH": {
@@ -2332,7 +2299,7 @@
       "axi_protocol_convert_3": {
         "vlnv": "xilinx.com:ip:axi_protocol_converter:2.1",
         "xci_name": "block_design_axi_protocol_convert_3_1",
-        "xci_path": "ip\\block_design_axi_protocol_convert_3_1\\block_design_axi_protocol_convert_3_1.xci",
+        "xci_path": "ip\\block_design_axi_protocol_convert_3_1_2\\block_design_axi_protocol_convert_3_1.xci",
         "inst_hier_path": "axi_protocol_convert_3",
         "parameters": {
           "DATA_WIDTH": {
@@ -2361,7 +2328,7 @@
       "axi_protocol_convert_4": {
         "vlnv": "xilinx.com:ip:axi_protocol_converter:2.1",
         "xci_name": "block_design_axi_protocol_convert_4_1",
-        "xci_path": "ip\\block_design_axi_protocol_convert_4_1\\block_design_axi_protocol_convert_4_1.xci",
+        "xci_path": "ip\\block_design_axi_protocol_convert_4_1_2\\block_design_axi_protocol_convert_4_1.xci",
         "inst_hier_path": "axi_protocol_convert_4",
         "parameters": {
           "SI_PROTOCOL": {
@@ -2384,7 +2351,7 @@
       "axi_crossbar_0": {
         "vlnv": "xilinx.com:ip:axi_crossbar:2.1",
         "xci_name": "block_design_axi_crossbar_0_1",
-        "xci_path": "ip\\block_design_axi_crossbar_0_1\\block_design_axi_crossbar_0_1.xci",
+        "xci_path": "ip\\block_design_axi_crossbar_0_1_2\\block_design_axi_crossbar_0_1.xci",
         "inst_hier_path": "axi_crossbar_0",
         "parameters": {
           "NUM_MI": {
@@ -2408,13 +2375,13 @@
       "rst_ps7_0_100M": {
         "vlnv": "xilinx.com:ip:proc_sys_reset:5.0",
         "xci_name": "block_design_rst_ps7_0_100M_1",
-        "xci_path": "ip\\block_design_rst_ps7_0_100M_1\\block_design_rst_ps7_0_100M_1.xci",
+        "xci_path": "ip\\block_design_rst_ps7_0_100M_1_2\\block_design_rst_ps7_0_100M_1.xci",
         "inst_hier_path": "rst_ps7_0_100M"
       },
       "xlconcat_0": {
         "vlnv": "xilinx.com:ip:xlconcat:2.1",
         "xci_name": "block_design_xlconcat_0_1",
-        "xci_path": "ip\\block_design_xlconcat_0_1\\block_design_xlconcat_0_1.xci",
+        "xci_path": "ip\\block_design_xlconcat_0_1_2\\block_design_xlconcat_0_1.xci",
         "inst_hier_path": "xlconcat_0",
         "parameters": {
           "NUM_PORTS": {
@@ -2422,87 +2389,10 @@
           }
         }
       },
-      "ila_0": {
-        "vlnv": "xilinx.com:ip:ila:6.2",
-        "xci_name": "block_design_ila_0_1",
-        "xci_path": "ip\\block_design_ila_0_1\\block_design_ila_0_1.xci",
-        "inst_hier_path": "ila_0",
-        "parameters": {
-          "C_DATA_DEPTH": {
-            "value": "32768"
-          },
-          "C_MONITOR_TYPE": {
-            "value": "AXI"
-          },
-          "C_SLOT_0_AXIS_TDEST_WIDTH": {
-            "value": "1"
-          },
-          "C_SLOT_0_AXIS_TID_WIDTH": {
-            "value": "1"
-          },
-          "C_SLOT_0_AXIS_TUSER_WIDTH": {
-            "value": "1"
-          },
-          "C_SLOT_0_AXI_PROTOCOL": {
-            "value": "AXI4S"
-          },
-          "C_TRIGIN_EN": {
-            "value": "true"
-          }
-        }
-      },
-      "ila_1": {
-        "vlnv": "xilinx.com:ip:ila:6.2",
-        "xci_name": "block_design_ila_1_1",
-        "xci_path": "ip\\block_design_ila_1_1\\block_design_ila_1_1.xci",
-        "inst_hier_path": "ila_1",
-        "parameters": {
-          "C_SLOT_0_AXI_PROTOCOL": {
-            "value": "AXI4S"
-          },
-          "C_TRIGIN_EN": {
-            "value": "true"
-          }
-        }
-      },
-      "ila_2": {
-        "vlnv": "xilinx.com:ip:ila:6.2",
-        "xci_name": "block_design_ila_2_1",
-        "xci_path": "ip\\block_design_ila_2_1\\block_design_ila_2_1.xci",
-        "inst_hier_path": "ila_2",
-        "parameters": {
-          "C_TRIGIN_EN": {
-            "value": "true"
-          }
-        }
-      },
-      "ila_3": {
-        "vlnv": "xilinx.com:ip:ila:6.2",
-        "xci_name": "block_design_ila_3_1",
-        "xci_path": "ip\\block_design_ila_3_1\\block_design_ila_3_1.xci",
-        "inst_hier_path": "ila_3"
-      },
-      "ila_4": {
-        "vlnv": "xilinx.com:ip:ila:6.2",
-        "xci_name": "block_design_ila_4_1",
-        "xci_path": "ip\\block_design_ila_4_1\\block_design_ila_4_1.xci",
-        "inst_hier_path": "ila_4"
-      },
-      "ila_5": {
-        "vlnv": "xilinx.com:ip:ila:6.2",
-        "xci_name": "block_design_ila_5_1",
-        "xci_path": "ip\\block_design_ila_5_1\\block_design_ila_5_1.xci",
-        "inst_hier_path": "ila_5",
-        "parameters": {
-          "C_MONITOR_TYPE": {
-            "value": "Native"
-          }
-        }
-      },
       "hls_snn_izikevich_0": {
         "vlnv": "xilinx.com:hls:hls_snn_izikevich:1.0",
         "xci_name": "block_design_hls_snn_izikevich_0_1",
-        "xci_path": "ip\\block_design_hls_snn_izikevich_0_1\\block_design_hls_snn_izikevich_0_1.xci",
+        "xci_path": "ip\\block_design_hls_snn_izikevich_0_1_2\\block_design_hls_snn_izikevich_0_1.xci",
         "inst_hier_path": "hls_snn_izikevich_0"
       }
     },
@@ -2510,8 +2400,7 @@
       "Conn": {
         "interface_ports": [
           "hls_snn_izikevich_0/s_axi_control",
-          "axi_crossbar_0/M00_AXI",
-          "ila_2/SLOT_0_AXI"
+          "axi_crossbar_0/M00_AXI"
         ]
       },
       "axi_crossbar_0_M01_AXI": {
@@ -2547,8 +2436,7 @@
       "axi_dma_0_M_AXIS_MM2S": {
         "interface_ports": [
           "axi_dma_0/M_AXIS_MM2S",
-          "hls_snn_izikevich_0/input_stream0",
-          "ila_0/SLOT_0_AXIS"
+          "hls_snn_izikevich_0/input_stream0"
         ]
       },
       "axi_dma_1_M_AXIS_MM2S": {
@@ -2590,8 +2478,7 @@
       "axi_protocol_convert_0_M_AXI": {
         "interface_ports": [
           "axi_protocol_convert_0/M_AXI",
-          "processing_system7_0/S_AXI_HP0",
-          "ila_4/SLOT_0_AXI"
+          "processing_system7_0/S_AXI_HP0"
         ]
       },
       "axi_protocol_convert_1_M_AXI": {
@@ -2618,13 +2505,6 @@
           "axi_crossbar_0/S00_AXI"
         ]
       },
-      "hls_snn_izikevich_0_output_stream": {
-        "interface_ports": [
-          "hls_snn_izikevich_0/output_stream",
-          "axi_dma_0/S_AXIS_S2MM",
-          "ila_1/SLOT_0_AXIS"
-        ]
-      },
       "processing_system7_0_DDR": {
         "interface_ports": [
           "DDR",
@@ -2640,26 +2520,7 @@
       "processing_system7_0_M_AXI_GP0": {
         "interface_ports": [
           "processing_system7_0/M_AXI_GP0",
-          "axi_protocol_convert_4/S_AXI",
-          "ila_3/SLOT_0_AXI"
-        ]
-      },
-      "processing_system7_0_TRIGGER_OUT_0": {
-        "interface_ports": [
-          "processing_system7_0/TRIGGER_OUT_0",
-          "ila_0/TRIG_IN"
-        ]
-      },
-      "processing_system7_0_TRIGGER_OUT_1": {
-        "interface_ports": [
-          "processing_system7_0/TRIGGER_OUT_1",
-          "ila_1/TRIG_IN"
-        ]
-      },
-      "processing_system7_0_TRIGGER_OUT_2": {
-        "interface_ports": [
-          "ila_2/TRIG_IN",
-          "processing_system7_0/TRIGGER_OUT_2"
+          "axi_protocol_convert_4/S_AXI"
         ]
       }
     },
@@ -2674,6 +2535,12 @@
         "ports": [
           "axi_dma_0/s2mm_introut",
           "xlconcat_0/In1"
+        ]
+      },
+      "axi_dma_0_s_axis_s2mm_tready": {
+        "ports": [
+          "axi_dma_0/s_axis_s2mm_tready",
+          "hls_snn_izikevich_0/output_stream_TREADY"
         ]
       },
       "axi_dma_1_mm2s_introut": {
@@ -2700,6 +2567,24 @@
           "xlconcat_0/In5"
         ]
       },
+      "hls_snn_izikevich_0_output_stream_TDATA": {
+        "ports": [
+          "hls_snn_izikevich_0/output_stream_TDATA",
+          "axi_dma_0/s_axis_s2mm_tdata"
+        ]
+      },
+      "hls_snn_izikevich_0_output_stream_TLAST": {
+        "ports": [
+          "hls_snn_izikevich_0/output_stream_TLAST",
+          "axi_dma_0/s_axis_s2mm_tlast"
+        ]
+      },
+      "hls_snn_izikevich_0_output_stream_TVALID": {
+        "ports": [
+          "hls_snn_izikevich_0/output_stream_TVALID",
+          "axi_dma_0/s_axis_s2mm_tvalid"
+        ]
+      },
       "processing_system7_0_FCLK_CLK0": {
         "ports": [
           "processing_system7_0/FCLK_CLK0",
@@ -2724,12 +2609,6 @@
           "processing_system7_0/S_AXI_HP1_ACLK",
           "processing_system7_0/S_AXI_HP2_ACLK",
           "processing_system7_0/S_AXI_HP3_ACLK",
-          "ila_1/clk",
-          "ila_0/clk",
-          "ila_2/clk",
-          "ila_3/clk",
-          "ila_4/clk",
-          "ila_5/clk",
           "hls_snn_izikevich_0/ap_clk"
         ]
       },
@@ -2763,8 +2642,7 @@
       "xlconcat_0_dout": {
         "ports": [
           "xlconcat_0/dout",
-          "processing_system7_0/IRQ_F2P",
-          "ila_5/probe0"
+          "processing_system7_0/IRQ_F2P"
         ]
       }
     },
