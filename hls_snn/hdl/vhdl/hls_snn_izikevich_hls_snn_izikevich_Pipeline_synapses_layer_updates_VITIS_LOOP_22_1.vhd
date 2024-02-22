@@ -29,15 +29,15 @@ port (
     p_mem_address0 : OUT STD_LOGIC_VECTOR (2 downto 0);
     p_mem_ce0 : OUT STD_LOGIC;
     p_mem_q0 : IN STD_LOGIC_VECTOR (0 downto 0);
-    grp_fu_537_p_din0 : OUT STD_LOGIC_VECTOR (31 downto 0);
-    grp_fu_537_p_din1 : OUT STD_LOGIC_VECTOR (31 downto 0);
-    grp_fu_537_p_opcode : OUT STD_LOGIC_VECTOR (0 downto 0);
-    grp_fu_537_p_dout0 : IN STD_LOGIC_VECTOR (31 downto 0);
-    grp_fu_537_p_ce : OUT STD_LOGIC;
-    grp_fu_541_p_din0 : OUT STD_LOGIC_VECTOR (31 downto 0);
-    grp_fu_541_p_din1 : OUT STD_LOGIC_VECTOR (31 downto 0);
-    grp_fu_541_p_dout0 : IN STD_LOGIC_VECTOR (31 downto 0);
-    grp_fu_541_p_ce : OUT STD_LOGIC );
+    grp_fu_465_p_din0 : OUT STD_LOGIC_VECTOR (31 downto 0);
+    grp_fu_465_p_din1 : OUT STD_LOGIC_VECTOR (31 downto 0);
+    grp_fu_465_p_opcode : OUT STD_LOGIC_VECTOR (0 downto 0);
+    grp_fu_465_p_dout0 : IN STD_LOGIC_VECTOR (31 downto 0);
+    grp_fu_465_p_ce : OUT STD_LOGIC;
+    grp_fu_469_p_din0 : OUT STD_LOGIC_VECTOR (31 downto 0);
+    grp_fu_469_p_din1 : OUT STD_LOGIC_VECTOR (31 downto 0);
+    grp_fu_469_p_dout0 : IN STD_LOGIC_VECTOR (31 downto 0);
+    grp_fu_469_p_ce : OUT STD_LOGIC );
 end;
 
 
@@ -243,7 +243,7 @@ attribute shreg_extract : string;
 
 
 begin
-    fcmp_32ns_32ns_1_1_no_dsp_1_U16 : component hls_snn_izikevich_fcmp_32ns_32ns_1_1_no_dsp_1
+    fcmp_32ns_32ns_1_1_no_dsp_1_U13 : component hls_snn_izikevich_fcmp_32ns_32ns_1_1_no_dsp_1
     generic map (
         ID => 1,
         NUM_STAGE => 1,
@@ -436,7 +436,7 @@ begin
                 icmp_ln22_1_reg_503_pp0_iter2_reg <= icmp_ln22_1_reg_503_pp0_iter1_reg;
                 icmp_ln22_1_reg_503_pp0_iter3_reg <= icmp_ln22_1_reg_503_pp0_iter2_reg;
                 l_load_reg_497_pp0_iter2_reg <= l_load_reg_497_pp0_iter1_reg;
-                new_synapse_reg_532 <= grp_fu_541_p_dout0;
+                new_synapse_reg_532 <= grp_fu_469_p_dout0;
                 new_synapse_reg_532_pp0_iter3_reg <= new_synapse_reg_532;
                 synapse_s_mem_addr_reg_516_pp0_iter2_reg <= synapse_s_mem_addr_reg_516_pp0_iter1_reg;
                 synapse_s_mem_addr_reg_516_pp0_iter3_reg <= synapse_s_mem_addr_reg_516_pp0_iter2_reg;
@@ -594,13 +594,13 @@ begin
     cmp14_i_i_i3_fu_358_p2 <= "1" when (l_load_reg_497_pp0_iter2_reg = ap_const_lv2_1) else "0";
     cmp6_i_i_i5_fu_347_p2 <= "1" when (l_load_reg_497_pp0_iter2_reg = ap_const_lv2_0) else "0";
     cmp6_i_i_i_mid1_fu_254_p2 <= "1" when (add_ln22_fu_196_p2 = ap_const_lv2_0) else "0";
-    grp_fu_537_p_ce <= ap_const_logic_1;
-    grp_fu_537_p_din0 <= new_synapse_reg_532;
-    grp_fu_537_p_din1 <= ap_const_lv32_3F800000;
-    grp_fu_537_p_opcode <= ap_const_lv2_0(1 - 1 downto 0);
-    grp_fu_541_p_ce <= ap_const_logic_1;
-    grp_fu_541_p_din0 <= synapse_s_mem_q1;
-    grp_fu_541_p_din1 <= ap_const_lv32_3F666666;
+    grp_fu_465_p_ce <= ap_const_logic_1;
+    grp_fu_465_p_din0 <= new_synapse_reg_532;
+    grp_fu_465_p_din1 <= ap_const_lv32_3F800000;
+    grp_fu_465_p_opcode <= ap_const_lv2_0(1 - 1 downto 0);
+    grp_fu_469_p_ce <= ap_const_logic_1;
+    grp_fu_469_p_din0 <= synapse_s_mem_q1;
+    grp_fu_469_p_din1 <= ap_const_lv32_3F666666;
     icmp_ln22_1_fu_202_p2 <= "1" when (ap_sig_allocacmp_xl_load = ap_const_lv3_6) else "0";
     icmp_ln22_fu_178_p2 <= "1" when (ap_sig_allocacmp_indvar_flatten_load = ap_const_lv4_C) else "0";
     icmp_ln28_1_fu_387_p2 <= "1" when (trunc_ln28_fu_377_p1 = ap_const_lv23_0) else "0";
@@ -636,7 +636,7 @@ begin
         ap_const_lv3_0 when (icmp_ln22_1_fu_202_p2(0) = '1') else 
         ap_sig_allocacmp_xl_load;
     select_ln28_fu_426_p3 <= 
-        grp_fu_537_p_dout0 when (and_ln28_1_reg_558(0) = '1') else 
+        grp_fu_465_p_dout0 when (and_ln28_1_reg_558(0) = '1') else 
         new_synapse_reg_532_pp0_iter3_reg;
     sub_ln25_fu_248_p2 <= std_logic_vector(unsigned(tmp_s_fu_228_p3) - unsigned(zext_ln25_fu_244_p1));
     synapse_s_mem_address0 <= synapse_s_mem_addr_reg_516_pp0_iter3_reg;
@@ -662,7 +662,7 @@ begin
     end process;
 
     synapse_s_mem_d0 <= 
-        grp_fu_537_p_dout0 when (and_ln28_3_fu_443_p2(0) = '1') else 
+        grp_fu_465_p_dout0 when (and_ln28_3_fu_443_p2(0) = '1') else 
         select_ln28_fu_426_p3;
 
     synapse_s_mem_we0_assign_proc : process(ap_enable_reg_pp0_iter4, ap_block_pp0_stage0_11001)

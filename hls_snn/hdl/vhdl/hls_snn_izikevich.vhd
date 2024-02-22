@@ -20,46 +20,31 @@ port (
     input_stream0_TREADY : OUT STD_LOGIC;
     input_stream0_TKEEP : IN STD_LOGIC_VECTOR (7 downto 0);
     input_stream0_TSTRB : IN STD_LOGIC_VECTOR (7 downto 0);
-    input_stream0_TUSER : IN STD_LOGIC_VECTOR (0 downto 0);
     input_stream0_TLAST : IN STD_LOGIC_VECTOR (0 downto 0);
-    input_stream0_TID : IN STD_LOGIC_VECTOR (0 downto 0);
-    input_stream0_TDEST : IN STD_LOGIC_VECTOR (0 downto 0);
     input_stream1_TDATA : IN STD_LOGIC_VECTOR (63 downto 0);
     input_stream1_TVALID : IN STD_LOGIC;
     input_stream1_TREADY : OUT STD_LOGIC;
     input_stream1_TKEEP : IN STD_LOGIC_VECTOR (7 downto 0);
     input_stream1_TSTRB : IN STD_LOGIC_VECTOR (7 downto 0);
-    input_stream1_TUSER : IN STD_LOGIC_VECTOR (0 downto 0);
     input_stream1_TLAST : IN STD_LOGIC_VECTOR (0 downto 0);
-    input_stream1_TID : IN STD_LOGIC_VECTOR (0 downto 0);
-    input_stream1_TDEST : IN STD_LOGIC_VECTOR (0 downto 0);
     input_stream2_TDATA : IN STD_LOGIC_VECTOR (63 downto 0);
     input_stream2_TVALID : IN STD_LOGIC;
     input_stream2_TREADY : OUT STD_LOGIC;
     input_stream2_TKEEP : IN STD_LOGIC_VECTOR (7 downto 0);
     input_stream2_TSTRB : IN STD_LOGIC_VECTOR (7 downto 0);
-    input_stream2_TUSER : IN STD_LOGIC_VECTOR (0 downto 0);
     input_stream2_TLAST : IN STD_LOGIC_VECTOR (0 downto 0);
-    input_stream2_TID : IN STD_LOGIC_VECTOR (0 downto 0);
-    input_stream2_TDEST : IN STD_LOGIC_VECTOR (0 downto 0);
     input_stream3_TDATA : IN STD_LOGIC_VECTOR (63 downto 0);
     input_stream3_TVALID : IN STD_LOGIC;
     input_stream3_TREADY : OUT STD_LOGIC;
     input_stream3_TKEEP : IN STD_LOGIC_VECTOR (7 downto 0);
     input_stream3_TSTRB : IN STD_LOGIC_VECTOR (7 downto 0);
-    input_stream3_TUSER : IN STD_LOGIC_VECTOR (0 downto 0);
     input_stream3_TLAST : IN STD_LOGIC_VECTOR (0 downto 0);
-    input_stream3_TID : IN STD_LOGIC_VECTOR (0 downto 0);
-    input_stream3_TDEST : IN STD_LOGIC_VECTOR (0 downto 0);
     output_stream_TDATA : OUT STD_LOGIC_VECTOR (63 downto 0);
     output_stream_TVALID : OUT STD_LOGIC;
     output_stream_TREADY : IN STD_LOGIC;
     output_stream_TKEEP : OUT STD_LOGIC_VECTOR (7 downto 0);
     output_stream_TSTRB : OUT STD_LOGIC_VECTOR (7 downto 0);
-    output_stream_TUSER : OUT STD_LOGIC_VECTOR (0 downto 0);
     output_stream_TLAST : OUT STD_LOGIC_VECTOR (0 downto 0);
-    output_stream_TID : OUT STD_LOGIC_VECTOR (0 downto 0);
-    output_stream_TDEST : OUT STD_LOGIC_VECTOR (0 downto 0);
     s_axi_control_AWVALID : IN STD_LOGIC;
     s_axi_control_AWREADY : OUT STD_LOGIC;
     s_axi_control_AWADDR : IN STD_LOGIC_VECTOR (C_S_AXI_CONTROL_ADDR_WIDTH-1 downto 0);
@@ -175,130 +160,130 @@ architecture behav of hls_snn_izikevich is
     attribute fsm_encoding of ap_CS_fsm_state13 : signal is "none";
     signal ap_CS_fsm_state14 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state14 : signal is "none";
-    signal state_read_read_fu_204_p2 : STD_LOGIC_VECTOR (0 downto 0);
-    signal state_read_reg_500 : STD_LOGIC_VECTOR (0 downto 0);
-    signal p_input_read_reg_504 : STD_LOGIC_VECTOR (31 downto 0);
+    signal state_read_read_fu_174_p2 : STD_LOGIC_VECTOR (0 downto 0);
+    signal state_read_reg_428 : STD_LOGIC_VECTOR (0 downto 0);
+    signal p_input_read_reg_432 : STD_LOGIC_VECTOR (31 downto 0);
     signal ap_CS_fsm_state3 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state3 : signal is "none";
     signal ap_CS_fsm_state4 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state4 : signal is "none";
     signal ap_CS_fsm_state11 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state11 : signal is "none";
-    signal c_fu_486_p3 : STD_LOGIC_VECTOR (63 downto 0);
-    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_296_ap_start : STD_LOGIC;
-    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_296_ap_done : STD_LOGIC;
-    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_296_ap_idle : STD_LOGIC;
-    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_296_ap_ready : STD_LOGIC;
-    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_296_input_stream0_TREADY : STD_LOGIC;
-    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_296_neuron_type_mem_0_o : STD_LOGIC_VECTOR (5 downto 0);
-    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_296_neuron_type_mem_0_o_ap_vld : STD_LOGIC;
-    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_296_neuron_type_mem_1_o : STD_LOGIC_VECTOR (5 downto 0);
-    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_296_neuron_type_mem_1_o_ap_vld : STD_LOGIC;
-    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_318_ap_start : STD_LOGIC;
-    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_318_ap_done : STD_LOGIC;
-    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_318_ap_idle : STD_LOGIC;
-    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_318_ap_ready : STD_LOGIC;
-    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_318_p_mem_address0 : STD_LOGIC_VECTOR (2 downto 0);
-    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_318_p_mem_ce0 : STD_LOGIC;
-    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_318_p_mem_we0 : STD_LOGIC;
-    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_318_p_mem_d0 : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_326_ap_start : STD_LOGIC;
-    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_326_ap_done : STD_LOGIC;
-    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_326_ap_idle : STD_LOGIC;
-    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_326_ap_ready : STD_LOGIC;
-    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_326_v_mem_address0 : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_326_v_mem_ce0 : STD_LOGIC;
-    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_326_v_mem_we0 : STD_LOGIC;
-    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_326_v_mem_d0 : STD_LOGIC_VECTOR (31 downto 0);
-    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_326_u_mem_address0 : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_326_u_mem_ce0 : STD_LOGIC;
-    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_326_u_mem_we0 : STD_LOGIC;
-    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_326_u_mem_d0 : STD_LOGIC_VECTOR (31 downto 0);
-    signal grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_ap_start : STD_LOGIC;
-    signal grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_ap_done : STD_LOGIC;
-    signal grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_ap_idle : STD_LOGIC;
-    signal grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_ap_ready : STD_LOGIC;
-    signal grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_synapse_s_mem_address0 : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_synapse_s_mem_ce0 : STD_LOGIC;
-    signal grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_synapse_s_mem_we0 : STD_LOGIC;
-    signal grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_synapse_s_mem_d0 : STD_LOGIC_VECTOR (31 downto 0);
-    signal grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_synapse_s_mem_address1 : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_synapse_s_mem_ce1 : STD_LOGIC;
-    signal grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_v_mem_address0 : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_v_mem_ce0 : STD_LOGIC;
-    signal grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_p_mem_address0 : STD_LOGIC_VECTOR (2 downto 0);
-    signal grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_p_mem_ce0 : STD_LOGIC;
-    signal grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_grp_fu_537_p_din0 : STD_LOGIC_VECTOR (31 downto 0);
-    signal grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_grp_fu_537_p_din1 : STD_LOGIC_VECTOR (31 downto 0);
-    signal grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_grp_fu_537_p_opcode : STD_LOGIC_VECTOR (0 downto 0);
-    signal grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_grp_fu_537_p_ce : STD_LOGIC;
-    signal grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_grp_fu_541_p_din0 : STD_LOGIC_VECTOR (31 downto 0);
-    signal grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_grp_fu_541_p_din1 : STD_LOGIC_VECTOR (31 downto 0);
-    signal grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_grp_fu_541_p_ce : STD_LOGIC;
-    signal grp_snn_get_synaptic_conductances_fu_344_ap_start : STD_LOGIC;
-    signal grp_snn_get_synaptic_conductances_fu_344_ap_done : STD_LOGIC;
-    signal grp_snn_get_synaptic_conductances_fu_344_ap_idle : STD_LOGIC;
-    signal grp_snn_get_synaptic_conductances_fu_344_ap_ready : STD_LOGIC;
-    signal grp_snn_get_synaptic_conductances_fu_344_input_stream0_TREADY : STD_LOGIC;
-    signal grp_snn_get_synaptic_conductances_fu_344_input_stream1_TREADY : STD_LOGIC;
-    signal grp_snn_get_synaptic_conductances_fu_344_input_stream2_TREADY : STD_LOGIC;
-    signal grp_snn_get_synaptic_conductances_fu_344_input_stream3_TREADY : STD_LOGIC;
-    signal grp_snn_get_synaptic_conductances_fu_344_synapse_s_mem_address0 : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_snn_get_synaptic_conductances_fu_344_synapse_s_mem_ce0 : STD_LOGIC;
-    signal grp_snn_get_synaptic_conductances_fu_344_u_mem_address0 : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_snn_get_synaptic_conductances_fu_344_u_mem_ce0 : STD_LOGIC;
-    signal grp_snn_get_synaptic_conductances_fu_344_u_mem_we0 : STD_LOGIC;
-    signal grp_snn_get_synaptic_conductances_fu_344_u_mem_d0 : STD_LOGIC_VECTOR (31 downto 0);
-    signal grp_snn_get_synaptic_conductances_fu_344_u_mem_address1 : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_snn_get_synaptic_conductances_fu_344_u_mem_ce1 : STD_LOGIC;
-    signal grp_snn_get_synaptic_conductances_fu_344_firings_mem_0_o : STD_LOGIC_VECTOR (63 downto 0);
-    signal grp_snn_get_synaptic_conductances_fu_344_firings_mem_0_o_ap_vld : STD_LOGIC;
-    signal grp_snn_get_synaptic_conductances_fu_344_v_mem_address0 : STD_LOGIC_VECTOR (3 downto 0);
-    signal grp_snn_get_synaptic_conductances_fu_344_v_mem_ce0 : STD_LOGIC;
-    signal grp_snn_get_synaptic_conductances_fu_344_v_mem_we0 : STD_LOGIC;
-    signal grp_snn_get_synaptic_conductances_fu_344_v_mem_d0 : STD_LOGIC_VECTOR (31 downto 0);
-    signal grp_snn_get_synaptic_conductances_fu_344_grp_fu_537_p_din0 : STD_LOGIC_VECTOR (31 downto 0);
-    signal grp_snn_get_synaptic_conductances_fu_344_grp_fu_537_p_din1 : STD_LOGIC_VECTOR (31 downto 0);
-    signal grp_snn_get_synaptic_conductances_fu_344_grp_fu_537_p_opcode : STD_LOGIC_VECTOR (1 downto 0);
-    signal grp_snn_get_synaptic_conductances_fu_344_grp_fu_537_p_ce : STD_LOGIC;
-    signal grp_snn_get_synaptic_conductances_fu_344_grp_fu_541_p_din0 : STD_LOGIC_VECTOR (31 downto 0);
-    signal grp_snn_get_synaptic_conductances_fu_344_grp_fu_541_p_din1 : STD_LOGIC_VECTOR (31 downto 0);
-    signal grp_snn_get_synaptic_conductances_fu_344_grp_fu_541_p_ce : STD_LOGIC;
-    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_296_ap_start_reg : STD_LOGIC := '0';
+    signal c_fu_414_p3 : STD_LOGIC_VECTOR (63 downto 0);
+    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_254_ap_start : STD_LOGIC;
+    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_254_ap_done : STD_LOGIC;
+    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_254_ap_idle : STD_LOGIC;
+    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_254_ap_ready : STD_LOGIC;
+    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_254_input_stream0_TREADY : STD_LOGIC;
+    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_254_neuron_type_mem_0_o : STD_LOGIC_VECTOR (5 downto 0);
+    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_254_neuron_type_mem_0_o_ap_vld : STD_LOGIC;
+    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_254_neuron_type_mem_1_o : STD_LOGIC_VECTOR (5 downto 0);
+    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_254_neuron_type_mem_1_o_ap_vld : STD_LOGIC;
+    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_270_ap_start : STD_LOGIC;
+    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_270_ap_done : STD_LOGIC;
+    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_270_ap_idle : STD_LOGIC;
+    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_270_ap_ready : STD_LOGIC;
+    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_270_p_mem_address0 : STD_LOGIC_VECTOR (2 downto 0);
+    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_270_p_mem_ce0 : STD_LOGIC;
+    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_270_p_mem_we0 : STD_LOGIC;
+    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_270_p_mem_d0 : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_278_ap_start : STD_LOGIC;
+    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_278_ap_done : STD_LOGIC;
+    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_278_ap_idle : STD_LOGIC;
+    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_278_ap_ready : STD_LOGIC;
+    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_278_v_mem_address0 : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_278_v_mem_ce0 : STD_LOGIC;
+    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_278_v_mem_we0 : STD_LOGIC;
+    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_278_v_mem_d0 : STD_LOGIC_VECTOR (31 downto 0);
+    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_278_u_mem_address0 : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_278_u_mem_ce0 : STD_LOGIC;
+    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_278_u_mem_we0 : STD_LOGIC;
+    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_278_u_mem_d0 : STD_LOGIC_VECTOR (31 downto 0);
+    signal grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_ap_start : STD_LOGIC;
+    signal grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_ap_done : STD_LOGIC;
+    signal grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_ap_idle : STD_LOGIC;
+    signal grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_ap_ready : STD_LOGIC;
+    signal grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_synapse_s_mem_address0 : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_synapse_s_mem_ce0 : STD_LOGIC;
+    signal grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_synapse_s_mem_we0 : STD_LOGIC;
+    signal grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_synapse_s_mem_d0 : STD_LOGIC_VECTOR (31 downto 0);
+    signal grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_synapse_s_mem_address1 : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_synapse_s_mem_ce1 : STD_LOGIC;
+    signal grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_v_mem_address0 : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_v_mem_ce0 : STD_LOGIC;
+    signal grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_p_mem_address0 : STD_LOGIC_VECTOR (2 downto 0);
+    signal grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_p_mem_ce0 : STD_LOGIC;
+    signal grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_grp_fu_465_p_din0 : STD_LOGIC_VECTOR (31 downto 0);
+    signal grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_grp_fu_465_p_din1 : STD_LOGIC_VECTOR (31 downto 0);
+    signal grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_grp_fu_465_p_opcode : STD_LOGIC_VECTOR (0 downto 0);
+    signal grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_grp_fu_465_p_ce : STD_LOGIC;
+    signal grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_grp_fu_469_p_din0 : STD_LOGIC_VECTOR (31 downto 0);
+    signal grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_grp_fu_469_p_din1 : STD_LOGIC_VECTOR (31 downto 0);
+    signal grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_grp_fu_469_p_ce : STD_LOGIC;
+    signal grp_snn_get_synaptic_conductances_fu_296_ap_start : STD_LOGIC;
+    signal grp_snn_get_synaptic_conductances_fu_296_ap_done : STD_LOGIC;
+    signal grp_snn_get_synaptic_conductances_fu_296_ap_idle : STD_LOGIC;
+    signal grp_snn_get_synaptic_conductances_fu_296_ap_ready : STD_LOGIC;
+    signal grp_snn_get_synaptic_conductances_fu_296_input_stream0_TREADY : STD_LOGIC;
+    signal grp_snn_get_synaptic_conductances_fu_296_input_stream1_TREADY : STD_LOGIC;
+    signal grp_snn_get_synaptic_conductances_fu_296_input_stream2_TREADY : STD_LOGIC;
+    signal grp_snn_get_synaptic_conductances_fu_296_input_stream3_TREADY : STD_LOGIC;
+    signal grp_snn_get_synaptic_conductances_fu_296_synapse_s_mem_address0 : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_snn_get_synaptic_conductances_fu_296_synapse_s_mem_ce0 : STD_LOGIC;
+    signal grp_snn_get_synaptic_conductances_fu_296_u_mem_address0 : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_snn_get_synaptic_conductances_fu_296_u_mem_ce0 : STD_LOGIC;
+    signal grp_snn_get_synaptic_conductances_fu_296_u_mem_we0 : STD_LOGIC;
+    signal grp_snn_get_synaptic_conductances_fu_296_u_mem_d0 : STD_LOGIC_VECTOR (31 downto 0);
+    signal grp_snn_get_synaptic_conductances_fu_296_u_mem_address1 : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_snn_get_synaptic_conductances_fu_296_u_mem_ce1 : STD_LOGIC;
+    signal grp_snn_get_synaptic_conductances_fu_296_firings_mem_0_o : STD_LOGIC_VECTOR (63 downto 0);
+    signal grp_snn_get_synaptic_conductances_fu_296_firings_mem_0_o_ap_vld : STD_LOGIC;
+    signal grp_snn_get_synaptic_conductances_fu_296_v_mem_address0 : STD_LOGIC_VECTOR (3 downto 0);
+    signal grp_snn_get_synaptic_conductances_fu_296_v_mem_ce0 : STD_LOGIC;
+    signal grp_snn_get_synaptic_conductances_fu_296_v_mem_we0 : STD_LOGIC;
+    signal grp_snn_get_synaptic_conductances_fu_296_v_mem_d0 : STD_LOGIC_VECTOR (31 downto 0);
+    signal grp_snn_get_synaptic_conductances_fu_296_grp_fu_465_p_din0 : STD_LOGIC_VECTOR (31 downto 0);
+    signal grp_snn_get_synaptic_conductances_fu_296_grp_fu_465_p_din1 : STD_LOGIC_VECTOR (31 downto 0);
+    signal grp_snn_get_synaptic_conductances_fu_296_grp_fu_465_p_opcode : STD_LOGIC_VECTOR (1 downto 0);
+    signal grp_snn_get_synaptic_conductances_fu_296_grp_fu_465_p_ce : STD_LOGIC;
+    signal grp_snn_get_synaptic_conductances_fu_296_grp_fu_469_p_din0 : STD_LOGIC_VECTOR (31 downto 0);
+    signal grp_snn_get_synaptic_conductances_fu_296_grp_fu_469_p_din1 : STD_LOGIC_VECTOR (31 downto 0);
+    signal grp_snn_get_synaptic_conductances_fu_296_grp_fu_469_p_ce : STD_LOGIC;
+    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_254_ap_start_reg : STD_LOGIC := '0';
     signal ap_CS_fsm_state2 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state2 : signal is "none";
-    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_318_ap_start_reg : STD_LOGIC := '0';
+    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_270_ap_start_reg : STD_LOGIC := '0';
     signal ap_CS_fsm_state6 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state6 : signal is "none";
-    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_326_ap_start_reg : STD_LOGIC := '0';
-    signal grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_ap_start_reg : STD_LOGIC := '0';
+    signal grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_278_ap_start_reg : STD_LOGIC := '0';
+    signal grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_ap_start_reg : STD_LOGIC := '0';
     signal ap_CS_fsm_state7 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state7 : signal is "none";
     signal ap_CS_fsm_state8 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state8 : signal is "none";
-    signal grp_snn_get_synaptic_conductances_fu_344_ap_start_reg : STD_LOGIC := '0';
+    signal grp_snn_get_synaptic_conductances_fu_296_ap_start_reg : STD_LOGIC := '0';
     signal ap_CS_fsm_state9 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state9 : signal is "none";
     signal ap_CS_fsm_state10 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state10 : signal is "none";
     signal ap_block_state10_on_subcall_done : BOOLEAN;
-    signal zext_ln74_fu_464_p1 : STD_LOGIC_VECTOR (63 downto 0);
-    signal zext_ln74_1_fu_473_p1 : STD_LOGIC_VECTOR (63 downto 0);
-    signal trunc_ln43_fu_440_p1 : STD_LOGIC_VECTOR (3 downto 0);
-    signal trunc_ln43_1_fu_450_p1 : STD_LOGIC_VECTOR (3 downto 0);
+    signal zext_ln74_fu_392_p1 : STD_LOGIC_VECTOR (63 downto 0);
+    signal zext_ln74_1_fu_401_p1 : STD_LOGIC_VECTOR (63 downto 0);
+    signal trunc_ln43_fu_368_p1 : STD_LOGIC_VECTOR (3 downto 0);
+    signal trunc_ln43_1_fu_378_p1 : STD_LOGIC_VECTOR (3 downto 0);
     signal ap_CS_fsm_state5 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state5 : signal is "none";
-    signal bitcast_ln110_fu_482_p1 : STD_LOGIC_VECTOR (31 downto 0);
-    signal bitcast_ln109_fu_478_p1 : STD_LOGIC_VECTOR (31 downto 0);
-    signal grp_fu_537_p2 : STD_LOGIC_VECTOR (31 downto 0);
-    signal grp_fu_537_p0 : STD_LOGIC_VECTOR (31 downto 0);
-    signal grp_fu_537_p1 : STD_LOGIC_VECTOR (31 downto 0);
-    signal grp_fu_537_opcode : STD_LOGIC_VECTOR (1 downto 0);
-    signal grp_fu_537_ce : STD_LOGIC;
-    signal grp_fu_541_p2 : STD_LOGIC_VECTOR (31 downto 0);
-    signal grp_fu_541_p0 : STD_LOGIC_VECTOR (31 downto 0);
-    signal grp_fu_541_p1 : STD_LOGIC_VECTOR (31 downto 0);
-    signal grp_fu_541_ce : STD_LOGIC;
+    signal bitcast_ln110_fu_410_p1 : STD_LOGIC_VECTOR (31 downto 0);
+    signal bitcast_ln109_fu_406_p1 : STD_LOGIC_VECTOR (31 downto 0);
+    signal grp_fu_465_p2 : STD_LOGIC_VECTOR (31 downto 0);
+    signal grp_fu_465_p0 : STD_LOGIC_VECTOR (31 downto 0);
+    signal grp_fu_465_p1 : STD_LOGIC_VECTOR (31 downto 0);
+    signal grp_fu_465_opcode : STD_LOGIC_VECTOR (1 downto 0);
+    signal grp_fu_465_ce : STD_LOGIC;
+    signal grp_fu_469_p2 : STD_LOGIC_VECTOR (31 downto 0);
+    signal grp_fu_469_p0 : STD_LOGIC_VECTOR (31 downto 0);
+    signal grp_fu_469_p1 : STD_LOGIC_VECTOR (31 downto 0);
+    signal grp_fu_469_ce : STD_LOGIC;
     signal regslice_both_output_stream_V_data_V_U_apdone_blk : STD_LOGIC;
     signal ap_block_state14 : BOOLEAN;
     signal ap_NS_fsm : STD_LOGIC_VECTOR (13 downto 0);
@@ -329,22 +314,10 @@ architecture behav of hls_snn_izikevich is
     signal input_stream0_TSTRB_int_regslice : STD_LOGIC_VECTOR (7 downto 0);
     signal regslice_both_input_stream0_V_strb_V_U_vld_out : STD_LOGIC;
     signal regslice_both_input_stream0_V_strb_V_U_ack_in : STD_LOGIC;
-    signal regslice_both_input_stream0_V_user_V_U_apdone_blk : STD_LOGIC;
-    signal input_stream0_TUSER_int_regslice : STD_LOGIC_VECTOR (0 downto 0);
-    signal regslice_both_input_stream0_V_user_V_U_vld_out : STD_LOGIC;
-    signal regslice_both_input_stream0_V_user_V_U_ack_in : STD_LOGIC;
     signal regslice_both_input_stream0_V_last_V_U_apdone_blk : STD_LOGIC;
     signal input_stream0_TLAST_int_regslice : STD_LOGIC_VECTOR (0 downto 0);
     signal regslice_both_input_stream0_V_last_V_U_vld_out : STD_LOGIC;
     signal regslice_both_input_stream0_V_last_V_U_ack_in : STD_LOGIC;
-    signal regslice_both_input_stream0_V_id_V_U_apdone_blk : STD_LOGIC;
-    signal input_stream0_TID_int_regslice : STD_LOGIC_VECTOR (0 downto 0);
-    signal regslice_both_input_stream0_V_id_V_U_vld_out : STD_LOGIC;
-    signal regslice_both_input_stream0_V_id_V_U_ack_in : STD_LOGIC;
-    signal regslice_both_input_stream0_V_dest_V_U_apdone_blk : STD_LOGIC;
-    signal input_stream0_TDEST_int_regslice : STD_LOGIC_VECTOR (0 downto 0);
-    signal regslice_both_input_stream0_V_dest_V_U_vld_out : STD_LOGIC;
-    signal regslice_both_input_stream0_V_dest_V_U_ack_in : STD_LOGIC;
     signal regslice_both_input_stream1_V_data_V_U_apdone_blk : STD_LOGIC;
     signal input_stream1_TDATA_int_regslice : STD_LOGIC_VECTOR (63 downto 0);
     signal input_stream1_TVALID_int_regslice : STD_LOGIC;
@@ -358,22 +331,10 @@ architecture behav of hls_snn_izikevich is
     signal input_stream1_TSTRB_int_regslice : STD_LOGIC_VECTOR (7 downto 0);
     signal regslice_both_input_stream1_V_strb_V_U_vld_out : STD_LOGIC;
     signal regslice_both_input_stream1_V_strb_V_U_ack_in : STD_LOGIC;
-    signal regslice_both_input_stream1_V_user_V_U_apdone_blk : STD_LOGIC;
-    signal input_stream1_TUSER_int_regslice : STD_LOGIC_VECTOR (0 downto 0);
-    signal regslice_both_input_stream1_V_user_V_U_vld_out : STD_LOGIC;
-    signal regslice_both_input_stream1_V_user_V_U_ack_in : STD_LOGIC;
     signal regslice_both_input_stream1_V_last_V_U_apdone_blk : STD_LOGIC;
     signal input_stream1_TLAST_int_regslice : STD_LOGIC_VECTOR (0 downto 0);
     signal regslice_both_input_stream1_V_last_V_U_vld_out : STD_LOGIC;
     signal regslice_both_input_stream1_V_last_V_U_ack_in : STD_LOGIC;
-    signal regslice_both_input_stream1_V_id_V_U_apdone_blk : STD_LOGIC;
-    signal input_stream1_TID_int_regslice : STD_LOGIC_VECTOR (0 downto 0);
-    signal regslice_both_input_stream1_V_id_V_U_vld_out : STD_LOGIC;
-    signal regslice_both_input_stream1_V_id_V_U_ack_in : STD_LOGIC;
-    signal regslice_both_input_stream1_V_dest_V_U_apdone_blk : STD_LOGIC;
-    signal input_stream1_TDEST_int_regslice : STD_LOGIC_VECTOR (0 downto 0);
-    signal regslice_both_input_stream1_V_dest_V_U_vld_out : STD_LOGIC;
-    signal regslice_both_input_stream1_V_dest_V_U_ack_in : STD_LOGIC;
     signal regslice_both_input_stream2_V_data_V_U_apdone_blk : STD_LOGIC;
     signal input_stream2_TDATA_int_regslice : STD_LOGIC_VECTOR (63 downto 0);
     signal input_stream2_TVALID_int_regslice : STD_LOGIC;
@@ -387,22 +348,10 @@ architecture behav of hls_snn_izikevich is
     signal input_stream2_TSTRB_int_regslice : STD_LOGIC_VECTOR (7 downto 0);
     signal regslice_both_input_stream2_V_strb_V_U_vld_out : STD_LOGIC;
     signal regslice_both_input_stream2_V_strb_V_U_ack_in : STD_LOGIC;
-    signal regslice_both_input_stream2_V_user_V_U_apdone_blk : STD_LOGIC;
-    signal input_stream2_TUSER_int_regslice : STD_LOGIC_VECTOR (0 downto 0);
-    signal regslice_both_input_stream2_V_user_V_U_vld_out : STD_LOGIC;
-    signal regslice_both_input_stream2_V_user_V_U_ack_in : STD_LOGIC;
     signal regslice_both_input_stream2_V_last_V_U_apdone_blk : STD_LOGIC;
     signal input_stream2_TLAST_int_regslice : STD_LOGIC_VECTOR (0 downto 0);
     signal regslice_both_input_stream2_V_last_V_U_vld_out : STD_LOGIC;
     signal regslice_both_input_stream2_V_last_V_U_ack_in : STD_LOGIC;
-    signal regslice_both_input_stream2_V_id_V_U_apdone_blk : STD_LOGIC;
-    signal input_stream2_TID_int_regslice : STD_LOGIC_VECTOR (0 downto 0);
-    signal regslice_both_input_stream2_V_id_V_U_vld_out : STD_LOGIC;
-    signal regslice_both_input_stream2_V_id_V_U_ack_in : STD_LOGIC;
-    signal regslice_both_input_stream2_V_dest_V_U_apdone_blk : STD_LOGIC;
-    signal input_stream2_TDEST_int_regslice : STD_LOGIC_VECTOR (0 downto 0);
-    signal regslice_both_input_stream2_V_dest_V_U_vld_out : STD_LOGIC;
-    signal regslice_both_input_stream2_V_dest_V_U_ack_in : STD_LOGIC;
     signal regslice_both_input_stream3_V_data_V_U_apdone_blk : STD_LOGIC;
     signal input_stream3_TDATA_int_regslice : STD_LOGIC_VECTOR (63 downto 0);
     signal input_stream3_TVALID_int_regslice : STD_LOGIC;
@@ -416,22 +365,10 @@ architecture behav of hls_snn_izikevich is
     signal input_stream3_TSTRB_int_regslice : STD_LOGIC_VECTOR (7 downto 0);
     signal regslice_both_input_stream3_V_strb_V_U_vld_out : STD_LOGIC;
     signal regslice_both_input_stream3_V_strb_V_U_ack_in : STD_LOGIC;
-    signal regslice_both_input_stream3_V_user_V_U_apdone_blk : STD_LOGIC;
-    signal input_stream3_TUSER_int_regslice : STD_LOGIC_VECTOR (0 downto 0);
-    signal regslice_both_input_stream3_V_user_V_U_vld_out : STD_LOGIC;
-    signal regslice_both_input_stream3_V_user_V_U_ack_in : STD_LOGIC;
     signal regslice_both_input_stream3_V_last_V_U_apdone_blk : STD_LOGIC;
     signal input_stream3_TLAST_int_regslice : STD_LOGIC_VECTOR (0 downto 0);
     signal regslice_both_input_stream3_V_last_V_U_vld_out : STD_LOGIC;
     signal regslice_both_input_stream3_V_last_V_U_ack_in : STD_LOGIC;
-    signal regslice_both_input_stream3_V_id_V_U_apdone_blk : STD_LOGIC;
-    signal input_stream3_TID_int_regslice : STD_LOGIC_VECTOR (0 downto 0);
-    signal regslice_both_input_stream3_V_id_V_U_vld_out : STD_LOGIC;
-    signal regslice_both_input_stream3_V_id_V_U_ack_in : STD_LOGIC;
-    signal regslice_both_input_stream3_V_dest_V_U_apdone_blk : STD_LOGIC;
-    signal input_stream3_TDEST_int_regslice : STD_LOGIC_VECTOR (0 downto 0);
-    signal regslice_both_input_stream3_V_dest_V_U_vld_out : STD_LOGIC;
-    signal regslice_both_input_stream3_V_dest_V_U_ack_in : STD_LOGIC;
     signal output_stream_TDATA_int_regslice : STD_LOGIC_VECTOR (63 downto 0);
     signal output_stream_TVALID_int_regslice : STD_LOGIC;
     signal output_stream_TREADY_int_regslice : STD_LOGIC;
@@ -442,19 +379,10 @@ architecture behav of hls_snn_izikevich is
     signal regslice_both_output_stream_V_strb_V_U_apdone_blk : STD_LOGIC;
     signal regslice_both_output_stream_V_strb_V_U_ack_in_dummy : STD_LOGIC;
     signal regslice_both_output_stream_V_strb_V_U_vld_out : STD_LOGIC;
-    signal regslice_both_output_stream_V_user_V_U_apdone_blk : STD_LOGIC;
-    signal regslice_both_output_stream_V_user_V_U_ack_in_dummy : STD_LOGIC;
-    signal regslice_both_output_stream_V_user_V_U_vld_out : STD_LOGIC;
     signal regslice_both_output_stream_V_last_V_U_apdone_blk : STD_LOGIC;
     signal output_stream_TLAST_int_regslice : STD_LOGIC_VECTOR (0 downto 0);
     signal regslice_both_output_stream_V_last_V_U_ack_in_dummy : STD_LOGIC;
     signal regslice_both_output_stream_V_last_V_U_vld_out : STD_LOGIC;
-    signal regslice_both_output_stream_V_id_V_U_apdone_blk : STD_LOGIC;
-    signal regslice_both_output_stream_V_id_V_U_ack_in_dummy : STD_LOGIC;
-    signal regslice_both_output_stream_V_id_V_U_vld_out : STD_LOGIC;
-    signal regslice_both_output_stream_V_dest_V_U_apdone_blk : STD_LOGIC;
-    signal regslice_both_output_stream_V_dest_V_U_ack_in_dummy : STD_LOGIC;
-    signal regslice_both_output_stream_V_dest_V_U_vld_out : STD_LOGIC;
     signal ap_ce_reg : STD_LOGIC;
     signal ap_return : STD_LOGIC_VECTOR (0 downto 0);
 
@@ -471,10 +399,7 @@ architecture behav of hls_snn_izikevich is
         input_stream0_TREADY : OUT STD_LOGIC;
         input_stream0_TKEEP : IN STD_LOGIC_VECTOR (7 downto 0);
         input_stream0_TSTRB : IN STD_LOGIC_VECTOR (7 downto 0);
-        input_stream0_TUSER : IN STD_LOGIC_VECTOR (0 downto 0);
         input_stream0_TLAST : IN STD_LOGIC_VECTOR (0 downto 0);
-        input_stream0_TID : IN STD_LOGIC_VECTOR (0 downto 0);
-        input_stream0_TDEST : IN STD_LOGIC_VECTOR (0 downto 0);
         neuron_type_mem_0_i : IN STD_LOGIC_VECTOR (5 downto 0);
         neuron_type_mem_0_o : OUT STD_LOGIC_VECTOR (5 downto 0);
         neuron_type_mem_0_o_ap_vld : OUT STD_LOGIC;
@@ -540,15 +465,15 @@ architecture behav of hls_snn_izikevich is
         p_mem_address0 : OUT STD_LOGIC_VECTOR (2 downto 0);
         p_mem_ce0 : OUT STD_LOGIC;
         p_mem_q0 : IN STD_LOGIC_VECTOR (0 downto 0);
-        grp_fu_537_p_din0 : OUT STD_LOGIC_VECTOR (31 downto 0);
-        grp_fu_537_p_din1 : OUT STD_LOGIC_VECTOR (31 downto 0);
-        grp_fu_537_p_opcode : OUT STD_LOGIC_VECTOR (0 downto 0);
-        grp_fu_537_p_dout0 : IN STD_LOGIC_VECTOR (31 downto 0);
-        grp_fu_537_p_ce : OUT STD_LOGIC;
-        grp_fu_541_p_din0 : OUT STD_LOGIC_VECTOR (31 downto 0);
-        grp_fu_541_p_din1 : OUT STD_LOGIC_VECTOR (31 downto 0);
-        grp_fu_541_p_dout0 : IN STD_LOGIC_VECTOR (31 downto 0);
-        grp_fu_541_p_ce : OUT STD_LOGIC );
+        grp_fu_465_p_din0 : OUT STD_LOGIC_VECTOR (31 downto 0);
+        grp_fu_465_p_din1 : OUT STD_LOGIC_VECTOR (31 downto 0);
+        grp_fu_465_p_opcode : OUT STD_LOGIC_VECTOR (0 downto 0);
+        grp_fu_465_p_dout0 : IN STD_LOGIC_VECTOR (31 downto 0);
+        grp_fu_465_p_ce : OUT STD_LOGIC;
+        grp_fu_469_p_din0 : OUT STD_LOGIC_VECTOR (31 downto 0);
+        grp_fu_469_p_din1 : OUT STD_LOGIC_VECTOR (31 downto 0);
+        grp_fu_469_p_dout0 : IN STD_LOGIC_VECTOR (31 downto 0);
+        grp_fu_469_p_ce : OUT STD_LOGIC );
     end component;
 
 
@@ -565,37 +490,25 @@ architecture behav of hls_snn_izikevich is
         input_stream0_TREADY : OUT STD_LOGIC;
         input_stream0_TKEEP : IN STD_LOGIC_VECTOR (7 downto 0);
         input_stream0_TSTRB : IN STD_LOGIC_VECTOR (7 downto 0);
-        input_stream0_TUSER : IN STD_LOGIC_VECTOR (0 downto 0);
         input_stream0_TLAST : IN STD_LOGIC_VECTOR (0 downto 0);
-        input_stream0_TID : IN STD_LOGIC_VECTOR (0 downto 0);
-        input_stream0_TDEST : IN STD_LOGIC_VECTOR (0 downto 0);
         input_stream1_TDATA : IN STD_LOGIC_VECTOR (63 downto 0);
         input_stream1_TVALID : IN STD_LOGIC;
         input_stream1_TREADY : OUT STD_LOGIC;
         input_stream1_TKEEP : IN STD_LOGIC_VECTOR (7 downto 0);
         input_stream1_TSTRB : IN STD_LOGIC_VECTOR (7 downto 0);
-        input_stream1_TUSER : IN STD_LOGIC_VECTOR (0 downto 0);
         input_stream1_TLAST : IN STD_LOGIC_VECTOR (0 downto 0);
-        input_stream1_TID : IN STD_LOGIC_VECTOR (0 downto 0);
-        input_stream1_TDEST : IN STD_LOGIC_VECTOR (0 downto 0);
         input_stream2_TDATA : IN STD_LOGIC_VECTOR (63 downto 0);
         input_stream2_TVALID : IN STD_LOGIC;
         input_stream2_TREADY : OUT STD_LOGIC;
         input_stream2_TKEEP : IN STD_LOGIC_VECTOR (7 downto 0);
         input_stream2_TSTRB : IN STD_LOGIC_VECTOR (7 downto 0);
-        input_stream2_TUSER : IN STD_LOGIC_VECTOR (0 downto 0);
         input_stream2_TLAST : IN STD_LOGIC_VECTOR (0 downto 0);
-        input_stream2_TID : IN STD_LOGIC_VECTOR (0 downto 0);
-        input_stream2_TDEST : IN STD_LOGIC_VECTOR (0 downto 0);
         input_stream3_TDATA : IN STD_LOGIC_VECTOR (63 downto 0);
         input_stream3_TVALID : IN STD_LOGIC;
         input_stream3_TREADY : OUT STD_LOGIC;
         input_stream3_TKEEP : IN STD_LOGIC_VECTOR (7 downto 0);
         input_stream3_TSTRB : IN STD_LOGIC_VECTOR (7 downto 0);
-        input_stream3_TUSER : IN STD_LOGIC_VECTOR (0 downto 0);
         input_stream3_TLAST : IN STD_LOGIC_VECTOR (0 downto 0);
-        input_stream3_TID : IN STD_LOGIC_VECTOR (0 downto 0);
-        input_stream3_TDEST : IN STD_LOGIC_VECTOR (0 downto 0);
         neuron_type_mem_0 : IN STD_LOGIC_VECTOR (5 downto 0);
         neuron_type_mem_1 : IN STD_LOGIC_VECTOR (5 downto 0);
         synapse_s_mem_address0 : OUT STD_LOGIC_VECTOR (3 downto 0);
@@ -616,15 +529,15 @@ architecture behav of hls_snn_izikevich is
         v_mem_we0 : OUT STD_LOGIC;
         v_mem_d0 : OUT STD_LOGIC_VECTOR (31 downto 0);
         v_mem_q0 : IN STD_LOGIC_VECTOR (31 downto 0);
-        grp_fu_537_p_din0 : OUT STD_LOGIC_VECTOR (31 downto 0);
-        grp_fu_537_p_din1 : OUT STD_LOGIC_VECTOR (31 downto 0);
-        grp_fu_537_p_opcode : OUT STD_LOGIC_VECTOR (1 downto 0);
-        grp_fu_537_p_dout0 : IN STD_LOGIC_VECTOR (31 downto 0);
-        grp_fu_537_p_ce : OUT STD_LOGIC;
-        grp_fu_541_p_din0 : OUT STD_LOGIC_VECTOR (31 downto 0);
-        grp_fu_541_p_din1 : OUT STD_LOGIC_VECTOR (31 downto 0);
-        grp_fu_541_p_dout0 : IN STD_LOGIC_VECTOR (31 downto 0);
-        grp_fu_541_p_ce : OUT STD_LOGIC );
+        grp_fu_465_p_din0 : OUT STD_LOGIC_VECTOR (31 downto 0);
+        grp_fu_465_p_din1 : OUT STD_LOGIC_VECTOR (31 downto 0);
+        grp_fu_465_p_opcode : OUT STD_LOGIC_VECTOR (1 downto 0);
+        grp_fu_465_p_dout0 : IN STD_LOGIC_VECTOR (31 downto 0);
+        grp_fu_465_p_ce : OUT STD_LOGIC;
+        grp_fu_469_p_din0 : OUT STD_LOGIC_VECTOR (31 downto 0);
+        grp_fu_469_p_din1 : OUT STD_LOGIC_VECTOR (31 downto 0);
+        grp_fu_469_p_dout0 : IN STD_LOGIC_VECTOR (31 downto 0);
+        grp_fu_469_p_ce : OUT STD_LOGIC );
     end component;
 
 
@@ -802,7 +715,7 @@ begin
         ce0 => u_mem_ce0,
         we0 => u_mem_we0,
         d0 => u_mem_d0,
-        address1 => grp_snn_get_synaptic_conductances_fu_344_u_mem_address1,
+        address1 => grp_snn_get_synaptic_conductances_fu_296_u_mem_address1,
         ce1 => u_mem_ce1,
         q1 => u_mem_q1);
 
@@ -817,7 +730,7 @@ begin
         address0 => p_mem_address0,
         ce0 => p_mem_ce0,
         we0 => p_mem_we0,
-        d0 => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_318_p_mem_d0,
+        d0 => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_270_p_mem_d0,
         q0 => p_mem_q0);
 
     synapse_s_mem_U : component hls_snn_izikevich_v_mem_RAM_AUTO_1R1W
@@ -831,171 +744,156 @@ begin
         address0 => synapse_s_mem_address0,
         ce0 => synapse_s_mem_ce0,
         we0 => synapse_s_mem_we0,
-        d0 => grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_synapse_s_mem_d0,
+        d0 => grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_synapse_s_mem_d0,
         q0 => synapse_s_mem_q0,
-        address1 => grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_synapse_s_mem_address1,
+        address1 => grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_synapse_s_mem_address1,
         ce1 => synapse_s_mem_ce1,
         q1 => synapse_s_mem_q1);
 
-    grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_296 : component hls_snn_izikevich_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2
+    grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_254 : component hls_snn_izikevich_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2
     port map (
         ap_clk => ap_clk,
         ap_rst => ap_rst_n_inv,
-        ap_start => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_296_ap_start,
-        ap_done => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_296_ap_done,
-        ap_idle => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_296_ap_idle,
-        ap_ready => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_296_ap_ready,
+        ap_start => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_254_ap_start,
+        ap_done => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_254_ap_done,
+        ap_idle => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_254_ap_idle,
+        ap_ready => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_254_ap_ready,
         input_stream0_TVALID => input_stream0_TVALID_int_regslice,
         input_stream0_TDATA => input_stream0_TDATA_int_regslice,
-        input_stream0_TREADY => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_296_input_stream0_TREADY,
+        input_stream0_TREADY => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_254_input_stream0_TREADY,
         input_stream0_TKEEP => input_stream0_TKEEP_int_regslice,
         input_stream0_TSTRB => input_stream0_TSTRB_int_regslice,
-        input_stream0_TUSER => input_stream0_TUSER_int_regslice,
         input_stream0_TLAST => input_stream0_TLAST_int_regslice,
-        input_stream0_TID => input_stream0_TID_int_regslice,
-        input_stream0_TDEST => input_stream0_TDEST_int_regslice,
         neuron_type_mem_0_i => neuron_type_mem_0,
-        neuron_type_mem_0_o => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_296_neuron_type_mem_0_o,
-        neuron_type_mem_0_o_ap_vld => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_296_neuron_type_mem_0_o_ap_vld,
+        neuron_type_mem_0_o => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_254_neuron_type_mem_0_o,
+        neuron_type_mem_0_o_ap_vld => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_254_neuron_type_mem_0_o_ap_vld,
         neuron_type_mem_1_i => neuron_type_mem_1,
-        neuron_type_mem_1_o => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_296_neuron_type_mem_1_o,
-        neuron_type_mem_1_o_ap_vld => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_296_neuron_type_mem_1_o_ap_vld);
+        neuron_type_mem_1_o => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_254_neuron_type_mem_1_o,
+        neuron_type_mem_1_o_ap_vld => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_254_neuron_type_mem_1_o_ap_vld);
 
-    grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_318 : component hls_snn_izikevich_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2
+    grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_270 : component hls_snn_izikevich_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2
     port map (
         ap_clk => ap_clk,
         ap_rst => ap_rst_n_inv,
-        ap_start => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_318_ap_start,
-        ap_done => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_318_ap_done,
-        ap_idle => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_318_ap_idle,
-        ap_ready => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_318_ap_ready,
-        p_input_load => p_input_read_reg_504,
-        p_mem_address0 => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_318_p_mem_address0,
-        p_mem_ce0 => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_318_p_mem_ce0,
-        p_mem_we0 => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_318_p_mem_we0,
-        p_mem_d0 => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_318_p_mem_d0);
+        ap_start => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_270_ap_start,
+        ap_done => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_270_ap_done,
+        ap_idle => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_270_ap_idle,
+        ap_ready => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_270_ap_ready,
+        p_input_load => p_input_read_reg_432,
+        p_mem_address0 => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_270_p_mem_address0,
+        p_mem_ce0 => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_270_p_mem_ce0,
+        p_mem_we0 => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_270_p_mem_we0,
+        p_mem_d0 => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_270_p_mem_d0);
 
-    grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_326 : component hls_snn_izikevich_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2
+    grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_278 : component hls_snn_izikevich_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2
     port map (
         ap_clk => ap_clk,
         ap_rst => ap_rst_n_inv,
-        ap_start => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_326_ap_start,
-        ap_done => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_326_ap_done,
-        ap_idle => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_326_ap_idle,
-        ap_ready => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_326_ap_ready,
-        v_mem_address0 => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_326_v_mem_address0,
-        v_mem_ce0 => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_326_v_mem_ce0,
-        v_mem_we0 => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_326_v_mem_we0,
-        v_mem_d0 => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_326_v_mem_d0,
-        u_mem_address0 => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_326_u_mem_address0,
-        u_mem_ce0 => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_326_u_mem_ce0,
-        u_mem_we0 => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_326_u_mem_we0,
-        u_mem_d0 => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_326_u_mem_d0);
+        ap_start => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_278_ap_start,
+        ap_done => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_278_ap_done,
+        ap_idle => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_278_ap_idle,
+        ap_ready => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_278_ap_ready,
+        v_mem_address0 => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_278_v_mem_address0,
+        v_mem_ce0 => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_278_v_mem_ce0,
+        v_mem_we0 => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_278_v_mem_we0,
+        v_mem_d0 => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_278_v_mem_d0,
+        u_mem_address0 => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_278_u_mem_address0,
+        u_mem_ce0 => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_278_u_mem_ce0,
+        u_mem_we0 => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_278_u_mem_we0,
+        u_mem_d0 => grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_278_u_mem_d0);
 
-    grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334 : component hls_snn_izikevich_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1
+    grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286 : component hls_snn_izikevich_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1
     port map (
         ap_clk => ap_clk,
         ap_rst => ap_rst_n_inv,
-        ap_start => grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_ap_start,
-        ap_done => grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_ap_done,
-        ap_idle => grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_ap_idle,
-        ap_ready => grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_ap_ready,
-        synapse_s_mem_address0 => grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_synapse_s_mem_address0,
-        synapse_s_mem_ce0 => grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_synapse_s_mem_ce0,
-        synapse_s_mem_we0 => grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_synapse_s_mem_we0,
-        synapse_s_mem_d0 => grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_synapse_s_mem_d0,
-        synapse_s_mem_address1 => grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_synapse_s_mem_address1,
-        synapse_s_mem_ce1 => grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_synapse_s_mem_ce1,
+        ap_start => grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_ap_start,
+        ap_done => grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_ap_done,
+        ap_idle => grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_ap_idle,
+        ap_ready => grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_ap_ready,
+        synapse_s_mem_address0 => grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_synapse_s_mem_address0,
+        synapse_s_mem_ce0 => grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_synapse_s_mem_ce0,
+        synapse_s_mem_we0 => grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_synapse_s_mem_we0,
+        synapse_s_mem_d0 => grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_synapse_s_mem_d0,
+        synapse_s_mem_address1 => grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_synapse_s_mem_address1,
+        synapse_s_mem_ce1 => grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_synapse_s_mem_ce1,
         synapse_s_mem_q1 => synapse_s_mem_q1,
-        v_mem_address0 => grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_v_mem_address0,
-        v_mem_ce0 => grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_v_mem_ce0,
+        v_mem_address0 => grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_v_mem_address0,
+        v_mem_ce0 => grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_v_mem_ce0,
         v_mem_q0 => v_mem_q0,
-        p_mem_address0 => grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_p_mem_address0,
-        p_mem_ce0 => grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_p_mem_ce0,
+        p_mem_address0 => grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_p_mem_address0,
+        p_mem_ce0 => grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_p_mem_ce0,
         p_mem_q0 => p_mem_q0,
-        grp_fu_537_p_din0 => grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_grp_fu_537_p_din0,
-        grp_fu_537_p_din1 => grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_grp_fu_537_p_din1,
-        grp_fu_537_p_opcode => grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_grp_fu_537_p_opcode,
-        grp_fu_537_p_dout0 => grp_fu_537_p2,
-        grp_fu_537_p_ce => grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_grp_fu_537_p_ce,
-        grp_fu_541_p_din0 => grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_grp_fu_541_p_din0,
-        grp_fu_541_p_din1 => grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_grp_fu_541_p_din1,
-        grp_fu_541_p_dout0 => grp_fu_541_p2,
-        grp_fu_541_p_ce => grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_grp_fu_541_p_ce);
+        grp_fu_465_p_din0 => grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_grp_fu_465_p_din0,
+        grp_fu_465_p_din1 => grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_grp_fu_465_p_din1,
+        grp_fu_465_p_opcode => grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_grp_fu_465_p_opcode,
+        grp_fu_465_p_dout0 => grp_fu_465_p2,
+        grp_fu_465_p_ce => grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_grp_fu_465_p_ce,
+        grp_fu_469_p_din0 => grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_grp_fu_469_p_din0,
+        grp_fu_469_p_din1 => grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_grp_fu_469_p_din1,
+        grp_fu_469_p_dout0 => grp_fu_469_p2,
+        grp_fu_469_p_ce => grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_grp_fu_469_p_ce);
 
-    grp_snn_get_synaptic_conductances_fu_344 : component hls_snn_izikevich_snn_get_synaptic_conductances
+    grp_snn_get_synaptic_conductances_fu_296 : component hls_snn_izikevich_snn_get_synaptic_conductances
     port map (
         ap_clk => ap_clk,
         ap_rst => ap_rst_n_inv,
-        ap_start => grp_snn_get_synaptic_conductances_fu_344_ap_start,
-        ap_done => grp_snn_get_synaptic_conductances_fu_344_ap_done,
-        ap_idle => grp_snn_get_synaptic_conductances_fu_344_ap_idle,
-        ap_ready => grp_snn_get_synaptic_conductances_fu_344_ap_ready,
+        ap_start => grp_snn_get_synaptic_conductances_fu_296_ap_start,
+        ap_done => grp_snn_get_synaptic_conductances_fu_296_ap_done,
+        ap_idle => grp_snn_get_synaptic_conductances_fu_296_ap_idle,
+        ap_ready => grp_snn_get_synaptic_conductances_fu_296_ap_ready,
         input_stream0_TDATA => input_stream0_TDATA_int_regslice,
         input_stream0_TVALID => input_stream0_TVALID_int_regslice,
-        input_stream0_TREADY => grp_snn_get_synaptic_conductances_fu_344_input_stream0_TREADY,
+        input_stream0_TREADY => grp_snn_get_synaptic_conductances_fu_296_input_stream0_TREADY,
         input_stream0_TKEEP => input_stream0_TKEEP_int_regslice,
         input_stream0_TSTRB => input_stream0_TSTRB_int_regslice,
-        input_stream0_TUSER => input_stream0_TUSER_int_regslice,
         input_stream0_TLAST => input_stream0_TLAST_int_regslice,
-        input_stream0_TID => input_stream0_TID_int_regslice,
-        input_stream0_TDEST => input_stream0_TDEST_int_regslice,
         input_stream1_TDATA => input_stream1_TDATA_int_regslice,
         input_stream1_TVALID => input_stream1_TVALID_int_regslice,
-        input_stream1_TREADY => grp_snn_get_synaptic_conductances_fu_344_input_stream1_TREADY,
+        input_stream1_TREADY => grp_snn_get_synaptic_conductances_fu_296_input_stream1_TREADY,
         input_stream1_TKEEP => input_stream1_TKEEP_int_regslice,
         input_stream1_TSTRB => input_stream1_TSTRB_int_regslice,
-        input_stream1_TUSER => input_stream1_TUSER_int_regslice,
         input_stream1_TLAST => input_stream1_TLAST_int_regslice,
-        input_stream1_TID => input_stream1_TID_int_regslice,
-        input_stream1_TDEST => input_stream1_TDEST_int_regslice,
         input_stream2_TDATA => input_stream2_TDATA_int_regslice,
         input_stream2_TVALID => input_stream2_TVALID_int_regslice,
-        input_stream2_TREADY => grp_snn_get_synaptic_conductances_fu_344_input_stream2_TREADY,
+        input_stream2_TREADY => grp_snn_get_synaptic_conductances_fu_296_input_stream2_TREADY,
         input_stream2_TKEEP => input_stream2_TKEEP_int_regslice,
         input_stream2_TSTRB => input_stream2_TSTRB_int_regslice,
-        input_stream2_TUSER => input_stream2_TUSER_int_regslice,
         input_stream2_TLAST => input_stream2_TLAST_int_regslice,
-        input_stream2_TID => input_stream2_TID_int_regslice,
-        input_stream2_TDEST => input_stream2_TDEST_int_regslice,
         input_stream3_TDATA => input_stream3_TDATA_int_regslice,
         input_stream3_TVALID => input_stream3_TVALID_int_regslice,
-        input_stream3_TREADY => grp_snn_get_synaptic_conductances_fu_344_input_stream3_TREADY,
+        input_stream3_TREADY => grp_snn_get_synaptic_conductances_fu_296_input_stream3_TREADY,
         input_stream3_TKEEP => input_stream3_TKEEP_int_regslice,
         input_stream3_TSTRB => input_stream3_TSTRB_int_regslice,
-        input_stream3_TUSER => input_stream3_TUSER_int_regslice,
         input_stream3_TLAST => input_stream3_TLAST_int_regslice,
-        input_stream3_TID => input_stream3_TID_int_regslice,
-        input_stream3_TDEST => input_stream3_TDEST_int_regslice,
         neuron_type_mem_0 => neuron_type_mem_0,
         neuron_type_mem_1 => neuron_type_mem_1,
-        synapse_s_mem_address0 => grp_snn_get_synaptic_conductances_fu_344_synapse_s_mem_address0,
-        synapse_s_mem_ce0 => grp_snn_get_synaptic_conductances_fu_344_synapse_s_mem_ce0,
+        synapse_s_mem_address0 => grp_snn_get_synaptic_conductances_fu_296_synapse_s_mem_address0,
+        synapse_s_mem_ce0 => grp_snn_get_synaptic_conductances_fu_296_synapse_s_mem_ce0,
         synapse_s_mem_q0 => synapse_s_mem_q0,
-        u_mem_address0 => grp_snn_get_synaptic_conductances_fu_344_u_mem_address0,
-        u_mem_ce0 => grp_snn_get_synaptic_conductances_fu_344_u_mem_ce0,
-        u_mem_we0 => grp_snn_get_synaptic_conductances_fu_344_u_mem_we0,
-        u_mem_d0 => grp_snn_get_synaptic_conductances_fu_344_u_mem_d0,
-        u_mem_address1 => grp_snn_get_synaptic_conductances_fu_344_u_mem_address1,
-        u_mem_ce1 => grp_snn_get_synaptic_conductances_fu_344_u_mem_ce1,
+        u_mem_address0 => grp_snn_get_synaptic_conductances_fu_296_u_mem_address0,
+        u_mem_ce0 => grp_snn_get_synaptic_conductances_fu_296_u_mem_ce0,
+        u_mem_we0 => grp_snn_get_synaptic_conductances_fu_296_u_mem_we0,
+        u_mem_d0 => grp_snn_get_synaptic_conductances_fu_296_u_mem_d0,
+        u_mem_address1 => grp_snn_get_synaptic_conductances_fu_296_u_mem_address1,
+        u_mem_ce1 => grp_snn_get_synaptic_conductances_fu_296_u_mem_ce1,
         u_mem_q1 => u_mem_q1,
         firings_mem_0_i => firings_mem_0,
-        firings_mem_0_o => grp_snn_get_synaptic_conductances_fu_344_firings_mem_0_o,
-        firings_mem_0_o_ap_vld => grp_snn_get_synaptic_conductances_fu_344_firings_mem_0_o_ap_vld,
-        v_mem_address0 => grp_snn_get_synaptic_conductances_fu_344_v_mem_address0,
-        v_mem_ce0 => grp_snn_get_synaptic_conductances_fu_344_v_mem_ce0,
-        v_mem_we0 => grp_snn_get_synaptic_conductances_fu_344_v_mem_we0,
-        v_mem_d0 => grp_snn_get_synaptic_conductances_fu_344_v_mem_d0,
+        firings_mem_0_o => grp_snn_get_synaptic_conductances_fu_296_firings_mem_0_o,
+        firings_mem_0_o_ap_vld => grp_snn_get_synaptic_conductances_fu_296_firings_mem_0_o_ap_vld,
+        v_mem_address0 => grp_snn_get_synaptic_conductances_fu_296_v_mem_address0,
+        v_mem_ce0 => grp_snn_get_synaptic_conductances_fu_296_v_mem_ce0,
+        v_mem_we0 => grp_snn_get_synaptic_conductances_fu_296_v_mem_we0,
+        v_mem_d0 => grp_snn_get_synaptic_conductances_fu_296_v_mem_d0,
         v_mem_q0 => v_mem_q0,
-        grp_fu_537_p_din0 => grp_snn_get_synaptic_conductances_fu_344_grp_fu_537_p_din0,
-        grp_fu_537_p_din1 => grp_snn_get_synaptic_conductances_fu_344_grp_fu_537_p_din1,
-        grp_fu_537_p_opcode => grp_snn_get_synaptic_conductances_fu_344_grp_fu_537_p_opcode,
-        grp_fu_537_p_dout0 => grp_fu_537_p2,
-        grp_fu_537_p_ce => grp_snn_get_synaptic_conductances_fu_344_grp_fu_537_p_ce,
-        grp_fu_541_p_din0 => grp_snn_get_synaptic_conductances_fu_344_grp_fu_541_p_din0,
-        grp_fu_541_p_din1 => grp_snn_get_synaptic_conductances_fu_344_grp_fu_541_p_din1,
-        grp_fu_541_p_dout0 => grp_fu_541_p2,
-        grp_fu_541_p_ce => grp_snn_get_synaptic_conductances_fu_344_grp_fu_541_p_ce);
+        grp_fu_465_p_din0 => grp_snn_get_synaptic_conductances_fu_296_grp_fu_465_p_din0,
+        grp_fu_465_p_din1 => grp_snn_get_synaptic_conductances_fu_296_grp_fu_465_p_din1,
+        grp_fu_465_p_opcode => grp_snn_get_synaptic_conductances_fu_296_grp_fu_465_p_opcode,
+        grp_fu_465_p_dout0 => grp_fu_465_p2,
+        grp_fu_465_p_ce => grp_snn_get_synaptic_conductances_fu_296_grp_fu_465_p_ce,
+        grp_fu_469_p_din0 => grp_snn_get_synaptic_conductances_fu_296_grp_fu_469_p_din0,
+        grp_fu_469_p_din1 => grp_snn_get_synaptic_conductances_fu_296_grp_fu_469_p_din1,
+        grp_fu_469_p_dout0 => grp_fu_469_p2,
+        grp_fu_469_p_ce => grp_snn_get_synaptic_conductances_fu_296_grp_fu_469_p_ce);
 
     control_s_axi_U : component hls_snn_izikevich_control_s_axi
     generic map (
@@ -1034,7 +932,7 @@ begin
         output_indexes_ce0 => output_indexes_ce0,
         output_indexes_q0 => output_indexes_q0);
 
-    faddfsub_32ns_32ns_32_2_full_dsp_1_U114 : component hls_snn_izikevich_faddfsub_32ns_32ns_32_2_full_dsp_1
+    faddfsub_32ns_32ns_32_2_full_dsp_1_U87 : component hls_snn_izikevich_faddfsub_32ns_32ns_32_2_full_dsp_1
     generic map (
         ID => 1,
         NUM_STAGE => 2,
@@ -1044,13 +942,13 @@ begin
     port map (
         clk => ap_clk,
         reset => ap_rst_n_inv,
-        din0 => grp_fu_537_p0,
-        din1 => grp_fu_537_p1,
-        opcode => grp_fu_537_opcode,
-        ce => grp_fu_537_ce,
-        dout => grp_fu_537_p2);
+        din0 => grp_fu_465_p0,
+        din1 => grp_fu_465_p1,
+        opcode => grp_fu_465_opcode,
+        ce => grp_fu_465_ce,
+        dout => grp_fu_465_p2);
 
-    fmul_32ns_32ns_32_2_max_dsp_1_U115 : component hls_snn_izikevich_fmul_32ns_32ns_32_2_max_dsp_1
+    fmul_32ns_32ns_32_2_max_dsp_1_U88 : component hls_snn_izikevich_fmul_32ns_32ns_32_2_max_dsp_1
     generic map (
         ID => 1,
         NUM_STAGE => 2,
@@ -1060,10 +958,10 @@ begin
     port map (
         clk => ap_clk,
         reset => ap_rst_n_inv,
-        din0 => grp_fu_541_p0,
-        din1 => grp_fu_541_p1,
-        ce => grp_fu_541_ce,
-        dout => grp_fu_541_p2);
+        din0 => grp_fu_469_p0,
+        din1 => grp_fu_469_p1,
+        ce => grp_fu_469_ce,
+        dout => grp_fu_469_p2);
 
     regslice_both_input_stream0_V_data_V_U : component hls_snn_izikevich_regslice_both
     generic map (
@@ -1107,20 +1005,6 @@ begin
         ack_out => input_stream0_TREADY_int_regslice,
         apdone_blk => regslice_both_input_stream0_V_strb_V_U_apdone_blk);
 
-    regslice_both_input_stream0_V_user_V_U : component hls_snn_izikevich_regslice_both
-    generic map (
-        DataWidth => 1)
-    port map (
-        ap_clk => ap_clk,
-        ap_rst => ap_rst_n_inv,
-        data_in => input_stream0_TUSER,
-        vld_in => input_stream0_TVALID,
-        ack_in => regslice_both_input_stream0_V_user_V_U_ack_in,
-        data_out => input_stream0_TUSER_int_regslice,
-        vld_out => regslice_both_input_stream0_V_user_V_U_vld_out,
-        ack_out => input_stream0_TREADY_int_regslice,
-        apdone_blk => regslice_both_input_stream0_V_user_V_U_apdone_blk);
-
     regslice_both_input_stream0_V_last_V_U : component hls_snn_izikevich_regslice_both
     generic map (
         DataWidth => 1)
@@ -1134,34 +1018,6 @@ begin
         vld_out => regslice_both_input_stream0_V_last_V_U_vld_out,
         ack_out => input_stream0_TREADY_int_regslice,
         apdone_blk => regslice_both_input_stream0_V_last_V_U_apdone_blk);
-
-    regslice_both_input_stream0_V_id_V_U : component hls_snn_izikevich_regslice_both
-    generic map (
-        DataWidth => 1)
-    port map (
-        ap_clk => ap_clk,
-        ap_rst => ap_rst_n_inv,
-        data_in => input_stream0_TID,
-        vld_in => input_stream0_TVALID,
-        ack_in => regslice_both_input_stream0_V_id_V_U_ack_in,
-        data_out => input_stream0_TID_int_regslice,
-        vld_out => regslice_both_input_stream0_V_id_V_U_vld_out,
-        ack_out => input_stream0_TREADY_int_regslice,
-        apdone_blk => regslice_both_input_stream0_V_id_V_U_apdone_blk);
-
-    regslice_both_input_stream0_V_dest_V_U : component hls_snn_izikevich_regslice_both
-    generic map (
-        DataWidth => 1)
-    port map (
-        ap_clk => ap_clk,
-        ap_rst => ap_rst_n_inv,
-        data_in => input_stream0_TDEST,
-        vld_in => input_stream0_TVALID,
-        ack_in => regslice_both_input_stream0_V_dest_V_U_ack_in,
-        data_out => input_stream0_TDEST_int_regslice,
-        vld_out => regslice_both_input_stream0_V_dest_V_U_vld_out,
-        ack_out => input_stream0_TREADY_int_regslice,
-        apdone_blk => regslice_both_input_stream0_V_dest_V_U_apdone_blk);
 
     regslice_both_input_stream1_V_data_V_U : component hls_snn_izikevich_regslice_both
     generic map (
@@ -1205,20 +1061,6 @@ begin
         ack_out => input_stream1_TREADY_int_regslice,
         apdone_blk => regslice_both_input_stream1_V_strb_V_U_apdone_blk);
 
-    regslice_both_input_stream1_V_user_V_U : component hls_snn_izikevich_regslice_both
-    generic map (
-        DataWidth => 1)
-    port map (
-        ap_clk => ap_clk,
-        ap_rst => ap_rst_n_inv,
-        data_in => input_stream1_TUSER,
-        vld_in => input_stream1_TVALID,
-        ack_in => regslice_both_input_stream1_V_user_V_U_ack_in,
-        data_out => input_stream1_TUSER_int_regslice,
-        vld_out => regslice_both_input_stream1_V_user_V_U_vld_out,
-        ack_out => input_stream1_TREADY_int_regslice,
-        apdone_blk => regslice_both_input_stream1_V_user_V_U_apdone_blk);
-
     regslice_both_input_stream1_V_last_V_U : component hls_snn_izikevich_regslice_both
     generic map (
         DataWidth => 1)
@@ -1232,34 +1074,6 @@ begin
         vld_out => regslice_both_input_stream1_V_last_V_U_vld_out,
         ack_out => input_stream1_TREADY_int_regslice,
         apdone_blk => regslice_both_input_stream1_V_last_V_U_apdone_blk);
-
-    regslice_both_input_stream1_V_id_V_U : component hls_snn_izikevich_regslice_both
-    generic map (
-        DataWidth => 1)
-    port map (
-        ap_clk => ap_clk,
-        ap_rst => ap_rst_n_inv,
-        data_in => input_stream1_TID,
-        vld_in => input_stream1_TVALID,
-        ack_in => regslice_both_input_stream1_V_id_V_U_ack_in,
-        data_out => input_stream1_TID_int_regslice,
-        vld_out => regslice_both_input_stream1_V_id_V_U_vld_out,
-        ack_out => input_stream1_TREADY_int_regslice,
-        apdone_blk => regslice_both_input_stream1_V_id_V_U_apdone_blk);
-
-    regslice_both_input_stream1_V_dest_V_U : component hls_snn_izikevich_regslice_both
-    generic map (
-        DataWidth => 1)
-    port map (
-        ap_clk => ap_clk,
-        ap_rst => ap_rst_n_inv,
-        data_in => input_stream1_TDEST,
-        vld_in => input_stream1_TVALID,
-        ack_in => regslice_both_input_stream1_V_dest_V_U_ack_in,
-        data_out => input_stream1_TDEST_int_regslice,
-        vld_out => regslice_both_input_stream1_V_dest_V_U_vld_out,
-        ack_out => input_stream1_TREADY_int_regslice,
-        apdone_blk => regslice_both_input_stream1_V_dest_V_U_apdone_blk);
 
     regslice_both_input_stream2_V_data_V_U : component hls_snn_izikevich_regslice_both
     generic map (
@@ -1303,20 +1117,6 @@ begin
         ack_out => input_stream2_TREADY_int_regslice,
         apdone_blk => regslice_both_input_stream2_V_strb_V_U_apdone_blk);
 
-    regslice_both_input_stream2_V_user_V_U : component hls_snn_izikevich_regslice_both
-    generic map (
-        DataWidth => 1)
-    port map (
-        ap_clk => ap_clk,
-        ap_rst => ap_rst_n_inv,
-        data_in => input_stream2_TUSER,
-        vld_in => input_stream2_TVALID,
-        ack_in => regslice_both_input_stream2_V_user_V_U_ack_in,
-        data_out => input_stream2_TUSER_int_regslice,
-        vld_out => regslice_both_input_stream2_V_user_V_U_vld_out,
-        ack_out => input_stream2_TREADY_int_regslice,
-        apdone_blk => regslice_both_input_stream2_V_user_V_U_apdone_blk);
-
     regslice_both_input_stream2_V_last_V_U : component hls_snn_izikevich_regslice_both
     generic map (
         DataWidth => 1)
@@ -1330,34 +1130,6 @@ begin
         vld_out => regslice_both_input_stream2_V_last_V_U_vld_out,
         ack_out => input_stream2_TREADY_int_regslice,
         apdone_blk => regslice_both_input_stream2_V_last_V_U_apdone_blk);
-
-    regslice_both_input_stream2_V_id_V_U : component hls_snn_izikevich_regslice_both
-    generic map (
-        DataWidth => 1)
-    port map (
-        ap_clk => ap_clk,
-        ap_rst => ap_rst_n_inv,
-        data_in => input_stream2_TID,
-        vld_in => input_stream2_TVALID,
-        ack_in => regslice_both_input_stream2_V_id_V_U_ack_in,
-        data_out => input_stream2_TID_int_regslice,
-        vld_out => regslice_both_input_stream2_V_id_V_U_vld_out,
-        ack_out => input_stream2_TREADY_int_regslice,
-        apdone_blk => regslice_both_input_stream2_V_id_V_U_apdone_blk);
-
-    regslice_both_input_stream2_V_dest_V_U : component hls_snn_izikevich_regslice_both
-    generic map (
-        DataWidth => 1)
-    port map (
-        ap_clk => ap_clk,
-        ap_rst => ap_rst_n_inv,
-        data_in => input_stream2_TDEST,
-        vld_in => input_stream2_TVALID,
-        ack_in => regslice_both_input_stream2_V_dest_V_U_ack_in,
-        data_out => input_stream2_TDEST_int_regslice,
-        vld_out => regslice_both_input_stream2_V_dest_V_U_vld_out,
-        ack_out => input_stream2_TREADY_int_regslice,
-        apdone_blk => regslice_both_input_stream2_V_dest_V_U_apdone_blk);
 
     regslice_both_input_stream3_V_data_V_U : component hls_snn_izikevich_regslice_both
     generic map (
@@ -1401,20 +1173,6 @@ begin
         ack_out => input_stream3_TREADY_int_regslice,
         apdone_blk => regslice_both_input_stream3_V_strb_V_U_apdone_blk);
 
-    regslice_both_input_stream3_V_user_V_U : component hls_snn_izikevich_regslice_both
-    generic map (
-        DataWidth => 1)
-    port map (
-        ap_clk => ap_clk,
-        ap_rst => ap_rst_n_inv,
-        data_in => input_stream3_TUSER,
-        vld_in => input_stream3_TVALID,
-        ack_in => regslice_both_input_stream3_V_user_V_U_ack_in,
-        data_out => input_stream3_TUSER_int_regslice,
-        vld_out => regslice_both_input_stream3_V_user_V_U_vld_out,
-        ack_out => input_stream3_TREADY_int_regslice,
-        apdone_blk => regslice_both_input_stream3_V_user_V_U_apdone_blk);
-
     regslice_both_input_stream3_V_last_V_U : component hls_snn_izikevich_regslice_both
     generic map (
         DataWidth => 1)
@@ -1428,34 +1186,6 @@ begin
         vld_out => regslice_both_input_stream3_V_last_V_U_vld_out,
         ack_out => input_stream3_TREADY_int_regslice,
         apdone_blk => regslice_both_input_stream3_V_last_V_U_apdone_blk);
-
-    regslice_both_input_stream3_V_id_V_U : component hls_snn_izikevich_regslice_both
-    generic map (
-        DataWidth => 1)
-    port map (
-        ap_clk => ap_clk,
-        ap_rst => ap_rst_n_inv,
-        data_in => input_stream3_TID,
-        vld_in => input_stream3_TVALID,
-        ack_in => regslice_both_input_stream3_V_id_V_U_ack_in,
-        data_out => input_stream3_TID_int_regslice,
-        vld_out => regslice_both_input_stream3_V_id_V_U_vld_out,
-        ack_out => input_stream3_TREADY_int_regslice,
-        apdone_blk => regslice_both_input_stream3_V_id_V_U_apdone_blk);
-
-    regslice_both_input_stream3_V_dest_V_U : component hls_snn_izikevich_regslice_both
-    generic map (
-        DataWidth => 1)
-    port map (
-        ap_clk => ap_clk,
-        ap_rst => ap_rst_n_inv,
-        data_in => input_stream3_TDEST,
-        vld_in => input_stream3_TVALID,
-        ack_in => regslice_both_input_stream3_V_dest_V_U_ack_in,
-        data_out => input_stream3_TDEST_int_regslice,
-        vld_out => regslice_both_input_stream3_V_dest_V_U_vld_out,
-        ack_out => input_stream3_TREADY_int_regslice,
-        apdone_blk => regslice_both_input_stream3_V_dest_V_U_apdone_blk);
 
     regslice_both_output_stream_V_data_V_U : component hls_snn_izikevich_regslice_both
     generic map (
@@ -1499,20 +1229,6 @@ begin
         ack_out => output_stream_TREADY,
         apdone_blk => regslice_both_output_stream_V_strb_V_U_apdone_blk);
 
-    regslice_both_output_stream_V_user_V_U : component hls_snn_izikevich_regslice_both
-    generic map (
-        DataWidth => 1)
-    port map (
-        ap_clk => ap_clk,
-        ap_rst => ap_rst_n_inv,
-        data_in => ap_const_lv1_0,
-        vld_in => output_stream_TVALID_int_regslice,
-        ack_in => regslice_both_output_stream_V_user_V_U_ack_in_dummy,
-        data_out => output_stream_TUSER,
-        vld_out => regslice_both_output_stream_V_user_V_U_vld_out,
-        ack_out => output_stream_TREADY,
-        apdone_blk => regslice_both_output_stream_V_user_V_U_apdone_blk);
-
     regslice_both_output_stream_V_last_V_U : component hls_snn_izikevich_regslice_both
     generic map (
         DataWidth => 1)
@@ -1526,34 +1242,6 @@ begin
         vld_out => regslice_both_output_stream_V_last_V_U_vld_out,
         ack_out => output_stream_TREADY,
         apdone_blk => regslice_both_output_stream_V_last_V_U_apdone_blk);
-
-    regslice_both_output_stream_V_id_V_U : component hls_snn_izikevich_regslice_both
-    generic map (
-        DataWidth => 1)
-    port map (
-        ap_clk => ap_clk,
-        ap_rst => ap_rst_n_inv,
-        data_in => ap_const_lv1_0,
-        vld_in => output_stream_TVALID_int_regslice,
-        ack_in => regslice_both_output_stream_V_id_V_U_ack_in_dummy,
-        data_out => output_stream_TID,
-        vld_out => regslice_both_output_stream_V_id_V_U_vld_out,
-        ack_out => output_stream_TREADY,
-        apdone_blk => regslice_both_output_stream_V_id_V_U_apdone_blk);
-
-    regslice_both_output_stream_V_dest_V_U : component hls_snn_izikevich_regslice_both
-    generic map (
-        DataWidth => 1)
-    port map (
-        ap_clk => ap_clk,
-        ap_rst => ap_rst_n_inv,
-        data_in => ap_const_lv1_0,
-        vld_in => output_stream_TVALID_int_regslice,
-        ack_in => regslice_both_output_stream_V_dest_V_U_ack_in_dummy,
-        data_out => output_stream_TDEST,
-        vld_out => regslice_both_output_stream_V_dest_V_U_vld_out,
-        ack_out => output_stream_TREADY,
-        apdone_blk => regslice_both_output_stream_V_dest_V_U_apdone_blk);
 
 
 
@@ -1571,80 +1259,80 @@ begin
     end process;
 
 
-    grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_296_ap_start_reg_assign_proc : process(ap_clk)
+    grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_254_ap_start_reg_assign_proc : process(ap_clk)
     begin
         if (ap_clk'event and ap_clk =  '1') then
             if (ap_rst_n_inv = '1') then
-                grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_296_ap_start_reg <= ap_const_logic_0;
+                grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_254_ap_start_reg <= ap_const_logic_0;
             else
-                if (((ap_start = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state1) and (state_read_read_fu_204_p2 = ap_const_lv1_0))) then 
-                    grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_296_ap_start_reg <= ap_const_logic_1;
-                elsif ((grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_296_ap_ready = ap_const_logic_1)) then 
-                    grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_296_ap_start_reg <= ap_const_logic_0;
+                if (((ap_start = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state1) and (state_read_read_fu_174_p2 = ap_const_lv1_0))) then 
+                    grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_254_ap_start_reg <= ap_const_logic_1;
+                elsif ((grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_254_ap_ready = ap_const_logic_1)) then 
+                    grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_254_ap_start_reg <= ap_const_logic_0;
                 end if; 
             end if;
         end if;
     end process;
 
 
-    grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_318_ap_start_reg_assign_proc : process(ap_clk)
+    grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_270_ap_start_reg_assign_proc : process(ap_clk)
     begin
         if (ap_clk'event and ap_clk =  '1') then
             if (ap_rst_n_inv = '1') then
-                grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_318_ap_start_reg <= ap_const_logic_0;
+                grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_270_ap_start_reg <= ap_const_logic_0;
             else
-                if (((ap_start = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state1) and (state_read_read_fu_204_p2 = ap_const_lv1_1))) then 
-                    grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_318_ap_start_reg <= ap_const_logic_1;
-                elsif ((grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_318_ap_ready = ap_const_logic_1)) then 
-                    grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_318_ap_start_reg <= ap_const_logic_0;
+                if (((ap_start = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state1) and (state_read_read_fu_174_p2 = ap_const_lv1_1))) then 
+                    grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_270_ap_start_reg <= ap_const_logic_1;
+                elsif ((grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_270_ap_ready = ap_const_logic_1)) then 
+                    grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_270_ap_start_reg <= ap_const_logic_0;
                 end if; 
             end if;
         end if;
     end process;
 
 
-    grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_326_ap_start_reg_assign_proc : process(ap_clk)
+    grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_278_ap_start_reg_assign_proc : process(ap_clk)
     begin
         if (ap_clk'event and ap_clk =  '1') then
             if (ap_rst_n_inv = '1') then
-                grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_326_ap_start_reg <= ap_const_logic_0;
+                grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_278_ap_start_reg <= ap_const_logic_0;
             else
                 if ((ap_const_logic_1 = ap_CS_fsm_state3)) then 
-                    grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_326_ap_start_reg <= ap_const_logic_1;
-                elsif ((grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_326_ap_ready = ap_const_logic_1)) then 
-                    grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_326_ap_start_reg <= ap_const_logic_0;
+                    grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_278_ap_start_reg <= ap_const_logic_1;
+                elsif ((grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_278_ap_ready = ap_const_logic_1)) then 
+                    grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_278_ap_start_reg <= ap_const_logic_0;
                 end if; 
             end if;
         end if;
     end process;
 
 
-    grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_ap_start_reg_assign_proc : process(ap_clk)
+    grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_ap_start_reg_assign_proc : process(ap_clk)
     begin
         if (ap_clk'event and ap_clk =  '1') then
             if (ap_rst_n_inv = '1') then
-                grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_ap_start_reg <= ap_const_logic_0;
+                grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_ap_start_reg <= ap_const_logic_0;
             else
                 if ((ap_const_logic_1 = ap_CS_fsm_state7)) then 
-                    grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_ap_start_reg <= ap_const_logic_1;
-                elsif ((grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_ap_ready = ap_const_logic_1)) then 
-                    grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_ap_start_reg <= ap_const_logic_0;
+                    grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_ap_start_reg <= ap_const_logic_1;
+                elsif ((grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_ap_ready = ap_const_logic_1)) then 
+                    grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_ap_start_reg <= ap_const_logic_0;
                 end if; 
             end if;
         end if;
     end process;
 
 
-    grp_snn_get_synaptic_conductances_fu_344_ap_start_reg_assign_proc : process(ap_clk)
+    grp_snn_get_synaptic_conductances_fu_296_ap_start_reg_assign_proc : process(ap_clk)
     begin
         if (ap_clk'event and ap_clk =  '1') then
             if (ap_rst_n_inv = '1') then
-                grp_snn_get_synaptic_conductances_fu_344_ap_start_reg <= ap_const_logic_0;
+                grp_snn_get_synaptic_conductances_fu_296_ap_start_reg <= ap_const_logic_0;
             else
                 if ((ap_const_logic_1 = ap_CS_fsm_state9)) then 
-                    grp_snn_get_synaptic_conductances_fu_344_ap_start_reg <= ap_const_logic_1;
-                elsif ((grp_snn_get_synaptic_conductances_fu_344_ap_ready = ap_const_logic_1)) then 
-                    grp_snn_get_synaptic_conductances_fu_344_ap_start_reg <= ap_const_logic_0;
+                    grp_snn_get_synaptic_conductances_fu_296_ap_start_reg <= ap_const_logic_1;
+                elsif ((grp_snn_get_synaptic_conductances_fu_296_ap_ready = ap_const_logic_1)) then 
+                    grp_snn_get_synaptic_conductances_fu_296_ap_start_reg <= ap_const_logic_0;
                 end if; 
             end if;
         end if;
@@ -1653,32 +1341,32 @@ begin
     process (ap_clk)
     begin
         if (ap_clk'event and ap_clk = '1') then
-            if (((grp_snn_get_synaptic_conductances_fu_344_firings_mem_0_o_ap_vld = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state10) and (state_read_reg_500 = ap_const_lv1_1))) then
-                firings_mem_0 <= grp_snn_get_synaptic_conductances_fu_344_firings_mem_0_o;
+            if (((grp_snn_get_synaptic_conductances_fu_296_firings_mem_0_o_ap_vld = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state10) and (state_read_reg_428 = ap_const_lv1_1))) then
+                firings_mem_0 <= grp_snn_get_synaptic_conductances_fu_296_firings_mem_0_o;
             end if;
         end if;
     end process;
     process (ap_clk)
     begin
         if (ap_clk'event and ap_clk = '1') then
-            if (((grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_296_neuron_type_mem_0_o_ap_vld = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state2))) then
-                neuron_type_mem_0 <= grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_296_neuron_type_mem_0_o;
+            if (((ap_const_logic_1 = ap_CS_fsm_state2) and (grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_254_neuron_type_mem_0_o_ap_vld = ap_const_logic_1))) then
+                neuron_type_mem_0 <= grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_254_neuron_type_mem_0_o;
             end if;
         end if;
     end process;
     process (ap_clk)
     begin
         if (ap_clk'event and ap_clk = '1') then
-            if (((grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_296_neuron_type_mem_1_o_ap_vld = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state2))) then
-                neuron_type_mem_1 <= grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_296_neuron_type_mem_1_o;
+            if (((ap_const_logic_1 = ap_CS_fsm_state2) and (grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_254_neuron_type_mem_1_o_ap_vld = ap_const_logic_1))) then
+                neuron_type_mem_1 <= grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_254_neuron_type_mem_1_o;
             end if;
         end if;
     end process;
     process (ap_clk)
     begin
         if (ap_clk'event and ap_clk = '1') then
-            if (((grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_326_ap_done = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state4))) then
-                output_indexes_mem_0 <= trunc_ln43_fu_440_p1;
+            if (((grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_278_ap_done = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state4))) then
+                output_indexes_mem_0 <= trunc_ln43_fu_368_p1;
             end if;
         end if;
     end process;
@@ -1686,15 +1374,15 @@ begin
     begin
         if (ap_clk'event and ap_clk = '1') then
             if ((ap_const_logic_1 = ap_CS_fsm_state5)) then
-                output_indexes_mem_1 <= trunc_ln43_1_fu_450_p1;
+                output_indexes_mem_1 <= trunc_ln43_1_fu_378_p1;
             end if;
         end if;
     end process;
     process (ap_clk)
     begin
         if (ap_clk'event and ap_clk = '1') then
-            if (((ap_const_logic_1 = ap_CS_fsm_state1) and (state_read_read_fu_204_p2 = ap_const_lv1_1))) then
-                p_input_read_reg_504 <= p_input;
+            if (((ap_const_logic_1 = ap_CS_fsm_state1) and (state_read_read_fu_174_p2 = ap_const_lv1_1))) then
+                p_input_read_reg_432 <= p_input;
             end if;
         end if;
     end process;
@@ -1702,24 +1390,24 @@ begin
     begin
         if (ap_clk'event and ap_clk = '1') then
             if ((ap_const_logic_1 = ap_CS_fsm_state1)) then
-                state_read_reg_500 <= state;
+                state_read_reg_428 <= state;
             end if;
         end if;
     end process;
 
-    ap_NS_fsm_assign_proc : process (ap_start, ap_CS_fsm, ap_CS_fsm_state1, ap_CS_fsm_state12, ap_CS_fsm_state13, ap_CS_fsm_state14, state_read_read_fu_204_p2, ap_CS_fsm_state4, grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_296_ap_done, grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_318_ap_done, grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_326_ap_done, grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_ap_done, ap_CS_fsm_state2, ap_CS_fsm_state6, ap_CS_fsm_state8, ap_CS_fsm_state10, ap_block_state10_on_subcall_done, regslice_both_output_stream_V_data_V_U_apdone_blk, output_stream_TREADY_int_regslice)
+    ap_NS_fsm_assign_proc : process (ap_start, ap_CS_fsm, ap_CS_fsm_state1, ap_CS_fsm_state12, ap_CS_fsm_state13, ap_CS_fsm_state14, state_read_read_fu_174_p2, ap_CS_fsm_state4, grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_254_ap_done, grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_270_ap_done, grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_278_ap_done, grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_ap_done, ap_CS_fsm_state2, ap_CS_fsm_state6, ap_CS_fsm_state8, ap_CS_fsm_state10, ap_block_state10_on_subcall_done, regslice_both_output_stream_V_data_V_U_apdone_blk, output_stream_TREADY_int_regslice)
     begin
         case ap_CS_fsm is
             when ap_ST_fsm_state1 => 
-                if (((ap_start = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state1) and (state_read_read_fu_204_p2 = ap_const_lv1_1))) then
+                if (((ap_start = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state1) and (state_read_read_fu_174_p2 = ap_const_lv1_1))) then
                     ap_NS_fsm <= ap_ST_fsm_state6;
-                elsif (((ap_start = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state1) and (state_read_read_fu_204_p2 = ap_const_lv1_0))) then
+                elsif (((ap_start = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state1) and (state_read_read_fu_174_p2 = ap_const_lv1_0))) then
                     ap_NS_fsm <= ap_ST_fsm_state2;
                 else
                     ap_NS_fsm <= ap_ST_fsm_state1;
                 end if;
             when ap_ST_fsm_state2 => 
-                if (((ap_const_logic_1 = ap_CS_fsm_state2) and (grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_296_ap_done = ap_const_logic_1))) then
+                if (((ap_const_logic_1 = ap_CS_fsm_state2) and (grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_254_ap_done = ap_const_logic_1))) then
                     ap_NS_fsm <= ap_ST_fsm_state3;
                 else
                     ap_NS_fsm <= ap_ST_fsm_state2;
@@ -1727,7 +1415,7 @@ begin
             when ap_ST_fsm_state3 => 
                 ap_NS_fsm <= ap_ST_fsm_state4;
             when ap_ST_fsm_state4 => 
-                if (((grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_326_ap_done = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state4))) then
+                if (((grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_278_ap_done = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state4))) then
                     ap_NS_fsm <= ap_ST_fsm_state5;
                 else
                     ap_NS_fsm <= ap_ST_fsm_state4;
@@ -1735,7 +1423,7 @@ begin
             when ap_ST_fsm_state5 => 
                 ap_NS_fsm <= ap_ST_fsm_state10;
             when ap_ST_fsm_state6 => 
-                if (((grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_318_ap_done = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state6))) then
+                if (((grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_270_ap_done = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state6))) then
                     ap_NS_fsm <= ap_ST_fsm_state7;
                 else
                     ap_NS_fsm <= ap_ST_fsm_state6;
@@ -1743,7 +1431,7 @@ begin
             when ap_ST_fsm_state7 => 
                 ap_NS_fsm <= ap_ST_fsm_state8;
             when ap_ST_fsm_state8 => 
-                if (((grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_ap_done = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state8))) then
+                if (((grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_ap_done = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state8))) then
                     ap_NS_fsm <= ap_ST_fsm_state9;
                 else
                     ap_NS_fsm <= ap_ST_fsm_state8;
@@ -1846,9 +1534,9 @@ begin
     end process;
 
 
-    ap_ST_fsm_state2_blk_assign_proc : process(grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_296_ap_done)
+    ap_ST_fsm_state2_blk_assign_proc : process(grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_254_ap_done)
     begin
-        if ((grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_296_ap_done = ap_const_logic_0)) then 
+        if ((grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_254_ap_done = ap_const_logic_0)) then 
             ap_ST_fsm_state2_blk <= ap_const_logic_1;
         else 
             ap_ST_fsm_state2_blk <= ap_const_logic_0;
@@ -1857,9 +1545,9 @@ begin
 
     ap_ST_fsm_state3_blk <= ap_const_logic_0;
 
-    ap_ST_fsm_state4_blk_assign_proc : process(grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_326_ap_done)
+    ap_ST_fsm_state4_blk_assign_proc : process(grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_278_ap_done)
     begin
-        if ((grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_326_ap_done = ap_const_logic_0)) then 
+        if ((grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_278_ap_done = ap_const_logic_0)) then 
             ap_ST_fsm_state4_blk <= ap_const_logic_1;
         else 
             ap_ST_fsm_state4_blk <= ap_const_logic_0;
@@ -1868,9 +1556,9 @@ begin
 
     ap_ST_fsm_state5_blk <= ap_const_logic_0;
 
-    ap_ST_fsm_state6_blk_assign_proc : process(grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_318_ap_done)
+    ap_ST_fsm_state6_blk_assign_proc : process(grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_270_ap_done)
     begin
-        if ((grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_318_ap_done = ap_const_logic_0)) then 
+        if ((grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_270_ap_done = ap_const_logic_0)) then 
             ap_ST_fsm_state6_blk <= ap_const_logic_1;
         else 
             ap_ST_fsm_state6_blk <= ap_const_logic_0;
@@ -1879,9 +1567,9 @@ begin
 
     ap_ST_fsm_state7_blk <= ap_const_logic_0;
 
-    ap_ST_fsm_state8_blk_assign_proc : process(grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_ap_done)
+    ap_ST_fsm_state8_blk_assign_proc : process(grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_ap_done)
     begin
-        if ((grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_ap_done = ap_const_logic_0)) then 
+        if ((grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_ap_done = ap_const_logic_0)) then 
             ap_ST_fsm_state8_blk <= ap_const_logic_1;
         else 
             ap_ST_fsm_state8_blk <= ap_const_logic_0;
@@ -1890,9 +1578,9 @@ begin
 
     ap_ST_fsm_state9_blk <= ap_const_logic_0;
 
-    ap_block_state10_on_subcall_done_assign_proc : process(state_read_reg_500, grp_snn_get_synaptic_conductances_fu_344_ap_done)
+    ap_block_state10_on_subcall_done_assign_proc : process(state_read_reg_428, grp_snn_get_synaptic_conductances_fu_296_ap_done)
     begin
-                ap_block_state10_on_subcall_done <= ((grp_snn_get_synaptic_conductances_fu_344_ap_done = ap_const_logic_0) and (state_read_reg_500 = ap_const_lv1_1));
+                ap_block_state10_on_subcall_done <= ((grp_snn_get_synaptic_conductances_fu_296_ap_done = ap_const_logic_0) and (state_read_reg_428 = ap_const_lv1_1));
     end process;
 
 
@@ -1937,106 +1625,106 @@ begin
                 ap_rst_n_inv <= not(ap_rst_n);
     end process;
 
-    bitcast_ln109_fu_478_p1 <= v_mem_q1;
-    bitcast_ln110_fu_482_p1 <= v_mem_q0;
-    c_fu_486_p3 <= (bitcast_ln110_fu_482_p1 & bitcast_ln109_fu_478_p1);
+    bitcast_ln109_fu_406_p1 <= v_mem_q1;
+    bitcast_ln110_fu_410_p1 <= v_mem_q0;
+    c_fu_414_p3 <= (bitcast_ln110_fu_410_p1 & bitcast_ln109_fu_406_p1);
 
-    grp_fu_537_ce_assign_proc : process(grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_grp_fu_537_p_ce, grp_snn_get_synaptic_conductances_fu_344_grp_fu_537_p_ce, ap_CS_fsm_state8, ap_CS_fsm_state10)
+    grp_fu_465_ce_assign_proc : process(grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_grp_fu_465_p_ce, grp_snn_get_synaptic_conductances_fu_296_grp_fu_465_p_ce, ap_CS_fsm_state8, ap_CS_fsm_state10)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state10)) then 
-            grp_fu_537_ce <= grp_snn_get_synaptic_conductances_fu_344_grp_fu_537_p_ce;
+            grp_fu_465_ce <= grp_snn_get_synaptic_conductances_fu_296_grp_fu_465_p_ce;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state8)) then 
-            grp_fu_537_ce <= grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_grp_fu_537_p_ce;
+            grp_fu_465_ce <= grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_grp_fu_465_p_ce;
         else 
-            grp_fu_537_ce <= ap_const_logic_1;
+            grp_fu_465_ce <= ap_const_logic_1;
         end if; 
     end process;
 
 
-    grp_fu_537_opcode_assign_proc : process(grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_grp_fu_537_p_opcode, grp_snn_get_synaptic_conductances_fu_344_grp_fu_537_p_opcode, ap_CS_fsm_state8, ap_CS_fsm_state10)
+    grp_fu_465_opcode_assign_proc : process(grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_grp_fu_465_p_opcode, grp_snn_get_synaptic_conductances_fu_296_grp_fu_465_p_opcode, ap_CS_fsm_state8, ap_CS_fsm_state10)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state10)) then 
-            grp_fu_537_opcode <= grp_snn_get_synaptic_conductances_fu_344_grp_fu_537_p_opcode;
+            grp_fu_465_opcode <= grp_snn_get_synaptic_conductances_fu_296_grp_fu_465_p_opcode;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state8)) then 
-            grp_fu_537_opcode <= std_logic_vector(IEEE.numeric_std.resize(unsigned(grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_grp_fu_537_p_opcode),2));
+            grp_fu_465_opcode <= std_logic_vector(IEEE.numeric_std.resize(unsigned(grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_grp_fu_465_p_opcode),2));
         else 
-            grp_fu_537_opcode <= "XX";
+            grp_fu_465_opcode <= "XX";
         end if; 
     end process;
 
 
-    grp_fu_537_p0_assign_proc : process(grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_grp_fu_537_p_din0, grp_snn_get_synaptic_conductances_fu_344_grp_fu_537_p_din0, ap_CS_fsm_state8, ap_CS_fsm_state10)
+    grp_fu_465_p0_assign_proc : process(grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_grp_fu_465_p_din0, grp_snn_get_synaptic_conductances_fu_296_grp_fu_465_p_din0, ap_CS_fsm_state8, ap_CS_fsm_state10)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state10)) then 
-            grp_fu_537_p0 <= grp_snn_get_synaptic_conductances_fu_344_grp_fu_537_p_din0;
+            grp_fu_465_p0 <= grp_snn_get_synaptic_conductances_fu_296_grp_fu_465_p_din0;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state8)) then 
-            grp_fu_537_p0 <= grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_grp_fu_537_p_din0;
+            grp_fu_465_p0 <= grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_grp_fu_465_p_din0;
         else 
-            grp_fu_537_p0 <= "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
+            grp_fu_465_p0 <= "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
         end if; 
     end process;
 
 
-    grp_fu_537_p1_assign_proc : process(grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_grp_fu_537_p_din1, grp_snn_get_synaptic_conductances_fu_344_grp_fu_537_p_din1, ap_CS_fsm_state8, ap_CS_fsm_state10)
+    grp_fu_465_p1_assign_proc : process(grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_grp_fu_465_p_din1, grp_snn_get_synaptic_conductances_fu_296_grp_fu_465_p_din1, ap_CS_fsm_state8, ap_CS_fsm_state10)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state10)) then 
-            grp_fu_537_p1 <= grp_snn_get_synaptic_conductances_fu_344_grp_fu_537_p_din1;
+            grp_fu_465_p1 <= grp_snn_get_synaptic_conductances_fu_296_grp_fu_465_p_din1;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state8)) then 
-            grp_fu_537_p1 <= grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_grp_fu_537_p_din1;
+            grp_fu_465_p1 <= grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_grp_fu_465_p_din1;
         else 
-            grp_fu_537_p1 <= "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
+            grp_fu_465_p1 <= "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
         end if; 
     end process;
 
 
-    grp_fu_541_ce_assign_proc : process(grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_grp_fu_541_p_ce, grp_snn_get_synaptic_conductances_fu_344_grp_fu_541_p_ce, ap_CS_fsm_state8, ap_CS_fsm_state10)
+    grp_fu_469_ce_assign_proc : process(grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_grp_fu_469_p_ce, grp_snn_get_synaptic_conductances_fu_296_grp_fu_469_p_ce, ap_CS_fsm_state8, ap_CS_fsm_state10)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state10)) then 
-            grp_fu_541_ce <= grp_snn_get_synaptic_conductances_fu_344_grp_fu_541_p_ce;
+            grp_fu_469_ce <= grp_snn_get_synaptic_conductances_fu_296_grp_fu_469_p_ce;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state8)) then 
-            grp_fu_541_ce <= grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_grp_fu_541_p_ce;
+            grp_fu_469_ce <= grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_grp_fu_469_p_ce;
         else 
-            grp_fu_541_ce <= ap_const_logic_1;
+            grp_fu_469_ce <= ap_const_logic_1;
         end if; 
     end process;
 
 
-    grp_fu_541_p0_assign_proc : process(grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_grp_fu_541_p_din0, grp_snn_get_synaptic_conductances_fu_344_grp_fu_541_p_din0, ap_CS_fsm_state8, ap_CS_fsm_state10)
+    grp_fu_469_p0_assign_proc : process(grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_grp_fu_469_p_din0, grp_snn_get_synaptic_conductances_fu_296_grp_fu_469_p_din0, ap_CS_fsm_state8, ap_CS_fsm_state10)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state10)) then 
-            grp_fu_541_p0 <= grp_snn_get_synaptic_conductances_fu_344_grp_fu_541_p_din0;
+            grp_fu_469_p0 <= grp_snn_get_synaptic_conductances_fu_296_grp_fu_469_p_din0;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state8)) then 
-            grp_fu_541_p0 <= grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_grp_fu_541_p_din0;
+            grp_fu_469_p0 <= grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_grp_fu_469_p_din0;
         else 
-            grp_fu_541_p0 <= "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
+            grp_fu_469_p0 <= "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
         end if; 
     end process;
 
 
-    grp_fu_541_p1_assign_proc : process(grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_grp_fu_541_p_din1, grp_snn_get_synaptic_conductances_fu_344_grp_fu_541_p_din1, ap_CS_fsm_state8, ap_CS_fsm_state10)
+    grp_fu_469_p1_assign_proc : process(grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_grp_fu_469_p_din1, grp_snn_get_synaptic_conductances_fu_296_grp_fu_469_p_din1, ap_CS_fsm_state8, ap_CS_fsm_state10)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state10)) then 
-            grp_fu_541_p1 <= grp_snn_get_synaptic_conductances_fu_344_grp_fu_541_p_din1;
+            grp_fu_469_p1 <= grp_snn_get_synaptic_conductances_fu_296_grp_fu_469_p_din1;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state8)) then 
-            grp_fu_541_p1 <= grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_grp_fu_541_p_din1;
+            grp_fu_469_p1 <= grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_grp_fu_469_p_din1;
         else 
-            grp_fu_541_p1 <= "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
+            grp_fu_469_p1 <= "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
         end if; 
     end process;
 
-    grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_296_ap_start <= grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_296_ap_start_reg;
-    grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_318_ap_start <= grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_318_ap_start_reg;
-    grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_326_ap_start <= grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_326_ap_start_reg;
-    grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_ap_start <= grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_ap_start_reg;
-    grp_snn_get_synaptic_conductances_fu_344_ap_start <= grp_snn_get_synaptic_conductances_fu_344_ap_start_reg;
+    grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_254_ap_start <= grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_254_ap_start_reg;
+    grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_270_ap_start <= grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_270_ap_start_reg;
+    grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_278_ap_start <= grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_278_ap_start_reg;
+    grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_ap_start <= grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_ap_start_reg;
+    grp_snn_get_synaptic_conductances_fu_296_ap_start <= grp_snn_get_synaptic_conductances_fu_296_ap_start_reg;
     input_stream0_TREADY <= regslice_both_input_stream0_V_data_V_U_ack_in;
 
-    input_stream0_TREADY_int_regslice_assign_proc : process(state_read_reg_500, grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_296_input_stream0_TREADY, grp_snn_get_synaptic_conductances_fu_344_input_stream0_TREADY, ap_CS_fsm_state2, ap_CS_fsm_state10)
+    input_stream0_TREADY_int_regslice_assign_proc : process(state_read_reg_428, grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_254_input_stream0_TREADY, grp_snn_get_synaptic_conductances_fu_296_input_stream0_TREADY, ap_CS_fsm_state2, ap_CS_fsm_state10)
     begin
-        if (((ap_const_logic_1 = ap_CS_fsm_state10) and (state_read_reg_500 = ap_const_lv1_1))) then 
-            input_stream0_TREADY_int_regslice <= grp_snn_get_synaptic_conductances_fu_344_input_stream0_TREADY;
+        if (((ap_const_logic_1 = ap_CS_fsm_state10) and (state_read_reg_428 = ap_const_lv1_1))) then 
+            input_stream0_TREADY_int_regslice <= grp_snn_get_synaptic_conductances_fu_296_input_stream0_TREADY;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state2)) then 
-            input_stream0_TREADY_int_regslice <= grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_296_input_stream0_TREADY;
+            input_stream0_TREADY_int_regslice <= grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_15_2_fu_254_input_stream0_TREADY;
         else 
             input_stream0_TREADY_int_regslice <= ap_const_logic_0;
         end if; 
@@ -2044,10 +1732,10 @@ begin
 
     input_stream1_TREADY <= regslice_both_input_stream1_V_data_V_U_ack_in;
 
-    input_stream1_TREADY_int_regslice_assign_proc : process(state_read_reg_500, grp_snn_get_synaptic_conductances_fu_344_input_stream1_TREADY, ap_CS_fsm_state10)
+    input_stream1_TREADY_int_regslice_assign_proc : process(state_read_reg_428, grp_snn_get_synaptic_conductances_fu_296_input_stream1_TREADY, ap_CS_fsm_state10)
     begin
-        if (((ap_const_logic_1 = ap_CS_fsm_state10) and (state_read_reg_500 = ap_const_lv1_1))) then 
-            input_stream1_TREADY_int_regslice <= grp_snn_get_synaptic_conductances_fu_344_input_stream1_TREADY;
+        if (((ap_const_logic_1 = ap_CS_fsm_state10) and (state_read_reg_428 = ap_const_lv1_1))) then 
+            input_stream1_TREADY_int_regslice <= grp_snn_get_synaptic_conductances_fu_296_input_stream1_TREADY;
         else 
             input_stream1_TREADY_int_regslice <= ap_const_logic_0;
         end if; 
@@ -2055,10 +1743,10 @@ begin
 
     input_stream2_TREADY <= regslice_both_input_stream2_V_data_V_U_ack_in;
 
-    input_stream2_TREADY_int_regslice_assign_proc : process(state_read_reg_500, grp_snn_get_synaptic_conductances_fu_344_input_stream2_TREADY, ap_CS_fsm_state10)
+    input_stream2_TREADY_int_regslice_assign_proc : process(state_read_reg_428, grp_snn_get_synaptic_conductances_fu_296_input_stream2_TREADY, ap_CS_fsm_state10)
     begin
-        if (((ap_const_logic_1 = ap_CS_fsm_state10) and (state_read_reg_500 = ap_const_lv1_1))) then 
-            input_stream2_TREADY_int_regslice <= grp_snn_get_synaptic_conductances_fu_344_input_stream2_TREADY;
+        if (((ap_const_logic_1 = ap_CS_fsm_state10) and (state_read_reg_428 = ap_const_lv1_1))) then 
+            input_stream2_TREADY_int_regslice <= grp_snn_get_synaptic_conductances_fu_296_input_stream2_TREADY;
         else 
             input_stream2_TREADY_int_regslice <= ap_const_logic_0;
         end if; 
@@ -2066,10 +1754,10 @@ begin
 
     input_stream3_TREADY <= regslice_both_input_stream3_V_data_V_U_ack_in;
 
-    input_stream3_TREADY_int_regslice_assign_proc : process(state_read_reg_500, grp_snn_get_synaptic_conductances_fu_344_input_stream3_TREADY, ap_CS_fsm_state10)
+    input_stream3_TREADY_int_regslice_assign_proc : process(state_read_reg_428, grp_snn_get_synaptic_conductances_fu_296_input_stream3_TREADY, ap_CS_fsm_state10)
     begin
-        if (((ap_const_logic_1 = ap_CS_fsm_state10) and (state_read_reg_500 = ap_const_lv1_1))) then 
-            input_stream3_TREADY_int_regslice <= grp_snn_get_synaptic_conductances_fu_344_input_stream3_TREADY;
+        if (((ap_const_logic_1 = ap_CS_fsm_state10) and (state_read_reg_428 = ap_const_lv1_1))) then 
+            input_stream3_TREADY_int_regslice <= grp_snn_get_synaptic_conductances_fu_296_input_stream3_TREADY;
         else 
             input_stream3_TREADY_int_regslice <= ap_const_logic_0;
         end if; 
@@ -2088,9 +1776,9 @@ begin
     end process;
 
 
-    output_indexes_ce0_assign_proc : process(ap_CS_fsm_state3, ap_CS_fsm_state4, grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_326_ap_done)
+    output_indexes_ce0_assign_proc : process(ap_CS_fsm_state3, ap_CS_fsm_state4, grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_278_ap_done)
     begin
-        if (((ap_const_logic_1 = ap_CS_fsm_state3) or ((grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_326_ap_done = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state4)))) then 
+        if (((ap_const_logic_1 = ap_CS_fsm_state3) or ((grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_278_ap_done = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_state4)))) then 
             output_indexes_ce0 <= ap_const_logic_1;
         else 
             output_indexes_ce0 <= ap_const_logic_0;
@@ -2108,13 +1796,13 @@ begin
     end process;
 
 
-    output_stream_TDATA_int_regslice_assign_proc : process(firings_mem_0, ap_CS_fsm_state12, ap_CS_fsm_state13, c_fu_486_p3, output_stream_TREADY_int_regslice)
+    output_stream_TDATA_int_regslice_assign_proc : process(firings_mem_0, ap_CS_fsm_state12, ap_CS_fsm_state13, c_fu_414_p3, output_stream_TREADY_int_regslice)
     begin
         if ((output_stream_TREADY_int_regslice = ap_const_logic_1)) then
             if ((ap_const_logic_1 = ap_CS_fsm_state13)) then 
                 output_stream_TDATA_int_regslice <= firings_mem_0;
             elsif ((ap_const_logic_1 = ap_CS_fsm_state12)) then 
-                output_stream_TDATA_int_regslice <= c_fu_486_p3;
+                output_stream_TDATA_int_regslice <= c_fu_414_p3;
             else 
                 output_stream_TDATA_int_regslice <= "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
             end if;
@@ -2151,172 +1839,172 @@ begin
     end process;
 
 
-    p_mem_address0_assign_proc : process(grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_318_p_mem_address0, grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_p_mem_address0, ap_CS_fsm_state6, ap_CS_fsm_state8)
+    p_mem_address0_assign_proc : process(grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_270_p_mem_address0, grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_p_mem_address0, ap_CS_fsm_state6, ap_CS_fsm_state8)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state8)) then 
-            p_mem_address0 <= grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_p_mem_address0;
+            p_mem_address0 <= grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_p_mem_address0;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state6)) then 
-            p_mem_address0 <= grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_318_p_mem_address0;
+            p_mem_address0 <= grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_270_p_mem_address0;
         else 
             p_mem_address0 <= "XXX";
         end if; 
     end process;
 
 
-    p_mem_ce0_assign_proc : process(grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_318_p_mem_ce0, grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_p_mem_ce0, ap_CS_fsm_state6, ap_CS_fsm_state8)
+    p_mem_ce0_assign_proc : process(grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_270_p_mem_ce0, grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_p_mem_ce0, ap_CS_fsm_state6, ap_CS_fsm_state8)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state8)) then 
-            p_mem_ce0 <= grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_p_mem_ce0;
+            p_mem_ce0 <= grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_p_mem_ce0;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state6)) then 
-            p_mem_ce0 <= grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_318_p_mem_ce0;
+            p_mem_ce0 <= grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_270_p_mem_ce0;
         else 
             p_mem_ce0 <= ap_const_logic_0;
         end if; 
     end process;
 
 
-    p_mem_we0_assign_proc : process(grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_318_p_mem_we0, ap_CS_fsm_state6)
+    p_mem_we0_assign_proc : process(grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_270_p_mem_we0, ap_CS_fsm_state6)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state6)) then 
-            p_mem_we0 <= grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_318_p_mem_we0;
+            p_mem_we0 <= grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_43_2_fu_270_p_mem_we0;
         else 
             p_mem_we0 <= ap_const_logic_0;
         end if; 
     end process;
 
-    state_read_read_fu_204_p2 <= state;
+    state_read_read_fu_174_p2 <= state;
 
-    synapse_s_mem_address0_assign_proc : process(state_read_reg_500, grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_synapse_s_mem_address0, grp_snn_get_synaptic_conductances_fu_344_synapse_s_mem_address0, ap_CS_fsm_state8, ap_CS_fsm_state10)
+    synapse_s_mem_address0_assign_proc : process(state_read_reg_428, grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_synapse_s_mem_address0, grp_snn_get_synaptic_conductances_fu_296_synapse_s_mem_address0, ap_CS_fsm_state8, ap_CS_fsm_state10)
     begin
-        if (((ap_const_logic_1 = ap_CS_fsm_state10) and (state_read_reg_500 = ap_const_lv1_1))) then 
-            synapse_s_mem_address0 <= grp_snn_get_synaptic_conductances_fu_344_synapse_s_mem_address0;
+        if (((ap_const_logic_1 = ap_CS_fsm_state10) and (state_read_reg_428 = ap_const_lv1_1))) then 
+            synapse_s_mem_address0 <= grp_snn_get_synaptic_conductances_fu_296_synapse_s_mem_address0;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state8)) then 
-            synapse_s_mem_address0 <= grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_synapse_s_mem_address0;
+            synapse_s_mem_address0 <= grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_synapse_s_mem_address0;
         else 
             synapse_s_mem_address0 <= "XXXX";
         end if; 
     end process;
 
 
-    synapse_s_mem_ce0_assign_proc : process(state_read_reg_500, grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_synapse_s_mem_ce0, grp_snn_get_synaptic_conductances_fu_344_synapse_s_mem_ce0, ap_CS_fsm_state8, ap_CS_fsm_state10)
+    synapse_s_mem_ce0_assign_proc : process(state_read_reg_428, grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_synapse_s_mem_ce0, grp_snn_get_synaptic_conductances_fu_296_synapse_s_mem_ce0, ap_CS_fsm_state8, ap_CS_fsm_state10)
     begin
-        if (((ap_const_logic_1 = ap_CS_fsm_state10) and (state_read_reg_500 = ap_const_lv1_1))) then 
-            synapse_s_mem_ce0 <= grp_snn_get_synaptic_conductances_fu_344_synapse_s_mem_ce0;
+        if (((ap_const_logic_1 = ap_CS_fsm_state10) and (state_read_reg_428 = ap_const_lv1_1))) then 
+            synapse_s_mem_ce0 <= grp_snn_get_synaptic_conductances_fu_296_synapse_s_mem_ce0;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state8)) then 
-            synapse_s_mem_ce0 <= grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_synapse_s_mem_ce0;
+            synapse_s_mem_ce0 <= grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_synapse_s_mem_ce0;
         else 
             synapse_s_mem_ce0 <= ap_const_logic_0;
         end if; 
     end process;
 
 
-    synapse_s_mem_ce1_assign_proc : process(grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_synapse_s_mem_ce1, ap_CS_fsm_state8)
+    synapse_s_mem_ce1_assign_proc : process(grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_synapse_s_mem_ce1, ap_CS_fsm_state8)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state8)) then 
-            synapse_s_mem_ce1 <= grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_synapse_s_mem_ce1;
+            synapse_s_mem_ce1 <= grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_synapse_s_mem_ce1;
         else 
             synapse_s_mem_ce1 <= ap_const_logic_0;
         end if; 
     end process;
 
 
-    synapse_s_mem_we0_assign_proc : process(grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_synapse_s_mem_we0, ap_CS_fsm_state8)
+    synapse_s_mem_we0_assign_proc : process(grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_synapse_s_mem_we0, ap_CS_fsm_state8)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state8)) then 
-            synapse_s_mem_we0 <= grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_synapse_s_mem_we0;
+            synapse_s_mem_we0 <= grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_synapse_s_mem_we0;
         else 
             synapse_s_mem_we0 <= ap_const_logic_0;
         end if; 
     end process;
 
-    trunc_ln43_1_fu_450_p1 <= output_indexes_q0(4 - 1 downto 0);
-    trunc_ln43_fu_440_p1 <= output_indexes_q0(4 - 1 downto 0);
+    trunc_ln43_1_fu_378_p1 <= output_indexes_q0(4 - 1 downto 0);
+    trunc_ln43_fu_368_p1 <= output_indexes_q0(4 - 1 downto 0);
 
-    u_mem_address0_assign_proc : process(state_read_reg_500, ap_CS_fsm_state4, grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_326_u_mem_address0, grp_snn_get_synaptic_conductances_fu_344_u_mem_address0, ap_CS_fsm_state10)
+    u_mem_address0_assign_proc : process(state_read_reg_428, ap_CS_fsm_state4, grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_278_u_mem_address0, grp_snn_get_synaptic_conductances_fu_296_u_mem_address0, ap_CS_fsm_state10)
     begin
-        if (((ap_const_logic_1 = ap_CS_fsm_state10) and (state_read_reg_500 = ap_const_lv1_1))) then 
-            u_mem_address0 <= grp_snn_get_synaptic_conductances_fu_344_u_mem_address0;
+        if (((ap_const_logic_1 = ap_CS_fsm_state10) and (state_read_reg_428 = ap_const_lv1_1))) then 
+            u_mem_address0 <= grp_snn_get_synaptic_conductances_fu_296_u_mem_address0;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state4)) then 
-            u_mem_address0 <= grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_326_u_mem_address0;
+            u_mem_address0 <= grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_278_u_mem_address0;
         else 
             u_mem_address0 <= "XXXX";
         end if; 
     end process;
 
 
-    u_mem_ce0_assign_proc : process(state_read_reg_500, ap_CS_fsm_state4, grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_326_u_mem_ce0, grp_snn_get_synaptic_conductances_fu_344_u_mem_ce0, ap_CS_fsm_state10)
+    u_mem_ce0_assign_proc : process(state_read_reg_428, ap_CS_fsm_state4, grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_278_u_mem_ce0, grp_snn_get_synaptic_conductances_fu_296_u_mem_ce0, ap_CS_fsm_state10)
     begin
-        if (((ap_const_logic_1 = ap_CS_fsm_state10) and (state_read_reg_500 = ap_const_lv1_1))) then 
-            u_mem_ce0 <= grp_snn_get_synaptic_conductances_fu_344_u_mem_ce0;
+        if (((ap_const_logic_1 = ap_CS_fsm_state10) and (state_read_reg_428 = ap_const_lv1_1))) then 
+            u_mem_ce0 <= grp_snn_get_synaptic_conductances_fu_296_u_mem_ce0;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state4)) then 
-            u_mem_ce0 <= grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_326_u_mem_ce0;
+            u_mem_ce0 <= grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_278_u_mem_ce0;
         else 
             u_mem_ce0 <= ap_const_logic_0;
         end if; 
     end process;
 
 
-    u_mem_ce1_assign_proc : process(state_read_reg_500, grp_snn_get_synaptic_conductances_fu_344_u_mem_ce1, ap_CS_fsm_state10)
+    u_mem_ce1_assign_proc : process(state_read_reg_428, grp_snn_get_synaptic_conductances_fu_296_u_mem_ce1, ap_CS_fsm_state10)
     begin
-        if (((ap_const_logic_1 = ap_CS_fsm_state10) and (state_read_reg_500 = ap_const_lv1_1))) then 
-            u_mem_ce1 <= grp_snn_get_synaptic_conductances_fu_344_u_mem_ce1;
+        if (((ap_const_logic_1 = ap_CS_fsm_state10) and (state_read_reg_428 = ap_const_lv1_1))) then 
+            u_mem_ce1 <= grp_snn_get_synaptic_conductances_fu_296_u_mem_ce1;
         else 
             u_mem_ce1 <= ap_const_logic_0;
         end if; 
     end process;
 
 
-    u_mem_d0_assign_proc : process(state_read_reg_500, ap_CS_fsm_state4, grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_326_u_mem_d0, grp_snn_get_synaptic_conductances_fu_344_u_mem_d0, ap_CS_fsm_state10)
+    u_mem_d0_assign_proc : process(state_read_reg_428, ap_CS_fsm_state4, grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_278_u_mem_d0, grp_snn_get_synaptic_conductances_fu_296_u_mem_d0, ap_CS_fsm_state10)
     begin
-        if (((ap_const_logic_1 = ap_CS_fsm_state10) and (state_read_reg_500 = ap_const_lv1_1))) then 
-            u_mem_d0 <= grp_snn_get_synaptic_conductances_fu_344_u_mem_d0;
+        if (((ap_const_logic_1 = ap_CS_fsm_state10) and (state_read_reg_428 = ap_const_lv1_1))) then 
+            u_mem_d0 <= grp_snn_get_synaptic_conductances_fu_296_u_mem_d0;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state4)) then 
-            u_mem_d0 <= grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_326_u_mem_d0;
+            u_mem_d0 <= grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_278_u_mem_d0;
         else 
             u_mem_d0 <= "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
         end if; 
     end process;
 
 
-    u_mem_we0_assign_proc : process(state_read_reg_500, ap_CS_fsm_state4, grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_326_u_mem_we0, grp_snn_get_synaptic_conductances_fu_344_u_mem_we0, ap_CS_fsm_state10)
+    u_mem_we0_assign_proc : process(state_read_reg_428, ap_CS_fsm_state4, grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_278_u_mem_we0, grp_snn_get_synaptic_conductances_fu_296_u_mem_we0, ap_CS_fsm_state10)
     begin
-        if (((ap_const_logic_1 = ap_CS_fsm_state10) and (state_read_reg_500 = ap_const_lv1_1))) then 
-            u_mem_we0 <= grp_snn_get_synaptic_conductances_fu_344_u_mem_we0;
+        if (((ap_const_logic_1 = ap_CS_fsm_state10) and (state_read_reg_428 = ap_const_lv1_1))) then 
+            u_mem_we0 <= grp_snn_get_synaptic_conductances_fu_296_u_mem_we0;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state4)) then 
-            u_mem_we0 <= grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_326_u_mem_we0;
+            u_mem_we0 <= grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_278_u_mem_we0;
         else 
             u_mem_we0 <= ap_const_logic_0;
         end if; 
     end process;
 
 
-    v_mem_address0_assign_proc : process(state_read_reg_500, ap_CS_fsm_state4, ap_CS_fsm_state11, grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_326_v_mem_address0, grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_v_mem_address0, grp_snn_get_synaptic_conductances_fu_344_v_mem_address0, ap_CS_fsm_state8, ap_CS_fsm_state10, zext_ln74_1_fu_473_p1)
+    v_mem_address0_assign_proc : process(state_read_reg_428, ap_CS_fsm_state4, ap_CS_fsm_state11, grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_278_v_mem_address0, grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_v_mem_address0, grp_snn_get_synaptic_conductances_fu_296_v_mem_address0, ap_CS_fsm_state8, ap_CS_fsm_state10, zext_ln74_1_fu_401_p1)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state11)) then 
-            v_mem_address0 <= zext_ln74_1_fu_473_p1(4 - 1 downto 0);
-        elsif (((ap_const_logic_1 = ap_CS_fsm_state10) and (state_read_reg_500 = ap_const_lv1_1))) then 
-            v_mem_address0 <= grp_snn_get_synaptic_conductances_fu_344_v_mem_address0;
+            v_mem_address0 <= zext_ln74_1_fu_401_p1(4 - 1 downto 0);
+        elsif (((ap_const_logic_1 = ap_CS_fsm_state10) and (state_read_reg_428 = ap_const_lv1_1))) then 
+            v_mem_address0 <= grp_snn_get_synaptic_conductances_fu_296_v_mem_address0;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state8)) then 
-            v_mem_address0 <= grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_v_mem_address0;
+            v_mem_address0 <= grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_v_mem_address0;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state4)) then 
-            v_mem_address0 <= grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_326_v_mem_address0;
+            v_mem_address0 <= grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_278_v_mem_address0;
         else 
             v_mem_address0 <= "XXXX";
         end if; 
     end process;
 
-    v_mem_address1 <= zext_ln74_fu_464_p1(4 - 1 downto 0);
+    v_mem_address1 <= zext_ln74_fu_392_p1(4 - 1 downto 0);
 
-    v_mem_ce0_assign_proc : process(state_read_reg_500, ap_CS_fsm_state4, ap_CS_fsm_state11, grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_326_v_mem_ce0, grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_v_mem_ce0, grp_snn_get_synaptic_conductances_fu_344_v_mem_ce0, ap_CS_fsm_state8, ap_CS_fsm_state10)
+    v_mem_ce0_assign_proc : process(state_read_reg_428, ap_CS_fsm_state4, ap_CS_fsm_state11, grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_278_v_mem_ce0, grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_v_mem_ce0, grp_snn_get_synaptic_conductances_fu_296_v_mem_ce0, ap_CS_fsm_state8, ap_CS_fsm_state10)
     begin
         if ((ap_const_logic_1 = ap_CS_fsm_state11)) then 
             v_mem_ce0 <= ap_const_logic_1;
-        elsif (((ap_const_logic_1 = ap_CS_fsm_state10) and (state_read_reg_500 = ap_const_lv1_1))) then 
-            v_mem_ce0 <= grp_snn_get_synaptic_conductances_fu_344_v_mem_ce0;
+        elsif (((ap_const_logic_1 = ap_CS_fsm_state10) and (state_read_reg_428 = ap_const_lv1_1))) then 
+            v_mem_ce0 <= grp_snn_get_synaptic_conductances_fu_296_v_mem_ce0;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state8)) then 
-            v_mem_ce0 <= grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_334_v_mem_ce0;
+            v_mem_ce0 <= grp_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1_fu_286_v_mem_ce0;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state4)) then 
-            v_mem_ce0 <= grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_326_v_mem_ce0;
+            v_mem_ce0 <= grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_278_v_mem_ce0;
         else 
             v_mem_ce0 <= ap_const_logic_0;
         end if; 
@@ -2333,29 +2021,29 @@ begin
     end process;
 
 
-    v_mem_d0_assign_proc : process(state_read_reg_500, ap_CS_fsm_state4, grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_326_v_mem_d0, grp_snn_get_synaptic_conductances_fu_344_v_mem_d0, ap_CS_fsm_state10)
+    v_mem_d0_assign_proc : process(state_read_reg_428, ap_CS_fsm_state4, grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_278_v_mem_d0, grp_snn_get_synaptic_conductances_fu_296_v_mem_d0, ap_CS_fsm_state10)
     begin
-        if (((ap_const_logic_1 = ap_CS_fsm_state10) and (state_read_reg_500 = ap_const_lv1_1))) then 
-            v_mem_d0 <= grp_snn_get_synaptic_conductances_fu_344_v_mem_d0;
+        if (((ap_const_logic_1 = ap_CS_fsm_state10) and (state_read_reg_428 = ap_const_lv1_1))) then 
+            v_mem_d0 <= grp_snn_get_synaptic_conductances_fu_296_v_mem_d0;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state4)) then 
-            v_mem_d0 <= grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_326_v_mem_d0;
+            v_mem_d0 <= grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_278_v_mem_d0;
         else 
             v_mem_d0 <= "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
         end if; 
     end process;
 
 
-    v_mem_we0_assign_proc : process(state_read_reg_500, ap_CS_fsm_state4, grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_326_v_mem_we0, grp_snn_get_synaptic_conductances_fu_344_v_mem_we0, ap_CS_fsm_state10)
+    v_mem_we0_assign_proc : process(state_read_reg_428, ap_CS_fsm_state4, grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_278_v_mem_we0, grp_snn_get_synaptic_conductances_fu_296_v_mem_we0, ap_CS_fsm_state10)
     begin
-        if (((ap_const_logic_1 = ap_CS_fsm_state10) and (state_read_reg_500 = ap_const_lv1_1))) then 
-            v_mem_we0 <= grp_snn_get_synaptic_conductances_fu_344_v_mem_we0;
+        if (((ap_const_logic_1 = ap_CS_fsm_state10) and (state_read_reg_428 = ap_const_lv1_1))) then 
+            v_mem_we0 <= grp_snn_get_synaptic_conductances_fu_296_v_mem_we0;
         elsif ((ap_const_logic_1 = ap_CS_fsm_state4)) then 
-            v_mem_we0 <= grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_326_v_mem_we0;
+            v_mem_we0 <= grp_hls_snn_izikevich_Pipeline_VITIS_LOOP_47_2_fu_278_v_mem_we0;
         else 
             v_mem_we0 <= ap_const_logic_0;
         end if; 
     end process;
 
-    zext_ln74_1_fu_473_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(output_indexes_mem_1),64));
-    zext_ln74_fu_464_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(output_indexes_mem_0),64));
+    zext_ln74_1_fu_401_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(output_indexes_mem_1),64));
+    zext_ln74_fu_392_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(output_indexes_mem_0),64));
 end behav;

@@ -1,37 +1,29 @@
-# Add source files
-source "block_design.tcl"
-source "add_hls_ip.tcl"
-
-
-# Define the output directory
-set outputDir ./outputs
-file mkdir $outputDir
-
 # Configure the project
 create_project -in_memory -part xc7z020clg400-1
 
-# Add the hls snn to the IP Catalog
-tool_add_xact "hls_snn\component.xml"
+# Add Custom IP to the project
+set_property ip_repo_paths "hls_snn" [current_fileset]
+update_ip_catalog
 
 # Create the block design
-create_root_design ""
+source [file join [file dirname [info script]] "block_design.tcl"]
 
 # Create the wrapper
-make_wrapper -files [get_files  ./bd/mb_ex_1/mb_ex_1.bd] -top
-read_vhdl  ./bd/mb_ex_1/hdl/mb_ex_1_wrapper.vhd
+make_wrapper -files [get_files ./srcs/sources_1/bd/design1/design1.bd] -top
+read_verilog ./gen/sources_1/bd/design1/design1_wrapper.v
 
-# Read constraints - Not needed
 
 #If the block design does not have the output products generated, generate the output products needed for synthesis and implementation runs
-set_property synth_checkpoint_mode None [get_files ./bd/mb_ex_1/mb_ex_1.bd]
-generate_target all [get_files ./bd/mb_ex_1/mb_ex_1.bd]
+generate_target all [get_files "design1.bd"]
 
 #Run synthesis and implementation
-synth_design -top mb_ex
+synth_design -top design_1_wrapper
 opt_design
+#Write debugging file to use the ILAs
+write_debug_probes -force 6_ilas.ltx
 place_design
 route_design
-write_bitstream mb_ex.bit
+write_bitstream -force snn_6_ilas.bit
 
 #Export the implemented hardware system to the Vitis environment
-write_hw_platform -fixed -force -file ./mb_ex.xsa
+write_hw_platform -fixed -force -file ./snn_6_ilas.xsa

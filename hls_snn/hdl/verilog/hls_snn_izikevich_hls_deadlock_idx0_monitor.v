@@ -11,8 +11,8 @@ module hls_snn_izikevich_hls_deadlock_idx0_monitor ( // for module hls_snn_izike
 
 // signal declare
 reg monitor_find_block;
-wire idx1_block;
 wire idx2_block;
+wire idx1_block;
 wire sub_parallel_block;
 wire all_sub_parallel_has_block;
 wire all_sub_single_has_block;
@@ -22,7 +22,7 @@ wire seq_is_axis_block;
 assign block = monitor_find_block;
 assign idx1_block = axis_block_sigs[1];
 assign all_sub_parallel_has_block = 1'b0;
-assign all_sub_single_has_block = 1'b0 | (idx1_block & (axis_block_sigs[1])) | (idx2_block & (axis_block_sigs[2] | axis_block_sigs[3] | axis_block_sigs[4] | axis_block_sigs[5]));
+assign all_sub_single_has_block = 1'b0 | (idx2_block & (axis_block_sigs[2] | axis_block_sigs[3] | axis_block_sigs[4] | axis_block_sigs[5])) | (idx1_block & (axis_block_sigs[1]));
 assign cur_axis_has_block = 1'b0 | axis_block_sigs[0];
 assign seq_is_axis_block = all_sub_parallel_has_block | all_sub_single_has_block | cur_axis_has_block;
 

@@ -1,6 +1,6 @@
 `timescale 1 ns / 1 ps
 
-module hls_snn_izikevich_hls_deadlock_idx3_monitor ( // for module hls_snn_izikevich_hls_snn_izikevich_inst.grp_snn_get_synaptic_conductances_fu_344.grp_snn_get_synaptic_conductances_Pipeline_synaptic_conductances_VITIS_LOOP_154_1_fu_138
+module hls_snn_izikevich_hls_deadlock_idx3_monitor ( // for module hls_snn_izikevich_hls_snn_izikevich_inst.grp_snn_get_synaptic_conductances_fu_296.grp_snn_get_synaptic_conductances_Pipeline_synaptic_conductances_VITIS_LOOP_154_1_fu_116
     input wire clock,
     input wire reset,
     input wire [5:0] axis_block_sigs,

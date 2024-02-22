@@ -26,15 +26,15 @@ module hls_snn_izikevich_hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS
         p_mem_address0,
         p_mem_ce0,
         p_mem_q0,
-        grp_fu_537_p_din0,
-        grp_fu_537_p_din1,
-        grp_fu_537_p_opcode,
-        grp_fu_537_p_dout0,
-        grp_fu_537_p_ce,
-        grp_fu_541_p_din0,
-        grp_fu_541_p_din1,
-        grp_fu_541_p_dout0,
-        grp_fu_541_p_ce
+        grp_fu_465_p_din0,
+        grp_fu_465_p_din1,
+        grp_fu_465_p_opcode,
+        grp_fu_465_p_dout0,
+        grp_fu_465_p_ce,
+        grp_fu_469_p_din0,
+        grp_fu_469_p_din1,
+        grp_fu_469_p_dout0,
+        grp_fu_469_p_ce
 );
 
 parameter    ap_ST_fsm_pp0_stage0 = 1'd1;
@@ -58,15 +58,15 @@ input  [31:0] v_mem_q0;
 output  [2:0] p_mem_address0;
 output   p_mem_ce0;
 input  [0:0] p_mem_q0;
-output  [31:0] grp_fu_537_p_din0;
-output  [31:0] grp_fu_537_p_din1;
-output  [0:0] grp_fu_537_p_opcode;
-input  [31:0] grp_fu_537_p_dout0;
-output   grp_fu_537_p_ce;
-output  [31:0] grp_fu_541_p_din0;
-output  [31:0] grp_fu_541_p_din1;
-input  [31:0] grp_fu_541_p_dout0;
-output   grp_fu_541_p_ce;
+output  [31:0] grp_fu_465_p_din0;
+output  [31:0] grp_fu_465_p_din1;
+output  [0:0] grp_fu_465_p_opcode;
+input  [31:0] grp_fu_465_p_dout0;
+output   grp_fu_465_p_ce;
+output  [31:0] grp_fu_469_p_din0;
+output  [31:0] grp_fu_469_p_din1;
+input  [31:0] grp_fu_469_p_dout0;
+output   grp_fu_469_p_ce;
 
 reg ap_idle;
 reg synapse_s_mem_ce0;
@@ -192,7 +192,7 @@ hls_snn_izikevich_fcmp_32ns_32ns_1_1_no_dsp_1 #(
     .din0_WIDTH( 32 ),
     .din1_WIDTH( 32 ),
     .dout_WIDTH( 1 ))
-fcmp_32ns_32ns_1_1_no_dsp_1_U16(
+fcmp_32ns_32ns_1_1_no_dsp_1_U13(
     .din0(v_mem_q0),
     .din1(32'd1108082688),
     .opcode(5'd3),
@@ -335,7 +335,7 @@ always @ (posedge ap_clk) begin
         icmp_ln22_1_reg_503_pp0_iter2_reg <= icmp_ln22_1_reg_503_pp0_iter1_reg;
         icmp_ln22_1_reg_503_pp0_iter3_reg <= icmp_ln22_1_reg_503_pp0_iter2_reg;
         l_load_reg_497_pp0_iter2_reg <= l_load_reg_497_pp0_iter1_reg;
-        new_synapse_reg_532 <= grp_fu_541_p_dout0;
+        new_synapse_reg_532 <= grp_fu_469_p_dout0;
         new_synapse_reg_532_pp0_iter3_reg <= new_synapse_reg_532;
         synapse_s_mem_addr_reg_516_pp0_iter2_reg <= synapse_s_mem_addr_reg_516_pp0_iter1_reg;
         synapse_s_mem_addr_reg_516_pp0_iter3_reg <= synapse_s_mem_addr_reg_516_pp0_iter2_reg;
@@ -540,19 +540,19 @@ assign cmp6_i_i_i5_fu_347_p2 = ((l_load_reg_497_pp0_iter2_reg == 2'd0) ? 1'b1 : 
 
 assign cmp6_i_i_i_mid1_fu_254_p2 = ((add_ln22_fu_196_p2 == 2'd0) ? 1'b1 : 1'b0);
 
-assign grp_fu_537_p_ce = 1'b1;
+assign grp_fu_465_p_ce = 1'b1;
 
-assign grp_fu_537_p_din0 = new_synapse_reg_532;
+assign grp_fu_465_p_din0 = new_synapse_reg_532;
 
-assign grp_fu_537_p_din1 = 32'd1065353216;
+assign grp_fu_465_p_din1 = 32'd1065353216;
 
-assign grp_fu_537_p_opcode = 2'd0;
+assign grp_fu_465_p_opcode = 2'd0;
 
-assign grp_fu_541_p_ce = 1'b1;
+assign grp_fu_469_p_ce = 1'b1;
 
-assign grp_fu_541_p_din0 = synapse_s_mem_q1;
+assign grp_fu_469_p_din0 = synapse_s_mem_q1;
 
-assign grp_fu_541_p_din1 = 32'd1063675494;
+assign grp_fu_469_p_din1 = 32'd1063675494;
 
 assign icmp_ln22_1_fu_202_p2 = ((ap_sig_allocacmp_xl_load == 3'd6) ? 1'b1 : 1'b0);
 
@@ -578,7 +578,7 @@ assign select_ln22_5_fu_315_p3 = ((icmp_ln22_1_reg_503_pp0_iter1_reg[0:0] == 1'b
 
 assign select_ln22_fu_208_p3 = ((icmp_ln22_1_fu_202_p2[0:0] == 1'b1) ? 3'd0 : ap_sig_allocacmp_xl_load);
 
-assign select_ln28_fu_426_p3 = ((and_ln28_1_reg_558[0:0] == 1'b1) ? grp_fu_537_p_dout0 : new_synapse_reg_532_pp0_iter3_reg);
+assign select_ln28_fu_426_p3 = ((and_ln28_1_reg_558[0:0] == 1'b1) ? grp_fu_465_p_dout0 : new_synapse_reg_532_pp0_iter3_reg);
 
 assign sub_ln25_fu_248_p2 = (tmp_s_fu_228_p3 - zext_ln25_fu_244_p1);
 
@@ -586,7 +586,7 @@ assign synapse_s_mem_address0 = synapse_s_mem_addr_reg_516_pp0_iter3_reg;
 
 assign synapse_s_mem_address1 = zext_ln25_2_fu_270_p1;
 
-assign synapse_s_mem_d0 = ((and_ln28_3_fu_443_p2[0:0] == 1'b1) ? grp_fu_537_p_dout0 : select_ln28_fu_426_p3);
+assign synapse_s_mem_d0 = ((and_ln28_3_fu_443_p2[0:0] == 1'b1) ? grp_fu_465_p_dout0 : select_ln28_fu_426_p3);
 
 assign tmp_1_fu_236_p3 = {{select_ln22_2_fu_216_p3}, {1'd0}};
 
