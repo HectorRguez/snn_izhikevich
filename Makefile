@@ -19,8 +19,8 @@ block_design: create_block_design.tcl
 	@$(RUN_VIVADO) -source create_block_design.tcl
 
 snn_hw.xsa: block_design
-	@echo "Generating bitstream"
-	@$(RUN_VIVADO) -source generate_bitstream.tcl
+	@echo "Creating hardware"
+	@$(RUN_VIVADO) -source create_hw.tcl
 
 # Delete temporal project files
 clean:
