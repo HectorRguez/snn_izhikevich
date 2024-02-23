@@ -1,5 +1,5 @@
-# Configure the project
-create_project -in_memory -part xc7z020clg400-1
+# Configure the board
+set_part xc7z020clg400-1
 
 # Read the previously created block design
 read_bd block_design/block_design.bd
