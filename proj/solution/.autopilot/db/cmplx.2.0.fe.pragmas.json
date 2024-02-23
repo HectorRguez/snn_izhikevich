@@ -1,0 +1,121 @@
+{
+  "0": {
+    "basicblocks": 4,
+    "calls": "4 7 5",
+    "file": "snn_izhikevich_top.cpp",
+    "fileloc": 71,
+    "instructions": 18,
+    "name": "hls_snn_izikevich",
+    "total_instructions": 692
+  },
+  "1": {
+    "basicblocks": 13,
+    "calls": "",
+    "file": "snn_izhikevich_axi.h",
+    "fileloc": 6,
+    "instructions": 60,
+    "loads": {
+      "L": 1
+    },
+    "name": "axis_cp_network_to_mem",
+    "stores": {
+      "G": 1
+    },
+    "total_instructions": 60
+  },
+  "2": {
+    "basicblocks": 51,
+    "calls": "",
+    "file": "snn_izhikevich.h",
+    "fileloc": 128,
+    "instructions": 399,
+    "loads": {
+      "G": 25,
+      "L": 4
+    },
+    "name": "snn_get_synaptic_conductances",
+    "stores": {
+      "G": 13
+    },
+    "total_instructions": 399
+  },
+  "3": {
+    "basicblocks": 10,
+    "calls": "",
+    "file": "snn_izhikevich_axi.h",
+    "fileloc": 34,
+    "instructions": 33,
+    "loads": {
+      "L": 1
+    },
+    "name": "axis_cp_inputs_to_mem",
+    "stores": {
+      "G": 1
+    },
+    "total_instructions": 33
+  },
+  "4": {
+    "basicblocks": 8,
+    "calls": "1",
+    "file": "snn_izhikevich_top.cpp",
+    "fileloc": 35,
+    "instructions": 23,
+    "loads": {
+      "L": 2
+    },
+    "name": "hls_snn_initialize",
+    "stores": {
+      "G": 4
+    },
+    "total_instructions": 83
+  },
+  "5": {
+    "basicblocks": 7,
+    "calls": "",
+    "file": "snn_izhikevich_axi.h",
+    "fileloc": 60,
+    "instructions": 99,
+    "loads": {
+      "G": 5,
+      "L": 1
+    },
+    "name": "axis_cp_output_to_stream",
+    "stores": {
+      "L": 16
+    },
+    "total_instructions": 99
+  },
+  "6": {
+    "basicblocks": 14,
+    "calls": "",
+    "file": "snn_izhikevich.h",
+    "fileloc": 15,
+    "instructions": 53,
+    "loads": {
+      "G": 3
+    },
+    "name": "snn_update_neuron_synapses",
+    "stores": {
+      "G": 3
+    },
+    "total_instructions": 53
+  },
+  "7": {
+    "basicblocks": 1,
+    "calls": "3 8",
+    "file": "snn_izhikevich_top.cpp",
+    "fileloc": 55,
+    "instructions": 4,
+    "name": "hls_snn_process_step",
+    "total_instructions": 492
+  },
+  "8": {
+    "basicblocks": 1,
+    "calls": "6 2",
+    "file": "snn_izhikevich.h",
+    "fileloc": 220,
+    "instructions": 3,
+    "name": "snn_process_step",
+    "total_instructions": 455
+  }
+}

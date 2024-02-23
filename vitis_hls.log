@@ -1,0 +1,54 @@
+ECHO est  desactivado.
+ECHO est  desactivado.
+NOTE: Using modified tcl85t.dll from https://gitenterprise.xilinx.com/ACT/vitis_hls_tcl
+
+****** Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2023.1 (64-bit)
+  **** SW Build 3854077 on May  4 2023
+  **** IP Build 3864474 on Sun May  7 20:36:21 MDT 2023
+  **** SharedData Build 3865790 on Sun May 07 13:33:03 MDT 2023
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source C:/Xilinx/Vitis_HLS/2023.1/scripts/vitis_hls/hls.tcl -notrace
+INFO: [HLS 200-10] Running 'C:/Xilinx/Vitis_HLS/2023.1/bin/unwrapped/win64.o/vitis_hls.exe'
+INFO: [HLS 200-10] For user 'hecto' on host 'desktop-8chs1t5' (Windows NT_amd64 version 6.2) on Fri Feb 23 17:26:07 +0100 2024
+INFO: [HLS 200-10] In directory 'C:/automate_snn_hls/snn_izhikevich'
+Sourcing Tcl script 'vitis_hls/run_hls.tcl'
+INFO: [HLS 200-1510] Running: open_project proj -reset 
+INFO: [HLS 200-10] Opening and resetting project 'C:/automate_snn_hls/snn_izhikevich/proj'.
+INFO: [HLS 200-1510] Running: add_files hls_srcs/snn_config.h 
+INFO: [HLS 200-10] Adding design file 'hls_srcs/snn_config.h' to the project
+INFO: [HLS 200-1510] Running: add_files hls_srcs/snn_defs.h 
+INFO: [HLS 200-10] Adding design file 'hls_srcs/snn_defs.h' to the project
+INFO: [HLS 200-1510] Running: add_files hls_srcs/snn_env.h 
+INFO: [HLS 200-10] Adding design file 'hls_srcs/snn_env.h' to the project
+INFO: [HLS 200-1510] Running: add_files hls_srcs/snn_izhikevich_axi.h 
+INFO: [HLS 200-10] Adding design file 'hls_srcs/snn_izhikevich_axi.h' to the project
+INFO: [HLS 200-1510] Running: add_files hls_srcs/snn_izhikevich_top.cpp 
+INFO: [HLS 200-10] Adding design file 'hls_srcs/snn_izhikevich_top.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files hls_srcs/snn_izhikevich.h 
+INFO: [HLS 200-10] Adding design file 'hls_srcs/snn_izhikevich.h' to the project
+INFO: [HLS 200-1510] Running: add_files hls_srcs/snn_network_defs.h 
+INFO: [HLS 200-10] Adding design file 'hls_srcs/snn_network_defs.h' to the project
+INFO: [HLS 200-1510] Running: add_files hls_srcs/snn_network.h 
+INFO: [HLS 200-10] Adding design file 'hls_srcs/snn_network.h' to the project
+INFO: [HLS 200-1510] Running: add_files hls_srcs/snn_types.h 
+INFO: [HLS 200-10] Adding design file 'hls_srcs/snn_types.h' to the project
+INFO: [HLS 200-1510] Running: set_top hls_snn_izikevich 
+INFO: [HLS 200-1510] Running: open_solution solution -reset 
+INFO: [HLS 200-10] Creating and opening solution 'C:/automate_snn_hls/snn_izhikevich/proj/solution'.
+INFO: [HLS 200-10] Cleaning up the solution database.
+INFO: [HLS 200-1505] Using default flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see www.xilinx.com/cgi-bin/docs/rdoc?v=2023.1;t=hls+guidance;d=200-1505.html
+INFO: [HLS 200-1510] Running: set_part xc7z020clg400-1 
+INFO: [HLS 200-1611] Setting target device to 'xc7z020-clg400-1'
+INFO: [HLS 200-1510] Running: create_clock -period 40 -name default 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 40ns.
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.187 seconds; current allocated memory: 83.340 MB.
+INFO: [HLS 200-10] Analyzing design file 'hls_srcs/snn_izhikevich_top.cpp' ... 
+WARNING: [HLS 207-5531] 'Resource pragma' is deprecated, use 'bind_op/bind_storage pragma' instead (hls_srcs/snn_izhikevich.h:85:9)
+WARNING: [HLS 207-5531] 'Resource pragma' is deprecated, use 'bind_op/bind_storage pragma' instead (hls_srcs/snn_izhikevich.h:189:9)
+WARNING: [HLS 207-5531] 'Resource pragma' is deprecated, use 'bind_op/bind_storage pragma' instead (hls_srcs/snn_izhikevich.h:190:9)
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 7.051 seconds; current allocated memory: 87.148 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.

@@ -1,0 +1,114 @@
+INFO-FLOW: Workspace C:/automate_snn_hls/snn_izhikevich/proj/solution opened at Fri Feb 23 17:26:08 +0100 2024
+Execute       send_msg_by_id INFO @200-1505@%s%s default  vivado 
+INFO: [HLS 200-1505] Using default flow_target 'vivado'
+Command     open_solution done; 0.255 sec.
+Execute     set_part xc7z020clg400-1 
+INFO: [HLS 200-1510] Running: set_part xc7z020clg400-1 
+Execute       create_platform xc7z020clg400-1 -board  
+DBG:HLSDevice: Trying to load device library: C:/Xilinx/Vitis_HLS/2023.1\lib\win64.o\xv_hlsvwrap.dll
+DBG:HLSDevice: first parts/arch.xml in RDI_DATADIR: C:\Xilinx\Vivado\2023.1/data/parts/arch.xml
+DBG:HLSDevice: init success
+INFO: [HLS 200-1611] Setting target device to 'xc7z020-clg400-1'
+Command       create_platform done; 0.756 sec.
+Execute       source C:/Xilinx/Vitis_HLS/2023.1/common/technology/xilinx/common/xilinx.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2023.1/common/technology/xilinx/interface/plb46.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2023.1/common/technology/xilinx/interface/axi4.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2023.1/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute           source C:/Xilinx/Vitis_HLS/2023.1/common/technology/xilinx/interface/saxilite.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2023.1/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2023.1/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2023.1/common/technology/xilinx/ip/dds_compiler.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2023.1/common/technology/xilinx/ip/util.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2023.1/common/technology/xilinx/ip/xfft.gen 
+Command         ap_source done; 0.171 sec.
+Execute         source C:/Xilinx/Vitis_HLS/2023.1/common/technology/xilinx/ip/xfir.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2023.1/common/technology/xilinx/DSP48/dsp48.gen 
+Command       ap_source done; 0.218 sec.
+Execute       ap_part_info -name xc7z020-clg400-1 -data info 
+Execute       config_compile -quiet -complex-mul-dsp=0 
+Command     set_part done; 0.994 sec.
+Execute     create_clock -period 40 -name default 
+INFO: [HLS 200-1510] Running: create_clock -period 40 -name default 
+Execute       ap_set_clock -name default -period 40 -default=false 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 40ns.
+Execute     csynth_design 
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO-FLOW: Running SLX 'csynth' proc: ::SLX::run_csynth
+Execute       elaborate -effort=medium -skip_syncheck=0 -keep_printf=0 -skip_cdt=0 -skip_transform=0 -ng=0 -g=0 -opt_fp=0 -from_csynth_design=1 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.187 seconds; current allocated memory: 83.340 MB.
+Execute         set_directive_top hls_snn_izikevich -name=hls_snn_izikevich 
+Execute         source C:/Xilinx/Vitis_HLS/2023.1/tps/tcl/tcllib1.11.1/yaml/huddle.tcl 
+Execute         source C:/Xilinx/Vitis_HLS/2023.1/tps/tcl/tcllib1.11.1/yaml/json2huddle.tcl 
+Execute           source C:/Xilinx/Vitis_HLS/2023.1/tps/tcl/tcllib1.11.1/try/try.tcl 
+INFO: [HLS 200-10] Analyzing design file 'hls_srcs/snn_izhikevich_top.cpp' ... 
+INFO-FLOW: Compiling one TU...
+INFO-FLOW: Handling hls_srcs/snn_izhikevich_top.cpp as C++
+Execute         ap_part_info -name xc7z020-clg400-1 -data info 
+INFO-FLOW: Running: GCC PP 39
+INFO-FLOW: Source preprocessing
+INFO-FLOW: run_clang exec: C:/Xilinx/Vitis_HLS/2023.1/win64/tools/clang-3.9-csynth/bin/clang hls_srcs/snn_izhikevich_top.cpp -foptimization-record-file=C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/snn_izhikevich_top.cpp.clang.diag.yml -mllvm -pass-remarks-missed=reflow|pasta|unroll -mllvm -pass-remarks=reflow|pasta|unroll|inline -fno-limit-debug-info --sysroot C:/Xilinx/Vitis_HLS/2023.1/tps/mingw/8.3.0/win64.o/nt -fhls -fno-exceptions -insert-hls-directive=C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/all.directive.json -E -fno-math-errno -c -emit-llvm -mllvm -disable-llvm-optzns -Werror=implicit-function-declaration -Werror=implicit-hls-streams -Werror=return-type -Wpragmas -Wunused-parameter -Wdump-hls-pragmas -Wno-error=dump-hls-pragmas -fno-threadsafe-statics -fno-use-cxa-atexit -std=gnu++14 -target fpga64-xilinx-mingw32 -fno-threadsafe-statics -fno-use-cxa-atexit -D__VITIS_HLS__ -DAESL_SYN -D__SYNTHESIS__ -D__HLS_SYN__ -I C:/Xilinx/Vitis_HLS/2023.1/common/technology/autopilot -I C:/Xilinx/Vitis_HLS/2023.1/common/technology/autopilot/ap_sysc -include etc/autopilot_ssdm_op.h -D__DSP48E1__ -I /usr/include/x86_64-linux-gnu -o C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp {-hls-platform-db-name=C:/Xilinx/Vitis_HLS/2023.1/common/technology\xilinx/common/platform.db} -hls-platform-name=zynq_slow -device-resource-info=BRAM_280.000000_DSP_220.000000_FF_106400.000000_LUT_53200.000000_SLICE_13300.000000_URAM_0.000000 -device-name-info=xc7z020clg400-1 > C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/snn_izhikevich_top.cpp.clang.out.log 2> C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/snn_izhikevich_top.cpp.clang.err.log
+INFO-FLOW: Done: GCC PP 39 time: 0.5 seconds per iteration
+INFO-FLOW: Source syntax check for synthesis
+INFO-FLOW: run_clang exec: C:/Xilinx/Vitis_HLS/2023.1/win64/tools/clang-3.9-csynth/bin/clang -foptimization-record-file=C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/clang.diag.yml -mllvm -pass-remarks-missed=reflow|pasta|unroll -mllvm -pass-remarks=reflow|pasta|unroll|inline -fsyntax-only -fhls -target fpga64-xilinx-linux-gnu C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp {-hls-platform-db-name=C:/Xilinx/Vitis_HLS/2023.1/common/technology\xilinx/common/platform.db} -hls-platform-name=zynq_slow -device-resource-info=BRAM_280.000000_DSP_220.000000_FF_106400.000000_LUT_53200.000000_SLICE_13300.000000_URAM_0.000000 -device-name-info=xc7z020clg400-1 > C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/clang.out.log 2> C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/clang.err.log
+WARNING: [HLS 207-5531] 'Resource pragma' is deprecated, use 'bind_op/bind_storage pragma' instead (hls_srcs/snn_izhikevich.h:85:9)
+WARNING: [HLS 207-5531] 'Resource pragma' is deprecated, use 'bind_op/bind_storage pragma' instead (hls_srcs/snn_izhikevich.h:189:9)
+WARNING: [HLS 207-5531] 'Resource pragma' is deprecated, use 'bind_op/bind_storage pragma' instead (hls_srcs/snn_izhikevich.h:190:9)
+Execute         clang_tidy xilinx-systemc-detector -desc systemc-detector C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp std=gnu++14 -target fpga  -directive=C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/.systemc_flag 
+INFO-FLOW: exec C:/Xilinx/Vitis_HLS/2023.1/win64/tools/clang-3.9-csynth/bin/clang-tidy -header-filter=.* --checks=-*,xilinx-systemc-detector -import-directive=C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/.systemc_flag -fix-errors C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp -- -std=gnu++14 -target fpga -fhls -ferror-limit=0
+Command         clang_tidy done; 0.816 sec.
+INFO-FLOW: Running: clang-tidy CDT preprocess 39
+Execute         clang_tidy xilinx-directive2pragma -desc directive2pragma C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp std=gnu++14 -target fpga  -directive=C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/all.directive.json 
+INFO-FLOW: exec C:/Xilinx/Vitis_HLS/2023.1/win64/tools/clang-3.9-csynth/bin/clang-tidy -header-filter=.* --checks=-*,xilinx-directive2pragma -import-directive=C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/all.directive.json -fix-errors C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp -- -std=gnu++14 -target fpga -fhls -ferror-limit=0
+Command         clang_tidy done; 1.245 sec.
+INFO-FLOW: Done: clang-tidy CDT preprocess 39 time: 1.2 seconds per iteration
+INFO-FLOW: Calling xilinx-label-all-loops ... 
+INFO-FLOW: Calling xilinx-aggregate-on-hls-vector ... 
+Execute         clang_tidy -errorcheck -desc loop-label xilinx-label-all-loops,xilinx-aggregate-on-hls-vector,,xilinx-warn-mayneed-no-ctor-attribute C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp std=gnu++14 -target fpga  
+INFO-FLOW: run_clang exec: C:/Xilinx/Vitis_HLS/2023.1/win64/tools/clang-3.9-csynth/bin/clang-tidy -export-fixes=C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp.clang-tidy.loop-label.diag.yml -header-filter=.* --checks=-*,xilinx-label-all-loops,xilinx-aggregate-on-hls-vector,,xilinx-warn-mayneed-no-ctor-attribute -fix-errors C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp -- -std=gnu++14 -target fpga -fhls -ferror-limit=0 > C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp.clang-tidy.loop-label.out.log 2> C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp.clang-tidy.loop-label.err.log
+Execute           source C:/Xilinx/Vitis_HLS/2023.1/tps/tcl/tcllib1.11.1/yaml/yaml.tcl 
+Command         clang_tidy done; 1.441 sec.
+INFO-FLOW: run_clang exec: C:/Xilinx/Vitis_HLS/2023.1/win64/tools/clang-3.9-csynth/bin/xilinx-dataflow-lawyer -export-fixes=C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp.xilinx-dataflow-lawyer.diag.yml C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp -- -std=gnu++14 -target fpga -fhls -ferror-limit=0 -fstrict-dataflow > C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp.xilinx-dataflow-lawyer.out.log 2> C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp.xilinx-dataflow-lawyer.err.log
+Execute         ap_part_info -name xc7z020-clg400-1 -data info 
+INFO-FLOW: compiling source code to llvm bc
+INFO-FLOW: run_clang exec: C:/Xilinx/Vitis_HLS/2023.1/win64/tools/clang-3.9-csynth/bin/clang -foptimization-record-file=C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp.clang.diag.yml -mllvm -pass-remarks-missed=reflow|pasta|unroll -mllvm -pass-remarks=reflow|pasta|unroll|inline -fno-limit-debug-info -fhls -flto -fno-exceptions -Wno-error=c++11-narrowing C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp -fno-math-errno -c -emit-llvm -mllvm -disable-llvm-optzns -Werror=implicit-function-declaration -Werror=implicit-hls-streams -Werror=return-type -Wpragmas -Wunused-parameter -Wdump-hls-pragmas -Wno-error=dump-hls-pragmas -fno-threadsafe-statics -fno-use-cxa-atexit -std=gnu++14 -target fpga64-xilinx-linux-gnu -D__VITIS_HLS__ -DAESL_SYN -D__SYNTHESIS__ -D__HLS_SYN__ -I C:/Xilinx/Vitis_HLS/2023.1/common/technology/autopilot -I C:/Xilinx/Vitis_HLS/2023.1/common/technology/autopilot/ap_sysc -include etc/autopilot_ssdm_op.h -D__DSP48E1__ -g -o C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/snn_izhikevich_top.bc {-hls-platform-db-name=C:/Xilinx/Vitis_HLS/2023.1/common/technology\xilinx/common/platform.db} -hls-platform-name=zynq_slow -device-resource-info=BRAM_280.000000_DSP_220.000000_FF_106400.000000_LUT_53200.000000_SLICE_13300.000000_URAM_0.000000 -device-name-info=xc7z020clg400-1 > C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp.clang.out.log 2> C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp.clang.err.log
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 7.051 seconds; current allocated memory: 87.148 MB.
+INFO-FLOW: Linking Debug ...
+INFO-FLOW: Linking dut bc code.
+Execute         run_link_or_opt -out C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/a.g.ld.0.bc -args  "C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/snn_izhikevich_top.g.bc"  
+INFO-FLOW: run_clang exec: C:/Xilinx/Vitis_HLS/2023.1/win64/tools/clang-3.9-csynth/bin/llvm-link C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/snn_izhikevich_top.g.bc -o C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/a.g.ld.0.bc > C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/a.g.ld.0.bc.llvm-link.out.log 2> C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/a.g.ld.0.bc.llvm-link.err.log
+INFO-FLOW: 
+Execute         run_link_or_opt -opt -out C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/a.g.ld.1.lower.bc -args C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/a.g.ld.0.bc -reflow-lower-math-intrinsics 
+INFO-FLOW: run_clang exec: C:/Xilinx/Vitis_HLS/2023.1/win64/tools/clang-3.9-csynth/bin/opt -pass-remarks-missed=reflow|pasta|unroll -pass-remarks=reflow|pasta|unroll|inline -pass-remarks-output=C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/a.g.ld.1.lower.bc.opt.diag.yml C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/a.g.ld.0.bc -reflow-lower-math-intrinsics -o C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/a.g.ld.1.lower.bc > C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/a.g.ld.1.lower.bc.opt.out.log 2> C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/a.g.ld.1.lower.bc.opt.err.log
+INFO-FLOW: 
+INFO-FLOW: Running: gen_design_size_report post-opt
+INFO-FLOW: Done: gen_design_size_report post-opt time: 0 seconds per iteration
+INFO-FLOW: Linking math bc lib
+Execute         run_link_or_opt -out C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/a.g.ld.2.m1.bc -args C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/a.g.ld.1.lower.bc -only-needed C:/Xilinx/Vitis_HLS/2023.1/win64/lib/libhlsm_39.bc C:/Xilinx/Vitis_HLS/2023.1/win64/lib/libhlsmc++_39.bc 
+INFO-FLOW: run_clang exec: C:/Xilinx/Vitis_HLS/2023.1/win64/tools/clang-3.9-csynth/bin/llvm-link C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/a.g.ld.1.lower.bc -only-needed C:/Xilinx/Vitis_HLS/2023.1/win64/lib/libhlsm_39.bc C:/Xilinx/Vitis_HLS/2023.1/win64/lib/libhlsmc++_39.bc -o C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/a.g.ld.2.m1.bc > C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/a.g.ld.2.m1.bc.llvm-link.out.log 2> C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/a.g.ld.2.m1.bc.llvm-link.err.log
+INFO-FLOW: 
+Command         run_link_or_opt done; 2.493 sec.
+Execute         run_link_or_opt -opt -out C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/a.g.ld.3.fpc.bc -args C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/a.g.ld.2.m1.bc -reflow-globaldce -hls-top-function-name=hls_snn_izikevich -reflow-float-conversion 
+INFO-FLOW: run_clang exec: C:/Xilinx/Vitis_HLS/2023.1/win64/tools/clang-3.9-csynth/bin/opt -pass-remarks-missed=reflow|pasta|unroll -pass-remarks=reflow|pasta|unroll|inline -pass-remarks-output=C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/a.g.ld.3.fpc.bc.opt.diag.yml C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/a.g.ld.2.m1.bc -reflow-globaldce -hls-top-function-name=hls_snn_izikevich -reflow-float-conversion -o C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/a.g.ld.3.fpc.bc > C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/a.g.ld.3.fpc.bc.opt.out.log 2> C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/a.g.ld.3.fpc.bc.opt.err.log
+INFO-FLOW: 
+INFO-FLOW: Running: gen_design_size_report post-opt
+INFO-FLOW: Done: gen_design_size_report post-opt time: 0 seconds per iteration
+Command         run_link_or_opt done; 1.022 sec.
+Execute         run_link_or_opt -out C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/a.g.ld.4.m2.bc -args C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/a.g.ld.3.fpc.bc -only-needed C:/Xilinx/Vitis_HLS/2023.1/win64/lib/libfloatconversion_39.bc 
+INFO-FLOW: run_clang exec: C:/Xilinx/Vitis_HLS/2023.1/win64/tools/clang-3.9-csynth/bin/llvm-link C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/a.g.ld.3.fpc.bc -only-needed C:/Xilinx/Vitis_HLS/2023.1/win64/lib/libfloatconversion_39.bc -o C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/a.g.ld.4.m2.bc > C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/a.g.ld.4.m2.bc.llvm-link.out.log 2> C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/a.g.ld.4.m2.bc.llvm-link.err.log
+INFO-FLOW: 
+Execute         run_link_or_opt -opt -out C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/a.g.ld.5.gdce.bc -args C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/a.g.ld.4.m2.bc -reflow-globaldce -hls-top-function-name=hls_snn_izikevich 
+INFO-FLOW: run_clang exec: C:/Xilinx/Vitis_HLS/2023.1/win64/tools/clang-3.9-csynth/bin/opt -pass-remarks-missed=reflow|pasta|unroll -pass-remarks=reflow|pasta|unroll|inline -pass-remarks-output=C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/a.g.ld.5.gdce.bc.opt.diag.yml C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/a.g.ld.4.m2.bc -reflow-globaldce -hls-top-function-name=hls_snn_izikevich -o C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/a.g.ld.5.gdce.bc > C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/a.g.ld.5.gdce.bc.opt.out.log 2> C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/a.g.ld.5.gdce.bc.opt.err.log
+INFO-FLOW: 
+INFO-FLOW: Running: gen_design_size_report post-opt
+INFO-FLOW: Done: gen_design_size_report post-opt time: 0 seconds per iteration
+Execute         send_msg_by_id INFO @200-777@%s Vivado 
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+Execute         is_m_axi_addr64 
+INFO-FLOW: Doing LTO.
+INFO-FLOW: run_clang exec: C:/Xilinx/Vitis_HLS/2023.1/win64/tools/clang-3.9-csynth/bin/clang -foptimization-record-file=C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/a.g.ld.0.bc.clang.reflow.diag.yml -mllvm -pass-remarks-missed=reflow|pasta|unroll -mllvm -pass-remarks=reflow|pasta|unroll|inline -fhls -mllvm -hls-top-function-name=hls_snn_izikevich -mllvm -hls-db-dir -mllvm C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db -emit-llvm -c -target fpga64-xilinx-none -mllvm -xcl-xmlinfo=C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/kernel.internal.xml -mllvm -top-io-mapping-info=C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/top-io-fe.xml -mllvm -hls-bitcode-version=3.1 -mllvm -reflow-enable-slave-interface-default-setting=true -mllvm -gen-kernel-xml=false -mllvm -default-maxi-offset=slave -mllvm -maxi-latency=0 -mllvm -hls-maxi-data-size-in-bits=8 -mllvm -hls-maxi-max-data-size-in-bits=1024 -mllvm -hls-max-widen-size-in-bits=0 -mllvm -xcl-kernel-max-mem-ports=0 -mllvm -maxi-read-trans=16 -mllvm -maxi-write-trans=16 -mllvm -maxi-read-burst-len=16 -mllvm -maxi-write-burst-len=16 -mllvm -reflow-enable-saxi-64bits=0 -mllvm -reflow-basic-block-instr-threshold=200000 -mllvm -reflow-auto-pipeline-threshold=64 -mllvm -reflow-enable-maxi-auto-id-channel=0 -mllvm -enable-fp-thr=0 -mllvm -reflow-bdd-simplify-threshold=1024 -mllvm -reflow-fanout-threshold=16 -mllvm -assume-maxi-align=1 -mllvm -reflow-pipeline-style-llvm-setting=2 -mllvm -reflow-enable-dataflow-strict-mode-checking=1 -ftime-report -mllvm -time-passes -mllvm -reflow-auto-array-partition-mode=default -mllvm -reflow-enable-auto-array-partition=true -mllvm -reflow-enable-auto-parallel-performance-driven=true -mllvm -reflow-enable-partition-for-automation=true -mllvm -reflow-aggregate-bitwidth-threshold=4096 -mllvm -reflow-reserved-saxilite-registers=1024 -mllvm -reflow-assume-no-address-wrap=true -mllvm -reflow-enable-occurrence-inference=true -mllvm -hls -mllvm -disable-inlined-alloca-merging=true -mllvm -default-clock-period=40 -x ir C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/a.g.ld.5.gdce.bc -o C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/a.g.lto.bc {-hls-platform-db-name=C:/Xilinx/Vitis_HLS/2023.1/common/technology\xilinx/common/platform.db} -hls-platform-name=zynq_slow -device-resource-info=BRAM_280.000000_DSP_220.000000_FF_106400.000000_LUT_53200.000000_SLICE_13300.000000_URAM_0.000000 -device-name-info=xc7z020clg400-1 > C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/a.g.ld.0.bc.clang.reflow.out.log 2> C:/automate_snn_hls/snn_izhikevich/proj/solution/.autopilot/db/a.g.ld.0.bc.clang.reflow.err.log
+INFO: [Common 17-41] Interrupt caught. Command should exit soon.
+Command       elaborate done; error code: 1; 11.952 sec.
+Command     csynth_design done; error code: 1; 12.123 sec.
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 12.123 seconds; current allocated memory: 4.504 MB.
+Command   ap_source done; error code: 1; 13.69 sec.
+Command vitis_hls_bin done; error code: 1; 13.764 sec.
