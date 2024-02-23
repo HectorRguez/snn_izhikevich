@@ -746,10 +746,10 @@ proc create_root_design { } {
 create_project -in_memory -part xc7z020clg400-1
 
 # Add Custom IP to the project IP catalog
-set_property ip_repo_paths hls_snn [current_fileset]
+set_property ip_repo_paths vivado/hls_snn [current_fileset]
 update_ip_catalog
 
 # Create the block design
-create_bd_design -name block_design.bd -dir . 
+create_bd_design -name block_design.bd -dir vivado
 create_root_design
 save_bd_design

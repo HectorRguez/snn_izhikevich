@@ -14,13 +14,13 @@ create_bd: block_design
 create_hw: snn_hw.xsa
 
 # Dependencies
-block_design: create_block_design.tcl
+block_design: vivado/run_vivado_bd.tcl
 	@echo "Generating block design"
-	@$(RUN_VIVADO) -source create_block_design.tcl
+	@$(RUN_VIVADO) -source vivado/run_vivado_bd.tcl
 
-snn_hw.xsa: block_design
+snn_hw.xsa: vivado/block_design
 	@echo "Creating hardware"
-	@$(RUN_VIVADO) -source create_hw.tcl
+	@$(RUN_VIVADO) -source vivado/create_hw.tcl
 
 # Delete temporal project files
 clean:
