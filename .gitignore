@@ -1,1 +1,4 @@
+vivado/checkpoints/
 vivado/block_design/
+snn_hw.xsa
+snn_hw.bit
