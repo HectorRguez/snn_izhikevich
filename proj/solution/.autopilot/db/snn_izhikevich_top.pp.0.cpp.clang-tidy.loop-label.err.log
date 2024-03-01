@@ -1,4 +1,0 @@
-3 warnings and 3 errors generated.
-Error while processing C:\automate_snn_hls\snn_izhikevich\proj\solution\.autopilot\db\snn_izhikevich_top.pp.0.cpp.
-clang-tidy applied 15 of 15 suggested fixes.
-Suppressed 3 warnings (3 with check filters).

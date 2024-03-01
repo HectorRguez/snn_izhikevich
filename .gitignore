@@ -1,6 +1,5 @@
 vivado/checkpoints/
 vivado/block_design/
-hls_snn_ip/
-hls_srcs/includes
-snn_hw.xsa
-snn_hw.bit
+vivado/snn_hw.xsa
+vivado/snn_hw.bit
+vitis_hls/snn_ip/
