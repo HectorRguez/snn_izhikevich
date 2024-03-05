@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?scdStore version="2"?><scannerInfo id="org.eclipse.cdt.make.core.discoveredScannerInfo">
-    <instance id="xilinx.gnu.armv7.exe.debug.1865864519;xilinx.gnu.armv7.exe.debug.1865864519.">
+    <instance id="xilinx.gnu.armv7.exe.debug.1726602761;xilinx.gnu.armv7.exe.debug.1726602761.">
         <collector id="org.eclipse.cdt.make.core.PerProjectSICollector">
-            <includePath path="#undef __ARM_FEATURE_SAT" removed="true"/>
-            <includePath path="#undef __ARM_FEATURE_CRYPTO" removed="true"/>
-            <includePath path="c:\xilinx\vitis\2023.1\gnu\aarch32\nt\gcc-arm-none-eabi\x86_64-oesdk-mingw32\usr\bin\arm-xilinx-eabi\../../lib/arm-xilinx-eabi/gcc/arm-xilinx-eabi/12.2.0/include"/>
-            <includePath path="#undef __ARM_FEATURE_UNALIGNED" removed="true"/>
-            <includePath path="c:\xilinx\vitis\2023.1\gnu\aarch32\nt\gcc-arm-none-eabi\x86_64-oesdk-mingw32\usr\bin\arm-xilinx-eabi\../../lib/arm-xilinx-eabi/gcc/arm-xilinx-eabi/12.2.0/include-fixed"/>
-            <includePath path="#undef __ARM_FEATURE_QRDMX" removed="true"/>
-            <includePath path="C:\Xilinx\Vitis\2023.1\gnu\aarch32\nt\gcc-arm-none-eabi\bin\\..\aarch32-xilinx-eabi/usr/include"/>
-            <includePath path="#undef __ARM_FEATURE_CRC32" removed="true"/>
+            <includePath path="/tools/Xilinx/Vitis/2023.1/gnu/aarch32/lin/gcc-arm-none-eabi/x86_64-oesdk-linux/usr/bin/arm-xilinx-eabi/../../lib/arm-xilinx-eabi/gcc/arm-xilinx-eabi/12.2.0/include"/>
+            <includePath path="/tools/Xilinx/Vitis/2023.1/gnu/aarch32/lin/gcc-arm-none-eabi/x86_64-oesdk-linux/usr/bin/arm-xilinx-eabi/../../lib/arm-xilinx-eabi/gcc/arm-xilinx-eabi/12.2.0/include-fixed"/>
+            <includePath path="/tools/Xilinx/Vitis/2023.1/gnu/aarch32/lin/gcc-arm-none-eabi/bin/../aarch32-xilinx-eabi/usr/include/"/>
             <definedSymbol symbol="__STDC__=1"/>
             <definedSymbol symbol="__STDC_VERSION__=201710L"/>
             <definedSymbol symbol="__STDC_UTF_16__=1"/>
@@ -415,11 +410,11 @@
             <definedSymbol symbol="__USES_INITFINI__=1"/>
         </collector>
     </instance>
-    <instance id="xilinx.gnu.armv7.exe.release.417717857;xilinx.gnu.armv7.exe.release.417717857.">
+    <instance id="xilinx.gnu.armv7.exe.release.700750877;xilinx.gnu.armv7.exe.release.700750877.">
         <collector id="org.eclipse.cdt.make.core.PerProjectSICollector">
-            <includePath path="c:\xilinx\vitis\2023.1\gnu\aarch32\nt\gcc-arm-none-eabi\x86_64-oesdk-mingw32\usr\bin\arm-xilinx-eabi\../../lib/arm-xilinx-eabi/gcc/arm-xilinx-eabi/12.2.0/include"/>
-            <includePath path="c:\xilinx\vitis\2023.1\gnu\aarch32\nt\gcc-arm-none-eabi\x86_64-oesdk-mingw32\usr\bin\arm-xilinx-eabi\../../lib/arm-xilinx-eabi/gcc/arm-xilinx-eabi/12.2.0/include-fixed"/>
-            <includePath path="C:\Xilinx\Vitis\2023.1\gnu\aarch32\nt\gcc-arm-none-eabi\bin\\..\aarch32-xilinx-eabi/usr/include"/>
+            <includePath path="/tools/Xilinx/Vitis/2023.1/gnu/aarch32/lin/gcc-arm-none-eabi/x86_64-oesdk-linux/usr/bin/arm-xilinx-eabi/../../lib/arm-xilinx-eabi/gcc/arm-xilinx-eabi/12.2.0/include"/>
+            <includePath path="/tools/Xilinx/Vitis/2023.1/gnu/aarch32/lin/gcc-arm-none-eabi/x86_64-oesdk-linux/usr/bin/arm-xilinx-eabi/../../lib/arm-xilinx-eabi/gcc/arm-xilinx-eabi/12.2.0/include-fixed"/>
+            <includePath path="/tools/Xilinx/Vitis/2023.1/gnu/aarch32/lin/gcc-arm-none-eabi/bin/../aarch32-xilinx-eabi/usr/include/"/>
             <definedSymbol symbol="__STDC__=1"/>
             <definedSymbol symbol="__STDC_VERSION__=201710L"/>
             <definedSymbol symbol="__STDC_UTF_16__=1"/>
@@ -825,11 +820,11 @@
             <definedSymbol symbol="__USES_INITFINI__=1"/>
         </collector>
     </instance>
-    <instance id="xilinx.gnu.armv7.exe.debug.1865864519;xilinx.gnu.armv7.exe.debug.1865864519.;xilinx.gnu.armv7.c.toolchain.compiler.debug.64952757;xilinx.gnu.armv7.c.compiler.input.1266442554">
+    <instance id="xilinx.gnu.armv7.exe.debug.1726602761;xilinx.gnu.armv7.exe.debug.1726602761.;xilinx.gnu.armv7.c.toolchain.compiler.debug.1381742601;xilinx.gnu.armv7.c.compiler.input.1850150363">
         <collector id="org.eclipse.cdt.make.core.PerProjectSICollector">
-            <includePath path="c:\xilinx\vitis\2023.1\gnu\aarch32\nt\gcc-arm-none-eabi\x86_64-oesdk-mingw32\usr\bin\arm-xilinx-eabi\../../lib/arm-xilinx-eabi/gcc/arm-xilinx-eabi/12.2.0/include"/>
-            <includePath path="c:\xilinx\vitis\2023.1\gnu\aarch32\nt\gcc-arm-none-eabi\x86_64-oesdk-mingw32\usr\bin\arm-xilinx-eabi\../../lib/arm-xilinx-eabi/gcc/arm-xilinx-eabi/12.2.0/include-fixed"/>
-            <includePath path="C:\Xilinx\Vitis\2023.1\gnu\aarch32\nt\gcc-arm-none-eabi\bin\\..\aarch32-xilinx-eabi/usr/include"/>
+            <includePath path="/tools/Xilinx/Vitis/2023.1/gnu/aarch32/lin/gcc-arm-none-eabi/x86_64-oesdk-linux/usr/bin/arm-xilinx-eabi/../../lib/arm-xilinx-eabi/gcc/arm-xilinx-eabi/12.2.0/include"/>
+            <includePath path="/tools/Xilinx/Vitis/2023.1/gnu/aarch32/lin/gcc-arm-none-eabi/x86_64-oesdk-linux/usr/bin/arm-xilinx-eabi/../../lib/arm-xilinx-eabi/gcc/arm-xilinx-eabi/12.2.0/include-fixed"/>
+            <includePath path="/tools/Xilinx/Vitis/2023.1/gnu/aarch32/lin/gcc-arm-none-eabi/bin/../aarch32-xilinx-eabi/usr/include/"/>
             <definedSymbol symbol="__STDC__=1"/>
             <definedSymbol symbol="__STDC_VERSION__=201710L"/>
             <definedSymbol symbol="__STDC_UTF_16__=1"/>

@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
-	<item key="sdx.custom.platform.repository.locations" value="C:\automate_snn_hls\snn_izhikevich\vitis\ws\snn_izhikevich_pl\export\snn_izhikevich_pl"/>
+	<item key="sdx.custom.platform.repository.locations" value="/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis/ws/snn_izhikevich_pl/export/snn_izhikevich_pl"/>
 </section>
