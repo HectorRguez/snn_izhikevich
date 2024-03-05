@@ -1,0 +1,3 @@
+timestamp=[2024-03-01 18:35:38], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.082, duration_ms=82, data={}
+timestamp=[2024-03-01 18:36:52], mode=APP_CREATION, duration=0:00:11.294, duration_ms=11294, data={name=snn_izhikevich_app, project_type=sdk, os=standalone, processor=cortex-a9, runtime=C/C++, platform=snn_izhikevich_pl, application_type=application}
+timestamp=[2024-03-01 18:36:54], mode=BUILD, duration=0:00:02.186, duration_ms=2186, data={name=snn_izhikevich_app, configuration=Release, clean_build=false}

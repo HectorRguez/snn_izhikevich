@@ -1,8 +1,11 @@
 # Variables
 VIVADO_SETTINGS := C:/Xilinx/Vivado/2023.1/settings64.bat
 VITIS_HLS_SETTINGS := C:\Xilinx\Vitis_HLS\2023.1\settings64.bat
+VITIS_SETTINGS := C:\Xilinx\Vitis\2023.1\settings64.bat
+
 RUN_VIVADO:= @call $(VIVADO_SETTINGS) && vivado -mode batch -nojournal -nolog
 RUN_VITIS_HLS:= @call $(VITIS_HLS_SETTINGS) && vitis_hls 
+RUN_VITIS:= @call $(VITIS_SETTINGS) && xsct
 
 # Phony targets
 .PHONY: clean_hls clean_vivado
@@ -21,8 +24,10 @@ place_and_route : vivado/checkpoints/route.dcp
 
 export_hw : vivado/snn_hw.xsa
 
+create_app : vitis/ws/*
+
 # Dependencies
-vitis_hls/snn_ip/src/*:
+vitis_hls/src/*: vitis_hls/snn_ip/*
 	@echo "########### Generating SNN IP ###########"
 	@$(RUN_VITIS_HLS) -f vitis_hls/run_hls.tcl
 	@powershell -command "Expand-Archive -Force vitis_hls/snn_ip/export.zip vitis_hls/snn_ip"
@@ -42,6 +47,10 @@ vivado/checkpoints/route.dcp: vivado/checkpoints/synth.dcp
 snn_hw.xsa: vivado/checkpoints/route.dcp
 	@echo "########### Saving platform ###########"
 	@$(RUN_VIVADO) -source vivado/export_hw.tcl
+
+vitis/ws/*: vitis/src/*
+	@echo "########### Generating Application ###########"
+	@$(RUN_VITIS) vitis/run_vitis.tcl
 
 # Delete temporal project files
 clean_hls : 
