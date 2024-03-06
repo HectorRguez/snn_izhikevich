@@ -1,20 +1,16 @@
 # Variables
-VIVADO_SETTINGS := C:/Xilinx/Vivado/2023.1/settings64.bat
-VITIS_HLS_SETTINGS := C:\Xilinx\Vitis_HLS\2023.1\settings64.bat
-VITIS_SETTINGS := C:\Xilinx\Vitis\2023.1\settings64.bat
-
-RUN_VIVADO:= @call $(VIVADO_SETTINGS) && vivado -mode batch -nojournal -nolog
-RUN_VITIS_HLS:= @call $(VITIS_HLS_SETTINGS) && vitis_hls 
-RUN_VITIS:= @call $(VITIS_SETTINGS) && xsct
+RUN_VIVADO:= vivado -mode batch -nojournal -nolog
 
 # Phony targets
-.PHONY: clean_hls clean_vivado
+.PHONY: clean_hls clean_vivado run_app open_vitis
 
 # Default target
-all: create_ip create_bd synth place_and_route export_hw clean_hls clean_vivado
+all: create_ip clean_hls create_bd synth place_and_route export_hw\
+	clean_vivado create_app clean_vitis # open_vitis
 
+run: run_app
 # Targets
-create_ip: vitis_hls/src/*
+create_ip: vitis_hls/snn_ip/component.xml
 
 create_bd: vivado/block_design/block_design.bd
 
@@ -27,40 +23,45 @@ export_hw : vivado/snn_hw.xsa
 create_app : vitis/ws/*
 
 # Dependencies
-vitis_hls/src/*: vitis_hls/snn_ip/*
-	@echo "########### Generating SNN IP ###########"
-	@$(RUN_VITIS_HLS) -f vitis_hls/run_hls.tcl
-	@powershell -command "Expand-Archive -Force vitis_hls/snn_ip/export.zip vitis_hls/snn_ip"
+vitis_hls/snn_ip/component.xml : vitis_hls/src/*
+	@vitis_hls -f vitis_hls/run_hls.tcl
+	@unzip vitis_hls/snn_ip/export.zip -d vitis_hls/snn_ip
 
-vivado/block_design/block_design.bd: vivado/create_bd.tcl vitis_hls/snn_ip/*
-	@echo "########### Generating block design ###########"
+vivado/block_design/block_design.bd: vivado/create_bd.tcl \
+	vitis_hls/snn_ip/component.xml
 	@$(RUN_VIVADO) -source vivado/create_bd.tcl
 
 vivado/checkpoints/opt.dcp: vivado/block_design/block_design.bd
-	@echo "########### Synthesizing ###########"
 	@$(RUN_VIVADO) -source vivado/synth.tcl
 
 vivado/checkpoints/route.dcp: vivado/checkpoints/synth.dcp
-	@echo "########### Place and route ###########"
 	@$(RUN_VIVADO) -source vivado/place_and_route.tcl
 
-snn_hw.xsa: vivado/checkpoints/route.dcp
-	@echo "########### Saving platform ###########"
+vivado/snn_hw.xsa: vivado/checkpoints/route.dcp
 	@$(RUN_VIVADO) -source vivado/export_hw.tcl
 
-vitis/ws/*: vitis/src/*
-	@echo "########### Generating Application ###########"
-	@$(RUN_VITIS) vitis/run_vitis.tcl
+vitis/ws/*: vitis/src/* vivado/snn_hw.xsa
+	rm -rf vitis/ws
+	@xsct vitis/create_project_vitis.tcl
+
+# Open vitis GUI
+open_vitis :
+	vitis -workspace vitis/ws/
+	@xsct vitis/create_project_vitis.tcl
+
+run_app : 
+	@xsct vitis/run_vitis.tcl
 
 # Delete temporal project files
 clean_hls : 
-	@echo "########### Removing temporal Vitis_HLS ########### "
-	@if exist vitis_hls.log del vitis_hls.log
-	@if exist "vitis_hls\proj\" rmdir /s /q "vitis_hls\proj\"
-	@if exist "vitis_hls\snn_ip\export.zip" del "vitis_hls\snn_ip\export.zip"
+	@rm -f  vitis_hls.log
+	@rm -rf vitis_hls/proj/
+	@rm -f  vitis_hls/snn_ip/export.zip
 
 clean_vivado:
-	@echo "########### Removing temporal Vivado files ########### "
-	@if exist .srcs rmdir /s /q .srcs
-	@if exist .Xil rmdir /s /q .Xil
-	@if exist NA rmdir /s /q NA
+	@rm -rf .srcs
+	@rm -rf .Xil
+	@rm -rf NA
+
+clean_vitis:
+	@rm -rf .Xil

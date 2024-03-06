@@ -1,29 +1,20 @@
-# Documentation source https://ohwr.org/project/soc-course/wikis/Xilinx-Software-Command-Line-Tool-(XSCT)
+# XSDB Script
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Xilinx PYNQ-Z1 003017A6DC79A" && level==0 && jtag_device_ctx=="jsn-Xilinx PYNQ-Z1-003017A6DC79A-23727093-0"}
+fpga -file vitis/ws/snn_izhikevich_app/_ide/bitstream/snn_hw.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw vitis/ws/snn_izhikevich_pl/export/snn_izhikevich_pl/hw/snn_hw.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source vitis/ws/snn_izhikevich_app/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow vitis/ws/snn_izhikevich_app/Debug/snn_izhikevich_app.elf
+configparams force-mem-access 0
 
-# Set workspace
-setws vitis/ws
-
-# Create an empty platform
-platform create -name snn_izhikevich_pl -hw vivado/snn_hw.xsa -out ./vitis/ws
-
-# Activate the platform
-platform active snn_izhikevich_pl
-
-# Create the domain
-domain create -name snn_izhikevich_dom -os standalone -proc ps7_cortexa9_0
-
-# Build the platform
-platform generate
-
-# Create application project inside a system
-app create -name snn_izhikevich_app -platform snn_izhikevich_pl -domain snn_izhikevich_dom
-
-# Configure the application in release mode
-app config -name snn_izhikevich_app build-config release
-
-# Import sources
-importsources -name snn_izhikevich_app -path ./vitis/src/
-
-# Build the application 
-app build -name snn_izhikevich_app
-
+# Connect
+con
