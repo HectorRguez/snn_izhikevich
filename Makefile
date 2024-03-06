@@ -19,8 +19,6 @@ open_vitis :
 	vitis -workspace vitis/ws/
 	@xsct vitis/create_project_vitis.tcl
 
-
-
 # Secondary targets
 create_ip: vitis_hls/snn_ip/component.xml
 
