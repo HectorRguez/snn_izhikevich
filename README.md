@@ -12,9 +12,9 @@ This repository automates the workflow to create the hardware platform required 
 ├── Makefile                                    
 ├── README.md                                
 ├── vitis
-│   ├── create_project_vitis.tcl         # This script creates the Vitis workspace (App and Platform)
-│   ├── run_vitis.tcl                    # This script executes the App in the PYNQ board
-│   ├── src                              # C++ files that will be executed on the board CPU
+│   ├── create_project_vitis.tcl      # This script creates the Vitis workspace (App and Platform)
+│   ├── run_vitis.tcl                 # This script executes the App in the PYNQ board
+│   ├── src                           # C++ files that will be executed on the board CPU
 │   └── ws                               
 ├── vitis_hls
 │   ├── run_hls.tcl                      
