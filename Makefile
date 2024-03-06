@@ -2,14 +2,26 @@
 RUN_VIVADO:= vivado -mode batch -nojournal -nolog
 
 # Phony targets
-.PHONY: clean_hls clean_vivado run_app open_vitis
+.PHONY: clean_hls clean_vivado clean_vitis run_app open_vitis
+
+
 
 # Default target
 all: create_ip clean_hls create_bd synth place_and_route export_hw\
-	clean_vivado create_app clean_vitis # open_vitis
+	clean_vivado create_app clean_vitis
 
+# Run application target
 run: run_app
-# Targets
+	@xsct vitis/run_vitis.tcl
+
+# Open vitis GUI
+open_vitis :
+	vitis -workspace vitis/ws/
+	@xsct vitis/create_project_vitis.tcl
+
+
+
+# Secondary targets
 create_ip: vitis_hls/snn_ip/component.xml
 
 create_bd: vivado/block_design/block_design.bd
@@ -44,13 +56,6 @@ vitis/ws/*: vitis/src/* vivado/snn_hw.xsa
 	rm -rf vitis/ws
 	@xsct vitis/create_project_vitis.tcl
 
-# Open vitis GUI
-open_vitis :
-	vitis -workspace vitis/ws/
-	@xsct vitis/create_project_vitis.tcl
-
-run_app : 
-	@xsct vitis/run_vitis.tcl
 
 # Delete temporal project files
 clean_hls : 
