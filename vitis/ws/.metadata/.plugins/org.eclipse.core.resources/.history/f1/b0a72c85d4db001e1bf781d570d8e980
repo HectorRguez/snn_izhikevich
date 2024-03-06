@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ASCII"?>
+<systemproject:SystemProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdsproject="http://www.xilinx.com/sdsproject" xmlns:systemproject="http://www.xilinx.com/systemproject" name="snn_izhikevich_app_system" platform="/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis/ws/snn_izhikevich_pl/export/snn_izhikevich_pl/snn_izhikevich_pl.xpfm" platformUID="xilinx:::0.0(custom)" sysConfig="snn_izhikevich_pl" runtime="C/C++">
+  <configuration name="Debug" id="com.xilinx.sdx.system.managedbuilder.debugConfiguration.1931483538">
+    <configBuildOptions xsi:type="systemproject:SystemOptions">
+      <applications name="snn_izhikevich_app" domainName="snn_izhikevich_dom" domainPrettyName="snn_izhikevich_dom" appBuildConfig="Debug"/>
+      <options xsi:type="sdsproject:Option" gensdcard="true" dmclkid="0"/>
+    </configBuildOptions>
+    <lastBuildOptions xsi:type="systemproject:SystemOptions">
+      <applications name="snn_izhikevich_app" domainName="snn_izhikevich_dom" domainPrettyName="snn_izhikevich_dom" appBuildConfig="Debug"/>
+      <options xsi:type="sdsproject:Option" gensdcard="true" dmclkid="0"/>
+    </lastBuildOptions>
+  </configuration>
+  <configuration name="Release" id="com.xilinx.sdx.system.managedbuilder.releaseConfiguration.169559527">
+    <configBuildOptions xsi:type="systemproject:SystemOptions">
+      <applications name="snn_izhikevich_app" domainName="snn_izhikevich_dom" domainPrettyName="snn_izhikevich_dom" appBuildConfig="Release"/>
+      <options xsi:type="sdsproject:Option" gensdcard="true" dmclkid="0"/>
+    </configBuildOptions>
+  </configuration>
+</systemproject:SystemProject>
