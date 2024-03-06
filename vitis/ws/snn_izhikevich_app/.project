@@ -3,6 +3,7 @@
 	<name>snn_izhikevich_app</name>
 	<comment>Created by Vitis v2023.1</comment>
 	<projects>
+		<project>snn_izhikevich_pl</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
@@ -22,5 +23,6 @@
 		<nature>org.eclipse.cdt.core.cnature</nature>
 		<nature>org.eclipse.cdt.managedbuilder.core.managedBuildNature</nature>
 		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
+		<nature>org.eclipse.cdt.core.ccnature</nature>
 	</natures>
 </projectDescription>

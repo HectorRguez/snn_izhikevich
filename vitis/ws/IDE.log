@@ -1,19 +1,13 @@
-19:36:58 DEBUG : Logs will be stored at '/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis/ws/IDE.log'.
-19:36:58 INFO  : Registering command handlers for Vitis TCF services
-19:36:58 INFO  : Platform repository initialization has completed.
-19:36:58 INFO  : Result from executing command 'getProjects': 
-19:36:58 INFO  : Result from executing command 'getPlatforms': 
-19:37:03 INFO  : Result from executing command 'getProjects': 
-19:37:03 INFO  : Result from executing command 'getPlatforms': snn_izhikevich_pl|/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis/ws/snn_izhikevich_pl/export/snn_izhikevich_pl/snn_izhikevich_pl.xpfm
-19:37:03 INFO  : Result from executing command 'reportPlatform': {snn_izhikevich_pl={snn_izhikevich_dom={Os=standalone, DomainName=snn_izhikevich_dom, CpuType=cortex-a9, CpuInstance=ps7_cortexa9_0}}}
-19:37:03 INFO  : Result from executing command 'reportPlatform': {snn_izhikevich_pl={snn_izhikevich_dom={Os=standalone, DomainName=snn_izhikevich_dom, CpuType=cortex-a9, CpuInstance=ps7_cortexa9_0}}}
-19:37:03 INFO  : Result from executing command 'reportPlatform': {snn_izhikevich_pl={snn_izhikevich_dom={Os=standalone, DomainName=snn_izhikevich_dom, CpuType=cortex-a9, CpuInstance=ps7_cortexa9_0}}}
-19:37:04 INFO  : plnx-install-location is set to ''
-19:37:05 INFO  : Successfully done query RDI_DATADIR 
-19:37:09 INFO  : Checking for BSP changes to sync application flags for project 'snn_izhikevich_app'...
-19:37:20 DEBUG : Logs will be stored at '/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis/ws/IDE.log'.
-19:37:20 INFO  : Launching XSCT server: xsct -n  -interactive /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis/ws/temp_xsdb_launch_script.tcl
-19:37:22 INFO  : XSCT server has started successfully.
-19:37:22 INFO  : Successfully done setting XSCT server connection channel  
-19:37:22 INFO  : plnx-install-location is set to ''
-19:37:22 INFO  : Successfully done setting workspace for the tool. 
+17:06:34 DEBUG : Logs will be stored at '/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis/ws/IDE.log'.
+17:06:34 INFO  : Registering command handlers for Vitis TCF services
+17:06:34 INFO  : Platform repository initialization has completed.
+17:06:35 INFO  : Result from executing command 'getProjects': snn_izhikevich_pl
+17:06:35 INFO  : Result from executing command 'getPlatforms': 
+17:06:43 INFO  : Result from executing command 'getProjects': snn_izhikevich_pl
+17:06:43 INFO  : Result from executing command 'getPlatforms': snn_izhikevich_pl|/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis/ws/snn_izhikevich_pl/export/snn_izhikevich_pl/snn_izhikevich_pl.xpfm
+17:06:43 INFO  : Result from executing command 'reportPlatform': {snn_izhikevich_pl={snn_izhikevich_dom={Os=standalone, DomainName=snn_izhikevich_dom, CpuType=cortex-a9, CpuInstance=ps7_cortexa9_0}}}
+17:06:43 INFO  : Result from executing command 'reportPlatform': {snn_izhikevich_pl={snn_izhikevich_dom={Os=standalone, DomainName=snn_izhikevich_dom, CpuType=cortex-a9, CpuInstance=ps7_cortexa9_0}}}
+17:06:43 INFO  : Result from executing command 'reportPlatform': {snn_izhikevich_pl={snn_izhikevich_dom={Os=standalone, DomainName=snn_izhikevich_dom, CpuType=cortex-a9, CpuInstance=ps7_cortexa9_0}}}
+17:06:45 INFO  : plnx-install-location is set to ''
+17:06:46 INFO  : Successfully done query RDI_DATADIR 
+17:06:55 INFO  : Checking for BSP changes to sync application flags for project 'snn_izhikevich_app'...

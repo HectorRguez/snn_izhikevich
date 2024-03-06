@@ -1,3 +1,4 @@
-timestamp=[2024-03-05 19:36:58], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.015, duration_ms=15, data={}
-timestamp=[2024-03-05 19:37:09], mode=APP_CREATION, duration=0:00:04.797, duration_ms=4797, data={name=snn_izhikevich_app, project_type=sdk, os=standalone, processor=cortex-a9, runtime=C/C++, platform=snn_izhikevich_pl, application_type=application}
-timestamp=[2024-03-05 19:37:10], mode=BUILD, duration=0:00:00.482, duration_ms=482, data={name=snn_izhikevich_app, configuration=Debug, clean_build=false}
+timestamp=[2024-03-06 17:06:34], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.017, duration_ms=17, data={}
+timestamp=[2024-03-06 17:06:50], mode=APP_CREATION, duration=0:00:04.879, duration_ms=4879, data={name=snn_izhikevich_app, project_type=sdk, os=standalone, processor=cortex-a9, runtime=C/C++, platform=snn_izhikevich_pl, application_type=application}
+timestamp=[2024-03-06 17:06:55], mode=PLATFORM_GENERATION, duration=0:00:04.877, duration_ms=4877, data={name=snn_izhikevich_pl}
+timestamp=[2024-03-06 17:06:57], mode=BUILD, duration=0:00:00.626, duration_ms=626, data={name=snn_izhikevich_app, configuration=Debug, clean_build=false}
