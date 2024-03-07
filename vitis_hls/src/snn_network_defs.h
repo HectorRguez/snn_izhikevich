@@ -1,42 +1,36 @@
 #ifndef _SNN_NETWORK_DEFS_H
 #define _SNN_NETWORK_DEFS_H
 
-#include "snn_config.h"
-
-
-#if APP_TYPE == APP_RANDOM
 /*****************************************************************************
- *                               APP_RANDOM	        	                     *
+ *                           User Settings	        	                     *
  *****************************************************************************/
+/* Set the network size of SNN. 
+					Neurons = NETWORK_SIZE^2 and Synapses = NETWORK_SIZE^3 */
 
-#define NETWORK_SIZE			100
-#define SIZE_LAYERS				NETWORK_SIZE
-#define SIZE_NEURONS_PER_LAYER	NETWORK_SIZE
-#define NEURON_TO_PLOT			((NETWORK_SIZE*NETWORK_SIZE)/2)
+#define PRECISION_TYPE			FLOATING_POINT
+/* Application type */
+#define APP_TYPE				APP_XOR
 
-// Simulation defines
-#if RUN_TYPE == HLS_SYNTHESIS
-#define RUNTIME_MS 				1800
-#else
-#define RUNTIME_MS 				1400
-#endif
-#if RUN_TYPE == HLS_SYNTHESIS
-#define INPUT_FIRINGS_OFFSET	150
-#else
-#define INPUT_FIRINGS_OFFSET	400
-#endif /* RUN_TYPE */
-#define	INPUT_FIRING_RATE		(SIM_TIMESTEP_MS * FIRING_RATE_IN * 1e-3)
 
-// Synapses definitions
-#define INPUT_SYNAPSE_WEIGHT 	0.06982422f//0.07f		//The weight for each synaptic input
-#define SYNAPSE_WEIGHT 			(get_random() / 100) 	//The Weight for each excitatory neuron
-#define INPUT_SYNAPSE_PROBABILITY 		0.1f	// 0.1	//Input connection probability, 0.0f to 1.0f
-#define INTER_CONNECTION_PROBABILITY 	1.0 	// 0.8	//Probability of neurons connected to next layer's neurons, 0.0f to 1.0f
+/*****************************************************************************
+ *                          General Configuration        	                 *
+ *****************************************************************************/
+/* Precision types */
+#define FIXED_POINT			0  // FPGA_CLK =  8ns (HLS CLK: 7ns, Estimated: 6.38ns)
+#define FLOATING_POINT		1  // FPGA_CLK = 10ns (HLS CLK: 9ns, Estimated: 8.42ns)
 
-#elif APP_TYPE == APP_XOR
+/* App type */
+#define APP_RANDOM			0
+#define APP_XOR				1
+#define APP_ADDER			2
+#define APP_PATTERN			3
+#define APP_SINGLE			4
+
+
 /*****************************************************************************
  *                               APP_XOR	        	                     *
  *****************************************************************************/
+#if APP_TYPE == APP_XOR
 #define NUM_TRAINING_TRIALS		2000
 
 // Network structure
