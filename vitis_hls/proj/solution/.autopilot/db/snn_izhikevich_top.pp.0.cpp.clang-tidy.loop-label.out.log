@@ -1,0 +1,84 @@
+/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp:1352:7: warning: Added loop label VITIS_LOOP_1213_1:   [xilinx-label-all-loops]
+      for (i = 0; i < __N - 1; ++i) {
+      ^~~
+      VITIS_LOOP_1213_1: 
+/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp:1352:7: note: FIX-IT applied suggested code changes
+/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp:2326:5: warning: Added loop label VITIS_LOOP_676_1:   [xilinx-label-all-loops]
+    for (unsigned i = low; i != high; ++i) {
+    ^~~
+    VITIS_LOOP_676_1: 
+/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp:2326:5: note: FIX-IT applied suggested code changes
+/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp:2340:5: warning: Added loop label VITIS_LOOP_690_1:   [xilinx-label-all-loops]
+    for (unsigned i = low; i != high; ++i) {
+    ^~~
+    VITIS_LOOP_690_1: 
+/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp:2340:5: note: FIX-IT applied suggested code changes
+/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp:2354:5: warning: Added loop label VITIS_LOOP_704_1:   [xilinx-label-all-loops]
+    for (unsigned i = low; i != high; ++i) {
+    ^~~
+    VITIS_LOOP_704_1: 
+/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp:2354:5: note: FIX-IT applied suggested code changes
+/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp:3965:7: warning: Added loop label VITIS_LOOP_1247_1:   [xilinx-label-all-loops]
+      for (i = 0; i < __N - 1; ++i) {
+      ^~~
+      VITIS_LOOP_1247_1: 
+/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp:3965:7: note: FIX-IT applied suggested code changes
+/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp:6622:63: warning: Added loop label VITIS_LOOP_22_1:   [xilinx-label-all-loops]
+ synapses_layer_updates: for (x = 0, l = 0; l < (1 + 1); l++) for (xl = 0; xl < 6; xl++, x++) {
+                                                              ^~~
+                                                              VITIS_LOOP_22_1: 
+/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp:6622:63: note: FIX-IT applied suggested code changes
+/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp:6678:9: error: Resource with core_name: FAddSub_fulldsp pragma is ignored, because this core doesn't exist at all  [clang-diagnostic-error]
+#pragma HLS RESOURCE variable=new_u core=FAddSub_fulldsp latency=8
+        ^
+/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp:6691:2: warning: Added loop label VITIS_LOOP_105_1:   [xilinx-label-all-loops]
+ for (uint32_t b = 0; b < (((int32_t)((32 * 6 + (64 * 4) - 1 ) / (64 * 4))) * (64 * 4)); b+= (64 * 4)) {
+ ^~~
+ VITIS_LOOP_105_1: 
+/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp:6691:2: note: FIX-IT applied suggested code changes
+/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp:6731:62: warning: Added loop label VITIS_LOOP_154_1:   [xilinx-label-all-loops]
+ synaptic_conductances: for (x = 0, l = 0; l < (1 + 1); l++) for (xl = 0; xl < 6; xl++, x++) {
+                                                             ^~~
+                                                             VITIS_LOOP_154_1: 
+/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp:6731:62: note: FIX-IT applied suggested code changes
+/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp:6757:9: error: Resource with core_name: FAddSub_fulldsp pragma is ignored, because this core doesn't exist at all  [clang-diagnostic-error]
+#pragma HLS RESOURCE variable=sum_g_exh core=FAddSub_fulldsp latency=8
+        ^
+/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp:6758:9: error: Resource with core_name: FAddSub_fulldsp pragma is ignored, because this core doesn't exist at all  [clang-diagnostic-error]
+#pragma HLS RESOURCE variable=sum_g_inh core=FAddSub_fulldsp latency=8
+        ^
+/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp:6767:17: warning: Added loop label VITIS_LOOP_199_2:   [xilinx-label-all-loops]
+  if (xl==6 -1) for (y = 0; y < 6; y++) {
+                ^~~
+                VITIS_LOOP_199_2: 
+/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp:6767:17: note: FIX-IT applied suggested code changes
+/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp:6822:2: warning: Added loop label VITIS_LOOP_16_1:   [xilinx-label-all-loops]
+ for (s = 0; s < ((int32_t)((((1 + 1) * 6) + 64 - 1 ) / 64)); s++) for (b = 0; b < 64; b++) {
+ ^~~
+ VITIS_LOOP_16_1: 
+/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp:6822:2: note: FIX-IT applied suggested code changes
+/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp:6822:68: warning: Added loop label VITIS_LOOP_16_2:   [xilinx-label-all-loops]
+ for (s = 0; s < ((int32_t)((((1 + 1) * 6) + 64 - 1 ) / 64)); s++) for (b = 0; b < 64; b++) {
+                                                                   ^~~
+                                                                   VITIS_LOOP_16_2: 
+/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp:6822:68: note: FIX-IT applied suggested code changes
+/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp:6849:2: warning: Added loop label VITIS_LOOP_43_1:   [xilinx-label-all-loops]
+ for (stream_id = 0; stream_id < ((int32_t)((6 + 32 - 1 ) / 32)); stream_id++) {
+ ^~~
+ VITIS_LOOP_43_1: 
+/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp:6849:2: note: FIX-IT applied suggested code changes
+/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp:6850:3: warning: Added loop label VITIS_LOOP_44_2:   [xilinx-label-all-loops]
+  for (b = 0; b < 32; b++) {
+  ^~~
+  VITIS_LOOP_44_2: 
+/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp:6850:3: note: FIX-IT applied suggested code changes
+/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp:6924:2: warning: Added loop label VITIS_LOOP_34_1:   [xilinx-label-all-loops]
+ for (int32_t x = 0; x < 2; x++) {
+ ^~~
+ VITIS_LOOP_34_1: 
+/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp:6924:2: note: FIX-IT applied suggested code changes
+/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp:6930:2: warning: Added loop label VITIS_LOOP_40_2:   [xilinx-label-all-loops]
+ for (int32_t x = 0; x < ((1 + 1) * 6); x++) {
+ ^~~
+ VITIS_LOOP_40_2: 
+/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp:6930:2: note: FIX-IT applied suggested code changes

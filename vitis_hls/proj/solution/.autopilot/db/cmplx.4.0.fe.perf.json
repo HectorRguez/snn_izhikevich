@@ -1,0 +1,37 @@
+{
+  "0": {
+    "basicblocks": 33,
+    "calls": "1",
+    "file": "snn_izhikevich_top.cpp",
+    "fileloc": 64,
+    "instructions": 240,
+    "loads": {
+      "G": 9,
+      "L": 4,
+      "T": 3
+    },
+    "name": "hls_snn_izikevich",
+    "stores": {
+      "G": 9,
+      "L": 20
+    },
+    "total_instructions": 628
+  },
+  "1": {
+    "basicblocks": 51,
+    "calls": "",
+    "file": "snn_izhikevich.h",
+    "fileloc": 128,
+    "instructions": 388,
+    "loads": {
+      "G": 19,
+      "L": 16
+    },
+    "name": "snn_get_synaptic_conductances",
+    "stores": {
+      "G": 23,
+      "L": 16
+    },
+    "total_instructions": 388
+  }
+}

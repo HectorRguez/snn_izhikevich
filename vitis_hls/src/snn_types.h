@@ -2,7 +2,6 @@
 #define _SNN_TYPES_H_
 
 #include "snn_config.h"
-#include "snn_network.h"
 
 #ifdef RUN_HW_VERSION
 #define AP_INT_MAX_W 				7168 // 7K

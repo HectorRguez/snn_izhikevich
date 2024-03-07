@@ -1,0 +1,306 @@
+--- !Passed
+Pass:            inline
+Name:            AlwaysInline
+DebugLoc:        { File: src/snn_izhikevich.h, Line: 162, Column: 82 }
+Function:        _Z29snn_get_synaptic_conductancesPA6_K7ap_uintILi1EEPA6_KfPfS7_RN3hls6streamINS8_4axisI6ap_intILi64EELm0ELm0ELm0EEELi0EEESF_SF_SF_PS_ILi64EE
+Args:            
+  - String:          'Inlining function '''
+  - Callee:          'get_weight_line(hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&)'
+    DebugLoc:        { File: src/snn_izhikevich.h, Line: 102, Column: 0 }
+  - String:          ''' into '''
+  - Caller:          'snn_get_synaptic_conductances(ap_uint<1> const (*) [6], float const (*) [6], float*, float*, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, ap_uint<64>*)'
+    DebugLoc:        { File: src/snn_izhikevich.h, Line: 137, Column: 0 }
+  - String:          ''''
+...
+--- !Passed
+Pass:            inline
+Name:            AlwaysInline
+DebugLoc:        { File: src/snn_izhikevich.h, Line: 204, Column: 3 }
+Function:        _Z29snn_get_synaptic_conductancesPA6_K7ap_uintILi1EEPA6_KfPfS7_RN3hls6streamINS8_4axisI6ap_intILi64EELm0ELm0ELm0EEELi0EEESF_SF_SF_PS_ILi64EE
+Args:            
+  - String:          'Inlining function '''
+  - Callee:          'snn_update_izikevich_equations_by_neuron(unsigned int, ap_uint<1>, float, float, float*, float*)'
+    DebugLoc:        { File: src/snn_izhikevich.h, Line: 51, Column: 0 }
+  - String:          ''' into '''
+  - Caller:          'snn_get_synaptic_conductances(ap_uint<1> const (*) [6], float const (*) [6], float*, float*, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, ap_uint<64>*)'
+    DebugLoc:        { File: src/snn_izhikevich.h, Line: 137, Column: 0 }
+  - String:          ''''
+...
+--- !Passed
+Pass:            inline
+Name:            AlwaysInline
+DebugLoc:        { File: src/snn_izhikevich.h, Line: 183, Column: 35 }
+Function:        _Z29snn_get_synaptic_conductancesPA6_K7ap_uintILi1EEPA6_KfPfS7_RN3hls6streamINS8_4axisI6ap_intILi64EELm0ELm0ELm0EEELi0EEESF_SF_SF_PS_ILi64EE
+Args:            
+  - String:          'Inlining function '''
+  - Callee:          'uint32_to_float32(unsigned int)'
+    DebugLoc:        { File: src/snn_types.h, Line: 94, Column: 0 }
+  - String:          ''' into '''
+  - Caller:          'snn_get_synaptic_conductances(ap_uint<1> const (*) [6], float const (*) [6], float*, float*, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, ap_uint<64>*)'
+    DebugLoc:        { File: src/snn_izhikevich.h, Line: 137, Column: 0 }
+  - String:          ''''
+...
+--- !Passed
+Pass:            inline
+Name:            AlwaysInline
+DebugLoc:        { File: src/snn_izhikevich_axi.h, Line: 75, Column: 19 }
+Function:        _Z24axis_cp_output_to_streamRN3hls6streamINS_4axisI6ap_intILi64EELm0ELm0ELm0EEELi0EEEPfPjP7ap_uintILi64EE
+Args:            
+  - String:          'Inlining function '''
+  - Callee:          'float32_to_uint64(float, float)'
+    DebugLoc:        { File: src/snn_types.h, Line: 100, Column: 0 }
+  - String:          ''' into '''
+  - Caller:          'axis_cp_output_to_stream(hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, float*, unsigned int*, ap_uint<64>*)'
+    DebugLoc:        { File: src/snn_izhikevich_axi.h, Line: 65, Column: 0 }
+  - String:          ''''
+...
+--- !Passed
+Pass:            reflow-infer-unroll
+Name:            ImplicitUnroll
+DebugLoc:        { File: src/snn_izhikevich.h, Line: 105, Column: 20 }
+Function:        _Z29snn_get_synaptic_conductancesPA6_K7ap_uintILi1EEPA6_KfPfS7_RN3hls6streamINS8_4axisI6ap_intILi64EELm0ELm0ELm0EEELi0EEESF_SF_SF_PS_ILi64EE
+Args:            
+  - String:          'Loop '''
+  - LoopName:        VITIS_LOOP_105_1
+  - String:          ''' is marked as complete unroll implied by the pipeline pragma'
+...
+--- !Passed
+Pass:            reflow-infer-unroll
+Name:            ImplicitUnroll
+DebugLoc:        { File: src/snn_izhikevich.h, Line: 169, Column: 24 }
+Function:        _Z29snn_get_synaptic_conductancesPA6_K7ap_uintILi1EEPA6_KfPfS7_RN3hls6streamINS8_4axisI6ap_intILi64EELm0ELm0ELm0EEELi0EEESF_SF_SF_PS_ILi64EE
+Args:            
+  - String:          'Loop '''
+  - LoopName:        synapses_per_neuron
+  - String:          ''' is marked as complete unroll implied by the pipeline pragma'
+...
+--- !Passed
+Pass:            reflow-infer-unroll
+Name:            ImplicitUnroll
+DebugLoc:        { File: src/snn_izhikevich.h, Line: 199, Column: 35 }
+Function:        _Z29snn_get_synaptic_conductancesPA6_K7ap_uintILi1EEPA6_KfPfS7_RN3hls6streamINS8_4axisI6ap_intILi64EELm0ELm0ELm0EEELi0EEESF_SF_SF_PS_ILi64EE
+Args:            
+  - String:          'Loop '''
+  - LoopName:        VITIS_LOOP_199_2
+  - String:          ''' is marked as complete unroll implied by the pipeline pragma'
+...
+--- !Passed
+Pass:            reflow-pragma-loop-unroll
+Name:            PragmaFullyUnroll
+DebugLoc:        { File: src/snn_izhikevich.h, Line: 137, Column: 0 }
+Function:        _Z29snn_get_synaptic_conductancesPA6_K7ap_uintILi1EEPA6_KfPfS7_RN3hls6streamINS8_4axisI6ap_intILi64EELm0ELm0ELm0EEELi0EEESF_SF_SF_PS_ILi64EE
+Args:            
+  - String:          'Unrolling loop '''
+  - LoopName:        VITIS_LOOP_105_1
+  - String:          ''' ('
+  - LoopLoc:         'src/snn_izhikevich.h:105:20'
+  - String:          ') '
+  - String:          'in function '''
+  - String:          snn_get_synaptic_conductances
+  - String:          ''' completely with a factor of '
+  - Factor:          '1'
+...
+--- !Passed
+Pass:            reflow-pragma-loop-unroll
+Name:            PragmaFullyUnroll
+DebugLoc:        { File: src/snn_izhikevich.h, Line: 137, Column: 0 }
+Function:        _Z29snn_get_synaptic_conductancesPA6_K7ap_uintILi1EEPA6_KfPfS7_RN3hls6streamINS8_4axisI6ap_intILi64EELm0ELm0ELm0EEELi0EEESF_SF_SF_PS_ILi64EE
+Args:            
+  - String:          'Unrolling loop '''
+  - LoopName:        synapses_per_neuron
+  - String:          ''' ('
+  - LoopLoc:         'src/snn_izhikevich.h:169:24'
+  - String:          ') '
+  - String:          'in function '''
+  - String:          snn_get_synaptic_conductances
+  - String:          ''' completely with a factor of '
+  - Factor:          '6'
+...
+--- !Passed
+Pass:            reflow-pragma-loop-unroll
+Name:            PragmaFullyUnroll
+DebugLoc:        { File: src/snn_izhikevich.h, Line: 137, Column: 0 }
+Function:        _Z29snn_get_synaptic_conductancesPA6_K7ap_uintILi1EEPA6_KfPfS7_RN3hls6streamINS8_4axisI6ap_intILi64EELm0ELm0ELm0EEELi0EEESF_SF_SF_PS_ILi64EE
+Args:            
+  - String:          'Unrolling loop '''
+  - LoopName:        VITIS_LOOP_199_2
+  - String:          ''' ('
+  - LoopLoc:         'src/snn_izhikevich.h:199:35'
+  - String:          ') '
+  - String:          'in function '''
+  - String:          snn_get_synaptic_conductances
+  - String:          ''' completely with a factor of '
+  - Factor:          '6'
+...
+--- !Passed
+Pass:            reflow-pragma-loop-unroll
+Name:            PragmaFullyUnroll
+DebugLoc:        { File: src/snn_izhikevich_top.cpp, Line: 28, Column: 0 }
+Function:        _Z18hls_snn_initializeRN3hls6streamINS_4axisI6ap_intILi64EELm0ELm0ELm0EEELi0EEEPj
+Args:            
+  - String:          'Unrolling loop '''
+  - LoopName:        VITIS_LOOP_34_1
+  - String:          ''' ('
+  - LoopLoc:         'src/snn_izhikevich_top.cpp:34:19'
+  - String:          ') '
+  - String:          'in function '''
+  - String:          hls_snn_initialize
+  - String:          ''' completely with a factor of '
+  - Factor:          '2'
+...
+--- !Passed
+Pass:            reflow-inliner
+Name:            AutoInline
+DebugLoc:        { File: src/snn_izhikevich_top.cpp, Line: 28, Column: 0 }
+Function:        _Z18hls_snn_initializeRN3hls6streamINS_4axisI6ap_intILi64EELm0ELm0ELm0EEELi0EEEPj
+Args:            
+  - String:          'Inlining function '''
+  - Callee:          'axis_cp_network_to_mem(hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, ap_uint<1> (*) [6])'
+    DebugLoc:        { File: src/snn_izhikevich_axi.h, Line: 9, Column: 0 }
+  - String:          ''' into '''
+  - Caller:          'hls_snn_initialize(hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, unsigned int*)'
+    DebugLoc:        { File: src/snn_izhikevich_top.cpp, Line: 28, Column: 0 }
+  - String:          ''''
+...
+--- !Passed
+Pass:            reflow-inliner
+Name:            AutoInline
+DebugLoc:        { File: src/snn_izhikevich.h, Line: 230, Column: 0 }
+Function:        _Z16snn_process_stepPK7ap_uintILi1EEPA6_S1_PA6_fPfS7_RN3hls6streamINS8_4axisI6ap_intILi64EELm0ELm0ELm0EEELi0EEESF_SF_SF_PS_ILi64EE
+Args:            
+  - String:          'Inlining function '''
+  - Callee:          'snn_update_neuron_synapses(float const*, ap_uint<1> const*, float (*) [6])'
+    DebugLoc:        { File: src/snn_izhikevich.h, Line: 18, Column: 0 }
+  - String:          ''' into '''
+  - Caller:          'snn_process_step(ap_uint<1> const*, ap_uint<1> const (*) [6], float (*) [6], float*, float*, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, ap_uint<64>*)'
+    DebugLoc:        { File: src/snn_izhikevich.h, Line: 230, Column: 0 }
+  - String:          ''''
+...
+--- !Passed
+Pass:            reflow-inliner
+Name:            AutoInline
+DebugLoc:        { File: src/snn_izhikevich_top.cpp, Line: 53, Column: 0 }
+Function:        _Z20hls_snn_process_stepPjRN3hls6streamINS0_4axisI6ap_intILi64EELm0ELm0ELm0EEELi0EEES7_S7_S7_
+Args:            
+  - String:          'Inlining function '''
+  - Callee:          'axis_cp_inputs_to_mem(unsigned int*, ap_uint<1>*)'
+    DebugLoc:        { File: src/snn_izhikevich_axi.h, Line: 37, Column: 0 }
+  - String:          ''' into '''
+  - Caller:          'hls_snn_process_step(unsigned int*, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&)'
+    DebugLoc:        { File: src/snn_izhikevich_top.cpp, Line: 53, Column: 0 }
+  - String:          ''''
+...
+--- !Passed
+Pass:            reflow-inliner
+Name:            AutoInline
+DebugLoc:        { File: src/snn_izhikevich_top.cpp, Line: 53, Column: 0 }
+Function:        _Z20hls_snn_process_stepPjRN3hls6streamINS0_4axisI6ap_intILi64EELm0ELm0ELm0EEELi0EEES7_S7_S7_
+Args:            
+  - String:          'Inlining function '''
+  - Callee:          'snn_process_step(ap_uint<1> const*, ap_uint<1> const (*) [6], float (*) [6], float*, float*, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, ap_uint<64>*)'
+    DebugLoc:        { File: src/snn_izhikevich.h, Line: 230, Column: 0 }
+  - String:          ''' into '''
+  - Caller:          'hls_snn_process_step(unsigned int*, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&)'
+    DebugLoc:        { File: src/snn_izhikevich_top.cpp, Line: 53, Column: 0 }
+  - String:          ''''
+...
+--- !Passed
+Pass:            reflow-inliner
+Name:            AutoInline
+DebugLoc:        { File: src/snn_izhikevich_top.cpp, Line: 72, Column: 0 }
+Function:        _Z17hls_snn_izikevich7ap_uintILi1EEPjS1_RN3hls6streamINS2_4axisI6ap_intILi64EELm0ELm0ELm0EEELi0EEES9_S9_S9_S9_
+Args:            
+  - String:          'Inlining function '''
+  - Callee:          'hls_snn_initialize(hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, unsigned int*)'
+    DebugLoc:        { File: src/snn_izhikevich_top.cpp, Line: 28, Column: 0 }
+  - String:          ''' into '''
+  - Caller:          'hls_snn_izikevich(ap_uint<1>, unsigned int*, unsigned int*, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&)'
+    DebugLoc:        { File: src/snn_izhikevich_top.cpp, Line: 72, Column: 0 }
+  - String:          ''''
+...
+--- !Passed
+Pass:            reflow-inliner
+Name:            AutoInline
+DebugLoc:        { File: src/snn_izhikevich_top.cpp, Line: 72, Column: 0 }
+Function:        _Z17hls_snn_izikevich7ap_uintILi1EEPjS1_RN3hls6streamINS2_4axisI6ap_intILi64EELm0ELm0ELm0EEELi0EEES9_S9_S9_S9_
+Args:            
+  - String:          'Inlining function '''
+  - Callee:          'hls_snn_process_step(unsigned int*, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&)'
+    DebugLoc:        { File: src/snn_izhikevich_top.cpp, Line: 53, Column: 0 }
+  - String:          ''' into '''
+  - Caller:          'hls_snn_izikevich(ap_uint<1>, unsigned int*, unsigned int*, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&)'
+    DebugLoc:        { File: src/snn_izhikevich_top.cpp, Line: 72, Column: 0 }
+  - String:          ''''
+...
+--- !Passed
+Pass:            reflow-inliner
+Name:            AutoInline
+DebugLoc:        { File: src/snn_izhikevich_top.cpp, Line: 72, Column: 0 }
+Function:        _Z17hls_snn_izikevich7ap_uintILi1EEPjS1_RN3hls6streamINS2_4axisI6ap_intILi64EELm0ELm0ELm0EEELi0EEES9_S9_S9_S9_
+Args:            
+  - String:          'Inlining function '''
+  - Callee:          'axis_cp_output_to_stream(hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, float*, unsigned int*, ap_uint<64>*)'
+    DebugLoc:        { File: src/snn_izhikevich_axi.h, Line: 65, Column: 0 }
+  - String:          ''' into '''
+  - Caller:          'hls_snn_izikevich(ap_uint<1>, unsigned int*, unsigned int*, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&)'
+    DebugLoc:        { File: src/snn_izhikevich_top.cpp, Line: 72, Column: 0 }
+  - String:          ''''
+...
+--- !Passed
+Pass:            reflow-array-partition
+Name:            ArrayXform
+DebugLoc:        { File: src/snn_izhikevich.h, Line: 143, Column: 0 }
+Function:        _Z29snn_get_synaptic_conductancesPA6_K7ap_uintILi1EEPA6_KfPfS7_RN3hls6streamINS8_4axisI6ap_intILi64EELm0ELm0ELm0EEELi0EEESF_SF_SF_PS_ILi64EE
+Args:            
+  - String:          'Applying '
+  - String:          array_partition
+  - String:          ' to '''
+  - UOName:          _ZZ29snn_get_synaptic_conductancesPA6_K7ap_uintILi1EEPA6_KfPfS7_RN3hls6streamINS8_4axisI6ap_intILi64EELm0ELm0ELm0EEELi0EEESF_SF_SF_PS_ILi64EEE13synapse_cache
+  - String:          ''':'
+  - String:          ' '
+  - Mode:            Cyclic
+  - String:          ' partitioning'
+  - String:          ' with factor '
+  - Factor:          '10'
+  - String:          ' on dimension '
+  - Dim:             '1'
+  - String:          .
+...
+--- !Passed
+Pass:            reflow-array-partition
+Name:            ArrayXform
+DebugLoc:        { File: src/snn_izhikevich.h, Line: 144, Column: 0 }
+Function:        _Z29snn_get_synaptic_conductancesPA6_K7ap_uintILi1EEPA6_KfPfS7_RN3hls6streamINS8_4axisI6ap_intILi64EELm0ELm0ELm0EEELi0EEESF_SF_SF_PS_ILi64EE
+Args:            
+  - String:          'Applying '
+  - String:          array_partition
+  - String:          ' to '''
+  - UOName:          _ZZ29snn_get_synaptic_conductancesPA6_K7ap_uintILi1EEPA6_KfPfS7_RN3hls6streamINS8_4axisI6ap_intILi64EELm0ELm0ELm0EEELi0EEESF_SF_SF_PS_ILi64EEE13synapse_fetch
+  - String:          ''':'
+  - String:          ' '
+  - Mode:            Cyclic
+  - String:          ' partitioning'
+  - String:          ' with factor '
+  - Factor:          '10'
+  - String:          ' on dimension '
+  - Dim:             '1'
+  - String:          .
+...
+--- !Passed
+Pass:            reflow-array-reshape
+Name:            ArrayXform
+DebugLoc:        { File: src/snn_izhikevich_top.cpp, Line: 13, Column: 0 }
+Function:        _Z17hls_snn_izikevich7ap_uintILi1EEPjS1_RN3hls6streamINS2_4axisI6ap_intILi64EELm0ELm0ELm0EEELi0EEES9_S9_S9_S9_
+Args:            
+  - String:          'Applying '
+  - String:          array_reshape
+  - String:          ' to '''
+  - UOName:          _ZL15neuron_type_mem
+  - String:          ''':'
+  - String:          ' '
+  - Mode:            Complete
+  - String:          ' reshaping'
+  - String:          ' on dimension '
+  - Dim:             '2'
+  - String:          .
+...

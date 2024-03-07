@@ -2,8 +2,6 @@
 #define _SNN_NETWORK_DEFS_H
 
 #include "snn_config.h"
-#include "snn_types.h"
-#include "snn_network.h"
 
 
 #if APP_TYPE == APP_RANDOM

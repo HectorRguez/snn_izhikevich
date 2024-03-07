@@ -25,6 +25,10 @@
  *	   (HLS Block)	        Interconnect & DMAs	            System           *
  *                                                                           *
  *****************************************************************************/
+// Run type's options
+#ifndef RUN_TYPE
+#define RUN_TYPE		TYPE_HLS
+#endif
 
 /* Set in the main entry script the RUN_TYPE to configure type of application to build */
 #ifndef RUN_TYPE

@@ -1,0 +1,217 @@
+{
+  "0": {
+    "basicblocks": 4,
+    "calls": "13 12 2",
+    "file": "snn_izhikevich_top.cpp",
+    "fileloc": 64,
+    "instructions": 28,
+    "loads": {
+      "L": 1
+    },
+    "name": "hls_snn_izikevich",
+    "stores": {
+      "L": 1
+    },
+    "total_instructions": 2425
+  },
+  "1": {
+    "basicblocks": 37,
+    "calls": "7 16 8",
+    "file": "snn_izhikevich.h",
+    "fileloc": 128,
+    "instructions": 168,
+    "loads": {
+      "G": 2,
+      "L": 5
+    },
+    "name": "snn_get_synaptic_conductances",
+    "stores": {
+      "G": 3,
+      "L": 2
+    },
+    "total_instructions": 1503
+  },
+  "10": {
+    "basicblocks": 4,
+    "calls": "",
+    "file": "snn_izhikevich_top.cpp",
+    "fileloc": 10,
+    "instructions": 9,
+    "name": "__cxx_global_var_init",
+    "total_instructions": 16
+  },
+  "11": {
+    "basicblocks": 1,
+    "calls": "3 1",
+    "file": "snn_izhikevich.h",
+    "fileloc": 220,
+    "instructions": 3,
+    "name": "snn_process_step",
+    "total_instructions": 1594
+  },
+  "12": {
+    "basicblocks": 1,
+    "calls": "15 11",
+    "file": "snn_izhikevich_top.cpp",
+    "fileloc": 48,
+    "instructions": 3,
+    "name": "hls_snn_process_step",
+    "total_instructions": 1715
+  },
+  "13": {
+    "basicblocks": 13,
+    "calls": "14",
+    "file": "snn_izhikevich_top.cpp",
+    "fileloc": 28,
+    "instructions": 32,
+    "loads": {
+      "L": 1
+    },
+    "name": "hls_snn_initialize",
+    "stores": {
+      "G": 3
+    },
+    "total_instructions": 267
+  },
+  "14": {
+    "basicblocks": 18,
+    "calls": "",
+    "file": "snn_izhikevich_axi.h",
+    "fileloc": 7,
+    "instructions": 75,
+    "loads": {
+      "L": 2
+    },
+    "name": "axis_cp_network_to_mem",
+    "stores": {
+      "L": 2
+    },
+    "total_instructions": 235
+  },
+  "15": {
+    "basicblocks": 15,
+    "calls": "",
+    "file": "snn_izhikevich_axi.h",
+    "fileloc": 35,
+    "instructions": 59,
+    "loads": {
+      "L": 3
+    },
+    "name": "axis_cp_inputs_to_mem",
+    "stores": {
+      "L": 2
+    },
+    "total_instructions": 118
+  },
+  "16": {
+    "basicblocks": 1,
+    "calls": "",
+    "file": "snn_types.h",
+    "fileloc": 94,
+    "instructions": 10,
+    "loads": {
+      "L": 1
+    },
+    "name": "uint32_to_float32",
+    "stores": {
+      "L": 1
+    },
+    "total_instructions": 10
+  },
+  "2": {
+    "basicblocks": 11,
+    "calls": "9",
+    "file": "snn_izhikevich_axi.h",
+    "fileloc": 61,
+    "instructions": 90,
+    "loads": {
+      "L": 8
+    },
+    "name": "axis_cp_output_to_stream",
+    "stores": {
+      "L": 4
+    },
+    "total_instructions": 372
+  },
+  "3": {
+    "basicblocks": 19,
+    "calls": "",
+    "file": "snn_izhikevich.h",
+    "fileloc": 15,
+    "instructions": 62,
+    "loads": {
+      "L": 2
+    },
+    "name": "snn_update_neuron_synapses",
+    "stores": {
+      "L": 3
+    },
+    "total_instructions": 88
+  },
+  "4": {
+    "basicblocks": 1,
+    "calls": "10 6 5",
+    "file": "snn_izhikevich_top.pp.0.cpp",
+    "fileloc": 0,
+    "instructions": 4,
+    "name": "",
+    "total_instructions": 59
+  },
+  "5": {
+    "basicblocks": 4,
+    "calls": "",
+    "file": "snn_izhikevich_top.cpp",
+    "fileloc": 22,
+    "instructions": 9,
+    "name": "__cxx_global_var_init.2",
+    "total_instructions": 16
+  },
+  "6": {
+    "basicblocks": 7,
+    "calls": "",
+    "file": "snn_izhikevich_top.cpp",
+    "fileloc": 13,
+    "instructions": 16,
+    "name": "__cxx_global_var_init.1",
+    "total_instructions": 23
+  },
+  "7": {
+    "basicblocks": 7,
+    "calls": "",
+    "file": "snn_izhikevich.h",
+    "fileloc": 98,
+    "instructions": 126,
+    "name": "get_weight_line",
+    "total_instructions": 1131
+  },
+  "8": {
+    "basicblocks": 9,
+    "calls": "",
+    "file": "snn_izhikevich.h",
+    "fileloc": 45,
+    "instructions": 81,
+    "loads": {
+      "L": 2
+    },
+    "name": "snn_update_izikevich_equations_by_neuron",
+    "stores": {
+      "L": 4
+    },
+    "total_instructions": 91
+  },
+  "9": {
+    "basicblocks": 1,
+    "calls": "",
+    "file": "snn_types.h",
+    "fileloc": 100,
+    "instructions": 14,
+    "loads": {
+      "L": 1
+    },
+    "name": "float32_to_uint64",
+    "stores": {
+      "L": 2
+    },
+    "total_instructions": 14
+  }
+}
