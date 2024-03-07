@@ -1,9 +1,8 @@
 #ifndef _SNN_TYPES_H_
 #define _SNN_TYPES_H_
 
-#include "snn_config.h"
+#include "snn_network_defs.h"
 
-#ifdef RUN_HW_VERSION
 #define AP_INT_MAX_W 				7168 // 7K
 #include "ap_int.h"
 #include "stdint.h"
@@ -13,15 +12,11 @@
 #if PRECISION_TYPE == FIXED_POINT
 #include "ap_fixed.h"
 #endif
-#endif /* RUN_HW_VERSION */
 
 
 /*****************************************************************************/
 /*                            Type's Definitions                             */
 /*****************************************************************************/
-
-#ifdef RUN_HW_VERSION
-
 // Fixed sizes
 /*#define VU_WIDTH		32
 #define VU_INT			10
@@ -43,7 +38,7 @@ typedef float 				vu_dat_t;
 typedef ap_uint<1>			uint1_t;
 typedef ap_uint<2>			uint2_t;
 typedef ap_uint<3>			uint3_t;
-#endif
+
 typedef float 				float32_t;
 typedef short 				int16_t;
 typedef unsigned short 		uint16_t;
@@ -62,23 +57,11 @@ typedef float vu_dat_sw_t;
 /*                            Classes and Utilities                          */
 /*****************************************************************************/
 
-#ifdef RUN_HW_VERSION
 // AXI-64 object
 typedef ap_axis <64,0,0,0> axis64_t; // DATA WIDTH 64, WITH NO OPTIONAL SIGNALS
 
 // HLS stream
-#ifdef SIM_NATIVE_HLS_STREAM
 typedef hls::stream<axis64_t> hls_stream_64_t;
-#else
-class hls_stream_64_t {
-  public:
-	uint64_t wr_idx, rd_idx;
-	uint64_t *ptr;
-	hls_stream_64_t(uint64_t *addr) { wr_idx = 0; rd_idx = 0; ptr = addr; }
-	ap_axis <64,1, 1, 1> read() { axis64_t data; data.data = ptr[rd_idx++]; return data; }
-	void write(ap_axis <64,1, 1, 1> value) { ptr[wr_idx++] = value.data; }
-};
-#endif
 
 union float32_uint32_c {
 	uint32_t  u32data;
@@ -128,7 +111,5 @@ INLINE uint64_t uint32_to_uint64(uint32_t value1, uint32_t value2) {
 #elif PRECISION_TYPE == FLOATING_POINT
 #define norm_weight(weight)	(weight)
 #endif /* PRECISION_TYPE */
-
-#endif /* RUN_HW_VERSION */
 
 #endif /* _SNN_TYPES_H_ */
