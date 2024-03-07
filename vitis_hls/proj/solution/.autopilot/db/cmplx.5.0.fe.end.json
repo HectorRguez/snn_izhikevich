@@ -1,0 +1,148 @@
+{
+    "0": {
+        "name": "hls_snn_izikevich",
+        "file": "snn_izhikevich_top.cpp",
+        "fileloc": "64",
+        "instructions": "78",
+        "total_instructions": "605",
+        "calls": "5 3 7 4 1",
+        "basicblocks": "4",
+        "loads": {
+            "G": "5",
+            "T": "2"
+        },
+        "stores": {
+            "G": "2"
+        }
+    },
+    "1": {
+        "name": "snn_get_synaptic_conductances",
+        "file": "snn_izhikevich.h",
+        "fileloc": "128",
+        "instructions": "14",
+        "total_instructions": "347",
+        "calls": "6 2",
+        "basicblocks": "1",
+        "loads": {
+            "G": "2"
+        }
+    },
+    "2": {
+        "name": "snn_get_synaptic_conductances_Pipeline_synaptic_conductances_VITIS_LOOP_154_1",
+        "file": "snn_izhikevich.h",
+        "fileloc": "0",
+        "instructions": "302",
+        "total_instructions": "302",
+        "calls": "",
+        "basicblocks": "16",
+        "loads": {
+            "G": "16",
+            "L": "6"
+        },
+        "stores": {
+            "G": "16",
+            "L": "12"
+        },
+        "loops": {
+            "L": "1"
+        }
+    },
+    "3": {
+        "name": "hls_snn_izikevich_Pipeline_VITIS_LOOP_40_2",
+        "file": "snn_izhikevich_top.cpp",
+        "fileloc": "0",
+        "instructions": "18",
+        "total_instructions": "18",
+        "calls": "",
+        "basicblocks": "4",
+        "loads": {
+            "L": "1"
+        },
+        "stores": {
+            "G": "2",
+            "L": "2"
+        },
+        "loops": {
+            "L": "1"
+        }
+    },
+    "4": {
+        "name": "hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1",
+        "file": "snn_izhikevich_top.cpp",
+        "fileloc": "0",
+        "instructions": "79",
+        "total_instructions": "79",
+        "calls": "",
+        "basicblocks": "4",
+        "loads": {
+            "G": "3",
+            "L": "5"
+        },
+        "stores": {
+            "G": "1",
+            "L": "10"
+        },
+        "loops": {
+            "L": "1"
+        }
+    },
+    "5": {
+        "name": "hls_snn_izikevich_Pipeline_VITIS_LOOP_16_2",
+        "file": "snn_izhikevich_top.cpp",
+        "fileloc": "0",
+        "instructions": "54",
+        "total_instructions": "54",
+        "calls": "",
+        "basicblocks": "11",
+        "loads": {
+            "G": "2",
+            "L": "5"
+        },
+        "stores": {
+            "G": "2",
+            "L": "7"
+        },
+        "loops": {
+            "L": "1"
+        }
+    },
+    "6": {
+        "name": "snn_get_synaptic_conductances_Pipeline_input_synapses_cache",
+        "file": "snn_izhikevich.h",
+        "fileloc": "0",
+        "instructions": "31",
+        "total_instructions": "31",
+        "calls": "",
+        "basicblocks": "11",
+        "loads": {
+            "G": "1",
+            "L": "1"
+        },
+        "stores": {
+            "G": "6",
+            "L": "2"
+        },
+        "loops": {
+            "L": "1"
+        }
+    },
+    "7": {
+        "name": "hls_snn_izikevich_Pipeline_VITIS_LOOP_44_2",
+        "file": "snn_izhikevich_top.cpp",
+        "fileloc": "0",
+        "instructions": "29",
+        "total_instructions": "29",
+        "calls": "",
+        "basicblocks": "6",
+        "loads": {
+            "L": "2"
+        },
+        "stores": {
+            "G": "1",
+            "L": "4"
+        },
+        "loops": {
+            "L": "1"
+        }
+    }
+}

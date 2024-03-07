@@ -1,7 +1,7 @@
 #ifndef _SNN_DEFS_H_
 #define _SNN_DEFS_H_
 
-#include "snn_network_defs.h"
+#include "../../network/snn_network_defs.h"
 
 #ifndef PRECISION_TYPE
 #error PRECISION_TYPE is undefined

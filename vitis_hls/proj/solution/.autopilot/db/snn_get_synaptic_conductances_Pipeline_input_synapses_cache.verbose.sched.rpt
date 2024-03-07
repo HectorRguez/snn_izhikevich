@@ -1,0 +1,158 @@
+
+
+================================================================
+== Vitis HLS Report for 'snn_get_synaptic_conductances_Pipeline_input_synapses_cache'
+================================================================
+* Date:           Thu Mar  7 19:18:24 2024
+
+* Version:        2023.1 (Build 3854077 on May  4 2023)
+* Project:        proj
+* Solution:       solution (Vivado IP Flow Target)
+* Product family: zynq
+* Target device:  xc7z020-clg400-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+----------+----------+------------+
+    |  Clock |  Target  | Estimated| Uncertainty|
+    +--------+----------+----------+------------+
+    |ap_clk  |  40.00 ns|  4.057 ns|    10.80 ns|
+    +--------+----------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+---------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline|
+    |   min   |   max   |    min   |    max   | min | max |   Type  |
+    +---------+---------+----------+----------+-----+-----+---------+
+    |        8|        8|  0.320 us|  0.320 us|    8|    8|       no|
+    +---------+---------+----------+----------+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +------------------------+---------+---------+----------+-----------+-----------+------+----------+
+        |                        |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
+        |        Loop Name       |   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
+        +------------------------+---------+---------+----------+-----------+-----------+------+----------+
+        |- input_synapses_cache  |        6|        6|         2|          1|          1|     6|       yes|
+        +------------------------+---------+---------+----------+-----------+-----------+------+----------+
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 0
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 2
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
++ Individual pipeline summary: 
+  * Pipeline-0: initiation interval (II) = 1, depth = 2
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 2
+* Pipeline : 1
+  Pipeline-0 : II = 1, D = 2, States = { 1 2 }
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 2 
+2 --> 
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 4.05>
+ST_1 : Operation 5 [1/1] (0.00ns)   --->   "%y = alloca i32 1"   --->   Operation 5 'alloca' 'y' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 6 [1/1] (1.58ns)   --->   "%store_ln0 = store i3 0, i3 %y"   --->   Operation 6 'store' 'store_ln0' <Predicate = true> <Delay = 1.58>
+ST_1 : Operation 7 [1/1] (0.00ns)   --->   "%br_ln0 = br void %for.inc"   --->   Operation 7 'br' 'br_ln0' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 8 [1/1] (0.00ns)   --->   "%y_1 = load i3 %y" [src/snn_izhikevich.h:150]   --->   Operation 8 'load' 'y_1' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 9 [1/1] (0.00ns)   --->   "%specpipeline_ln0 = specpipeline void @_ssdm_op_SpecPipeline, i32 4294967295, i32 0, i32 1, i32 0, void @p_str"   --->   Operation 9 'specpipeline' 'specpipeline_ln0' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 10 [1/1] (1.65ns)   --->   "%icmp_ln150 = icmp_eq  i3 %y_1, i3 6" [src/snn_izhikevich.h:150]   --->   Operation 10 'icmp' 'icmp_ln150' <Predicate = true> <Delay = 1.65> <CoreInst = "Cmp">   --->   Core 9 'Cmp' <Latency = 0> <II = 1> <Delay = 1.65> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 11 [1/1] (1.65ns)   --->   "%add_ln150 = add i3 %y_1, i3 1" [src/snn_izhikevich.h:150]   --->   Operation 11 'add' 'add_ln150' <Predicate = true> <Delay = 1.65> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.65> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 12 [1/1] (0.00ns)   --->   "%br_ln150 = br i1 %icmp_ln150, void %for.inc.split, void %for.body9.preheader.exitStub" [src/snn_izhikevich.h:150]   --->   Operation 12 'br' 'br_ln150' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 13 [1/1] (0.00ns)   --->   "%zext_ln151 = zext i3 %y_1" [src/snn_izhikevich.h:151]   --->   Operation 13 'zext' 'zext_ln151' <Predicate = (!icmp_ln150)> <Delay = 0.00>
+ST_1 : Operation 14 [1/1] (1.73ns)   --->   "%add_ln151 = add i4 %zext_ln151, i4 6" [src/snn_izhikevich.h:151]   --->   Operation 14 'add' 'add_ln151' <Predicate = (!icmp_ln150)> <Delay = 1.73> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.73> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 15 [1/1] (0.00ns)   --->   "%zext_ln151_1 = zext i4 %add_ln151" [src/snn_izhikevich.h:151]   --->   Operation 15 'zext' 'zext_ln151_1' <Predicate = (!icmp_ln150)> <Delay = 0.00>
+ST_1 : Operation 16 [1/1] (0.00ns)   --->   "%synapse_s_mem_addr = getelementptr i32 %synapse_s_mem, i64 0, i64 %zext_ln151_1" [src/snn_izhikevich.h:151]   --->   Operation 16 'getelementptr' 'synapse_s_mem_addr' <Predicate = (!icmp_ln150)> <Delay = 0.00>
+ST_1 : Operation 17 [2/2] (2.32ns)   --->   "%synapse_s_mem_load = load i4 %synapse_s_mem_addr" [src/snn_izhikevich.h:151]   --->   Operation 17 'load' 'synapse_s_mem_load' <Predicate = (!icmp_ln150)> <Delay = 2.32> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 12> <RAM>
+ST_1 : Operation 18 [1/1] (1.87ns)   --->   "%switch_ln151 = switch i3 %y_1, void %arrayidx3.case.5, i3 0, void %arrayidx3.case.0, i3 1, void %arrayidx3.case.1, i3 2, void %arrayidx3.case.2, i3 3, void %arrayidx3.case.3, i3 4, void %arrayidx3.case.4" [src/snn_izhikevich.h:151]   --->   Operation 18 'switch' 'switch_ln151' <Predicate = (!icmp_ln150)> <Delay = 1.87>
+ST_1 : Operation 19 [1/1] (1.58ns)   --->   "%store_ln150 = store i3 %add_ln150, i3 %y" [src/snn_izhikevich.h:150]   --->   Operation 19 'store' 'store_ln150' <Predicate = (!icmp_ln150)> <Delay = 1.58>
+ST_1 : Operation 20 [1/1] (0.00ns)   --->   "%br_ln150 = br void %for.inc" [src/snn_izhikevich.h:150]   --->   Operation 20 'br' 'br_ln150' <Predicate = (!icmp_ln150)> <Delay = 0.00>
+ST_1 : Operation 36 [1/1] (0.00ns)   --->   "%ret_ln0 = ret"   --->   Operation 36 'ret' 'ret_ln0' <Predicate = (icmp_ln150)> <Delay = 0.00>
+
+State 2 <SV = 1> <Delay = 2.32>
+ST_2 : Operation 21 [1/1] (0.00ns)   --->   "%speclooptripcount_ln140 = speclooptripcount void @_ssdm_op_SpecLoopTripCount, i64 6, i64 6, i64 6" [src/snn_izhikevich.h:140]   --->   Operation 21 'speclooptripcount' 'speclooptripcount_ln140' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 22 [1/1] (0.00ns)   --->   "%specloopname_ln150 = specloopname void @_ssdm_op_SpecLoopName, void @empty_28" [src/snn_izhikevich.h:150]   --->   Operation 22 'specloopname' 'specloopname_ln150' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 23 [1/2] (2.32ns)   --->   "%synapse_s_mem_load = load i4 %synapse_s_mem_addr" [src/snn_izhikevich.h:151]   --->   Operation 23 'load' 'synapse_s_mem_load' <Predicate = true> <Delay = 2.32> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 12> <RAM>
+ST_2 : Operation 24 [1/1] (0.00ns)   --->   "%store_ln151 = store i32 %synapse_s_mem_load, i32 %snn_get_synaptic_conductances_ap_uint_const_6_float_const_6_float_flo_6" [src/snn_izhikevich.h:151]   --->   Operation 24 'store' 'store_ln151' <Predicate = (y_1 == 4)> <Delay = 0.00>
+ST_2 : Operation 25 [1/1] (0.00ns)   --->   "%br_ln151 = br void %arrayidx3.exit" [src/snn_izhikevich.h:151]   --->   Operation 25 'br' 'br_ln151' <Predicate = (y_1 == 4)> <Delay = 0.00>
+ST_2 : Operation 26 [1/1] (0.00ns)   --->   "%store_ln151 = store i32 %synapse_s_mem_load, i32 %snn_get_synaptic_conductances_ap_uint_const_6_float_const_6_float_flo_7" [src/snn_izhikevich.h:151]   --->   Operation 26 'store' 'store_ln151' <Predicate = (y_1 == 3)> <Delay = 0.00>
+ST_2 : Operation 27 [1/1] (0.00ns)   --->   "%br_ln151 = br void %arrayidx3.exit" [src/snn_izhikevich.h:151]   --->   Operation 27 'br' 'br_ln151' <Predicate = (y_1 == 3)> <Delay = 0.00>
+ST_2 : Operation 28 [1/1] (0.00ns)   --->   "%store_ln151 = store i32 %synapse_s_mem_load, i32 %snn_get_synaptic_conductances_ap_uint_const_6_float_const_6_float_flo_8" [src/snn_izhikevich.h:151]   --->   Operation 28 'store' 'store_ln151' <Predicate = (y_1 == 2)> <Delay = 0.00>
+ST_2 : Operation 29 [1/1] (0.00ns)   --->   "%br_ln151 = br void %arrayidx3.exit" [src/snn_izhikevich.h:151]   --->   Operation 29 'br' 'br_ln151' <Predicate = (y_1 == 2)> <Delay = 0.00>
+ST_2 : Operation 30 [1/1] (0.00ns)   --->   "%store_ln151 = store i32 %synapse_s_mem_load, i32 %snn_get_synaptic_conductances_ap_uint_const_6_float_const_6_float_flo_9" [src/snn_izhikevich.h:151]   --->   Operation 30 'store' 'store_ln151' <Predicate = (y_1 == 1)> <Delay = 0.00>
+ST_2 : Operation 31 [1/1] (0.00ns)   --->   "%br_ln151 = br void %arrayidx3.exit" [src/snn_izhikevich.h:151]   --->   Operation 31 'br' 'br_ln151' <Predicate = (y_1 == 1)> <Delay = 0.00>
+ST_2 : Operation 32 [1/1] (0.00ns)   --->   "%store_ln151 = store i32 %synapse_s_mem_load, i32 %snn_get_synaptic_conductances_ap_uint_const_6_float_const_6_float_flo_11" [src/snn_izhikevich.h:151]   --->   Operation 32 'store' 'store_ln151' <Predicate = (y_1 == 0)> <Delay = 0.00>
+ST_2 : Operation 33 [1/1] (0.00ns)   --->   "%br_ln151 = br void %arrayidx3.exit" [src/snn_izhikevich.h:151]   --->   Operation 33 'br' 'br_ln151' <Predicate = (y_1 == 0)> <Delay = 0.00>
+ST_2 : Operation 34 [1/1] (0.00ns)   --->   "%store_ln151 = store i32 %synapse_s_mem_load, i32 %snn_get_synaptic_conductances_ap_uint_const_6_float_const_6_float_flo_10" [src/snn_izhikevich.h:151]   --->   Operation 34 'store' 'store_ln151' <Predicate = (y_1 == 7) | (y_1 == 6) | (y_1 == 5)> <Delay = 0.00>
+ST_2 : Operation 35 [1/1] (0.00ns)   --->   "%br_ln151 = br void %arrayidx3.exit" [src/snn_izhikevich.h:151]   --->   Operation 35 'br' 'br_ln151' <Predicate = (y_1 == 7) | (y_1 == 6) | (y_1 == 5)> <Delay = 0.00>
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 40.000ns, clock uncertainty: 10.800ns.
+
+ <State 1>: 4.057ns
+The critical path consists of the following:
+	'alloca' operation ('y') [8]  (0.000 ns)
+	'load' operation ('y', src/snn_izhikevich.h:150) on local variable 'y' [12]  (0.000 ns)
+	'add' operation ('add_ln151', src/snn_izhikevich.h:151) [19]  (1.735 ns)
+	'getelementptr' operation ('synapse_s_mem_addr', src/snn_izhikevich.h:151) [21]  (0.000 ns)
+	'load' operation ('synapse_s_mem_load', src/snn_izhikevich.h:151) on array 'synapse_s_mem' [24]  (2.322 ns)
+
+ <State 2>: 2.322ns
+The critical path consists of the following:
+	'load' operation ('synapse_s_mem_load', src/snn_izhikevich.h:151) on array 'synapse_s_mem' [24]  (2.322 ns)
+	'store' operation ('store_ln151', src/snn_izhikevich.h:151) of variable 'synapse_s_mem_load', src/snn_izhikevich.h:151 on static variable 'snn_get_synaptic_conductances_ap_uint_const_6_float_const_6_float_flo_10' [42]  (0.000 ns)
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

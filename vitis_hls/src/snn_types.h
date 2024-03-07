@@ -1,7 +1,7 @@
 #ifndef _SNN_TYPES_H_
 #define _SNN_TYPES_H_
 
-#include "snn_network_defs.h"
+#include "../../network/snn_network_defs.h"
 
 #define AP_INT_MAX_W 				7168 // 7K
 #include "ap_int.h"

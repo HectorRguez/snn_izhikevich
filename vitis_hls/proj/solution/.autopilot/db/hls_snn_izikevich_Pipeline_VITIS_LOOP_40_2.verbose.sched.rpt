@@ -1,0 +1,135 @@
+
+
+================================================================
+== Vitis HLS Report for 'hls_snn_izikevich_Pipeline_VITIS_LOOP_40_2'
+================================================================
+* Date:           Thu Mar  7 19:18:22 2024
+
+* Version:        2023.1 (Build 3854077 on May  4 2023)
+* Project:        proj
+* Solution:       solution (Vivado IP Flow Target)
+* Product family: zynq
+* Target device:  xc7z020-clg400-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+----------+----------+------------+
+    |  Clock |  Target  | Estimated| Uncertainty|
+    +--------+----------+----------+------------+
+    |ap_clk  |  40.00 ns|  4.057 ns|    10.80 ns|
+    +--------+----------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+---------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline|
+    |   min   |   max   |    min   |    max   | min | max |   Type  |
+    +---------+---------+----------+----------+-----+-----+---------+
+    |       14|       14|  0.560 us|  0.560 us|   14|   14|       no|
+    +---------+---------+----------+----------+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +-------------------+---------+---------+----------+-----------+-----------+------+----------+
+        |                   |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
+        |     Loop Name     |   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
+        +-------------------+---------+---------+----------+-----------+-----------+------+----------+
+        |- VITIS_LOOP_40_2  |       12|       12|         1|          1|          1|    12|       yes|
+        +-------------------+---------+---------+----------+-----------+-----------+------+----------+
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 0
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 2
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
++ Individual pipeline summary: 
+  * Pipeline-0: initiation interval (II) = 1, depth = 1
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 1
+* Pipeline : 1
+  Pipeline-0 : II = 1, D = 1, States = { 1 }
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 4.05>
+ST_1 : Operation 4 [1/1] (0.00ns)   --->   "%x_2 = alloca i32 1"   --->   Operation 4 'alloca' 'x_2' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 5 [1/1] (1.58ns)   --->   "%store_ln0 = store i4 0, i4 %x_2"   --->   Operation 5 'store' 'store_ln0' <Predicate = true> <Delay = 1.58>
+ST_1 : Operation 6 [1/1] (0.00ns)   --->   "%br_ln0 = br void %for.inc12.i"   --->   Operation 6 'br' 'br_ln0' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 7 [1/1] (0.00ns)   --->   "%x = load i4 %x_2" [src/snn_izhikevich_top.cpp:40->src/snn_izhikevich_top.cpp:86]   --->   Operation 7 'load' 'x' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 8 [1/1] (1.73ns)   --->   "%icmp_ln40 = icmp_eq  i4 %x, i4 12" [src/snn_izhikevich_top.cpp:40->src/snn_izhikevich_top.cpp:86]   --->   Operation 8 'icmp' 'icmp_ln40' <Predicate = true> <Delay = 1.73> <CoreInst = "Cmp">   --->   Core 9 'Cmp' <Latency = 0> <II = 1> <Delay = 1.73> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 9 [1/1] (1.73ns)   --->   "%add_ln40 = add i4 %x, i4 1" [src/snn_izhikevich_top.cpp:40->src/snn_izhikevich_top.cpp:86]   --->   Operation 9 'add' 'add_ln40' <Predicate = true> <Delay = 1.73> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 1.73> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 10 [1/1] (0.00ns)   --->   "%br_ln40 = br i1 %icmp_ln40, void %for.inc12.i.split, void %if.end.loopexit.exitStub" [src/snn_izhikevich_top.cpp:40->src/snn_izhikevich_top.cpp:86]   --->   Operation 10 'br' 'br_ln40' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 11 [1/1] (0.00ns)   --->   "%zext_ln40 = zext i4 %x" [src/snn_izhikevich_top.cpp:40->src/snn_izhikevich_top.cpp:86]   --->   Operation 11 'zext' 'zext_ln40' <Predicate = (!icmp_ln40)> <Delay = 0.00>
+ST_1 : Operation 12 [1/1] (0.00ns)   --->   "%specpipeline_ln41 = specpipeline void @_ssdm_op_SpecPipeline, i32 4294967295, i32 0, i32 0, i32 0, void @empty_22" [src/snn_izhikevich_top.cpp:41->src/snn_izhikevich_top.cpp:86]   --->   Operation 12 'specpipeline' 'specpipeline_ln41' <Predicate = (!icmp_ln40)> <Delay = 0.00>
+ST_1 : Operation 13 [1/1] (0.00ns)   --->   "%speclooptripcount_ln40 = speclooptripcount void @_ssdm_op_SpecLoopTripCount, i64 12, i64 12, i64 12" [src/snn_izhikevich_top.cpp:40->src/snn_izhikevich_top.cpp:86]   --->   Operation 13 'speclooptripcount' 'speclooptripcount_ln40' <Predicate = (!icmp_ln40)> <Delay = 0.00>
+ST_1 : Operation 14 [1/1] (0.00ns)   --->   "%specloopname_ln40 = specloopname void @_ssdm_op_SpecLoopName, void @empty_11" [src/snn_izhikevich_top.cpp:40->src/snn_izhikevich_top.cpp:86]   --->   Operation 14 'specloopname' 'specloopname_ln40' <Predicate = (!icmp_ln40)> <Delay = 0.00>
+ST_1 : Operation 15 [1/1] (0.00ns)   --->   "%v_mem_addr = getelementptr i32 %v_mem, i64 0, i64 %zext_ln40" [src/snn_izhikevich_top.cpp:42->src/snn_izhikevich_top.cpp:86]   --->   Operation 15 'getelementptr' 'v_mem_addr' <Predicate = (!icmp_ln40)> <Delay = 0.00>
+ST_1 : Operation 16 [1/1] (2.32ns)   --->   "%store_ln42 = store i32 -70, i4 %v_mem_addr" [src/snn_izhikevich_top.cpp:42->src/snn_izhikevich_top.cpp:86]   --->   Operation 16 'store' 'store_ln42' <Predicate = (!icmp_ln40)> <Delay = 2.32> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 12> <RAM>
+ST_1 : Operation 17 [1/1] (0.00ns)   --->   "%u_mem_addr = getelementptr i32 %u_mem, i64 0, i64 %zext_ln40" [src/snn_izhikevich_top.cpp:43->src/snn_izhikevich_top.cpp:86]   --->   Operation 17 'getelementptr' 'u_mem_addr' <Predicate = (!icmp_ln40)> <Delay = 0.00>
+ST_1 : Operation 18 [1/1] (2.32ns)   --->   "%store_ln43 = store i32 -14, i4 %u_mem_addr" [src/snn_izhikevich_top.cpp:43->src/snn_izhikevich_top.cpp:86]   --->   Operation 18 'store' 'store_ln43' <Predicate = (!icmp_ln40)> <Delay = 2.32> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 12> <RAM>
+ST_1 : Operation 19 [1/1] (1.58ns)   --->   "%store_ln40 = store i4 %add_ln40, i4 %x_2" [src/snn_izhikevich_top.cpp:40->src/snn_izhikevich_top.cpp:86]   --->   Operation 19 'store' 'store_ln40' <Predicate = (!icmp_ln40)> <Delay = 1.58>
+ST_1 : Operation 20 [1/1] (0.00ns)   --->   "%br_ln40 = br void %for.inc12.i" [src/snn_izhikevich_top.cpp:40->src/snn_izhikevich_top.cpp:86]   --->   Operation 20 'br' 'br_ln40' <Predicate = (!icmp_ln40)> <Delay = 0.00>
+ST_1 : Operation 21 [1/1] (0.00ns)   --->   "%ret_ln0 = ret"   --->   Operation 21 'ret' 'ret_ln0' <Predicate = (icmp_ln40)> <Delay = 0.00>
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 40.000ns, clock uncertainty: 10.800ns.
+
+ <State 1>: 4.057ns
+The critical path consists of the following:
+	'alloca' operation ('x') [3]  (0.000 ns)
+	'load' operation ('x', src/snn_izhikevich_top.cpp:40->src/snn_izhikevich_top.cpp:86) on local variable 'x' [7]  (0.000 ns)
+	'add' operation ('add_ln40', src/snn_izhikevich_top.cpp:40->src/snn_izhikevich_top.cpp:86) [9]  (1.735 ns)
+	'store' operation ('store_ln40', src/snn_izhikevich_top.cpp:40->src/snn_izhikevich_top.cpp:86) of variable 'add_ln40', src/snn_izhikevich_top.cpp:40->src/snn_izhikevich_top.cpp:86 on local variable 'x' [20]  (1.588 ns)
+	blocking operation 0.734 ns on control path)
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

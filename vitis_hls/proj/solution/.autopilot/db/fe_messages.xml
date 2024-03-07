@@ -1,0 +1,141 @@
+<xilinx:hls_fe_msgs>
+    <msg msg_groups="PRAGMA_INVALID" msg_id="207-5531" msg_severity="WARNING" msg_loc="src/snn_izhikevich.h:85:9" msg_body="'Resource pragma' is deprecated, use 'bind_op/bind_storage pragma' instead">
+        <args ClangWarningOption="ignored-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_INVALID" msg_id="207-5531" msg_severity="WARNING" msg_loc="src/snn_izhikevich.h:189:9" msg_body="'Resource pragma' is deprecated, use 'bind_op/bind_storage pragma' instead">
+        <args ClangWarningOption="ignored-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_INVALID" msg_id="207-5531" msg_severity="WARNING" msg_loc="src/snn_izhikevich.h:190:9" msg_body="'Resource pragma' is deprecated, use 'bind_op/bind_storage pragma' instead">
+        <args ClangWarningOption="ignored-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="src/snn_izhikevich.h:23:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="snn_update_neuron_synapses" ARG_PragmaIsValid="1" ARG_PragmaOptions="II=1" ARG_PragmaType="pipeline" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="src/snn_izhikevich.h:85:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="snn_update_izikevich_equations_by_neuron" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=new_u core=FAddSub_fulldsp latency=8" ARG_PragmaType="resource" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="src/snn_izhikevich.h:146:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="snn_get_synaptic_conductances" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=neuron_type complete dim=2" ARG_PragmaType="array_reshape" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="src/snn_izhikevich.h:147:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="snn_get_synaptic_conductances" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=synapse_fetch block factor=10 dim=1" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="src/snn_izhikevich.h:148:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="snn_get_synaptic_conductances" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=synapse_cache block factor=10 dim=1" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="src/snn_izhikevich.h:156:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="snn_get_synaptic_conductances" ARG_PragmaIsValid="1" ARG_PragmaOptions="II=7" ARG_PragmaType="pipeline" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="src/snn_izhikevich.h:189:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="snn_get_synaptic_conductances" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=sum_g_exh core=FAddSub_fulldsp latency=8" ARG_PragmaType="resource" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="src/snn_izhikevich.h:190:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="snn_get_synaptic_conductances" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=sum_g_inh core=FAddSub_fulldsp latency=8" ARG_PragmaType="resource" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="src/snn_izhikevich_axi.h:17:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="axis_cp_network_to_mem" ARG_PragmaIsValid="1" ARG_PragmaOptions="II=2" ARG_PragmaType="pipeline" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="src/snn_izhikevich_axi.h:46:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="axis_cp_inputs_to_mem" ARG_PragmaIsValid="1" ARG_PragmaOptions="II=2" ARG_PragmaType="pipeline" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="src/snn_izhikevich_top.cpp:35:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="hls_snn_initialize" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="src/snn_izhikevich_top.cpp:41:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="hls_snn_initialize" ARG_PragmaIsValid="1" ARG_PragmaType="pipeline" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/run_hls.tcl:27:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaContext="directive" ARG_PragmaFunction="hls_snn_izikevich" ARG_PragmaIsValid="1" ARG_PragmaOptions="name=hls_snn_izikevich" ARG_PragmaType="top" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="src/snn_izhikevich_top.cpp:74:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="hls_snn_izikevich" ARG_PragmaIsValid="1" ARG_PragmaOptions="s_axilite port=return bundle=control" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="src/snn_izhikevich_top.cpp:75:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="hls_snn_izikevich" ARG_PragmaIsValid="1" ARG_PragmaOptions="s_axilite port=state bundle=control" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="src/snn_izhikevich_top.cpp:76:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="hls_snn_izikevich" ARG_PragmaIsValid="1" ARG_PragmaOptions="s_axilite port=p_input bundle=control" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="src/snn_izhikevich_top.cpp:77:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="hls_snn_izikevich" ARG_PragmaIsValid="1" ARG_PragmaOptions="s_axilite port=output_indexes bundle=control" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="src/snn_izhikevich_top.cpp:78:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="hls_snn_izikevich" ARG_PragmaIsValid="1" ARG_PragmaOptions="axis port=input_stream0" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="src/snn_izhikevich_top.cpp:79:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="hls_snn_izikevich" ARG_PragmaIsValid="1" ARG_PragmaOptions="axis port=input_stream1" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="src/snn_izhikevich_top.cpp:80:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="hls_snn_izikevich" ARG_PragmaIsValid="1" ARG_PragmaOptions="axis port=input_stream2" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="src/snn_izhikevich_top.cpp:81:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="hls_snn_izikevich" ARG_PragmaIsValid="1" ARG_PragmaOptions="axis port=input_stream3" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="src/snn_izhikevich_top.cpp:82:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="hls_snn_izikevich" ARG_PragmaIsValid="1" ARG_PragmaOptions="axis port=output_stream" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="CODE_UNSUPPORTED" msg_id="214-131" msg_severity="INFO" msg_loc="src/snn_izhikevich.h:162:82" msg_body="Inlining function 'get_weight_line(hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;)' into 'snn_get_synaptic_conductances(ap_uint&lt;1&gt; const (*) [6], float const (*) [6], float*, float*, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, ap_uint&lt;64&gt;*)'">
+        <args Callee="get_weight_line(hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;)" Callee-DebugLoc="File src/snn_izhikevich.h Line 102 Column 0" Caller="snn_get_synaptic_conductances(ap_uint&lt;1&gt; const (*) [6], float const (*) [6], float*, float*, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, ap_uint&lt;64&gt;*)" Caller-DebugLoc="File src/snn_izhikevich.h Line 137 Column 0"/>
+    </msg>
+    <msg msg_groups="CODE_UNSUPPORTED" msg_id="214-131" msg_severity="INFO" msg_loc="src/snn_izhikevich.h:204:3" msg_body="Inlining function 'snn_update_izikevich_equations_by_neuron(unsigned int, ap_uint&lt;1&gt;, float, float, float*, float*)' into 'snn_get_synaptic_conductances(ap_uint&lt;1&gt; const (*) [6], float const (*) [6], float*, float*, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, ap_uint&lt;64&gt;*)'">
+        <args Callee="snn_update_izikevich_equations_by_neuron(unsigned int, ap_uint&lt;1&gt;, float, float, float*, float*)" Callee-DebugLoc="File src/snn_izhikevich.h Line 51 Column 0" Caller="snn_get_synaptic_conductances(ap_uint&lt;1&gt; const (*) [6], float const (*) [6], float*, float*, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, ap_uint&lt;64&gt;*)" Caller-DebugLoc="File src/snn_izhikevich.h Line 137 Column 0"/>
+    </msg>
+    <msg msg_groups="CODE_UNSUPPORTED" msg_id="214-131" msg_severity="INFO" msg_loc="src/snn_izhikevich.h:183:35" msg_body="Inlining function 'uint32_to_float32(unsigned int)' into 'snn_get_synaptic_conductances(ap_uint&lt;1&gt; const (*) [6], float const (*) [6], float*, float*, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, ap_uint&lt;64&gt;*)'">
+        <args Callee="uint32_to_float32(unsigned int)" Callee-DebugLoc="File src/snn_types.h Line 77 Column 0" Caller="snn_get_synaptic_conductances(ap_uint&lt;1&gt; const (*) [6], float const (*) [6], float*, float*, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, ap_uint&lt;64&gt;*)" Caller-DebugLoc="File src/snn_izhikevich.h Line 137 Column 0"/>
+    </msg>
+    <msg msg_groups="CODE_UNSUPPORTED" msg_id="214-131" msg_severity="INFO" msg_loc="src/snn_izhikevich_axi.h:75:19" msg_body="Inlining function 'float32_to_uint64(float, float)' into 'axis_cp_output_to_stream(hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, float*, unsigned int*, ap_uint&lt;64&gt;*)'">
+        <args Callee="float32_to_uint64(float, float)" Callee-DebugLoc="File src/snn_types.h Line 83 Column 0" Caller="axis_cp_output_to_stream(hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, float*, unsigned int*, ap_uint&lt;64&gt;*)" Caller-DebugLoc="File src/snn_izhikevich_axi.h Line 65 Column 0"/>
+    </msg>
+    <msg msg_groups="PRAGMA_UNROLL" msg_id="214-291" msg_severity="INFO" msg_loc="src/snn_izhikevich.h:105:20" msg_body="Loop 'VITIS_LOOP_105_1' is marked as complete unroll implied by the pipeline pragma">
+        <args LoopName="VITIS_LOOP_105_1"/>
+    </msg>
+    <msg msg_groups="PRAGMA_UNROLL" msg_id="214-291" msg_severity="INFO" msg_loc="src/snn_izhikevich.h:169:24" msg_body="Loop 'synapses_per_neuron' is marked as complete unroll implied by the pipeline pragma">
+        <args LoopName="synapses_per_neuron"/>
+    </msg>
+    <msg msg_groups="PRAGMA_UNROLL" msg_id="214-291" msg_severity="INFO" msg_loc="src/snn_izhikevich.h:199:35" msg_body="Loop 'VITIS_LOOP_199_2' is marked as complete unroll implied by the pipeline pragma">
+        <args LoopName="VITIS_LOOP_199_2"/>
+    </msg>
+    <msg msg_groups="PRAGMA_UNROLL" msg_id="214-186" msg_severity="INFO" msg_loc="src/snn_izhikevich.h:137:0" msg_body="Unrolling loop 'VITIS_LOOP_105_1' (src/snn_izhikevich.h:105:20) in function 'snn_get_synaptic_conductances' completely with a factor of 1">
+        <args Factor="1" LoopLoc="src/snn_izhikevich.h:105:20" LoopName="VITIS_LOOP_105_1"/>
+    </msg>
+    <msg msg_groups="PRAGMA_UNROLL" msg_id="214-186" msg_severity="INFO" msg_loc="src/snn_izhikevich.h:137:0" msg_body="Unrolling loop 'synapses_per_neuron' (src/snn_izhikevich.h:169:24) in function 'snn_get_synaptic_conductances' completely with a factor of 6">
+        <args Factor="6" LoopLoc="src/snn_izhikevich.h:169:24" LoopName="synapses_per_neuron"/>
+    </msg>
+    <msg msg_groups="PRAGMA_UNROLL" msg_id="214-186" msg_severity="INFO" msg_loc="src/snn_izhikevich.h:137:0" msg_body="Unrolling loop 'VITIS_LOOP_199_2' (src/snn_izhikevich.h:199:35) in function 'snn_get_synaptic_conductances' completely with a factor of 6">
+        <args Factor="6" LoopLoc="src/snn_izhikevich.h:199:35" LoopName="VITIS_LOOP_199_2"/>
+    </msg>
+    <msg msg_groups="PRAGMA_UNROLL" msg_id="214-186" msg_severity="INFO" msg_loc="src/snn_izhikevich_top.cpp:28:0" msg_body="Unrolling loop 'VITIS_LOOP_34_1' (src/snn_izhikevich_top.cpp:34:19) in function 'hls_snn_initialize' completely with a factor of 2">
+        <args Factor="2" LoopLoc="src/snn_izhikevich_top.cpp:34:19" LoopName="VITIS_LOOP_34_1"/>
+    </msg>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="src/snn_izhikevich_top.cpp:28:0" msg_body="Inlining function 'axis_cp_network_to_mem(hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, ap_uint&lt;1&gt; (*) [6])' into 'hls_snn_initialize(hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, unsigned int*)'">
+        <args Callee="axis_cp_network_to_mem(hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, ap_uint&lt;1&gt; (*) [6])" Callee-DebugLoc="File src/snn_izhikevich_axi.h Line 9 Column 0" Caller="hls_snn_initialize(hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, unsigned int*)" Caller-DebugLoc="File src/snn_izhikevich_top.cpp Line 28 Column 0"/>
+    </msg>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="src/snn_izhikevich.h:230:0" msg_body="Inlining function 'snn_update_neuron_synapses(float const*, ap_uint&lt;1&gt; const*, float (*) [6])' into 'snn_process_step(ap_uint&lt;1&gt; const*, ap_uint&lt;1&gt; const (*) [6], float (*) [6], float*, float*, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, ap_uint&lt;64&gt;*)'">
+        <args Callee="snn_update_neuron_synapses(float const*, ap_uint&lt;1&gt; const*, float (*) [6])" Callee-DebugLoc="File src/snn_izhikevich.h Line 18 Column 0" Caller="snn_process_step(ap_uint&lt;1&gt; const*, ap_uint&lt;1&gt; const (*) [6], float (*) [6], float*, float*, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, ap_uint&lt;64&gt;*)" Caller-DebugLoc="File src/snn_izhikevich.h Line 230 Column 0"/>
+    </msg>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="src/snn_izhikevich_top.cpp:53:0" msg_body="Inlining function 'axis_cp_inputs_to_mem(unsigned int*, ap_uint&lt;1&gt;*)' into 'hls_snn_process_step(unsigned int*, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;)'">
+        <args Callee="axis_cp_inputs_to_mem(unsigned int*, ap_uint&lt;1&gt;*)" Callee-DebugLoc="File src/snn_izhikevich_axi.h Line 37 Column 0" Caller="hls_snn_process_step(unsigned int*, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;)" Caller-DebugLoc="File src/snn_izhikevich_top.cpp Line 53 Column 0"/>
+    </msg>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="src/snn_izhikevich_top.cpp:53:0" msg_body="Inlining function 'snn_process_step(ap_uint&lt;1&gt; const*, ap_uint&lt;1&gt; const (*) [6], float (*) [6], float*, float*, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, ap_uint&lt;64&gt;*)' into 'hls_snn_process_step(unsigned int*, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;)'">
+        <args Callee="snn_process_step(ap_uint&lt;1&gt; const*, ap_uint&lt;1&gt; const (*) [6], float (*) [6], float*, float*, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, ap_uint&lt;64&gt;*)" Callee-DebugLoc="File src/snn_izhikevich.h Line 230 Column 0" Caller="hls_snn_process_step(unsigned int*, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;)" Caller-DebugLoc="File src/snn_izhikevich_top.cpp Line 53 Column 0"/>
+    </msg>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="src/snn_izhikevich_top.cpp:72:0" msg_body="Inlining function 'hls_snn_initialize(hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, unsigned int*)' into 'hls_snn_izikevich(ap_uint&lt;1&gt;, unsigned int*, unsigned int*, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;)'">
+        <args Callee="hls_snn_initialize(hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, unsigned int*)" Callee-DebugLoc="File src/snn_izhikevich_top.cpp Line 28 Column 0" Caller="hls_snn_izikevich(ap_uint&lt;1&gt;, unsigned int*, unsigned int*, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;)" Caller-DebugLoc="File src/snn_izhikevich_top.cpp Line 72 Column 0"/>
+    </msg>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="src/snn_izhikevich_top.cpp:72:0" msg_body="Inlining function 'hls_snn_process_step(unsigned int*, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;)' into 'hls_snn_izikevich(ap_uint&lt;1&gt;, unsigned int*, unsigned int*, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;)'">
+        <args Callee="hls_snn_process_step(unsigned int*, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;)" Callee-DebugLoc="File src/snn_izhikevich_top.cpp Line 53 Column 0" Caller="hls_snn_izikevich(ap_uint&lt;1&gt;, unsigned int*, unsigned int*, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;)" Caller-DebugLoc="File src/snn_izhikevich_top.cpp Line 72 Column 0"/>
+    </msg>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="src/snn_izhikevich_top.cpp:72:0" msg_body="Inlining function 'axis_cp_output_to_stream(hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, float*, unsigned int*, ap_uint&lt;64&gt;*)' into 'hls_snn_izikevich(ap_uint&lt;1&gt;, unsigned int*, unsigned int*, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;)'">
+        <args Callee="axis_cp_output_to_stream(hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, float*, unsigned int*, ap_uint&lt;64&gt;*)" Callee-DebugLoc="File src/snn_izhikevich_axi.h Line 65 Column 0" Caller="hls_snn_izikevich(ap_uint&lt;1&gt;, unsigned int*, unsigned int*, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;, hls::stream&lt;hls::axis&lt;ap_int&lt;64&gt;, 0ul, 0ul, 0ul&gt;, 0&gt;&amp;)" Caller-DebugLoc="File src/snn_izhikevich_top.cpp Line 72 Column 0"/>
+    </msg>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="src/snn_izhikevich.h:143:0" msg_body="Applying array_partition to '_ZZ29snn_get_synaptic_conductancesPA6_K7ap_uintILi1EEPA6_KfPfS7_RN3hls6streamINS8_4axisI6ap_intILi64EELm0ELm0ELm0EEELi0EEESF_SF_SF_PS_ILi64EEE13synapse_cache': Cyclic partitioning with factor 10 on dimension 1.">
+        <args Dim="1" Factor="10" Mode="Cyclic" UOName="_ZZ29snn_get_synaptic_conductancesPA6_K7ap_uintILi1EEPA6_KfPfS7_RN3hls6streamINS8_4axisI6ap_intILi64EELm0ELm0ELm0EEELi0EEESF_SF_SF_PS_ILi64EEE13synapse_cache"/>
+    </msg>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="src/snn_izhikevich.h:144:0" msg_body="Applying array_partition to '_ZZ29snn_get_synaptic_conductancesPA6_K7ap_uintILi1EEPA6_KfPfS7_RN3hls6streamINS8_4axisI6ap_intILi64EELm0ELm0ELm0EEELi0EEESF_SF_SF_PS_ILi64EEE13synapse_fetch': Cyclic partitioning with factor 10 on dimension 1.">
+        <args Dim="1" Factor="10" Mode="Cyclic" UOName="_ZZ29snn_get_synaptic_conductancesPA6_K7ap_uintILi1EEPA6_KfPfS7_RN3hls6streamINS8_4axisI6ap_intILi64EELm0ELm0ELm0EEELi0EEESF_SF_SF_PS_ILi64EEE13synapse_fetch"/>
+    </msg>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="src/snn_izhikevich_top.cpp:13:0" msg_body="Applying array_reshape to '_ZL15neuron_type_mem': Complete reshaping on dimension 2.">
+        <args Dim="2" Mode="Complete" UOName="_ZL15neuron_type_mem"/>
+    </msg>
+</xilinx:hls_fe_msgs>
+

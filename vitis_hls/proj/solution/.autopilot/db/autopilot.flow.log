@@ -1,0 +1,420 @@
+INFO-FLOW: Workspace /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution opened at Thu Mar 07 19:18:09 CET 2024
+Execute       send_msg_by_id INFO @200-1505@%s%s default  vivado 
+INFO: [HLS 200-1505] Using default flow_target 'vivado'
+Execute     set_part xc7z020clg400-1 
+INFO: [HLS 200-1510] Running: set_part xc7z020clg400-1 
+Execute       create_platform xc7z020clg400-1 -board  
+DBG:HLSDevice: Trying to load device library: /tools/Xilinx/Vitis_HLS/2023.1/lib/lnx64.o/libxv_hlsvwrap.so
+DBG:HLSDevice: first parts/arch.xml in RDI_DATADIR: /tools/Xilinx/Vivado/2023.1/data/parts/arch.xml
+DBG:HLSDevice: init success
+INFO: [HLS 200-1611] Setting target device to 'xc7z020-clg400-1'
+Command       create_platform done; 0.23 sec.
+Execute       source /tools/Xilinx/Vitis_HLS/2023.1/common/technology/xilinx/common/xilinx.gen 
+Execute         source /tools/Xilinx/Vitis_HLS/2023.1/common/technology/xilinx/interface/plb46.gen 
+Execute         source /tools/Xilinx/Vitis_HLS/2023.1/common/technology/xilinx/interface/axi4.gen 
+Execute         source /tools/Xilinx/Vitis_HLS/2023.1/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute           source /tools/Xilinx/Vitis_HLS/2023.1/common/technology/xilinx/interface/saxilite.gen 
+Execute         source /tools/Xilinx/Vitis_HLS/2023.1/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute         source /tools/Xilinx/Vitis_HLS/2023.1/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute         source /tools/Xilinx/Vitis_HLS/2023.1/common/technology/xilinx/ip/util.gen 
+Execute         source /tools/Xilinx/Vitis_HLS/2023.1/common/technology/xilinx/ip/xfft.gen 
+Execute         source /tools/Xilinx/Vitis_HLS/2023.1/common/technology/xilinx/ip/dds_compiler.gen 
+Execute         source /tools/Xilinx/Vitis_HLS/2023.1/common/technology/xilinx/ip/xfir.gen 
+Execute         source /tools/Xilinx/Vitis_HLS/2023.1/common/technology/xilinx/DSP48/dsp48.gen 
+Execute       ap_part_info -name xc7z020-clg400-1 -data info 
+Execute       config_compile -quiet -complex-mul-dsp=0 
+Command     set_part done; 0.33 sec.
+Execute     create_clock -period 40 -name default 
+INFO: [HLS 200-1510] Running: create_clock -period 40 -name default 
+Execute       ap_set_clock -name default -period 40 -default=false 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 40ns.
+Execute     csynth_design 
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO-FLOW: Running SLX 'csynth' proc: ::SLX::run_csynth
+Execute       elaborate -effort=medium -skip_syncheck=0 -keep_printf=0 -skip_cdt=0 -skip_transform=0 -ng=0 -g=0 -opt_fp=0 -from_csynth_design=1 
+WARNING: [HLS 200-40] Cannot find source file src/snn_network.h; skipping it.
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.08 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.09 seconds; current allocated memory: 180.602 MB.
+Execute         set_directive_top hls_snn_izikevich -name=hls_snn_izikevich 
+Execute         source /tools/Xilinx/Vitis_HLS/2023.1/tps/tcl/tcllib1.11.1/yaml/huddle.tcl 
+Execute         source /tools/Xilinx/Vitis_HLS/2023.1/tps/tcl/tcllib1.11.1/yaml/json2huddle.tcl 
+Execute           source /tools/Xilinx/Vitis_HLS/2023.1/tps/tcl/tcllib1.11.1/try/try.tcl 
+INFO: [HLS 200-10] Analyzing design file 'src/snn_izhikevich_top.cpp' ... 
+INFO-FLOW: Compiling one TU...
+INFO-FLOW: Handling src/snn_izhikevich_top.cpp as C++
+Execute         ap_part_info -name xc7z020-clg400-1 -data info 
+INFO-FLOW: Running: GCC PP 39
+INFO-FLOW: Source preprocessing
+INFO-FLOW: run_clang exec: /tools/Xilinx/Vitis_HLS/2023.1/lnx64/tools/clang-3.9-csynth/bin/clang src/snn_izhikevich_top.cpp -foptimization-record-file=/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_izhikevich_top.cpp.clang.diag.yml -mllvm -pass-remarks-missed=reflow|pasta|unroll -mllvm -pass-remarks=reflow|pasta|unroll|inline -fno-limit-debug-info -gcc-toolchain /tools/Xilinx/Vitis_HLS/2023.1/tps/lnx64/gcc-8.3.0 -fhls -fno-exceptions -insert-hls-directive=/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/all.directive.json -E -fno-math-errno -c -emit-llvm -mllvm -disable-llvm-optzns -Werror=implicit-function-declaration -Werror=implicit-hls-streams -Werror=return-type -Wpragmas -Wunused-parameter -Wdump-hls-pragmas -Wno-error=dump-hls-pragmas -fno-threadsafe-statics -fno-use-cxa-atexit -std=gnu++14 -target fpga64-xilinx-linux-gnu -fno-threadsafe-statics -fno-use-cxa-atexit -D__VITIS_HLS__ -DAESL_SYN -D__SYNTHESIS__ -D__HLS_SYN__ -I /tools/Xilinx/Vitis_HLS/2023.1/common/technology/autopilot -I /tools/Xilinx/Vitis_HLS/2023.1/common/technology/autopilot/ap_sysc -include etc/autopilot_ssdm_op.h -D__DSP48E1__ -I /usr/include/x86_64-linux-gnu -o /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp -hls-platform-db-name=/tools/Xilinx/Vitis_HLS/2023.1/common/technology/xilinx/common/platform.db -hls-platform-name=zynq_slow -device-resource-info=BRAM_280.000000_DSP_220.000000_FF_106400.000000_LUT_53200.000000_SLICE_13300.000000_URAM_0.000000 -device-name-info=xc7z020clg400-1 > /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_izhikevich_top.cpp.clang.out.log 2> /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_izhikevich_top.cpp.clang.err.log
+INFO-FLOW: Done: GCC PP 39 time: 0.2 seconds per iteration
+INFO-FLOW: Source syntax check for synthesis
+INFO-FLOW: run_clang exec: /tools/Xilinx/Vitis_HLS/2023.1/lnx64/tools/clang-3.9-csynth/bin/clang -foptimization-record-file=/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/clang.diag.yml -mllvm -pass-remarks-missed=reflow|pasta|unroll -mllvm -pass-remarks=reflow|pasta|unroll|inline -fsyntax-only -fhls -target fpga64-xilinx-linux-gnu /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp -hls-platform-db-name=/tools/Xilinx/Vitis_HLS/2023.1/common/technology/xilinx/common/platform.db -hls-platform-name=zynq_slow -device-resource-info=BRAM_280.000000_DSP_220.000000_FF_106400.000000_LUT_53200.000000_SLICE_13300.000000_URAM_0.000000 -device-name-info=xc7z020clg400-1 > /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/clang.out.log 2> /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/clang.err.log
+WARNING: [HLS 207-5531] 'Resource pragma' is deprecated, use 'bind_op/bind_storage pragma' instead (src/snn_izhikevich.h:85:9)
+WARNING: [HLS 207-5531] 'Resource pragma' is deprecated, use 'bind_op/bind_storage pragma' instead (src/snn_izhikevich.h:189:9)
+WARNING: [HLS 207-5531] 'Resource pragma' is deprecated, use 'bind_op/bind_storage pragma' instead (src/snn_izhikevich.h:190:9)
+Execute         clang_tidy xilinx-systemc-detector -desc systemc-detector /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp std=gnu++14 -target fpga  -directive=/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/.systemc_flag 
+INFO-FLOW: exec /tools/Xilinx/Vitis_HLS/2023.1/lnx64/tools/clang-3.9-csynth/bin/clang-tidy -header-filter=.* --checks=-*,xilinx-systemc-detector -import-directive=/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/.systemc_flag -fix-errors /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp -- -std=gnu++14 -target fpga -fhls -ferror-limit=0
+Command         clang_tidy done; 0.52 sec.
+INFO-FLOW: Running: clang-tidy CDT preprocess 39
+Execute         clang_tidy xilinx-directive2pragma -desc directive2pragma /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp std=gnu++14 -target fpga  -directive=/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/all.directive.json 
+INFO-FLOW: exec /tools/Xilinx/Vitis_HLS/2023.1/lnx64/tools/clang-3.9-csynth/bin/clang-tidy -header-filter=.* --checks=-*,xilinx-directive2pragma -import-directive=/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/all.directive.json -fix-errors /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp -- -std=gnu++14 -target fpga -fhls -ferror-limit=0
+Command         clang_tidy done; 0.76 sec.
+INFO-FLOW: Done: clang-tidy CDT preprocess 39 time: 0.8 seconds per iteration
+INFO-FLOW: Calling xilinx-label-all-loops ... 
+INFO-FLOW: Calling xilinx-aggregate-on-hls-vector ... 
+Execute         clang_tidy -errorcheck -desc loop-label xilinx-label-all-loops,xilinx-aggregate-on-hls-vector,,xilinx-warn-mayneed-no-ctor-attribute /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp std=gnu++14 -target fpga  
+INFO-FLOW: run_clang exec: /tools/Xilinx/Vitis_HLS/2023.1/lnx64/tools/clang-3.9-csynth/bin/clang-tidy -export-fixes=/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp.clang-tidy.loop-label.diag.yml -header-filter=.* --checks=-*,xilinx-label-all-loops,xilinx-aggregate-on-hls-vector,,xilinx-warn-mayneed-no-ctor-attribute -fix-errors /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp -- -std=gnu++14 -target fpga -fhls -ferror-limit=0 > /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp.clang-tidy.loop-label.out.log 2> /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp.clang-tidy.loop-label.err.log
+Execute           source /tools/Xilinx/Vitis_HLS/2023.1/tps/tcl/tcllib1.11.1/yaml/yaml.tcl 
+Command         clang_tidy done; 0.97 sec.
+INFO-FLOW: run_clang exec: /tools/Xilinx/Vitis_HLS/2023.1/lnx64/tools/clang-3.9-csynth/bin/xilinx-dataflow-lawyer -export-fixes=/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp.xilinx-dataflow-lawyer.diag.yml /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp -- -std=gnu++14 -target fpga -fhls -ferror-limit=0 -fstrict-dataflow > /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp.xilinx-dataflow-lawyer.out.log 2> /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp.xilinx-dataflow-lawyer.err.log
+Execute         ap_part_info -name xc7z020-clg400-1 -data info 
+INFO-FLOW: compiling source code to llvm bc
+INFO-FLOW: run_clang exec: /tools/Xilinx/Vitis_HLS/2023.1/lnx64/tools/clang-3.9-csynth/bin/clang -foptimization-record-file=/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp.clang.diag.yml -mllvm -pass-remarks-missed=reflow|pasta|unroll -mllvm -pass-remarks=reflow|pasta|unroll|inline -fno-limit-debug-info -fhls -flto -fno-exceptions -Wno-error=c++11-narrowing /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp -fno-math-errno -c -emit-llvm -mllvm -disable-llvm-optzns -Werror=implicit-function-declaration -Werror=implicit-hls-streams -Werror=return-type -Wpragmas -Wunused-parameter -Wdump-hls-pragmas -Wno-error=dump-hls-pragmas -fno-threadsafe-statics -fno-use-cxa-atexit -std=gnu++14 -target fpga64-xilinx-linux-gnu -D__VITIS_HLS__ -DAESL_SYN -D__SYNTHESIS__ -D__HLS_SYN__ -I /tools/Xilinx/Vitis_HLS/2023.1/common/technology/autopilot -I /tools/Xilinx/Vitis_HLS/2023.1/common/technology/autopilot/ap_sysc -include etc/autopilot_ssdm_op.h -D__DSP48E1__ -g -o /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_izhikevich_top.bc -hls-platform-db-name=/tools/Xilinx/Vitis_HLS/2023.1/common/technology/xilinx/common/platform.db -hls-platform-name=zynq_slow -device-resource-info=BRAM_280.000000_DSP_220.000000_FF_106400.000000_LUT_53200.000000_SLICE_13300.000000_URAM_0.000000 -device-name-info=xc7z020clg400-1 > /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp.clang.out.log 2> /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_izhikevich_top.pp.0.cpp.clang.err.log
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 3.44 seconds. CPU system time: 0.79 seconds. Elapsed time: 4.23 seconds; current allocated memory: 183.262 MB.
+INFO-FLOW: Linking Debug ...
+INFO-FLOW: Linking dut bc code.
+Execute         run_link_or_opt -out /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/a.g.ld.0.bc -args  "/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_izhikevich_top.g.bc"  
+INFO-FLOW: run_clang exec: /tools/Xilinx/Vitis_HLS/2023.1/lnx64/tools/clang-3.9-csynth/bin/llvm-link /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_izhikevich_top.g.bc -o /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/a.g.ld.0.bc > /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/a.g.ld.0.bc.llvm-link.out.log 2> /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/a.g.ld.0.bc.llvm-link.err.log
+INFO-FLOW: 
+Execute         run_link_or_opt -opt -out /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/a.g.ld.1.lower.bc -args /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/a.g.ld.0.bc -reflow-lower-math-intrinsics 
+INFO-FLOW: run_clang exec: /tools/Xilinx/Vitis_HLS/2023.1/lnx64/tools/clang-3.9-csynth/bin/opt -pass-remarks-missed=reflow|pasta|unroll -pass-remarks=reflow|pasta|unroll|inline -pass-remarks-output=/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/a.g.ld.1.lower.bc.opt.diag.yml /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/a.g.ld.0.bc -reflow-lower-math-intrinsics -o /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/a.g.ld.1.lower.bc > /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/a.g.ld.1.lower.bc.opt.out.log 2> /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/a.g.ld.1.lower.bc.opt.err.log
+INFO-FLOW: 
+INFO-FLOW: Running: gen_design_size_report post-opt
+INFO-FLOW: Done: gen_design_size_report post-opt time: 0 seconds per iteration
+INFO-FLOW: Linking math bc lib
+Execute         run_link_or_opt -out /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/a.g.ld.2.m1.bc -args /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/a.g.ld.1.lower.bc -only-needed /tools/Xilinx/Vitis_HLS/2023.1/lnx64/lib/libhlsm_39.bc /tools/Xilinx/Vitis_HLS/2023.1/lnx64/lib/libhlsmc++_39.bc 
+INFO-FLOW: run_clang exec: /tools/Xilinx/Vitis_HLS/2023.1/lnx64/tools/clang-3.9-csynth/bin/llvm-link /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/a.g.ld.1.lower.bc -only-needed /tools/Xilinx/Vitis_HLS/2023.1/lnx64/lib/libhlsm_39.bc /tools/Xilinx/Vitis_HLS/2023.1/lnx64/lib/libhlsmc++_39.bc -o /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/a.g.ld.2.m1.bc > /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/a.g.ld.2.m1.bc.llvm-link.out.log 2> /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/a.g.ld.2.m1.bc.llvm-link.err.log
+INFO-FLOW: 
+Command         run_link_or_opt done; 1.97 sec.
+Execute         run_link_or_opt -opt -out /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/a.g.ld.3.fpc.bc -args /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/a.g.ld.2.m1.bc -reflow-globaldce -hls-top-function-name=hls_snn_izikevich -reflow-float-conversion 
+INFO-FLOW: run_clang exec: /tools/Xilinx/Vitis_HLS/2023.1/lnx64/tools/clang-3.9-csynth/bin/opt -pass-remarks-missed=reflow|pasta|unroll -pass-remarks=reflow|pasta|unroll|inline -pass-remarks-output=/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/a.g.ld.3.fpc.bc.opt.diag.yml /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/a.g.ld.2.m1.bc -reflow-globaldce -hls-top-function-name=hls_snn_izikevich -reflow-float-conversion -o /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/a.g.ld.3.fpc.bc > /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/a.g.ld.3.fpc.bc.opt.out.log 2> /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/a.g.ld.3.fpc.bc.opt.err.log
+INFO-FLOW: 
+INFO-FLOW: Running: gen_design_size_report post-opt
+INFO-FLOW: Done: gen_design_size_report post-opt time: 0 seconds per iteration
+Command         run_link_or_opt done; 0.79 sec.
+Execute         run_link_or_opt -out /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/a.g.ld.4.m2.bc -args /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/a.g.ld.3.fpc.bc -only-needed /tools/Xilinx/Vitis_HLS/2023.1/lnx64/lib/libfloatconversion_39.bc 
+INFO-FLOW: run_clang exec: /tools/Xilinx/Vitis_HLS/2023.1/lnx64/tools/clang-3.9-csynth/bin/llvm-link /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/a.g.ld.3.fpc.bc -only-needed /tools/Xilinx/Vitis_HLS/2023.1/lnx64/lib/libfloatconversion_39.bc -o /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/a.g.ld.4.m2.bc > /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/a.g.ld.4.m2.bc.llvm-link.out.log 2> /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/a.g.ld.4.m2.bc.llvm-link.err.log
+INFO-FLOW: 
+Execute         run_link_or_opt -opt -out /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/a.g.ld.5.gdce.bc -args /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/a.g.ld.4.m2.bc -reflow-globaldce -hls-top-function-name=hls_snn_izikevich 
+INFO-FLOW: run_clang exec: /tools/Xilinx/Vitis_HLS/2023.1/lnx64/tools/clang-3.9-csynth/bin/opt -pass-remarks-missed=reflow|pasta|unroll -pass-remarks=reflow|pasta|unroll|inline -pass-remarks-output=/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/a.g.ld.5.gdce.bc.opt.diag.yml /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/a.g.ld.4.m2.bc -reflow-globaldce -hls-top-function-name=hls_snn_izikevich -o /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/a.g.ld.5.gdce.bc > /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/a.g.ld.5.gdce.bc.opt.out.log 2> /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/a.g.ld.5.gdce.bc.opt.err.log
+INFO-FLOW: 
+INFO-FLOW: Running: gen_design_size_report post-opt
+INFO-FLOW: Done: gen_design_size_report post-opt time: 0 seconds per iteration
+Execute         send_msg_by_id INFO @200-777@%s Vivado 
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+Execute         is_m_axi_addr64 
+INFO-FLOW: Doing LTO.
+INFO-FLOW: run_clang (background poll_ms 5000) exec: /tools/Xilinx/Vitis_HLS/2023.1/lnx64/tools/clang-3.9-csynth/bin/clang -foptimization-record-file=/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/a.g.ld.0.bc.clang.reflow.diag.yml -mllvm -pass-remarks-missed=reflow|pasta|unroll -mllvm -pass-remarks=reflow|pasta|unroll|inline -fhls -mllvm -hls-top-function-name=hls_snn_izikevich -mllvm -hls-db-dir -mllvm /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db -emit-llvm -c -target fpga64-xilinx-none -mllvm -xcl-xmlinfo=/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/kernel.internal.xml -mllvm -top-io-mapping-info=/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/top-io-fe.xml -mllvm -hls-bitcode-version=3.1 -mllvm -reflow-enable-slave-interface-default-setting=true -mllvm -gen-kernel-xml=false -mllvm -default-maxi-offset=slave -mllvm -maxi-latency=0 -mllvm -hls-maxi-data-size-in-bits=8 -mllvm -hls-maxi-max-data-size-in-bits=1024 -mllvm -hls-max-widen-size-in-bits=0 -mllvm -xcl-kernel-max-mem-ports=0 -mllvm -maxi-read-trans=16 -mllvm -maxi-write-trans=16 -mllvm -maxi-read-burst-len=16 -mllvm -maxi-write-burst-len=16 -mllvm -reflow-enable-saxi-64bits=0 -mllvm -reflow-basic-block-instr-threshold=200000 -mllvm -reflow-auto-pipeline-threshold=64 -mllvm -reflow-enable-maxi-auto-id-channel=0 -mllvm -enable-fp-thr=0 -mllvm -reflow-bdd-simplify-threshold=1024 -mllvm -reflow-fanout-threshold=16 -mllvm -assume-maxi-align=1 -mllvm -reflow-pipeline-style-llvm-setting=2 -mllvm -reflow-enable-dataflow-strict-mode-checking=1 -ftime-report -mllvm -time-passes -mllvm -reflow-auto-array-partition-mode=default -mllvm -reflow-enable-auto-array-partition=true -mllvm -reflow-enable-auto-parallel-performance-driven=true -mllvm -reflow-enable-partition-for-automation=true -mllvm -reflow-aggregate-bitwidth-threshold=4096 -mllvm -reflow-reserved-saxilite-registers=1024 -mllvm -reflow-assume-no-address-wrap=true -mllvm -reflow-enable-occurrence-inference=true -mllvm -hls -mllvm -disable-inlined-alloca-merging=true -mllvm -default-clock-period=40 -x ir /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/a.g.ld.5.gdce.bc -o /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/a.g.lto.bc -hls-platform-db-name=/tools/Xilinx/Vitis_HLS/2023.1/common/technology/xilinx/common/platform.db -hls-platform-name=zynq_slow -device-resource-info=BRAM_280.000000_DSP_220.000000_FF_106400.000000_LUT_53200.000000_SLICE_13300.000000_URAM_0.000000 -device-name-info=xc7z020clg400-1 2> /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/a.g.ld.0.bc.clang.reflow.err.log
+Execute         send_msg_by_id INFO @200-1995@%s%s%s 2,425 Compile/Link /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/syn/report/csynth_design_size.rpt 
+INFO: [HLS 200-1995] There were 2,425 instructions in the design after the 'Compile/Link' phase of compilation. See the Design Size Report for more details: /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/syn/report/csynth_design_size.rpt
+Execute         send_msg_by_id INFO @200-1995@%s%s%s 692 Unroll/Inline /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/syn/report/csynth_design_size.rpt 
+INFO: [HLS 200-1995] There were 692 instructions in the design after the 'Unroll/Inline' phase of compilation. See the Design Size Report for more details: /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/syn/report/csynth_design_size.rpt
+Execute         send_msg_by_id INFO @200-1995@%s%s%s 572 Performance/Pipeline /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/syn/report/csynth_design_size.rpt 
+INFO: [HLS 200-1995] There were 572 instructions in the design after the 'Performance/Pipeline' phase of compilation. See the Design Size Report for more details: /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/syn/report/csynth_design_size.rpt
+Execute         send_msg_by_id INFO @200-1995@%s%s%s 628 Optimizations /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/syn/report/csynth_design_size.rpt 
+INFO: [HLS 200-1995] There were 628 instructions in the design after the 'Optimizations' phase of compilation. See the Design Size Report for more details: /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/syn/report/csynth_design_size.rpt
+INFO: [HLS 214-131] Inlining function 'get_weight_line(hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&)' into 'snn_get_synaptic_conductances(ap_uint<1> const (*) [6], float const (*) [6], float*, float*, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, ap_uint<64>*)' (src/snn_izhikevich.h:162:82)
+INFO: [HLS 214-131] Inlining function 'snn_update_izikevich_equations_by_neuron(unsigned int, ap_uint<1>, float, float, float*, float*)' into 'snn_get_synaptic_conductances(ap_uint<1> const (*) [6], float const (*) [6], float*, float*, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, ap_uint<64>*)' (src/snn_izhikevich.h:204:3)
+INFO: [HLS 214-131] Inlining function 'uint32_to_float32(unsigned int)' into 'snn_get_synaptic_conductances(ap_uint<1> const (*) [6], float const (*) [6], float*, float*, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, ap_uint<64>*)' (src/snn_izhikevich.h:183:35)
+INFO: [HLS 214-131] Inlining function 'float32_to_uint64(float, float)' into 'axis_cp_output_to_stream(hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, float*, unsigned int*, ap_uint<64>*)' (src/snn_izhikevich_axi.h:75:19)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_105_1' is marked as complete unroll implied by the pipeline pragma (src/snn_izhikevich.h:105:20)
+INFO: [HLS 214-291] Loop 'synapses_per_neuron' is marked as complete unroll implied by the pipeline pragma (src/snn_izhikevich.h:169:24)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_199_2' is marked as complete unroll implied by the pipeline pragma (src/snn_izhikevich.h:199:35)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_105_1' (src/snn_izhikevich.h:105:20) in function 'snn_get_synaptic_conductances' completely with a factor of 1 (src/snn_izhikevich.h:137:0)
+INFO: [HLS 214-186] Unrolling loop 'synapses_per_neuron' (src/snn_izhikevich.h:169:24) in function 'snn_get_synaptic_conductances' completely with a factor of 6 (src/snn_izhikevich.h:137:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_199_2' (src/snn_izhikevich.h:199:35) in function 'snn_get_synaptic_conductances' completely with a factor of 6 (src/snn_izhikevich.h:137:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_34_1' (src/snn_izhikevich_top.cpp:34:19) in function 'hls_snn_initialize' completely with a factor of 2 (src/snn_izhikevich_top.cpp:28:0)
+INFO: [HLS 214-178] Inlining function 'axis_cp_network_to_mem(hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, ap_uint<1> (*) [6])' into 'hls_snn_initialize(hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, unsigned int*)' (src/snn_izhikevich_top.cpp:28:0)
+INFO: [HLS 214-178] Inlining function 'snn_update_neuron_synapses(float const*, ap_uint<1> const*, float (*) [6])' into 'snn_process_step(ap_uint<1> const*, ap_uint<1> const (*) [6], float (*) [6], float*, float*, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, ap_uint<64>*)' (src/snn_izhikevich.h:230:0)
+INFO: [HLS 214-178] Inlining function 'axis_cp_inputs_to_mem(unsigned int*, ap_uint<1>*)' into 'hls_snn_process_step(unsigned int*, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&)' (src/snn_izhikevich_top.cpp:53:0)
+INFO: [HLS 214-178] Inlining function 'snn_process_step(ap_uint<1> const*, ap_uint<1> const (*) [6], float (*) [6], float*, float*, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, ap_uint<64>*)' into 'hls_snn_process_step(unsigned int*, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&)' (src/snn_izhikevich_top.cpp:53:0)
+INFO: [HLS 214-178] Inlining function 'hls_snn_initialize(hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, unsigned int*)' into 'hls_snn_izikevich(ap_uint<1>, unsigned int*, unsigned int*, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&)' (src/snn_izhikevich_top.cpp:72:0)
+INFO: [HLS 214-178] Inlining function 'hls_snn_process_step(unsigned int*, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&)' into 'hls_snn_izikevich(ap_uint<1>, unsigned int*, unsigned int*, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&)' (src/snn_izhikevich_top.cpp:72:0)
+INFO: [HLS 214-178] Inlining function 'axis_cp_output_to_stream(hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, float*, unsigned int*, ap_uint<64>*)' into 'hls_snn_izikevich(ap_uint<1>, unsigned int*, unsigned int*, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&, hls::stream<hls::axis<ap_int<64>, 0ul, 0ul, 0ul>, 0>&)' (src/snn_izhikevich_top.cpp:72:0)
+INFO: [HLS 214-248] Applying array_partition to '_ZZ29snn_get_synaptic_conductancesPA6_K7ap_uintILi1EEPA6_KfPfS7_RN3hls6streamINS8_4axisI6ap_intILi64EELm0ELm0ELm0EEELi0EEESF_SF_SF_PS_ILi64EEE13synapse_cache': Cyclic partitioning with factor 10 on dimension 1. (src/snn_izhikevich.h:143:0)
+INFO: [HLS 214-248] Applying array_partition to '_ZZ29snn_get_synaptic_conductancesPA6_K7ap_uintILi1EEPA6_KfPfS7_RN3hls6streamINS8_4axisI6ap_intILi64EELm0ELm0ELm0EEELi0EEESF_SF_SF_PS_ILi64EEE13synapse_fetch': Cyclic partitioning with factor 10 on dimension 1. (src/snn_izhikevich.h:144:0)
+INFO: [HLS 214-248] Applying array_reshape to '_ZL15neuron_type_mem': Complete reshaping on dimension 2. (src/snn_izhikevich_top.cpp:13:0)
+INFO-FLOW: DBG:PUTS: copy_raw_kernel_xml ap_link_39: kernel.xml not generated: /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/kernel.internal.xml
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 2.99 seconds. CPU system time: 0.61 seconds. Elapsed time: 8.08 seconds; current allocated memory: 184.320 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 184.320 MB.
+Execute         opt_and_import_c a -opt_level=2 -skip_syncheck=0 -ng=0 -keep_printf=0 
+Execute           cleanup_all_models 
+INFO: [HLS 200-10] Starting code transformations ...
+INFO-FLOW: Running Standard Transforms...
+Execute           transform -hls -share-std-xform -demangle-name -inline-byval-memcpy -always-inline -promote-dbg-pointer -interface-preproc -mem2reg -scalarrepl -mem2reg -keep-read-access -instcombine -dce -promote-dbg-pointer -bitop-raise -loop-simplify -indvarspre -indvars -loop-simplify -xunroll -constprop -instcombine -simplifycfg -indvars -simplifycfg -dce -globaldce -basicaa -simplifycfg -mem2reg -globalopt -global-constprop -deadargelim -instcombine -simplifycfg -scalarrepl -instcombine -reassociate -licm -simplifycfg -loop-simplify -indvars -instcombine -simplifycfg -mem2reg -loop-simplify -indvars -instcombine -gvn -gvn -instcombine -adce -break-crit-edges -simplifycfg -loop-delete -global-array-opt -dce -dse -adce -find-syn-modules -top hls_snn_izikevich -deadargelim -mem2reg -instcombine -dce -presyn-prepare -auto-rom-infer -interface-preproc -syn-check -check-rec-only -find-region -simplifycfg -func-extr -function-inline -globaldce -mem2reg -instcombine -dce -gvn -globaldce -adce -adse -constprop -instcombine -bit-constprop -instcombine -dce -simplifycfg -bitop-raise -simplifycfg -dce -loop-delete -reassociate -globalopt -global-privatize -mem2reg -dce -global-constprop -pointer-simplify -constprop -dce -auto-shift-reg-idiom -promote-dbg-pointer -norm-name /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/a.g.0.bc -o /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/a.g.1.bc -f -phase std-opt 
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.06 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.08 seconds; current allocated memory: 185.203 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO-FLOW: Checking Synthesizability 1/2..
+Execute           transform -hls -syn-check -check-rec-only -scalarrepl -norm-name -dce -mem2reg -instcombine -directive-preproc -mem2reg -dse -dce -auto-rom-infer -dce -pag -array-normalize -instcombine -dce -array-seg-normalize -instcombine -dce -data-pack -instcombine -dce -inst-simplify -array-flatten -instcombine -dce -array-burst -dce -deadargelim -promote-global-argument -simplifycfg -mem2reg -globaldce -dce -deadargelim -dce -instcombine -function-inline -globaldce -dce -doublePtrSimplify -doublePtrElim -dce -doublePtrSimplify -promote-dbg-pointer -dce -scalarrepl -dse -adse -instcombine -ptrLegalization -simplifycfg -dce -instcombine -pointer-simplify -ptrArgReplace -dce -instcombine -resolve-double-ptr -scalarrepl -norm-name -dce -mem2reg -instcombine -ptrLegalization -simplifycfg -deadargelim -instcombine -dce -inst-simplify -directive-preproc -mem2reg -dse -dce -globaldce /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/a.g.1.bc -o /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/a.g.2.prechk.bc -f 
+INFO-FLOW: Checking Synthesizability 2/2..
+Execute           transform -syn-check /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/a.g.2.prechk.bc -o /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/a.g.2.bc -f -phase syn-check 
+WARNING: [SYNCHK 200-23] src/snn_izhikevich.h:46: variable-indexed range selection may cause suboptimal QoR.
+INFO: [SYNCHK 200-10] 0 error(s), 1 warning(s).
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0.1 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.09 seconds; current allocated memory: 185.891 MB.
+INFO-FLOW: Compiler optimizing ...
+INFO-FLOW: Share syncheck's 1.bc for syn flow: copy /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/a.g.1.bc to /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/a.o.1.bc
+INFO-FLOW: Presyn 1...
+Execute           transform -hls -tmp /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db -interface-port-rename -directive-preproc -mem2reg -dse -dce -scalarrepl -norm-name -deadargelim -mem2reg -instcombine -dce -simplifycfg -auto-rom-infer -dce -resource-proc -clib-intrinsic-prepare -dce -func-buffer -dce -pag -array-normalize -func-legal -instcombine -gvn -constprop -dce -simplifycfg -mem2reg -globaldce -resolve-double-ptr -dce -deadargelim -dce -instcombine -ptrArgReplace -mem2reg -dce -array-seg-normalize -deadargelim -instcombine -dce -directive-preproc -mem2reg -dse -dce -pointer-simplify -dce -port-alignment -dce -interface-preproc -data-pack -instcombine -dce -basicaa -aggr-aa -aggrmodref-aa -aggr-aa -gvn -gvn -basicaa -aggr-aa -aggrmodref-aa -aggr-aa -dse -adse -adce -loop-simplify -indvars -instcombine -gvn -loop-simplify -mem2reg -dce -find-region -instcombine -auto-loop-pipeline -inst-simplify -interface-preproc -cfgopt -instcombine -indvars -auto-loop-unroll -loop-simplify -loop-bound -xunroll -constprop -instcombine -simplifycfg -indvars -simplifycfg -dce -globaldce -clean-region -attach-range -gvn -inst-simplify -constprop -simplifycfg -dce -pointer-simplify -dce -globalopt -constprop -dce -array-promote -scalar-auto-dep-elim -constprop -dce -ptrArgReplace -mem2reg -simplifycfg -dce -instcombine -dce -array-transform-check -array-reshape -instcombine -simplifycfg -dce -ptrArgReplace -deadargelim -mem2reg -instcombine -simplifycfg -dce -indvars -loop-simplify -loop-bound -xunroll -constprop -instcombine -simplifycfg -indvars -simplifycfg -dce -globaldce -basicaa -aggr-aa -aggrmodref-aa -aggr-aa -dse -duplicate-dataflow-processes -globaldce -instcombine -array-partition -prepare-dynamic-array-partition -instcombine -simplifycfg -dce -ptrArgReplace -global-constprop -deadargelim -mem2reg -func-legal -dce -global-constprop -deadargelim -mem2reg -simplifycfg -dce -merge-param -deadargelim -globalopt -constprop -dce -array-promote -scalar-auto-dep-elim -constprop -dce -ptrArgReplace -mem2reg -simplifycfg -dce -mem-intrinsic-preproc -dce -global-internalize -global-privatize -mem2reg -globaldce -promote-global-argument -ptrArgReplace -mem2reg -dce -globalopt -mergereturn -simplify-global-access -mem2reg -dce -pointer-simplify -dce -functionattrs -basicaa -aggr-aa -aggrmodref-aa -aggr-aa -gvn -gvn -basicaa -aggr-aa -aggrmodref-aa -aggr-aa -dse -adse -adce -dce -norm-name -basicaa -aggr-aa -aggrmodref-aa -aggr-aa -accesses-merge -function-inline -complex-op-raise -inst-simplify -globaldce -func-legal -dce -loop-bound -arraycheck -bitwidthmin2 -bitwidthmin2 -on-by-dataflow -loop-delete -instcombine -simplifycfg -globaldce -dce -gvn -deadargelim -dce -loop-simplify -clean-region -simplifycfg -propagate-stable-arguments -loop-stream -instcombine -simplifycfg -dce -globaldce -duplicate-dataflow-processes -stream-intrinsic-preproc -dce -check-ap-stream -loop-simplify -eliminate-keepreads -extract-dataflow-in-loop -loop-simplify -dce -gvn -deadargelim -dse -duplicate-dataflow-processes -check-dataflow-syntax -legalize-stream-variable -globaldce -legalize-global -extract-subproc -dce -dead-channel-elimination -canonicalize-gep -globaldce -dce -gvn -hls-dead-arg-elim -deadargelim -directive-preproc -canonicalize-dataflow -dce -globaldce -scalar-preprocessing -scalar-propagation2 -deadargelim -globaldce -mem2reg -check-dataflow-channels -function-stream -dce -globaldce -prop-fifo-spec -internal-stream-gen -canonicalize-gep -globaldce -dce -gvn -deadargelim -mergereturn -indvars -loop-simplify -instcombine -array-stream -array-seg-normalize -array-partition -func-legal -instcombine -simplifycfg -dce -bundle-memfifo-ops -deadargelim -directive-preproc -mem2reg -dse -dce -group-axi-access -licm -simplifycfg -dce -loop-delete -hls-display -norm-name /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/a.o.1.bc -o /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/a.o.1.tmp.bc -f 
+INFO: [XFORM 203-510] Pipelining loop 'input_synapses_cache' (src/snn_izhikevich.h:150) in function 'snn_get_synaptic_conductances' automatically.
+INFO: [XFORM 203-102] Partitioning array 'output_indexes_mem' automatically.
+INFO: [XFORM 203-102] Partitioning array 'firings_mem' automatically.
+INFO: [XFORM 203-102] Automatically partitioning small array 'neuron_type_mem' completely based on array size.
+INFO: [XFORM 203-101] Partitioning array 'neuron_type_mem' in dimension 1 completely.
+Command           transform done; 0.2 sec.
+INFO-FLOW: Presyn 2...
+Execute           transform -hls -keep-callgraph -scalarrepl -mem2reg -port-alignment -attach-range -dce -pipe-mux-gen -indvars -loop-bound -inst-simplify -instcombine -dce -merge-array-access -mem2reg -dce -clean-region -mergereturn -if-conv -instcombine -dce -constprop -basicaa -aggr-aa -aggrmodref-aa -aggr-aa -gvn -gvn -basicaa -aggr-aa -aggrmodref-aa -aggr-aa -dse -adse -adce -scalarrepl -mem2reg -global-constprop -deadargelim -deadargelim -instcombine -dce -simplifycfg -ptrArgReplace -mem2reg -function-inline -globaldce -mem2reg -instcombine -dce -expr-balance -instcombine -dce -bitwidthmin2 -bitwidthmin2 -interface-preproc -directive-preproc -inst-rectify -instcombine -dce -functionattrs -constprop -instcombine -bit-constprop -simplify-global-access -globalopt -globaldce -inst-simplify -instcombine -elimdeaddata -dce -loop-delete -simplifycfg -loop-simplify -barrier -norm-name /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/a.o.1.tmp.bc -o /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/a.o.2.bc -f -phase presyn 
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/snn_izhikevich.h:171:28) to (src/snn_izhikevich.h:199:7) in function 'snn_get_synaptic_conductances'... converting 19 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/snn_izhikevich.h:23:9) to (src/snn_izhikevich.h:22:80) in function 'hls_snn_izikevich'... converting 8 basic blocks.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0.27 seconds. CPU system time: 0 seconds. Elapsed time: 0.28 seconds; current allocated memory: 209.344 MB.
+INFO-FLOW: Building ssdm...
+Execute           transform -hls -auto-function-inline -globaldce -ptrArgReplace -mem2reg -dce -reset-lda -loop-simplify -indvars -aggr-aa -licm -loop-dep -loop-bound -licm -loop-simplify -loop-sink-hoist -flattenloopnest -array-flatten -gvn -instcombine -dce -array-map -dce -func-legal -gvn -adce -instcombine -cfgopt -simplifycfg-lite -loop-simplify -array-burst -promote-global-argument -dce -array-seg-normalize -basicaa -aggrmodref-aa -globalsmodref-aa -aggr-aa -gvn -gvn -basicaa -aggrmodref-aa -globalsmodref-aa -aggr-aa -dse -adse -adce -licm -inst-simplify -dce -globaldce -instcombine -array-stream -eliminate-keepreads -instcombine -dce -deadargelim -doublePtrSimplify -doublePtrElim -dce -doublePtrSimplify -promote-dbg-pointer -dce -scalarrepl -mem2reg -norm-name -mem2reg -instcombine -dse -adse -adce -ptrLegalization -dce -auto-rom-infer -array-flatten -dce -instcombine -check-doubleptr -loop-rot -constprop -cfgopt -simplifycfg-lite -loop-simplify -indvars -pointer-simplify -dce -loop-bound -loop-simplify -loop-preproc -constprop -global-constprop -gvn -mem2reg -instcombine -dce -loop-bound -loop-merge -dce -deadargelim -dce -canonicalize-dataflow -dce -deadargelim -globaldce -mem2reg -bram-byte-enable -load-elim -read-loop-dep -loop-simplify -loop-extract-inner -directive-preproc -bitwidthmin2 -bitwidthmin2 -read-loop-dep -interface-preproc -directive-preproc -interface-gen -bram-byte-enable-spec-prop -deadargelim -inst-simplify -dce -gvn -mem2reg -instcombine -dce -adse -loop-bound -instcombine -cfgopt -simplifycfg-lite -loop-simplify -clean-region -io-protocol -find-region -mem2reg -bitop-raise -complex-op-raise -inst-simplify -inst-rectify -instcombine -adce -deadargelim -float-op-raise -loop-simplify -phi-opt -bitop-raise -cfgopt -simplifycfg-lite -strip-dead-prototypes -interface-lower -bitop-lower -intrinsic-lower -auto-function-inline -basicaa -aggrmodref-aa -globalsmodref-aa -aggr-aa -inst-simplify -simplifycfg-lite -loop-simplify -mergereturn -inst-simplify -inst-rectify -globaldce -dce -load-elim -bitop-lower -float-op-raise -fma-raise -loop-rewind -pointer-simplify -dce -cfgopt -dce -loop-bound -loop-dep -read-loop-dep -dce -dyn-mem-reuse -dce -recurrence-min -dce -share-scalar-alloca -deadargelim -dce -check-stream -norm-name -legalize -validate-dataflow -inst-clarity -bitwidth -dce -dump-loop-dep-to-ir -check-all-ssdm -dump-complexity-metric -cdfg-build /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/a.o.2.bc -o /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/a.o.3.bc -f -phase build-ssdm 
+INFO: [XFORM 203-541] Flattening a loop nest 'synaptic_conductances' (src/snn_izhikevich.h:154:25) in function 'snn_get_synaptic_conductances'.
+INFO: [XFORM 203-541] Flattening a loop nest 'synapses_layer_updates' (src/snn_izhikevich.h:22:26) in function 'hls_snn_izikevich'.
+Execute             auto_get_db
+Command           transform done; 0.22 sec.
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 0.18 seconds. CPU system time: 0.05 seconds. Elapsed time: 0.22 seconds; current allocated memory: 269.617 MB.
+INFO-FLOW: Finish building internal data model.
+Command         opt_and_import_c done; 0.68 sec.
+Command       elaborate done; 12.99 sec.
+Execute       ap_eval exec zip -j /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/dut.hcp $dbDir/a.o.3.bc $dbDir/${topname}.rtl_wrap.cfg.tcl $dbDir/apatb_${topname}.cpp $dbDir/apatb_${topname}_util.cpp $dbDir/apatb_${topname}_ir.ll $dbDir/mapper_${topname}.cpp $dbDir/top-io-fe.xml $dbDir/kernel.internal.xml $workdir/../hls.app 
+Execute       autosyn -from_csynth_design=1 
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO-FLOW: Synthesizing C/C++ design ...
+INFO: [HLS 200-10] Synthesizing 'hls_snn_izikevich' ...
+Execute         ap_set_top_model hls_snn_izikevich 
+Execute         get_model_list hls_snn_izikevich -filter all-wo-channel -topdown 
+Execute         preproc_iomode -model hls_snn_izikevich 
+Execute         preproc_iomode -model snn_get_synaptic_conductances 
+Execute         preproc_iomode -model snn_get_synaptic_conductances_Pipeline_synaptic_conductances_VITIS_LOOP_154_1 
+Execute         preproc_iomode -model snn_get_synaptic_conductances_Pipeline_input_synapses_cache 
+Execute         preproc_iomode -model hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1 
+Execute         preproc_iomode -model hls_snn_izikevich_Pipeline_VITIS_LOOP_44_2 
+Execute         preproc_iomode -model hls_snn_izikevich_Pipeline_VITIS_LOOP_40_2 
+Execute         preproc_iomode -model hls_snn_izikevich_Pipeline_VITIS_LOOP_16_2 
+Execute         get_model_list hls_snn_izikevich -filter all-wo-channel 
+INFO-FLOW: Model list for configure: hls_snn_izikevich_Pipeline_VITIS_LOOP_16_2 hls_snn_izikevich_Pipeline_VITIS_LOOP_40_2 hls_snn_izikevich_Pipeline_VITIS_LOOP_44_2 hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1 snn_get_synaptic_conductances_Pipeline_input_synapses_cache snn_get_synaptic_conductances_Pipeline_synaptic_conductances_VITIS_LOOP_154_1 snn_get_synaptic_conductances hls_snn_izikevich
+INFO-FLOW: Configuring Module : hls_snn_izikevich_Pipeline_VITIS_LOOP_16_2 ...
+Execute         set_default_model hls_snn_izikevich_Pipeline_VITIS_LOOP_16_2 
+Execute         apply_spec_resource_limit hls_snn_izikevich_Pipeline_VITIS_LOOP_16_2 
+INFO-FLOW: Configuring Module : hls_snn_izikevich_Pipeline_VITIS_LOOP_40_2 ...
+Execute         set_default_model hls_snn_izikevich_Pipeline_VITIS_LOOP_40_2 
+Execute         apply_spec_resource_limit hls_snn_izikevich_Pipeline_VITIS_LOOP_40_2 
+INFO-FLOW: Configuring Module : hls_snn_izikevich_Pipeline_VITIS_LOOP_44_2 ...
+Execute         set_default_model hls_snn_izikevich_Pipeline_VITIS_LOOP_44_2 
+Execute         apply_spec_resource_limit hls_snn_izikevich_Pipeline_VITIS_LOOP_44_2 
+INFO-FLOW: Configuring Module : hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1 ...
+Execute         set_default_model hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1 
+Execute         apply_spec_resource_limit hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1 
+INFO-FLOW: Configuring Module : snn_get_synaptic_conductances_Pipeline_input_synapses_cache ...
+Execute         set_default_model snn_get_synaptic_conductances_Pipeline_input_synapses_cache 
+Execute         apply_spec_resource_limit snn_get_synaptic_conductances_Pipeline_input_synapses_cache 
+INFO-FLOW: Configuring Module : snn_get_synaptic_conductances_Pipeline_synaptic_conductances_VITIS_LOOP_154_1 ...
+Execute         set_default_model snn_get_synaptic_conductances_Pipeline_synaptic_conductances_VITIS_LOOP_154_1 
+Execute         apply_spec_resource_limit snn_get_synaptic_conductances_Pipeline_synaptic_conductances_VITIS_LOOP_154_1 
+INFO-FLOW: Configuring Module : snn_get_synaptic_conductances ...
+Execute         set_default_model snn_get_synaptic_conductances 
+Execute         apply_spec_resource_limit snn_get_synaptic_conductances 
+INFO-FLOW: Configuring Module : hls_snn_izikevich ...
+Execute         set_default_model hls_snn_izikevich 
+Execute         apply_spec_resource_limit hls_snn_izikevich 
+INFO-FLOW: Model list for preprocess: hls_snn_izikevich_Pipeline_VITIS_LOOP_16_2 hls_snn_izikevich_Pipeline_VITIS_LOOP_40_2 hls_snn_izikevich_Pipeline_VITIS_LOOP_44_2 hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1 snn_get_synaptic_conductances_Pipeline_input_synapses_cache snn_get_synaptic_conductances_Pipeline_synaptic_conductances_VITIS_LOOP_154_1 snn_get_synaptic_conductances hls_snn_izikevich
+INFO-FLOW: Preprocessing Module: hls_snn_izikevich_Pipeline_VITIS_LOOP_16_2 ...
+Execute         set_default_model hls_snn_izikevich_Pipeline_VITIS_LOOP_16_2 
+Execute         cdfg_preprocess -model hls_snn_izikevich_Pipeline_VITIS_LOOP_16_2 
+Execute         rtl_gen_preprocess hls_snn_izikevich_Pipeline_VITIS_LOOP_16_2 
+INFO-FLOW: Preprocessing Module: hls_snn_izikevich_Pipeline_VITIS_LOOP_40_2 ...
+Execute         set_default_model hls_snn_izikevich_Pipeline_VITIS_LOOP_40_2 
+Execute         cdfg_preprocess -model hls_snn_izikevich_Pipeline_VITIS_LOOP_40_2 
+Execute         rtl_gen_preprocess hls_snn_izikevich_Pipeline_VITIS_LOOP_40_2 
+INFO-FLOW: Preprocessing Module: hls_snn_izikevich_Pipeline_VITIS_LOOP_44_2 ...
+Execute         set_default_model hls_snn_izikevich_Pipeline_VITIS_LOOP_44_2 
+Execute         cdfg_preprocess -model hls_snn_izikevich_Pipeline_VITIS_LOOP_44_2 
+Execute         rtl_gen_preprocess hls_snn_izikevich_Pipeline_VITIS_LOOP_44_2 
+INFO-FLOW: Preprocessing Module: hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1 ...
+Execute         set_default_model hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1 
+Execute         cdfg_preprocess -model hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1 
+Execute         rtl_gen_preprocess hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1 
+INFO-FLOW: Preprocessing Module: snn_get_synaptic_conductances_Pipeline_input_synapses_cache ...
+Execute         set_default_model snn_get_synaptic_conductances_Pipeline_input_synapses_cache 
+Execute         cdfg_preprocess -model snn_get_synaptic_conductances_Pipeline_input_synapses_cache 
+Execute         rtl_gen_preprocess snn_get_synaptic_conductances_Pipeline_input_synapses_cache 
+INFO-FLOW: Preprocessing Module: snn_get_synaptic_conductances_Pipeline_synaptic_conductances_VITIS_LOOP_154_1 ...
+Execute         set_default_model snn_get_synaptic_conductances_Pipeline_synaptic_conductances_VITIS_LOOP_154_1 
+Execute         cdfg_preprocess -model snn_get_synaptic_conductances_Pipeline_synaptic_conductances_VITIS_LOOP_154_1 
+Execute         rtl_gen_preprocess snn_get_synaptic_conductances_Pipeline_synaptic_conductances_VITIS_LOOP_154_1 
+INFO-FLOW: Preprocessing Module: snn_get_synaptic_conductances ...
+Execute         set_default_model snn_get_synaptic_conductances 
+Execute         cdfg_preprocess -model snn_get_synaptic_conductances 
+Execute         rtl_gen_preprocess snn_get_synaptic_conductances 
+INFO-FLOW: Preprocessing Module: hls_snn_izikevich ...
+Execute         set_default_model hls_snn_izikevich 
+Execute         cdfg_preprocess -model hls_snn_izikevich 
+Execute         rtl_gen_preprocess hls_snn_izikevich 
+INFO-FLOW: Model list for synthesis: hls_snn_izikevich_Pipeline_VITIS_LOOP_16_2 hls_snn_izikevich_Pipeline_VITIS_LOOP_40_2 hls_snn_izikevich_Pipeline_VITIS_LOOP_44_2 hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1 snn_get_synaptic_conductances_Pipeline_input_synapses_cache snn_get_synaptic_conductances_Pipeline_synaptic_conductances_VITIS_LOOP_154_1 snn_get_synaptic_conductances hls_snn_izikevich
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'hls_snn_izikevich_Pipeline_VITIS_LOOP_16_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+Execute         set_default_model hls_snn_izikevich_Pipeline_VITIS_LOOP_16_2 
+Execute         schedule -model hls_snn_izikevich_Pipeline_VITIS_LOOP_16_2 
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_16_2'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 2, Final II = 2, Depth = 3, loop 'VITIS_LOOP_16_2'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.15 seconds. CPU system time: 0.03 seconds. Elapsed time: 0.18 seconds; current allocated memory: 271.445 MB.
+Execute         syn_report -verbosereport -o /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/hls_snn_izikevich_Pipeline_VITIS_LOOP_16_2.verbose.sched.rpt 
+Execute           list_part -family xc7z020-clg400-1 
+Execute             ap_family_info -name xc7z020-clg400-1 -data names 
+Execute             ap_part_info -quiet -name xc7z020-clg400-1 -data family 
+Execute         db_write -o /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/hls_snn_izikevich_Pipeline_VITIS_LOOP_16_2.sched.adb -f 
+INFO-FLOW: Finish scheduling hls_snn_izikevich_Pipeline_VITIS_LOOP_16_2.
+Execute         set_default_model hls_snn_izikevich_Pipeline_VITIS_LOOP_16_2 
+Execute         bind -model hls_snn_izikevich_Pipeline_VITIS_LOOP_16_2 
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.05 seconds. CPU system time: 0 seconds. Elapsed time: 0.06 seconds; current allocated memory: 271.445 MB.
+Execute         syn_report -verbosereport -o /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/hls_snn_izikevich_Pipeline_VITIS_LOOP_16_2.verbose.bind.rpt 
+Execute           list_part -family xc7z020-clg400-1 
+Execute             ap_family_info -name xc7z020-clg400-1 -data names 
+Execute             ap_part_info -quiet -name xc7z020-clg400-1 -data family 
+Execute         db_write -o /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/hls_snn_izikevich_Pipeline_VITIS_LOOP_16_2.bind.adb -f 
+INFO-FLOW: Finish binding hls_snn_izikevich_Pipeline_VITIS_LOOP_16_2.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'hls_snn_izikevich_Pipeline_VITIS_LOOP_40_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+Execute         set_default_model hls_snn_izikevich_Pipeline_VITIS_LOOP_40_2 
+Execute         schedule -model hls_snn_izikevich_Pipeline_VITIS_LOOP_40_2 
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_40_2'.
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 1, loop 'VITIS_LOOP_40_2'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.05 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.05 seconds; current allocated memory: 271.703 MB.
+Execute         syn_report -verbosereport -o /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/hls_snn_izikevich_Pipeline_VITIS_LOOP_40_2.verbose.sched.rpt 
+Execute           list_part -family xc7z020-clg400-1 
+Execute             ap_family_info -name xc7z020-clg400-1 -data names 
+Execute             ap_part_info -quiet -name xc7z020-clg400-1 -data family 
+Execute         db_write -o /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/hls_snn_izikevich_Pipeline_VITIS_LOOP_40_2.sched.adb -f 
+INFO-FLOW: Finish scheduling hls_snn_izikevich_Pipeline_VITIS_LOOP_40_2.
+Execute         set_default_model hls_snn_izikevich_Pipeline_VITIS_LOOP_40_2 
+Execute         bind -model hls_snn_izikevich_Pipeline_VITIS_LOOP_40_2 
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.02 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.03 seconds; current allocated memory: 271.703 MB.
+Execute         syn_report -verbosereport -o /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/hls_snn_izikevich_Pipeline_VITIS_LOOP_40_2.verbose.bind.rpt 
+Execute           list_part -family xc7z020-clg400-1 
+Execute             ap_family_info -name xc7z020-clg400-1 -data names 
+Execute             ap_part_info -quiet -name xc7z020-clg400-1 -data family 
+Execute         db_write -o /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/hls_snn_izikevich_Pipeline_VITIS_LOOP_40_2.bind.adb -f 
+INFO-FLOW: Finish binding hls_snn_izikevich_Pipeline_VITIS_LOOP_40_2.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'hls_snn_izikevich_Pipeline_VITIS_LOOP_44_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+Execute         set_default_model hls_snn_izikevich_Pipeline_VITIS_LOOP_44_2 
+Execute         schedule -model hls_snn_izikevich_Pipeline_VITIS_LOOP_44_2 
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_44_2'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 2, Final II = 1, Depth = 2, loop 'VITIS_LOOP_44_2'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.07 seconds. CPU system time: 0 seconds. Elapsed time: 0.07 seconds; current allocated memory: 272.012 MB.
+Execute         syn_report -verbosereport -o /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/hls_snn_izikevich_Pipeline_VITIS_LOOP_44_2.verbose.sched.rpt 
+Execute           list_part -family xc7z020-clg400-1 
+Execute             ap_family_info -name xc7z020-clg400-1 -data names 
+Execute             ap_part_info -quiet -name xc7z020-clg400-1 -data family 
+Execute         db_write -o /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/hls_snn_izikevich_Pipeline_VITIS_LOOP_44_2.sched.adb -f 
+INFO-FLOW: Finish scheduling hls_snn_izikevich_Pipeline_VITIS_LOOP_44_2.
+Execute         set_default_model hls_snn_izikevich_Pipeline_VITIS_LOOP_44_2 
+Execute         bind -model hls_snn_izikevich_Pipeline_VITIS_LOOP_44_2 
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.04 seconds. CPU system time: 0 seconds. Elapsed time: 0.04 seconds; current allocated memory: 272.012 MB.
+Execute         syn_report -verbosereport -o /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/hls_snn_izikevich_Pipeline_VITIS_LOOP_44_2.verbose.bind.rpt 
+Execute           list_part -family xc7z020-clg400-1 
+Execute             ap_family_info -name xc7z020-clg400-1 -data names 
+Execute             ap_part_info -quiet -name xc7z020-clg400-1 -data family 
+Execute         db_write -o /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/hls_snn_izikevich_Pipeline_VITIS_LOOP_44_2.bind.adb -f 
+INFO-FLOW: Finish binding hls_snn_izikevich_Pipeline_VITIS_LOOP_44_2.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+Execute         set_default_model hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1 
+Execute         schedule -model hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1 
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'synapses_layer_updates_VITIS_LOOP_22_1'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 5, loop 'synapses_layer_updates_VITIS_LOOP_22_1'
+INFO: [SCHED 204-11] Finished scheduling.
+Command         schedule done; 0.81 sec.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.82 seconds. CPU system time: 0 seconds. Elapsed time: 0.82 seconds; current allocated memory: 272.652 MB.
+Execute         syn_report -verbosereport -o /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1.verbose.sched.rpt 
+Execute           list_part -family xc7z020-clg400-1 
+Execute             ap_family_info -name xc7z020-clg400-1 -data names 
+Execute             ap_part_info -quiet -name xc7z020-clg400-1 -data family 
+Execute         db_write -o /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1.sched.adb -f 
+INFO-FLOW: Finish scheduling hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1.
+Execute         set_default_model hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1 
+Execute         bind -model hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1 
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.09 seconds. CPU system time: 0 seconds. Elapsed time: 0.08 seconds; current allocated memory: 272.652 MB.
+Execute         syn_report -verbosereport -o /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1.verbose.bind.rpt 
+Execute           list_part -family xc7z020-clg400-1 
+Execute             ap_family_info -name xc7z020-clg400-1 -data names 
+Execute             ap_part_info -quiet -name xc7z020-clg400-1 -data family 
+Execute         db_write -o /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1.bind.adb -f 
+INFO-FLOW: Finish binding hls_snn_izikevich_Pipeline_synapses_layer_updates_VITIS_LOOP_22_1.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'snn_get_synaptic_conductances_Pipeline_input_synapses_cache' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+Execute         set_default_model snn_get_synaptic_conductances_Pipeline_input_synapses_cache 
+Execute         schedule -model snn_get_synaptic_conductances_Pipeline_input_synapses_cache 
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'input_synapses_cache'.
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 2, loop 'input_synapses_cache'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.09 seconds. CPU system time: 0 seconds. Elapsed time: 0.09 seconds; current allocated memory: 273.121 MB.
+Execute         syn_report -verbosereport -o /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_get_synaptic_conductances_Pipeline_input_synapses_cache.verbose.sched.rpt 
+Execute           list_part -family xc7z020-clg400-1 
+Execute             ap_family_info -name xc7z020-clg400-1 -data names 
+Execute             ap_part_info -quiet -name xc7z020-clg400-1 -data family 
+Execute         db_write -o /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_get_synaptic_conductances_Pipeline_input_synapses_cache.sched.adb -f 
+INFO-FLOW: Finish scheduling snn_get_synaptic_conductances_Pipeline_input_synapses_cache.
+Execute         set_default_model snn_get_synaptic_conductances_Pipeline_input_synapses_cache 
+Execute         bind -model snn_get_synaptic_conductances_Pipeline_input_synapses_cache 
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.04 seconds. CPU system time: 0 seconds. Elapsed time: 0.04 seconds; current allocated memory: 273.121 MB.
+Execute         syn_report -verbosereport -o /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_get_synaptic_conductances_Pipeline_input_synapses_cache.verbose.bind.rpt 
+Execute           list_part -family xc7z020-clg400-1 
+Execute             ap_family_info -name xc7z020-clg400-1 -data names 
+Execute             ap_part_info -quiet -name xc7z020-clg400-1 -data family 
+Execute         db_write -o /home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj/solution/.autopilot/db/snn_get_synaptic_conductances_Pipeline_input_synapses_cache.bind.adb -f 
+INFO-FLOW: Finish binding snn_get_synaptic_conductances_Pipeline_input_synapses_cache.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'snn_get_synaptic_conductances_Pipeline_synaptic_conductances_VITIS_LOOP_154_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+Execute         set_default_model snn_get_synaptic_conductances_Pipeline_synaptic_conductances_VITIS_LOOP_154_1 
+Execute         schedule -model snn_get_synaptic_conductances_Pipeline_synaptic_conductances_VITIS_LOOP_154_1 
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [Common 17-41] Interrupt caught. Command should exit soon.
+INFO: [SCHED 204-61] Pipelining loop 'synaptic_conductances_VITIS_LOOP_154_1'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 7, Final II = 7, Depth = 99, loop 'synaptic_conductances_VITIS_LOOP_154_1'
+INFO: [SCHED 204-11] Finished scheduling.
+Command         schedule done; 1.43 sec.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 1.44 seconds. CPU system time: 0 seconds. Elapsed time: 1.44 seconds; current allocated memory: 283.848 MB.
+Command       autosyn done; error code: 1; 2.91 sec.
+Command     csynth_design done; error code: 1; 16.01 sec.
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 10 seconds. CPU system time: 1.54 seconds. Elapsed time: 16.01 seconds; current allocated memory: 103.246 MB.
+Command   ap_source done; error code: 1; 16.46 sec.
+Command vitis_hls_bin done; error code: 1; 16.47 sec.
