@@ -70,10 +70,4 @@
 #define SIM_NATIVE_HLS_STREAM
 /*****************************************************************************/
 
-/* Include common definitions */
-#include "snn_defs.h"
-
-/* Include network-specific definitions */
-#include "snn_network_defs.h"
-
 #endif /* _CONFIG_H_ */

@@ -1,0 +1,72 @@
+In file included from src/snn_izhikevich_top.cpp:6:
+src/snn_izhikevich.h:23:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=snn_update_neuron_synapses_XLX_SEP_ PragmaOptions=II=1_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS PIPELINE II=1
+        ^
+src/snn_izhikevich.h:85:9: warning: 'Resource pragma' is deprecated, use 'bind_op/bind_storage pragma' instead [-Wignored-hls-pragmas]
+#pragma HLS RESOURCE variable=new_u core=FAddSub_fulldsp latency=8
+        ^
+src/snn_izhikevich.h:85:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=resource_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=snn_update_izikevich_equations_by_neuron_XLX_SEP_ PragmaOptions=variable=new_u core=FAddSub_fulldsp latency=8_XLX_SEP_ [-Wdump-hls-pragmas]
+src/snn_izhikevich.h:146:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=array_reshape_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=snn_get_synaptic_conductances_XLX_SEP_ PragmaOptions=variable=neuron_type complete dim=2_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS ARRAY_RESHAPE variable=neuron_type complete dim=2
+        ^
+src/snn_izhikevich.h:147:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=array_partition_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=snn_get_synaptic_conductances_XLX_SEP_ PragmaOptions=variable=synapse_fetch block factor=10 dim=1_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS ARRAY_PARTITION variable=synapse_fetch block factor=10 dim=1
+        ^
+src/snn_izhikevich.h:148:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=array_partition_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=snn_get_synaptic_conductances_XLX_SEP_ PragmaOptions=variable=synapse_cache block factor=10 dim=1_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS ARRAY_PARTITION variable=synapse_cache block factor=10 dim=1
+        ^
+src/snn_izhikevich.h:156:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=snn_get_synaptic_conductances_XLX_SEP_ PragmaOptions=II=7_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS PIPELINE II=7
+        ^
+src/snn_izhikevich.h:189:9: warning: 'Resource pragma' is deprecated, use 'bind_op/bind_storage pragma' instead [-Wignored-hls-pragmas]
+#pragma HLS RESOURCE variable=sum_g_exh core=FAddSub_fulldsp latency=8
+        ^
+src/snn_izhikevich.h:189:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=resource_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=snn_get_synaptic_conductances_XLX_SEP_ PragmaOptions=variable=sum_g_exh core=FAddSub_fulldsp latency=8_XLX_SEP_ [-Wdump-hls-pragmas]
+src/snn_izhikevich.h:190:9: warning: 'Resource pragma' is deprecated, use 'bind_op/bind_storage pragma' instead [-Wignored-hls-pragmas]
+#pragma HLS RESOURCE variable=sum_g_inh core=FAddSub_fulldsp latency=8
+        ^
+src/snn_izhikevich.h:190:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=resource_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=snn_get_synaptic_conductances_XLX_SEP_ PragmaOptions=variable=sum_g_inh core=FAddSub_fulldsp latency=8_XLX_SEP_ [-Wdump-hls-pragmas]
+In file included from src/snn_izhikevich_top.cpp:7:
+src/snn_izhikevich_axi.h:17:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=axis_cp_network_to_mem_XLX_SEP_ PragmaOptions=II=2_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS PIPELINE II=2
+        ^
+src/snn_izhikevich_axi.h:46:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=axis_cp_inputs_to_mem_XLX_SEP_ PragmaOptions=II=2_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS PIPELINE II=2
+        ^
+src/snn_izhikevich_top.cpp:35:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=unroll_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=hls_snn_initialize_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS UNROLL
+        ^
+src/snn_izhikevich_top.cpp:41:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=pipeline_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=hls_snn_initialize_XLX_SEP_ PragmaOptions=_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS PIPELINE
+        ^
+/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/run_hls.tcl:29:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=top_XLX_SEP_ PragmaContext=directive_XLX_SEP_ PragmaFunction=hls_snn_izikevich_XLX_SEP_ PragmaOptions=name=hls_snn_izikevich_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLSDIRECTIVE TOP name=hls_snn_izikevich
+        ^
+src/snn_izhikevich_top.cpp:74:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=interface_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=hls_snn_izikevich_XLX_SEP_ PragmaOptions=s_axilite port=return bundle=control_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS INTERFACE s_axilite port=return bundle=control
+        ^
+src/snn_izhikevich_top.cpp:75:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=interface_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=hls_snn_izikevich_XLX_SEP_ PragmaOptions=s_axilite port=state bundle=control_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS INTERFACE s_axilite port=state bundle=control
+        ^
+src/snn_izhikevich_top.cpp:76:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=interface_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=hls_snn_izikevich_XLX_SEP_ PragmaOptions=s_axilite port=p_input bundle=control_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS INTERFACE s_axilite port=p_input bundle=control
+        ^
+src/snn_izhikevich_top.cpp:77:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=interface_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=hls_snn_izikevich_XLX_SEP_ PragmaOptions=s_axilite port=output_indexes bundle=control_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS INTERFACE s_axilite port=output_indexes bundle=control
+        ^
+src/snn_izhikevich_top.cpp:78:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=interface_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=hls_snn_izikevich_XLX_SEP_ PragmaOptions=axis port=input_stream0_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS INTERFACE axis port=input_stream0
+        ^
+src/snn_izhikevich_top.cpp:79:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=interface_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=hls_snn_izikevich_XLX_SEP_ PragmaOptions=axis port=input_stream1_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS INTERFACE axis port=input_stream1
+        ^
+src/snn_izhikevich_top.cpp:80:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=interface_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=hls_snn_izikevich_XLX_SEP_ PragmaOptions=axis port=input_stream2_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS INTERFACE axis port=input_stream2
+        ^
+src/snn_izhikevich_top.cpp:81:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=interface_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=hls_snn_izikevich_XLX_SEP_ PragmaOptions=axis port=input_stream3_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS INTERFACE axis port=input_stream3
+        ^
+src/snn_izhikevich_top.cpp:82:9: warning: HLS pragma dump _XLX_SEP_ PragmaIsValid=1_XLX_SEP_ PragmaType=interface_XLX_SEP_ PragmaContext=_XLX_SEP_ PragmaFunction=hls_snn_izikevich_XLX_SEP_ PragmaOptions=axis port=output_stream_XLX_SEP_ [-Wdump-hls-pragmas]
+#pragma HLS INTERFACE axis port=output_stream
+        ^
+25 warnings generated.

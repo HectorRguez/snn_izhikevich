@@ -8,12 +8,12 @@
 
 source /tools/Xilinx/Vitis_HLS/2023.1/scripts/vitis_hls/hls.tcl -notrace
 INFO: [HLS 200-10] Running '/tools/Xilinx/Vitis_HLS/2023.1/bin/unwrapped/lnx64.o/vitis_hls'
-INFO: [HLS 200-10] For user 'hector' on host 'hector-Zenbook-UM3402YAR-UM3402YA' (Linux_x86_64 version 6.5.0-21-generic) on Thu Mar 07 18:20:25 CET 2024
+INFO: [HLS 200-10] For user 'hector' on host 'hector-Zenbook-UM3402YAR-UM3402YA' (Linux_x86_64 version 6.5.0-21-generic) on Thu Mar 07 18:43:45 CET 2024
 INFO: [HLS 200-10] On os Ubuntu 22.04.4 LTS
 INFO: [HLS 200-10] In directory '/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich'
 Sourcing Tcl script 'vitis_hls/run_hls.tcl'
 INFO: [HLS 200-1510] Running: open_project proj -reset 
-INFO: [HLS 200-10] Opening and resetting project '/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj'.
+INFO: [HLS 200-10] Creating and opening project '/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/proj'.
 INFO: [HLS 200-1510] Running: add_files src/snn_config.h 
 INFO: [HLS 200-10] Adding design file 'src/snn_config.h' to the project
 INFO: [HLS 200-1510] Running: add_files src/snn_env.h 
@@ -42,10 +42,10 @@ INFO: [HLS 200-1510] Running: create_clock -period 40 -name default
 INFO: [SYN 201-201] Setting up clock 'default' with a period of 40ns.
 INFO: [HLS 200-1510] Running: csynth_design 
 WARNING: [HLS 200-40] Cannot find source file src/snn_network.h; skipping it.
-INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.08 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.08 seconds; current allocated memory: 206.355 MB.
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.07 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.1 seconds; current allocated memory: 206.316 MB.
 INFO: [HLS 200-10] Analyzing design file 'src/snn_izhikevich_top.cpp' ... 
 WARNING: [HLS 207-5531] 'Resource pragma' is deprecated, use 'bind_op/bind_storage pragma' instead (src/snn_izhikevich.h:85:9)
 WARNING: [HLS 207-5531] 'Resource pragma' is deprecated, use 'bind_op/bind_storage pragma' instead (src/snn_izhikevich.h:189:9)
 WARNING: [HLS 207-5531] 'Resource pragma' is deprecated, use 'bind_op/bind_storage pragma' instead (src/snn_izhikevich.h:190:9)
-INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 3.28 seconds. CPU system time: 0.73 seconds. Elapsed time: 4.02 seconds; current allocated memory: 209.074 MB.
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 3.3 seconds. CPU system time: 0.82 seconds. Elapsed time: 4.11 seconds; current allocated memory: 209.008 MB.
 INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.

@@ -1,0 +1,23 @@
+[
+  {
+    "functionLabel": "",
+    "functionName": "hls_snn_izikevich",
+    "id": 0,
+    "ifcond": "",
+    "insert_position": "",
+    "label": "",
+    "pragma": {
+      "name": "TOP",
+      "option": [
+        {
+          "name": "name",
+          "value": "hls_snn_izikevich"
+        }
+      ]
+    },
+    "slx": false,
+    "sourceFile": "/home/hector/Desktop/TFM/automate_snn_hls/snn_izhikevich/vitis_hls/run_hls.tcl",
+    "sourceLine": 29,
+    "success": true
+  }
+]
