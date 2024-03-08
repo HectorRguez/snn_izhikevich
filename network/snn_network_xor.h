@@ -9,17 +9,16 @@
 
 #include "snn_defs.h"
 #include "snn_network_defs.h"
-#include "snn_start.h" // TODO Eliminate this include (init newtork and global variables inside feedback)
-
 
 #if APP_TYPE == APP_XOR
 
 // Common interface
 char get_neuron_type(int32_t l, int32_t xl);
 char get_spike(int32_t t, int32_t x);
-float get_weight(int32_t l, int32_t xl, int32_t x, int32_t y, char feedback);
+float get_weight(float* synapse_weights, int32_t l, int32_t xl, int32_t x, int32_t y, char feedback);
 void generate_inputs();
-void persist_app_results();
+void persist_app_results(bool* neuron_type, uint64_t* out_hw);
+void feedback_error(uint64_t* out_hw, float* synapse_weights, int32_t t);
 
 // Specialized methods/variables
 
@@ -40,7 +39,7 @@ static uint32_t total_correct;
 static uint32_t valid_trial;
 
 static char p_set_inputs[NUM_INPUTS][RUN_STEPS];
-void feedback_error(int32_t t);
+
 
 // Methods
 
@@ -72,7 +71,7 @@ float get_new_weight(float current_weight, float delta_weight) {
 		return current_weight + LEARNING_RATE(learning_success[trial_number]) * delta_weight * (current_weight - W_MIN);
 }
 
-float get_weight(int32_t l, int32_t xl, int32_t x, int32_t y, char feedback) {
+float get_weight(float* synapse_weights, int32_t l, int32_t xl, int32_t x, int32_t y, char feedback) {
 	if (feedback == 0) { // Initial phase
 		if (l == 0 && y < NUM_INPUTS) { // Input-Hidden layer
 			return 0.06 + (get_random() / 50);
@@ -85,12 +84,12 @@ float get_weight(int32_t l, int32_t xl, int32_t x, int32_t y, char feedback) {
 		//float delta = weights_delta[x][y];
 		//if (delta > 3) delta = 3;
 		//if (delta < -3) delta = -3;
-		return synapse_weights[x][y];// - (LEARNING_RATE * delta);
+		return *(synapse_weights + x * NEURONS_PER_LAYER + y);// - (LEARNING_RATE * delta);
 	}
 	return 0;
 }
 
-void refresh_delta_weights() {
+void refresh_delta_weights(float* synapse_weights) {
 	int32_t x, l, xl, y;
 	for (l = HIDDEN_LAYERS; l >=0; l--) {
 		for (xl = 0; xl < NEURONS_PER_LAYER; xl++) {
@@ -103,24 +102,25 @@ void refresh_delta_weights() {
 
 			bool sum = 0;
 			for (int k = 0; k < NEURONS_PER_LAYER; k++) {
-				if (synapse_weights[x][k] < 0)
-					sum += (synapse_weights[x][k]*-1);
+				float* synapse_weight = synapse_weights + x * NEURONS_PER_LAYER + k;
+				if (*synapse_weight < 0)
+					sum += *synapse_weight*-1;
 				else
-					sum += (synapse_weights[x][k]);
+					sum += *synapse_weight;
 			}
 
 			// Iterate all pre-synaptic connections
 			for (y = 0; y < NEURONS_PER_LAYER; y++) {
-
+				float* synapse_weight = synapse_weights + x * NEURONS_PER_LAYER + y;
 				// Process only non-null synapses
 				if (l == OUTPUT_LAYER && xl < NUM_INPUTS) { // Output-Hidden
 
 					float t1 = exp_window(t_spiked[previous_layer_idx + y], t_output_trials[trial_number]);
 					float t2 = exp_window(t_spiked[previous_layer_idx + y], t_spiked[x]);
-					synapse_weights[x][y] = get_new_weight(synapse_weights[x][y], t1 - t2);///((float)NEURONS_PER_LAYER);
+					*synapse_weight = get_new_weight(*synapse_weight, t1 - t2);///((float)NEURONS_PER_LAYER);
 
 					//w_error[y][trial_number] = t1 - t2;
-					w_error[y][trial_number] = synapse_weights[x][y];
+					w_error[y][trial_number] = *synapse_weight;
 
 				} else if (l == 0 && y < NUM_INPUTS) { // Hidden-Input
 
@@ -128,14 +128,14 @@ void refresh_delta_weights() {
 					float t1 = exp_window(t_input_trials[y][trial_number], t_output_trials[trial_number]);
 					float t2 = exp_window(t_input_trials[y][trial_number], t_spiked[OUTPUT_NEURON]);
 
-					float factor = synapse_weights[x][y];
+					float factor = *synapse_weight;
 					if (factor < 0) factor = factor * -1;
 					factor = factor / sum;
 
-					synapse_weights[x][y] = get_new_weight(synapse_weights[x][y], t1 - t2);
+					*synapse_weight = get_new_weight(*synapse_weight, t1 - t2);
 
 					//w_error[x+NEURONS_PER_LAYER][trial_number] = t1 - t2;
-					w_error[x+NEURONS_PER_LAYER][trial_number] = synapse_weights[x][y];
+					w_error[x+NEURONS_PER_LAYER][trial_number] = *synapse_weight;
 				}
 			}
 		}
@@ -167,13 +167,13 @@ void generate_inputs() {
 	}
 }
 
-void feedback_error(int32_t t) {
+void feedback_error(uint64_t* out_hw, float* synapse_weights, int32_t t) {
 	int32_t t_start = t + 1 - TRIAL_TIME_MS;
 
 	for (int32_t n = 0; n < NUMBER_OF_NEURONS; n++) {
 		t_spiked[n] = INFINITY;
 		for (int32_t i = 0; i < TRIAL_TIME_MS; i++) {
-			if (out_hw[((t_start + i) * NUMBER_OF_NEURONS) + n] >= 35.0f) {
+			if (*(out_hw + (t_start + i) * NUMBER_OF_NEURONS + n) >= 35.0f) {
 				t_spiked[n] = i;
 				//t_spiked[n] ++;
 				break;
@@ -216,7 +216,7 @@ void feedback_error(int32_t t) {
 
 
 	// Refresh delta weights
-	refresh_delta_weights();
+	refresh_delta_weights(synapse_weights);
 
 	trial_number ++;
 }
@@ -225,7 +225,7 @@ void persist_trials() {
 	printf("Global learning accuracy: %.3f\n", learning_success[NUM_TRAINING_TRIALS-2]);
 }
 
-void persist_firings() {
+void persist_firings(bool* neuron_type, uint64_t* out_hw) {
 	uint32_t t, l, x, xl;
 	printf("Persisting all neuron firing...\n");
 	for (t = 0; t < RUN_STEPS - 1; t++) {
@@ -236,7 +236,7 @@ void persist_firings() {
 		}
 		for (x = 0, l = 0; l < NUMBER_OF_LAYERS; l++) for (xl = 0; xl < NEURONS_PER_LAYER; xl++, x++) {
 			if (out_hw[t * NUMBER_OF_NEURONS + x] >= 35.0f) {
-				if (neuron_type[l][xl] == INHIBITORY_NEURON)
+				if (*(neuron_type + l*NEURONS_PER_LAYER + xl) == INHIBITORY_NEURON)
 					printf("%lu,%ld\n", t, x);
 				else
 					printf("%lu,%ld,\n", t, x);
@@ -246,17 +246,17 @@ void persist_firings() {
 	}
 }
 
-void persist_outputs() {
+void persist_outputs(uint64_t* out_hw) {
 	printf("Persisting neuron outputs...\n");
 	for (int32_t t = 0; t < RUN_STEPS - 1; t++) {
 		printf("%lu,%f\n", t, out_hw[(t * NUMBER_OF_NEURONS) + OUTPUT_NEURON]);
 	}
 }
 
-void persist_app_results() {
+void persist_app_results(bool* neuron_type, uint64_t* out_hw) {
 	persist_trials();
-	persist_firings();
-	persist_outputs();
+	persist_firings(neuron_type, out_hw);
+	persist_outputs(out_hw);
 }
 
 #endif /* APP_TYPE */

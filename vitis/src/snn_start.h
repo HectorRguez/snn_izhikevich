@@ -8,7 +8,6 @@
 #include <math.h>
 
 // Network libraries
-#include "snn_results.h"
 #include "snn_network_defs.h"
 #include "snn_network_xor.h" // Aplication
  
@@ -79,8 +78,7 @@ int run_network() {
 		printf("*****************************************************\n");
 		printf("*                Persisting HW results              *\n");
 		printf("*****************************************************\n");
-  		persist_hw_results(neuron_type[0], out_hw);
-		persist_app_results();
+		persist_app_results(neuron_type[0], out_hw);
 	#endif
 
   	printf("**************** Simulation finished ****************\n");
@@ -137,7 +135,7 @@ int run_hw_network() {
 		// Feedback if training mode enabled
 		#ifdef NUM_TRAINING_TRIALS
 		if ((t % TRIAL_TIME_MS) == (TRIAL_TIME_MS - 1)) {
-			feedback_error(t);
+			feedback_error(out_hw, synapse_weights[0], t);
 			// Update weights
 			init_network(0, 1);
 		}
@@ -200,7 +198,7 @@ void init_network(uint8_t change_neuron_types, uint8_t feedback) {
 	// Set input weights
 	for (x = 0; x < NEURONS_PER_LAYER; x++) {
 		for (y = 0; y < NEURONS_PER_LAYER; y++) {
-			float weight = get_weight(0, x, x, y, feedback);
+			float weight = get_weight(synapse_weights[0], l, x, x, y, feedback);
 
 			synapse_weights[x][y] = weight;
 
@@ -230,7 +228,7 @@ void init_network(uint8_t change_neuron_types, uint8_t feedback) {
 	x = NEURONS_PER_LAYER;
 	for (l = 1; l < NUMBER_OF_LAYERS; l++) for (xl = 0; xl < NEURONS_PER_LAYER; xl++, x++) {
 		for (y = 0; y < NEURONS_PER_LAYER; y++) {
-			float weight = get_weight(l, xl, x, y, feedback);
+			float weight = get_weight(synapse_weights[0], l, xl, x, y, feedback);
 			synapse_weights[x][y] = weight;
 
 			#if PRECISION_TYPE == FIXED_POINT

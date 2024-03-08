@@ -3,9 +3,17 @@
 4. Save minicom data to file (select which data to save)
 5. Convert network definitions into a multiple file structure inside network/folder
 9. Correct the save_hw_results file
-11. Avoid snn_network_xor.h calling snn_start.h. MOVE some start.h functionallity to snn_network_xor.h
+11. Avoid snn_network_xor.h calling snn_start.h. MOVE some start.h functionality to snn_network_xor.h
 12. Make snn_network_xor.h
 13. Add fixed point conversions to start.h
 14. Transform the strong links into soft ones on Vitis project.
 15. No clue about INPUT_FIRINGS_OFFSET. Understand code and rewrite the function.
 16. Change software and global variables types, updating snn_types.h
+17. Add the network folder to the Vitis HLS and the vitis targets
+
+
+
+IMPORTANT OBSERVATIONS ABOUT THE PROJECT
+1. snn_resutls.h main function has the same functionality as the function implemented inside snn_network_xor.h to save firings. Thus, keeping it makes no sense and it has been eliminated from the project.
+2. One of my biggest concerns about the project's structure is the circular dependency between snn_start.h and snn_network_xor.h. The later makes use of snn_start.h global variables inside its functions, which is not required, since these 2D arrays can be easily passed by reference. To make matters worse, snn_start.h calls multiple times snn_network_xor.h functions, and_snn_network.h does the same with snn_start.h. 
+3. snn_types.h is useful inside the Vitis HLS project to define commonly used types such as 1 bit variables or the AXI Interface. However, inside the Vitis project, it is completely useless. For illustration purposes, lets analyze the neuron_type variable. On the Vitis HLS project, it is inffered as a 1 bit memory that stores which neurons are inhibitory or excitatory. In the Vitis project, the same variable is used to store the current state of the network in order to configure it. It makes no sense to use custom types to end up obfuscating the variable type, which, in the end will inevitably be boolean.
