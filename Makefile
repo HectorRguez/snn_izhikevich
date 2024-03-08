@@ -68,3 +68,4 @@ clean_vivado:
 
 clean_vitis:
 	@rm -rf .Xil
+	@rm -f xrc.log
