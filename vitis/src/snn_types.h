@@ -7,19 +7,9 @@
 /*****************************************************************************/
 /*                            Type's Definitions                             */
 /*****************************************************************************/
-
-// Fixed sizes
-/*#define VU_WIDTH		32
-#define VU_INT			10
-#define VU_FRAC 		(VU_WIDTH - VU_INT - 1)
-#define S_WIDTH			16
-#define S_INT			5
-#define S_FRAC 			(S_WIDTH - S_INT)*/
-
 typedef float 					  float32_t;
 typedef short 					  int16_t;
 typedef unsigned short 			  uint16_t;
-
 
 typedef bool       		    	  uint1_t;
 typedef char  					  uint2_t;
@@ -38,8 +28,6 @@ typedef float vu_dat_sw_t;
 /*****************************************************************************/
 /*                            Classes and Utilities                          */
 /*****************************************************************************/
-
-
 union float32_uint32_c {
 	uint32_t  u32data;
 	float32_t f32data;
