@@ -9,7 +9,6 @@
 
 #include "snn_defs.h"
 #include "snn_network_defs.h"
-#include "snn_types.h"
 #include "snn_start.h" // TODO Eliminate this include (init newtork and global variables inside feedback)
 
 

@@ -5,9 +5,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "snn_defs.h"
-#include "snn_types.h"
 
-void persist_hw_results(uint1_sw_t neuron_type[NUMBER_OF_LAYERS][NEURONS_PER_LAYER], uint64_t *out_stream) {
+void persist_hw_results(uint8_t neuron_type[NUMBER_OF_LAYERS][NEURONS_PER_LAYER], uint64_t *out_stream) {
 
 	int32_t t, x, l, xl;
 	int32_t firing_rate[NUMBER_OF_NEURONS];
@@ -32,12 +31,12 @@ void persist_hw_results(uint1_sw_t neuron_type[NUMBER_OF_LAYERS][NEURONS_PER_LAY
 		/* TODO
 		printf("Persisting HW firing rates...\n");
 		for (x = 0; x < NUMBER_OF_NEURONS; x++) {
-			printf("%lu,%f\n", x, (((float32_t)firing_rate[x]*1000)/(RUNTIME_MS-2*INPUT_FIRINGS_OFFSET)));
+			printf("%lu,%f\n", x, (((float)firing_rate[x]*1000)/(RUNTIME_MS-2*INPUT_FIRINGS_OFFSET)));
 		}
 		*/
 	}
 	{
-		float32_t *v_to_plot = (float32_t*)out_stream;
+		float *v_to_plot = (float*)out_stream;
 		printf("Persisting neuron HW potentials...\n");
 		for (t = 0; t < RUN_STEPS - 1; t++) {
 			int v_idx = (t * AXI_OUTPUT_LENGTH * 2) + 0;

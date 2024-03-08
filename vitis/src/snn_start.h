@@ -4,9 +4,9 @@
 // Common libraries
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdint.h>
 #include <math.h>
 
-#include "snn_types.h"
 #include "snn_results.h"
 #include "snn_network_defs.h"
 
@@ -23,19 +23,19 @@ void start_clock() { XTime_GetTime(&clk_start); }
 void stop_clock()  { XTime_GetTime(&clk_end); clk_duration += (clk_end - clk_start); }
 
 void reset_clock() { clk_duration = 0; }
-float32_t get_clock_ms()  { return (1.0 * clk_duration) / COUNTS_PER_MS; }
+float get_clock_ms()  { return (1.0 * clk_duration) / COUNTS_PER_MS; }
 
 int run_network();
 int run_hw_network();
 void get_inputs(int32_t t);
-void init_network(uint1_sw_t neuron_types, uint1_sw_t feedback);
+void init_network(uint8_t neuron_types, uint8_t feedback);
 #ifdef PERSIST_RESULTS
 void persist_results(uint64_t *out_stream);
 #endif
 
 // Global variables: network and results
-static uint1_sw_t	neuron_type[NUMBER_OF_LAYERS][NEURONS_PER_LAYER];
-static w_dat_sw_t	synapse_weights[NUMBER_OF_NEURONS][NEURONS_PER_LAYER];
+static uint8_t	neuron_type[NUMBER_OF_LAYERS][NEURONS_PER_LAYER];
+static float	synapse_weights[NUMBER_OF_NEURONS][NEURONS_PER_LAYER];
 static uint32_t 	p_hw[AXI_INPUT_LENGTH];
 static uint64_t 	network_stream[AXI_NEURON_TYPE_LENGTH];
 static uint64_t 	weights_stream[AXI_WEIGHTS_PORTS][AXI_WEIGHTS_LENGTH];
@@ -61,8 +61,8 @@ int run_network() {
 	printf("*****************************************************\n");
 	printf("Neurons per layer = %d\n", NEURONS_PER_LAYER);
 	printf("Number of layers = %d\n", NUMBER_OF_LAYERS);
-	printf("Number of neurons = %d (%.1fK)\n", NUMBER_OF_NEURONS, ((float32_t)NUMBER_OF_NEURONS)/1000);
-	printf("Number of synapses = %d (%.1fM)\n", NUMBER_OF_SYNAPSES, ((float32_t)NUMBER_OF_SYNAPSES)/1000000);
+	printf("Number of neurons = %d (%.1fK)\n", NUMBER_OF_NEURONS, ((float)NUMBER_OF_NEURONS)/1000);
+	printf("Number of synapses = %d (%.1fM)\n", NUMBER_OF_SYNAPSES, ((float)NUMBER_OF_SYNAPSES)/1000000);
 
 	printf("Initializing network...\n");
 	init_network(1, 0);
@@ -117,7 +117,7 @@ int run_hw_network() {
 
   	// Flush inputs array's cache
   	for (uint32_t i = 0; i < AXI_WEIGHTS_PORTS; i++)
-  		Xil_DCacheFlushRange((u32)weights_stream[i], AXI_WEIGHTS_LENGTH * sizeof(uint64_t));
+  		Xil_DCacheFlushRange((uint32_t)weights_stream[i], AXI_WEIGHTS_LENGTH * sizeof(uint64_t));
 
   	// Simulate for a period of time
   	printf("Starting %ld steps simulation...\n", RUN_STEPS);
@@ -141,9 +141,9 @@ int run_hw_network() {
 		#endif
   	}
   	printf("=> Simulation results\n");
-  	printf("Network simulation time:\t%.2f ms.\n", (float32_t)RUNTIME_MS);
+  	printf("Network simulation time:\t%.2f ms.\n", (float)RUNTIME_MS);
   	printf("Total execution time:\t\t%.2f ms.\n", get_clock_ms());
-  	printf("Execution time per second:\t%.2f ms.\n", get_clock_ms()/((float32_t)RUNTIME_MS/1000));
+  	printf("Execution time per second:\t%.2f ms.\n", get_clock_ms()/((float)RUNTIME_MS/1000));
   	return 0;
 }
 
@@ -161,7 +161,7 @@ void get_inputs(int32_t t) {
 	for (x = 0; x < INPUT_SYNAPSES; x++) {
 		if(bit == 0) converter = 0;
 
-		uint1_sw_t spiked = get_spike(t, x);
+		uint8_t spiked = get_spike(t, x);
 		if (spiked) {
 			converter |= (uint32_t)1 << bit;
 		}
@@ -172,7 +172,7 @@ void get_inputs(int32_t t) {
 	if(bit > 0) p_hw[stream_id++] = converter;
 }
 
-void init_network(uint1_sw_t neuron_types, uint1_sw_t feedback) {
+void init_network(uint8_t neuron_types, uint8_t feedback) {
 	int32_t x, y, l, xl;
 	int32_t stream_id, bit;
 	stream_id = 0; bit = 0;
@@ -197,14 +197,15 @@ void init_network(uint1_sw_t neuron_types, uint1_sw_t feedback) {
 	// Set input weights
 	for (x = 0; x < NEURONS_PER_LAYER; x++) {
 		for (y = 0; y < NEURONS_PER_LAYER; y++) {
-			float32_t weight = get_weight(0, x, x, y, feedback);
+			float weight = get_weight(0, x, x, y, feedback);
 
 			synapse_weights[x][y] = weight;
 
 			#if PRECISION_TYPE == FIXED_POINT
 			// TODO
 			#elif PRECISION_TYPE == FLOATING_POINT
-			converter |= (uint64_t)float32_to_uint32(weight) << bit;
+			uint32_t* weight_ptr = (uint32_t*)&weight;
+			converter |= (uint64_t)*weight_ptr << bit;
 			#endif
 
 			bit += WEIGHT_BITS;
@@ -226,13 +227,14 @@ void init_network(uint1_sw_t neuron_types, uint1_sw_t feedback) {
 	x = NEURONS_PER_LAYER;
 	for (l = 1; l < NUMBER_OF_LAYERS; l++) for (xl = 0; xl < NEURONS_PER_LAYER; xl++, x++) {
 		for (y = 0; y < NEURONS_PER_LAYER; y++) {
-			float32_t weight = get_weight(l, xl, x, y, feedback);
+			float weight = get_weight(l, xl, x, y, feedback);
 			synapse_weights[x][y] = weight;
 
 			#if PRECISION_TYPE == FIXED_POINT
 			// TODO
 			#elif PRECISION_TYPE == FLOATING_POINT
-			converter |= (uint64_t)float32_to_uint32(weight) << bit;
+			uint32_t* weight_ptr = (uint32_t*)&weight;
+			converter |= (uint64_t)*weight_ptr << bit;
 			#endif
 
 			bit += WEIGHT_BITS;

@@ -13,7 +13,7 @@
 #define PRAGMA_SUB(x) 				_Pragma (#x)
 #define PRAGMA_HLS(x)				PRAGMA_SUB(x)
 
-#define get_random() 				((float32_t)rand() / (float32_t)RAND_MAX) // random float32_t between 0 and 1
+#define get_random() 				((float)rand() / (float)RAND_MAX) // random float between 0 and 1
 #define round_div_upper(x, y) 		((int32_t)((x + y - 1 ) / y))
 #define bits_size(type) 			(sizeof(type) * 8)
 
@@ -53,7 +53,7 @@
 
 // Output
 #define AXI_POTENTIAL_OUTPUTS		2
-#define AXI_POTENTIAL_OUTPUT_LENGTH	round_div_upper(AXI_POTENTIAL_OUTPUTS * bits_size(vu_dat_t), AXI_SIZE)
+#define AXI_POTENTIAL_OUTPUT_LENGTH	round_div_upper(AXI_POTENTIAL_OUTPUTS * bits_size(float), AXI_SIZE)
 #define AXI_FIRINGS_LENGTH			round_div_upper(NUMBER_OF_NEURONS, AXI_SIZE)
 #define AXI_OUTPUT_LENGTH			(AXI_POTENTIAL_OUTPUT_LENGTH + AXI_FIRINGS_LENGTH)
 
