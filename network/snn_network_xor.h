@@ -168,62 +168,58 @@ void generate_inputs() {
 }
 
 void feedback_error(int32_t t) {
-	if ((t % TRIAL_TIME_MS) == (TRIAL_TIME_MS - 1)) {
-		int32_t t_start = t + 1 - TRIAL_TIME_MS;
+	int32_t t_start = t + 1 - TRIAL_TIME_MS;
 
-		for (int32_t n = 0; n < NUMBER_OF_NEURONS; n++) {
-			t_spiked[n] = INFINITY;
-			for (int32_t i = 0; i < TRIAL_TIME_MS; i++) {
-				if (out_hw[((t_start + i) * NUMBER_OF_NEURONS) + n] >= 35.0f) {
-					t_spiked[n] = i;
-					//t_spiked[n] ++;
-					break;
-				}
-			}
-			//t_spiked[n] = t_spiked[n] * (1000/TRIAL_TIME_MS);
-		}
-
-		// Initialize global errors
-		t_shift_error[trial_number] = 0;
-		int32_t error = (int32_t)(t_spiked[OUTPUT_NEURON] - t_output_trials[trial_number]);
-
-		//if ((error) <= THRESHOLD_FREQ) correct_epoch = 1;
-		if (abs(error) <= THRESHOLD_FREQ) {
-			total_correct ++; trial_success[trial_number] = 1;
-		} else {
-			trial_success[trial_number] = 0;
-		}
-
-		t_spikes_trials[trial_number] = t_spiked[OUTPUT_NEURON];
-
-		int32_t total_trials = 0;
-		int32_t correct_trials = 0;
-		for (uint32_t k = 0; k < 1000; k++) {
-			if (trial_number > k) {
-				total_trials ++;
-				if (trial_success[trial_number - k] > 0) correct_trials ++;
+	for (int32_t n = 0; n < NUMBER_OF_NEURONS; n++) {
+		t_spiked[n] = INFINITY;
+		for (int32_t i = 0; i < TRIAL_TIME_MS; i++) {
+			if (out_hw[((t_start + i) * NUMBER_OF_NEURONS) + n] >= 35.0f) {
+				t_spiked[n] = i;
+				//t_spiked[n] ++;
+				break;
 			}
 		}
+		//t_spiked[n] = t_spiked[n] * (1000/TRIAL_TIME_MS);
+	}
 
-		learning_success[trial_number] = (float)correct_trials/(float)(total_trials+1);
+	// Initialize global errors
+	t_shift_error[trial_number] = 0;
+	int32_t error = (int32_t)(t_spiked[OUTPUT_NEURON] - t_output_trials[trial_number]);
 
-		// shift error
-		//t_shift_error_accum += abs(error);
-		if (error > TRIAL_TIME_MS/2 || error < -TRIAL_TIME_MS/2)
-			t_shift_error[trial_number] = TRIAL_TIME_MS/2;
-		else
-			//t_shift_error[trial_number] = (error); //t_shift_error_accum/(float)(trial_number);
-			t_shift_error[trial_number] = (error*error)/2;
+	//if ((error) <= THRESHOLD_FREQ) correct_epoch = 1;
+	if (abs(error) <= THRESHOLD_FREQ) {
+		total_correct ++; trial_success[trial_number] = 1;
+	} else {
+		trial_success[trial_number] = 0;
+	}
 
+	t_spikes_trials[trial_number] = t_spiked[OUTPUT_NEURON];
 
-		// Refresh delta weights
-		refresh_delta_weights();
-
-		// Update weights
-		init_network(0, 1);
-		trial_number ++;
+	int32_t total_trials = 0;
+	int32_t correct_trials = 0;
+	for (uint32_t k = 0; k < 1000; k++) {
+		if (trial_number > k) {
+			total_trials ++;
+			if (trial_success[trial_number - k] > 0) correct_trials ++;
 		}
 	}
+
+	learning_success[trial_number] = (float)correct_trials/(float)(total_trials+1);
+
+	// shift error
+	//t_shift_error_accum += abs(error);
+	if (error > TRIAL_TIME_MS/2 || error < -TRIAL_TIME_MS/2)
+		t_shift_error[trial_number] = TRIAL_TIME_MS/2;
+	else
+		//t_shift_error[trial_number] = (error); //t_shift_error_accum/(float)(trial_number);
+		t_shift_error[trial_number] = (error*error)/2;
+
+
+	// Refresh delta weights
+	refresh_delta_weights();
+
+	trial_number ++;
+}
 
 void persist_trials() {
 	printf("Global learning accuracy: %.3f\n", learning_success[NUM_TRAINING_TRIALS-2]);

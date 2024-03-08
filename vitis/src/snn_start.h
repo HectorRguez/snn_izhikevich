@@ -137,7 +137,11 @@ int run_hw_network() {
 
 		// Feedback if training mode enabled
 		#ifdef NUM_TRAINING_TRIALS
-		feedback_error(t);
+		if ((t % TRIAL_TIME_MS) == (TRIAL_TIME_MS - 1)) {
+			feedback_error(t);
+			// Update weights
+			init_network(0, 1);
+		}
 		#endif
   	}
   	printf("=> Results\n");
