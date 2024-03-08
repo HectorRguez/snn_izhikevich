@@ -28,13 +28,13 @@ float get_clock_ms()  { return (1.0 * clk_duration) / COUNTS_PER_MS; }
 int run_network();
 int run_hw_network();
 void get_inputs(int32_t t);
-void init_network(uint8_t neuron_types, uint8_t feedback);
+void init_network(uint8_t change_neuron_types, uint8_t feedback);
 #ifdef PERSIST_RESULTS
 void persist_results(uint64_t *out_stream);
 #endif
 
 // Global variables: network and results
-static uint8_t	neuron_type[NUMBER_OF_LAYERS][NEURONS_PER_LAYER];
+static bool	neuron_type[NUMBER_OF_LAYERS][NEURONS_PER_LAYER];
 static float	synapse_weights[NUMBER_OF_NEURONS][NEURONS_PER_LAYER];
 static uint32_t 	p_hw[AXI_INPUT_LENGTH];
 static uint64_t 	network_stream[AXI_NEURON_TYPE_LENGTH];
@@ -80,7 +80,7 @@ int run_network() {
 		printf("*****************************************************\n");
 		printf("*                Persisting HW results              *\n");
 		printf("*****************************************************\n");
-  		persist_hw_results(neuron_type, out_hw);
+  		persist_hw_results(neuron_type[0], out_hw);
 		persist_app_results();
 	#endif
 
@@ -140,8 +140,8 @@ int run_hw_network() {
 		feedback_error(t);
 		#endif
   	}
-  	printf("=> Simulation results\n");
-  	printf("Network simulation time:\t%.2f ms.\n", (float)RUNTIME_MS);
+  	printf("=> Results\n");
+  	printf("Network  time:\t%.2f ms.\n", (float)RUNTIME_MS);
   	printf("Total execution time:\t\t%.2f ms.\n", get_clock_ms());
   	printf("Execution time per second:\t%.2f ms.\n", get_clock_ms()/((float)RUNTIME_MS/1000));
   	return 0;
@@ -172,7 +172,7 @@ void get_inputs(int32_t t) {
 	if(bit > 0) p_hw[stream_id++] = converter;
 }
 
-void init_network(uint8_t neuron_types, uint8_t feedback) {
+void init_network(uint8_t change_neuron_types, uint8_t feedback) {
 	int32_t x, y, l, xl;
 	int32_t stream_id, bit;
 	stream_id = 0; bit = 0;
@@ -180,7 +180,7 @@ void init_network(uint8_t neuron_types, uint8_t feedback) {
 
 	// Set neuron types
 	for (l = 0; l < NUMBER_OF_LAYERS; l++) for (xl = 0; xl < NEURONS_PER_LAYER; xl++) {
-		if (neuron_types == 1) // Get neuron type if requested, otherwise use the old one
+		if (change_neuron_types == 1) // Get neuron type if requested, otherwise use the old one
 			neuron_type[l][xl] = get_neuron_type(l, xl);
 
 		if (bit == 0) { converter = 0; }

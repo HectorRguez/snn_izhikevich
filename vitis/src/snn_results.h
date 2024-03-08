@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include "snn_defs.h"
 
-void persist_hw_results(uint8_t neuron_type[NUMBER_OF_LAYERS][NEURONS_PER_LAYER], uint64_t *out_stream) {
+void persist_hw_results(bool* neuron_type, uint64_t* out_stream) {
 
 	int32_t t, x, l, xl;
 	int32_t firing_rate[NUMBER_OF_NEURONS];
@@ -21,7 +21,7 @@ void persist_hw_results(uint8_t neuron_type[NUMBER_OF_LAYERS][NEURONS_PER_LAYER]
 				if ( (firings[t * AXI_OUTPUT_LENGTH + f_idx] & (uint64_t)1 << f_bit) >> f_bit)
 				{
 					firing_rate[x] ++;
-					if (neuron_type[l][xl] == INHIBITORY_NEURON)
+					if (*(neuron_type + l*NEURONS_PER_LAYER + xl))
 						printf("%lu,%lu\n", t, x);
 					else
 						printf("%lu,%lu,\n", t, x);
