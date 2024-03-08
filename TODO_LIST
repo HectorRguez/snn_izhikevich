@@ -3,7 +3,6 @@
 4. Save minicom data to file (select which data to save)
 5. Convert network definitions into a multiple file structure inside network/folder
 9. Correct the save_hw_results file
-10. Eliminate all unnecessary types on the Vitis project.
 11. Avoid snn_network_xor.h calling snn_start.h. MOVE some start.h functionallity to snn_network_xor.h
 12. Make snn_network_xor.h
 13. Add fixed point conversions to start.h
