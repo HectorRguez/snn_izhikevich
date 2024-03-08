@@ -120,7 +120,7 @@ int run_hw_network() {
   		Xil_DCacheFlushRange((uint32_t)weights_stream[i], AXI_WEIGHTS_LENGTH * sizeof(uint64_t));
 
   	// Simulate for a period of time
-  	printf("Starting %ld steps simulation...\n", RUN_STEPS);
+  	printf("Starting %ld steps...\n", RUN_STEPS);
   	reset_clock();
   	for (t = 0, o_off = 0; t < RUN_STEPS; t++, o_off += AXI_OUTPUT_LENGTH) {
 
