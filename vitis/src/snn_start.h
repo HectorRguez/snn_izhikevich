@@ -7,9 +7,11 @@
 #include <stdint.h>
 #include <math.h>
 
+// Network libraries
 #include "snn_results.h"
 #include "snn_network_defs.h"
-
+#include "snn_network_xor.h" // Aplication
+ 
 // Hardware libraries
 #include "hw/zynq/platform.h"
 #include "hw/snn_izikevich_hw_zynq.h"
@@ -41,9 +43,6 @@ static uint64_t 	network_stream[AXI_NEURON_TYPE_LENGTH];
 static uint64_t 	weights_stream[AXI_WEIGHTS_PORTS][AXI_WEIGHTS_LENGTH];
 static uint64_t 	output_stream[AXI_OUTPUT_LENGTH];
 static uint64_t		out_hw[RUN_STEPS * AXI_OUTPUT_LENGTH];
-
-// Include application
-#include "snn_network_xor.h"
 
 int start() {
 	init_platform();

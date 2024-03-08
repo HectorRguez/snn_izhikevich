@@ -104,9 +104,9 @@ void refresh_delta_weights() {
 			bool sum = 0;
 			for (int k = 0; k < NEURONS_PER_LAYER; k++) {
 				if (synapse_weights[x][y] < 0)
-					sum += (synapse_weights[x][y]*-1);
+					sum += (synapse_weights[x][k]*-1);
 				else
-					sum += (synapse_weights[x][y]);
+					sum += (synapse_weights[x][k]);
 			}
 
 			// Iterate all pre-synaptic connections
