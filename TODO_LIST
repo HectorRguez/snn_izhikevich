@@ -1,15 +1,12 @@
 1. Check if I can separate .h files with functions into headers and .cpp files on the HLS
 2. Separate snn_network_xor.h into header and functions
-3. Remove saving file functionality
 4. Save minicom data to file (select which data to save)
 5. Convert network definitions into a multiple file structure inside network/folder
-6. Remve the sw execution on Vitis project
-8. Make snn_defs.h external
 9. Correct the save_hw_results file
 10. Eliminate unnecessary types on the Vitis project.
 11. Avoid snn_network_xor.h calling snn_start.h
-12. Make snn_network_xor.h and types.h external
+12. Make snn_network_xor.h
 13. Add fixed point conversions to start.h
 14. Transform the strong links into soft ones on Vitis project.
 15. No clue about INPUT_FIRINGS_OFFSET. Understand code and rewrite the function.
-16. Change software and global variables types.
+16. Change software and global variables types, updating snn_types.h

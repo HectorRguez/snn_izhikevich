@@ -2,7 +2,7 @@
 #define _SNN_IZIKEVICH_AXI_H_
 
 #include "snn_types.h"
-#include "snn_defs.h"
+#include "../../network/snn_defs.h"
 
 void axis_cp_network_to_mem(
 			hls_stream_64_t& input_stream,
