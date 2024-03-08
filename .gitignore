@@ -3,5 +3,6 @@ vivado/block_design/
 vivado/snn_hw.xsa
 vivado/snn_hw.bit
 vitis_hls/snn_ip/
+vitis_hls/proj/
 vitis/ws/
 TODO_LIST

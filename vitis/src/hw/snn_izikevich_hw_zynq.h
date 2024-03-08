@@ -1,13 +1,14 @@
 #ifndef _SNN_IZIKEVICH_HW_ZYNQ_H_
 #define _SNN_IZIKEVICH_HW_ZYNQ_H_
 
+#include <stdint.h>
+
 #include "xhls_snn_izikevich.h"
 #include "xaxidma.h"
 #include "xscugic.h"
 #include "xparameters.h"
-#include "../snn_config.h"
-#include "../common/snn_types.h"
-#include "../common/snn_network.h"
+
+#include "../snn_defs.h"
 
 /*****************************************************************************
  *                          Hardware Definitions      		                 *
@@ -20,7 +21,6 @@
 #define DMA2_DEVICE_ID		XPAR_AXI_DMA_2_DEVICE_ID
 #define DMA3_DEVICE_ID		XPAR_AXI_DMA_3_DEVICE_ID
 
-int a = DMA0_DEVICE_ID;
 
 #define INTR_HLS_ID			XPAR_FABRIC_HLS_SNN_IZIKEVICH_0_INTERRUPT_INTR
 #define INTR_DMA0_RX_ID		XPAR_FABRIC_AXI_DMA_0_S2MM_INTROUT_INTR

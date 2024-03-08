@@ -1,8 +1,5 @@
-// Import definitions
-#include "common/snn_env.h"
-
 // Import configuration for selected run type
-#include "common/snn_start.h"
+#include "snn_start.h"
 
 int main() {
 	// Call generic start main routine

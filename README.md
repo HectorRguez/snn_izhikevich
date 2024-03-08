@@ -29,6 +29,7 @@ TODO
 </pre>
 ## How to use
 1. Install JTAG drivers `/tools/Xilinx/Vivado/2023.1/data/xicom/cable_drivers/lin64/install_script/install_drivers`
+2. Install GTK 3 to run Vitis GUI
 2. TODO
 
 ## Execution flow

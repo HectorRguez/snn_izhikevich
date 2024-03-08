@@ -30,6 +30,10 @@ importsources\
     -name snn_izhikevich_app\
     -path ./vitis/src/
 
+importsources\
+    -name snn_izhikevich_app\
+    -path ./network
+
 # Build the application 
 app build \
     -name snn_izhikevich_app

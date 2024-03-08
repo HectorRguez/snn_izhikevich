@@ -11,6 +11,8 @@
 /* Application type */
 #define APP_TYPE				APP_XOR
 
+/* Results */
+#define PERSIST_RESULTS
 
 /*****************************************************************************
  *                          General Configuration        	                 *
