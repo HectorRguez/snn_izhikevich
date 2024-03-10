@@ -1,5 +1,5 @@
-#ifndef CONFIG_H
-#define CONFIG_H
+#ifndef _CONFIG_H
+#define _CONFIG_H
 
 /*****************************************************************************
  *                          General Configuration        	                 *
@@ -27,4 +27,4 @@
 /* Results */
 #define PERSIST_RESULTS
 
-#endif /* CONFIG_H */
+#endif /* _CONFIG_H */

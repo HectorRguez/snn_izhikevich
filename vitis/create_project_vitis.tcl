@@ -17,7 +17,7 @@ domain create\
 # Build the platform
 platform generate
 
-# Create application project inside a system
+# Create application project inside a system. Languaje must be defined before the template
 app create \
     -name snn_izhikevich_app\
     -platform snn_izhikevich_pl\
@@ -32,7 +32,7 @@ importsources\
 
 importsources\
     -name snn_izhikevich_app\
-    -path ./network
+    -path ./snn_config/
 
 # Build the application 
 app build \

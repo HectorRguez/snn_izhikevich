@@ -2,7 +2,7 @@
 #define _SNN_IZIKEVICH_H_
 
 #include "snn_types.h"
-#include "../../network/snn_defs.h"
+#include "../../snn_config/snn_defs.h"
 
 /***************************************************************************
  *        Function: snn_update_neuron_synapses                             *

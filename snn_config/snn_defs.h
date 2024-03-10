@@ -8,17 +8,6 @@
 #include "networks/snn_network_xor.h"
 #endif
 
-/*****************************************************************************
- *                              Utils Definitions   	                     *
- *****************************************************************************/
-
-#define PRAGMA_SUB(x) 				_Pragma (#x)
-#define PRAGMA_HLS(x)				PRAGMA_SUB(x)
-
-#define get_random() 				((float)rand() / (float)RAND_MAX) // random float between 0 and 1
-#define round_div_upper(x, y) 		((int32_t)((x + y - 1 ) / y))
-#define bits_size(type) 			(sizeof(type) * 8)
-
 /*****************************************************************************/
 /*            		         Input/Output Definitions                        */
 /*****************************************************************************/
@@ -160,22 +149,6 @@ U - 0.5
 dt - interval between current and previous spike
 t - 500ms
 */
-// Model time step
-#define TIMESTEP_MS 					0.5f
-#define SIM_TIMESTEP_MS					(2 * TIMESTEP_MS)
-
-//Neural network dimensions
-#define NUMBER_OF_LAYERS 				SIZE_LAYERS
-#define NEURONS_PER_LAYER 				SIZE_NEURONS_PER_LAYER
-#define NUMBER_OF_NEURONS 				(NUMBER_OF_LAYERS * NEURONS_PER_LAYER)
-#define NUMBER_OF_SYNAPSES				(NUMBER_OF_NEURONS * NEURONS_PER_LAYER)
-
-// Probability that the neuron is a inhibitory neuron
-#define PROBABILITY_INHIBITORY_NEURON 	0.1f //0.1
-
-//Neuron types excitatory and inhibitory
-#define EXCITATORY_NEURON 				0
-#define INHIBITORY_NEURON 				1
 
 // Izhikevich model Parameters
 #define IZHIKEVICH_A(neuronType) 		(neuronType) == INHIBITORY_NEURON ? 0.1f : 0.02f // 0.1 inhibitory, 0.02 excitatory

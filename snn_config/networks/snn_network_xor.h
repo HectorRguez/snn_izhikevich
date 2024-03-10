@@ -7,6 +7,16 @@
 #include <math.h>
 #include <stdint.h>
 
+/*****************************************************************************
+ *                              Utils Definitions   	                     *
+ *****************************************************************************/
+
+#define PRAGMA_SUB(x) 				_Pragma (#x)
+#define PRAGMA_HLS(x)				PRAGMA_SUB(x)
+
+#define get_random() 				((float)rand() / (float)RAND_MAX) // random float between 0 and 1
+#define round_div_upper(x, y) 		((int32_t)((x + y - 1 ) / y))
+#define bits_size(type) 			(sizeof(type) * 8)
 
 #define NUM_TRAINING_TRIALS		2000
 
@@ -22,6 +32,7 @@
 // Model time step
 #define TIMESTEP_MS 					0.5f
 #define SIM_TIMESTEP_MS					(2 * TIMESTEP_MS)
+#define RUN_STEPS 						(int32_t)(RUNTIME_MS / SIM_TIMESTEP_MS)
 
 //Neural network dimensions
 #define NUMBER_OF_LAYERS 				SIZE_LAYERS
@@ -74,3 +85,5 @@ float get_weight(float* synapse_weights, int32_t l, int32_t xl, int32_t x, int32
 void generate_inputs();
 void persist_app_results(bool* neuron_type, uint64_t* out_hw);
 void feedback_error(uint64_t* out_hw, float* synapse_weights, int32_t t);
+
+#endif /* _SNN_NETWORK_XOR_H */

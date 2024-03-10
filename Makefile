@@ -4,8 +4,6 @@ RUN_VIVADO:= vivado -mode batch -nojournal -nolog
 # Phony targets
 .PHONY: clean_hls clean_vivado clean_vitis run_app open_vitis
 
-
-
 # Default target
 all: create_ip clean_hls create_bd synth place_and_route export_hw\
 	clean_vivado create_app clean_vitis
@@ -17,7 +15,6 @@ run: run_app
 # Open vitis GUI
 open_vitis :
 	vitis -workspace vitis/ws/
-	@xsct vitis/create_project_vitis.tcl
 
 # Secondary targets
 create_ip: vitis_hls/snn_ip/component.xml
