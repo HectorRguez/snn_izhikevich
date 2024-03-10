@@ -1,11 +1,13 @@
 #ifndef _SNN_DEFS_H_
 #define _SNN_DEFS_H_
 
-#include "snn_network_defs.h"
+#include "config.h"
 
-#ifndef PRECISION_TYPE
-#error PRECISION_TYPE is undefined
+/* Network specific functions and defines */
+#if APP_TYPE == APP_XOR
+#include "networks/snn_network_xor.h"
 #endif
+
 /*****************************************************************************
  *                              Utils Definitions   	                     *
  *****************************************************************************/
@@ -198,5 +200,7 @@ t - 500ms
 #define INPUT_SYNAPSES 					NEURONS_PER_LAYER		// must be <= NEURONS_PER_LAYER
 //Synaptic input offset for weights matrix
 #define INPUT_SYNAPSE_OFFSET			(NUMBER_OF_NEURONS-NEURONS_PER_LAYER)
+
+
 
 #endif /* _SNN_DEFS_H_ */

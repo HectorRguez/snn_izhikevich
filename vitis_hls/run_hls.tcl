@@ -5,7 +5,7 @@ cd vitis_hls/
 open_project proj -reset
 
 # Add design files
-add_files ../network/snn_network_defs.h
+add_files ../snn_config/snn_defs.h
 add_files src/snn_izhikevich_axi.h
 add_files src/snn_izhikevich_top.cpp
 add_files src/snn_izhikevich.h 

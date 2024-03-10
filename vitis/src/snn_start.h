@@ -8,8 +8,7 @@
 #include <math.h>
 
 // Network libraries
-#include "snn_network_defs.h"
-#include "snn_network_xor.h" // Aplication
+#include "snn_defs.h"
  
 // Hardware libraries
 #include "hw/zynq/platform.h"

@@ -7,6 +7,7 @@
 #include <math.h>
 #include <stdint.h>
 
+
 #define NUM_TRAINING_TRIALS		2000
 
 // Network structure
@@ -17,6 +18,23 @@
 #define OUTPUT_NEURON			(OUTPUT_LAYER*SIZE_NEURONS_PER_LAYER)
 #define NUM_INPUTS				3
 #define NUM_OUTPUTS				1
+
+// Model time step
+#define TIMESTEP_MS 					0.5f
+#define SIM_TIMESTEP_MS					(2 * TIMESTEP_MS)
+
+//Neural network dimensions
+#define NUMBER_OF_LAYERS 				SIZE_LAYERS
+#define NEURONS_PER_LAYER 				SIZE_NEURONS_PER_LAYER
+#define NUMBER_OF_NEURONS 				(NUMBER_OF_LAYERS * NEURONS_PER_LAYER)
+#define NUMBER_OF_SYNAPSES				(NUMBER_OF_NEURONS * NEURONS_PER_LAYER)
+
+// Probability that the neuron is a inhibitory neuron
+#define PROBABILITY_INHIBITORY_NEURON 	0.1f //0.1
+
+//Neuron types excitatory and inhibitory
+#define EXCITATORY_NEURON 				0
+#define INHIBITORY_NEURON 				1
 
 // Learning defines
 #define ALPHA_PLUS				0.020f
