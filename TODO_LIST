@@ -2,14 +2,9 @@
 2. Separate snn_network_xor.h into header and functions
 4. Save minicom data to file (select which data to save)
 5. Convert network definitions into a multiple file structure inside network/folder
-9. Correct the save_hw_results file
-11. Avoid snn_network_xor.h calling snn_start.h. MOVE some start.h functionality to snn_network_xor.h
 12. Make snn_network_xor.h
 13. Add fixed point conversions to start.h
-14. Transform the strong links into soft ones on Vitis project.
 15. No clue about INPUT_FIRINGS_OFFSET. Understand code and rewrite the function.
-16. Change software and global variables types, updating snn_types.h
-17. Add the network folder to the Vitis HLS and the vitis targets
 
 
 
