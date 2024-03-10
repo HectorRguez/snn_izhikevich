@@ -7,3 +7,4 @@ vitis_hls/proj/
 vitis/ws/
 xrc.log
 .Xil
+.vscode
