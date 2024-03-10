@@ -1,18 +1,6 @@
 #ifndef _SNN_NETWORK_DEFS_H
 #define _SNN_NETWORK_DEFS_H
 
-/*****************************************************************************
- *                           User Settings	        	                     *
- *****************************************************************************/
-/* Set the network size of SNN. 
-					Neurons = NETWORK_SIZE^2 and Synapses = NETWORK_SIZE^3 */
-
-#define PRECISION_TYPE			FLOATING_POINT
-/* Application type */
-#define APP_TYPE				APP_XOR
-
-/* Results */
-#define PERSIST_RESULTS
 
 /*****************************************************************************
  *                          General Configuration        	                 *
@@ -33,46 +21,7 @@
  *                               APP_XOR	        	                     *
  *****************************************************************************/
 #if APP_TYPE == APP_XOR
-#define NUM_TRAINING_TRIALS		2000
 
-// Network structure
-#define HIDDEN_LAYERS			1 // 1
-#define SIZE_LAYERS				(HIDDEN_LAYERS + 1)
-#define OUTPUT_LAYER 			HIDDEN_LAYERS
-#define SIZE_NEURONS_PER_LAYER	6
-#define OUTPUT_NEURON			(OUTPUT_LAYER*SIZE_NEURONS_PER_LAYER)
-#define NUM_INPUTS				3
-#define NUM_OUTPUTS				1
-
-// Learning defines
-#define ALPHA_PLUS				0.020f
-#define ALPHA_MINUS				-0.015f
-#define TAU_PLUS				14 // 12
-#define TAU_MINUS				14 // 12
-#define W_MAX					10
-#define W_MIN					-10
-#define INHIBITORY_NEURON_PERC	0.20f // 0.20
-#define LEARNING_RATE(progress)	(progress < 0.40f ? 0.14f: (\
-								 progress < 0.60f ? 0.11f : (\
-								 progress < 0.70f ? 0.08f : (\
-								 progress < 0.80f ? 0.05f : (\
-								 progress < 0.90f ? 0.02f : (\
-								 progress < 0.99f ? 0.001f : 0.000f)))))) // 0.12 // 40-50, 60-100, 80-500, 90-1000
-
-// Delays
-#define TRIAL_TIME_MS			45 // 100
-#define DELAY_REFERENCE			0
-#define DELAY_INPUT_LOW_MS		0
-#define DELAY_INPUT_HIGH_MS		6 // 5
-#define DELAY_OUTPUT_LOW_MS		11 // 7
-#define DELAY_OUTPUT_HIGH_MS	(11 + 6) // 7 + 6
-#define THRESHOLD_FREQ			((DELAY_OUTPUT_HIGH_MS - DELAY_OUTPUT_LOW_MS) / 2)
-
-// Misc
-#define RUNTIME_MS 				(NUM_TRAINING_TRIALS * TRIAL_TIME_MS)
-
-#define PERSIST_APP_RESULTS
-#define NEURON_TO_PLOT			OUTPUT_NEURON
 
 #elif APP_TYPE == APP_SINGLE
 /*****************************************************************************
