@@ -1,5 +1,7 @@
 # Izhikevich Spiked Neural Network
-This repository automates the workflow to create the hardware platform required to use a spiking neural network (SNN) **hardware accelerator** on the Vitis IDE. The SNN computes neuron firings based on the Izhikevich neuron model, which is more biologically accurate than the commonly used Integrate and Fire (I&F) SNNs.
+This repository automates the workflow to create the hardware platform required to use a spiking neural network (SNN) **hardware accelerator** on the Vitis IDE. The SNN computes neuron firings based on the Izhikevich neuron model, which is more biologically accurate than the commonly used Integrate and Fire (I&F) SNNs. This approach is more computationally intensive, which justifies the creation of this project. 
+
+Thus far, this repository includes execution automation using **.tcl scripts** of Felipe Galindo's Thesis Project, which has been considerably restructured.
 
 ## Software Requirements
 * **IDE**: This project has been developed and tested to run con *Vitis HLS*, *Vivado* and *Vitis* on the [2023.1 version](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools/2023-1.html).
