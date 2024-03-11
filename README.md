@@ -5,32 +5,49 @@ This repository automates the workflow to create the hardware platform required 
 * **IDE**: This project has been developed and tested to run con *Vitis HLS*, *Vivado* and *Vitis* on the [2023.1 version](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools/2023-1.html).
 * **OS**: The project has been tested on [Ubuntu 22.04 LTS](https://ubuntu.com/download/desktop).
 * **Serial Terminal**: The simulation data is accessible via serial terminal. [Minicom](https://help.ubuntu.com/community/Minicom) is is the recommended text based communications program.
-* TODO
+* **JTAG drivers** can be installed by running the `install_drivers` script that is contained inside the Xilinx install directory `Xilinx/Vivado/2023.1/data/xicom/cable_drivers/lin64/install_script/install_drivers`.
+* [GTK - 3.0](https://docs.gtk.org/gtk3/) is required to run [Vitis xsct commands](https://docs.xilinx.com/r/en-US/ug1400-vitis-embedded/XSCT-Commands).
+* The configuratio file for the Bash shell [bashrc](https://www.gnu.org/software/bash/manual/html_node/Bash-Startup-Files.html) must include the shell script `settings64.sh`, which is inside the Xilinx install directory `Xilinx/Vivado/2023.1`.
 
 ## Project Structure
-TODO
 <pre>
-├── Makefile                                    
-├── README.md                                
+├── Makefile
+├── README.md
+├── snn_config
+│   ├── config.h                          # Selects the SNN that will run and the precision type.
+│   ├── networks                          # Network specific defines and functions.
+│   └── snn_defs.h                        # Common network defines, includes SNN selected in config.h
 ├── vitis
-│   ├── create_project_vitis.tcl      # This script creates the Vitis workspace (App and Platform)
-│   ├── run_vitis.tcl                 # This script executes the App in the PYNQ board
-│   ├── src                           # C++ files that will be executed on the board CPU
-│   └── ws                               
+│   ├── create_project_vitis.tcl          # Script that adds the Vitis sources and creates workspace.
+│   ├── run_vitis.tcl                     # Script that executes the Vitis App on the target board.
+│   ├── src                               
+│   │   ├── hw
+│   │   │   ├── snn_izikevich_hw_zynq.h   # Hardware related functions: DMAs, interrupts...
+│   │   │   └── zynq                      # Platform automatically generated drivers
+│   │   ├── main_zynq.cpp                 # Program entry point
+│   │   └── snn_start.h                   # Main functions of the program: init_network, run_network...
+│   └── ws                                # [AUTO-GENERATED] Workspace by create_project_vitis.tcl
 ├── vitis_hls
-│   ├── run_hls.tcl                      
-│   └── src                              
-└── vivado                               
-    ├── block_design.tcl                 
-    ├── create_bd.tcl                    
-    ├── export_hw.tcl                    
-    ├── place_and_route.tcl              
-    └── synth.tcl                        
+│   ├── run_hls.tcl                       # Script that adds the Vitis HLS sources.
+│   ├── snn_ip                            # [AUTO-GENERATED] SNN IP in Vivado catalog mode.
+│   ├── config.ini                        # [AUTO-GENERATED] Specifies the Vitis HLS project config.
+│   └── src
+│       ├── snn_izhikevich_axi.h          # Functions used to transmit and receive data.
+│       ├── snn_izhikevich.h              # Functions used to run the SNN.
+│       ├── snn_izhikevich_top.cpp        # Top functions and memories.
+│       └── snn_types.h                   # Type definitions specific to Vitis HLS.
+└── vivado
+    ├── block_design.tcl                  # Block design exported from the Vivado GUI.
+    ├── create_bd.tcl                     # Configures and exports the design defined in block_design.
+    ├── synth.tcl                         # Script that synthesizes the exported block design.
+    ├── place_and_route.tcl               # Script that places and routes the synthesized design.
+    ├── export_hw.tcl                     # Script that exports the design.
+    ├── checkpoints                       # [AUTO-GENERATED] Checkpoints for synth, opt,place, ...
+    ├── snn_hw.bit                        # [AUTO-GENERATED] Design bitstream.
+    ├── snn_hw.xsa                        # [AUTO-GENERATED] Design platform (includes the bitstream).
+    └── block_design                      # [AUTO-GENERATED] Block design exported by create_bd.
+                
 </pre>
-## How to use
-1. Install JTAG drivers `/tools/Xilinx/Vivado/2023.1/data/xicom/cable_drivers/lin64/install_script/install_drivers`
-2. Install GTK 3 to run Vitis GUI
-2. TODO
 
 ## Execution flow
 The **Makefile** automates the execution of all the project scripts, which target *Vitis HLS*, *Vivado* and *Vitis*. 

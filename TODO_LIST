@@ -2,7 +2,6 @@
 4. Save minicom data to file (select which data to save)
 13. Add fixed point conversions to start.h
 15. No clue about INPUT_FIRINGS_OFFSET. Understand code and rewrite the function.
-16. Select platform on the makefile
 17. Add input generator from the python script
 
 
