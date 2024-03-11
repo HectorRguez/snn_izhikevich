@@ -44,7 +44,7 @@ vivado/block_design/block_design.bd: vivado/create_bd.tcl \
 	@$(RUN_VIVADO) -source vivado/create_bd.tcl -tclargs $(BOARD)
 
 vivado/checkpoints/opt.dcp: vivado/block_design/block_design.bd
-	@$(RUN_VIVADO) -source vivado/synth.tcl
+	@$(RUN_VIVADO) -source vivado/synth.tcl -tclargs $(BOARD)
 
 vivado/checkpoints/route.dcp: vivado/checkpoints/synth.dcp
 	@$(RUN_VIVADO) -source vivado/place_and_route.tcl

@@ -1,5 +1,11 @@
+# Script arguments
+if { $argc != 1 } {
+    puts "The synth script requires the board identifier as an argument."
+} 
+
+
 # Configure the board
-set_part xc7z020clg400-1
+set_part [lindex $argv 0]
 
 # Add Custom IP to the project IP catalog
 set_property ip_repo_paths vitis_hls/snn_ip [current_fileset]
