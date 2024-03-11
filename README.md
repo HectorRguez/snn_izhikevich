@@ -4,9 +4,9 @@ This repository automates the workflow to create the hardware platform required 
 Thus far, this repository includes execution automation using **.tcl scripts** of Felipe Galindo's Thesis Project, which has been considerably restructured.
 
 ## Software Requirements
-* **IDE**: This project has been developed and tested to run con *Vitis HLS*, *Vivado* and *Vitis* on the [2023.1 version](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools/2023-1.html).
+* **IDE**: This project has been developed and tested to run con *Vitis HLS*, *Vivado* and *Vitis* on the [2023.1](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools/2023-1.html) version.
 * **OS**: The project has been tested on [Ubuntu 22.04 LTS](https://ubuntu.com/download/desktop).
-* **Serial Terminal**: The simulation data is accessible via serial terminal. [Minicom](https://help.ubuntu.com/community/Minicom) is is the recommended text based communications program.
+* **Serial Terminal**: The simulation data is accessible via serial terminal. [Minicom](https://help.ubuntu.com/community/Minicom) is is the recommended text based communications program. It runs as intended with the default configuration.
 * **JTAG drivers** can be installed by running the `install_drivers` script that is contained inside the Xilinx install directory `Xilinx/Vivado/2023.1/data/xicom/cable_drivers/lin64/install_script/install_drivers`.
 * [GTK - 3.0](https://docs.gtk.org/gtk3/) is required to run [Vitis xsct commands](https://docs.xilinx.com/r/en-US/ug1400-vitis-embedded/XSCT-Commands).
 * The configuration file for the Bash shell [bashrc](https://www.gnu.org/software/bash/manual/html_node/Bash-Startup-Files.html) must include as a source the shell script `settings64.sh`, which is inside the Xilinx install directory `Xilinx/Vivado/2023.1`.
