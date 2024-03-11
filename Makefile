@@ -1,5 +1,9 @@
 # Variables
+BOARD:= xc7z020clg400-1
+
+# Utils
 RUN_VIVADO:= vivado -mode batch -nojournal -nolog
+
 
 # Phony targets
 .PHONY: clean_hls clean_vivado clean_vitis run_app open_vitis
@@ -31,12 +35,13 @@ create_app : vitis/ws/*
 
 # Dependencies
 vitis_hls/snn_ip/component.xml : vitis_hls/src/*
+	@echo "part=$(BOARD)" > vitis_hls/config.ini
 	@vitis_hls -f vitis_hls/run_hls.tcl
 	@unzip vitis_hls/snn_ip/export.zip -d vitis_hls/snn_ip
 
 vivado/block_design/block_design.bd: vivado/create_bd.tcl \
 	vitis_hls/snn_ip/component.xml
-	@$(RUN_VIVADO) -source vivado/create_bd.tcl
+	@$(RUN_VIVADO) -source vivado/create_bd.tcl -tclargs $(BOARD)
 
 vivado/checkpoints/opt.dcp: vivado/block_design/block_design.bd
 	@$(RUN_VIVADO) -source vivado/synth.tcl
@@ -57,6 +62,7 @@ clean_hls :
 	@rm -f  vitis_hls.log
 	@rm -rf vitis_hls/proj/
 	@rm -f  vitis_hls/snn_ip/export.zip
+	@rm -f  vitis_hls/config.ini
 
 clean_vivado:
 	@rm -rf .srcs

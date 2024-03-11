@@ -2,8 +2,11 @@ vivado/checkpoints/
 vivado/block_design/
 vivado/snn_hw.xsa
 vivado/snn_hw.bit
+
 vitis_hls/snn_ip/
 vitis_hls/proj/
+vitis_hls/config.ini
+
 vitis/ws/
 xrc.log
 .Xil

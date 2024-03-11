@@ -19,8 +19,10 @@ set_top hls_snn_izikevich
 # Create a solution
 open_solution solution -reset 
 
+# Load configuration
+apply_ini config.ini
+
 # Define technology and clock rate
-set_part {xc7z020clg400-1}
 create_clock -period 40 -name default
 
 # Run Synthesis

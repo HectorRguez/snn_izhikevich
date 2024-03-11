@@ -1,5 +1,10 @@
+# Script arguments
+if { $argc != 1 } {
+    puts "The create_bd script requires the board identifier as an argument."
+} 
+
 # Configure the project
-create_project -in_memory -part xc7z020clg400-1
+create_project -in_memory -part [lindex $argv 0]; # Board name
 
 # Add Custom IP to the project IP catalog
 set_property ip_repo_paths vitis_hls/snn_ip [current_fileset]
