@@ -8,6 +8,8 @@ vitis_hls/proj/
 vitis_hls/config.ini
 
 vitis/ws/
-xrc.log
+
+NA/
+**/*.log
 .Xil
 .vscode
