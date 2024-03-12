@@ -11,7 +11,7 @@ Thus far, this repository includes execution automation using **.tcl scripts** o
 * [GTK - 3.0](https://docs.gtk.org/gtk3/) is required to run [Vitis xsct commands](https://docs.xilinx.com/r/en-US/ug1400-vitis-embedded/XSCT-Commands).
 * The configuration file for the Bash shell [bashrc](https://www.gnu.org/software/bash/manual/html_node/Bash-Startup-Files.html) must include as a source the shell script `settings64.sh`, which is inside the Xilinx install directory `Xilinx/Vivado/2023.1`.
 
-[^1]: The `block_design.tcl` file was exported automatically from the Vivado 2023.1 GUI. It performs a Version check that can be eliminated in order to run on the 2022.2 version. 
+[^1]: The `block_design.tcl` file was exported automatically from the Vivado 2023.1 GUI. It performs a Version check that can be eliminated to run it on the 2022.2 version. 
 
 [^2]: If Vitis 2022.2 reports the following error when loading the .elf file `ERROR : Can't read "map": no such variable when trying to launch application on my target`, a workaround has already been published on the [Xilinx forums](https://support.xilinx.com/s/article/000034848?language=en_US).
 
