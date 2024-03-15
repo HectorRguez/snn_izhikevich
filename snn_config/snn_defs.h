@@ -9,46 +9,6 @@
 #endif
 
 /*****************************************************************************/
-/*            		         Input/Output Definitions                        */
-/*****************************************************************************/
-// AXI ports size
-#define AXI_SIZE					64
-#define AXIL_SIZE					32
-
-// Network (Input)
-#define AXI_NEURON_TYPE_LENGTH		round_div_upper(NUMBER_OF_NEURONS, AXI_SIZE)
-
-// Synapses (Input)
-#define AXI_INPUT_LENGTH			round_div_upper(INPUT_SYNAPSES, AXIL_SIZE)
-
-// Weights (Input)
-#if PRECISION_TYPE == FIXED_POINT
-#define POTENTIAL_BITS				32
-#define POTENTIAL_BITS_INT 			10
-#define POTENTIAL_BITS_FRACTIONAL	(POTENTIAL_BITS - POTENTIAL_BITS_INT - 1)
-#define SYNAPSE_BITS				32 //16
-#define	SYNAPSE_BITS_INT			5
-#define SYNAPSE_BITS_FRACTIONAL		(SYNAPSE_BITS - SYNAPSE_BITS_INT)
-#define WEIGHT_BITS					16 //8
-#define WEIGHT_SCALE_BITS 			3
-#define WEIGHT_SCALE 				8.0f // Equal to 2^WEIGHT_SCALE_BITS
-#elif PRECISION_TYPE == FLOATING_POINT
-#define WEIGHT_BITS					32
-#define WEIGHT_SCALE 				1.0f // No scaling
-#endif
-#define AXI_WEIGHTS_PORTS			4
-#define AXI_WEIGHTS_THROUGHPUT		(AXI_SIZE * AXI_WEIGHTS_PORTS)
-#define AXI_WEIGHTS_LINE_LENGHT		round_div_upper(WEIGHT_BITS * NEURONS_PER_LAYER, AXI_WEIGHTS_THROUGHPUT)
-#define AXI_WEIGHTS_LINE_BITS		(AXI_WEIGHTS_LINE_LENGHT * AXI_WEIGHTS_THROUGHPUT)
-#define AXI_WEIGHTS_LENGTH			(AXI_WEIGHTS_LINE_LENGHT * NUMBER_OF_NEURONS)
-
-// Output
-#define AXI_POTENTIAL_OUTPUTS		2
-#define AXI_POTENTIAL_OUTPUT_LENGTH	round_div_upper(AXI_POTENTIAL_OUTPUTS * bits_size(float), AXI_SIZE)
-#define AXI_FIRINGS_LENGTH			round_div_upper(NUMBER_OF_NEURONS, AXI_SIZE)
-#define AXI_OUTPUT_LENGTH			(AXI_POTENTIAL_OUTPUT_LENGTH + AXI_FIRINGS_LENGTH)
-
-/*****************************************************************************/
 /*                       	Pipeline II Max-Throughput                       */
 /*****************************************************************************/
 // MAX_PIPELINE_THROUGHPUT = round_upper(size(w) * NEURONS / AXI_WEIGHTS_THROUGHPUT)

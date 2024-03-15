@@ -39,7 +39,7 @@ static float	synapse_weights[NUMBER_OF_NEURONS][NEURONS_PER_LAYER];
 static uint32_t 	p_hw[AXI_INPUT_LENGTH];
 static uint64_t 	network_stream[AXI_NEURON_TYPE_LENGTH];
 static uint64_t 	weights_stream[AXI_WEIGHTS_PORTS][AXI_WEIGHTS_LENGTH];
-static uint64_t 	output_stream[AXI_OUTPUT_LENGTH];
+static uint64_t 	output_stream[AXI_OUTPUT_LENGTH];  // Dummy variable (data is not used)
 static uint64_t		out_hw[RUN_STEPS * AXI_OUTPUT_LENGTH];
 
 int start() {
@@ -195,6 +195,8 @@ void init_network(uint8_t change_neuron_types, uint8_t feedback) {
 	uint32_t stream_fifo = 0; stream_id = 0; bit = 0;
 
 	// Set input weights
+	// IMPORTANT: Set l to 0, since the input layer is the first one
+	l = 0;
 	for (x = 0; x < NEURONS_PER_LAYER; x++) {
 		for (y = 0; y < NEURONS_PER_LAYER; y++) {
 			float weight = get_weight(synapse_weights[0], l, x, x, y, feedback);
