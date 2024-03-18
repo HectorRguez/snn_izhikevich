@@ -73,12 +73,11 @@ void refresh_delta_weights(float* synapse_weights) {
 	int32_t x, l, xl, y;
 	for (l = HIDDEN_LAYERS; l >=0; l--) {
 		for (xl = 0; xl < NEURONS_PER_LAYER; xl++) {
-
 			// Calculate position of the neuron that is undergoing weight changes 
 			x = (l * NEURONS_PER_LAYER) + xl;
 
 			// IMPORTANT: I do not understand the purpose of this line
-			if (l == OUTPUT_LAYER && xl == NUM_OUTPUTS) break;
+			if (l == OUTPUT_LAYER && xl >= NUM_OUTPUTS) break;
 
 			// Index of the first neuron that is on the next layer
 			int32_t post_layer_idx = ((l + 1) * NEURONS_PER_LAYER);
@@ -86,49 +85,24 @@ void refresh_delta_weights(float* synapse_weights) {
 			// Index of the first neuron that is on the previous layer
 			int32_t previous_layer_idx = ((l - 1) * NEURONS_PER_LAYER);
 
-			// IMPORTANT: I do not get why this should be the index of the output neuron
-			int32_t output_layer_idx = OUTPUT_NEURON;
-
-			// IMPORTANT: Use of a bool variable as a float ???
-			bool sum = 0;
-			for (int k = 0; k < NEURONS_PER_LAYER; k++) {
-				float* synapse_weight = synapse_weights + x + k;
-				if (*synapse_weight < 0)
-					sum += *synapse_weight*-1;
-				else
-					sum += *synapse_weight;
-			}
-
 			// Iterate all pre-synaptic connections
 			for (y = 0; y < NEURONS_PER_LAYER; y++) {
-				float* synapse_weight = synapse_weights + x * NEURONS_PER_LAYER + y;
+				float* synapse_weight = synapse_weights + x * NUMBER_OF_NEURONS + y;
 				// Process only non-null synapses
-
-				// IMPORTANT: Combining output layer and number of inputs? I assume it should be number of outputs
-				if (l == OUTPUT_LAYER && xl < NUM_INPUTS) { // Output-Hidden
+				if (l == OUTPUT_LAYER && xl < NUM_OUTPUTS) { // Output-Hidden
 
 					float t1 = exp_window(t_spiked[previous_layer_idx + y], t_output_trials[trial_number]);
 					float t2 = exp_window(t_spiked[previous_layer_idx + y], t_spiked[x]);
-					*synapse_weight = get_new_weight(*synapse_weight, t1 - t2);///((float)NEURONS_PER_LAYER);
+					*synapse_weight = get_new_weight(*synapse_weight, t1 - t2);
 
-					//w_error[y][trial_number] = t1 - t2;
 					w_error[y][trial_number] = *synapse_weight;
 
 				} else if (l == 0 && y < NUM_INPUTS) { // Hidden-Input
 
-					float time = exp_window(t_input_trials[y][trial_number], t_spiked[x]);
 					float t1 = exp_window(t_input_trials[y][trial_number], t_output_trials[trial_number]);
 					float t2 = exp_window(t_input_trials[y][trial_number], t_spiked[OUTPUT_NEURON]);
-
-					
-					// IMPORTANT: factor variable is not used
-					float factor = *synapse_weight;
-					if (factor < 0) factor = factor * -1;
-					factor = factor / sum;
-
 					*synapse_weight = get_new_weight(*synapse_weight, t1 - t2);
 
-					//w_error[x+NEURONS_PER_LAYER][trial_number] = t1 - t2;
 					w_error[x+NEURONS_PER_LAYER][trial_number] = *synapse_weight;
 				}
 			}

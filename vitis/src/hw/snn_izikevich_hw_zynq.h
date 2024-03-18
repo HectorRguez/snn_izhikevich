@@ -39,6 +39,7 @@
  *                                Variables      		                     *
  *****************************************************************************/
 
+// IMPORTANT: Why does it report the fourth neuron???
 uint32_t neurons_to_report[2] = { NEURON_TO_PLOT, NUMBER_OF_NEURONS/4 };
 
 // Flags
