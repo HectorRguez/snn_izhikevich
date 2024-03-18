@@ -85,7 +85,7 @@ void refresh_delta_weights(float* synapse_weights) {
 			// Index of the first neuron that is on the previous layer
 			int32_t previous_layer_idx = ((l - 1) * NEURONS_PER_LAYER);
 
-			// Iterate all pre-synaptic connections
+			// Iterate all cpre-synapti connections
 			for (y = 0; y < NEURONS_PER_LAYER; y++) {
 				float* synapse_weight = synapse_weights + x * NUMBER_OF_NEURONS + y;
 				// Process only non-null synapses
@@ -198,9 +198,16 @@ void feedback_error(uint64_t* out_hw, float* synapse_weights, int32_t t) {
 	   E.g., error = +-24 --> +22
 	   	     error = +-21 --> 21 * 21 / 2 =  220.5		*/
 
-	
+	// Compute the mean squared error
 	if (error > TRIAL_TIME_MS/2 || error < -TRIAL_TIME_MS/2)
 		t_shift_error[trial_number] = TRIAL_TIME_MS/2;
+		/* I consider that the following option would work better, but I have not tested it yet
+		   to compute the mean squared error
+
+		   error = (TRIAL_TIME_MS/2 * TRIAL_TIME_MS/2)/2
+		   error = (TRIAL_TIME_MS * TRIAL_TIME_MS)/8
+
+		t_shift_error[trial_number] = (TRIAL_TIME_MS * TRIAL_TIME_MS)/8     */
 	else
 		t_shift_error[trial_number] = (error*error)/2;
 
