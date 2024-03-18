@@ -76,7 +76,7 @@ void refresh_delta_weights(float* synapse_weights) {
 			// Calculate position of the neuron that is undergoing weight changes 
 			x = (l * NEURONS_PER_LAYER) + xl;
 
-			// IMPORTANT: I do not understand the purpose of this line
+			// Avoid calculating new weights for output neurons that are not used
 			if (l == OUTPUT_LAYER && xl >= NUM_OUTPUTS) break;
 
 			// Index of the first neuron that is on the next layer
