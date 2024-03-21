@@ -9,7 +9,6 @@ add_files ../snn_config/snn_defs.h
 add_files src/snn_izhikevich_axi.h
 add_files src/snn_izhikevich_top.cpp
 add_files src/snn_izhikevich.h 
-add_files src/snn_network.h 
 add_files src/snn_types.h 
 
 # Set the top-level function
