@@ -55,18 +55,18 @@ void parse_in_out(float buffer[MAX_N_INPUTS*MAX_N_INPUT_VALUES],
     }
 }
 
-int rate_code_result(bool*out_spk, int n_out, int n_steps){
+int rate_code_result(bool*out_spk, uint32_t n_out, uint32_t n_steps){
     // Count the number of spikes on each output neuron
     int* absolute_freq = (int*)calloc(n_out, sizeof(int));
-    for(int i = 0; i < n_out; i++){
+    for(uint32_t i = 0; i < n_out; i++){
         for(int j = 0; j < n_steps; j++){
             if(out_spk[i*n_steps+j]) absolute_freq[i]++;
         }
     }
 
     // Count the maximum number of spikes
-    int max_freq = 0, max_freq_idx = 0;
-    for(int i = 0; i < n_out; i++){
+    uint32_t max_freq = 0, max_freq_idx = 0;
+    for(uint32_t i = 0; i < n_out; i++){
         if(absolute_freq[i] > max_freq){
             max_freq = absolute_freq[i];
             max_freq_idx = i;

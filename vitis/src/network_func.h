@@ -4,6 +4,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdint.h>
 
 // Neuron type
 enum Neuron_type {NONE, LIF, IZHI};

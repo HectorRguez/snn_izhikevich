@@ -1,7 +1,7 @@
 #ifndef _NETWORK_H_
 #define _NETWORK_H_
 
-#include "types.h"
+#include <stdint.h>
 
 extern const uint32_t n_inputs;
 extern const uint32_t n_outputs;

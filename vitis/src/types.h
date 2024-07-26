@@ -1,5 +1,7 @@
-#ifndef _SNN_TYPES_H_
-#define _SNN_TYPES_H_
+#ifndef _TYPES_H_
+#define _TYPES_H_
+
+#include <stdint.h>
 
 /*****************************************************************************/
 /*                            Type's Definitions                             */
@@ -7,8 +9,6 @@
 typedef float 				float32_t;
 typedef short 				int16_t;
 typedef unsigned short 		uint16_t;
-typedef unsigned int        uint32_t;
-typedef unsigned long       uint64_t;
 
 /*****************************************************************************/
 /*                            Classes and Utilities                          */
@@ -56,4 +56,4 @@ uint64_t uint32_to_uint64(uint32_t value1, uint32_t value2) {
 	return c.u64data;
 }
 
-#endif /* _SNN_TYPES_H_ */
+#endif /* _TYPES_H_ */

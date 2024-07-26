@@ -215,8 +215,6 @@ uint1_t hls_snn_izikevich(
 			}
 		}
 	}
-
-
 	return SUCCESS_OK;
 }
 

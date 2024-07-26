@@ -31,43 +31,23 @@ float get_clock_ms()  { return (1.0 * clk_duration) / COUNTS_PER_MS; }
 int main(int argc, char *argv[]){
     // Dynamically allocated memory
     bool* out_spk = NULL;                      // Network output
-    // Print data and network (if verbose)
-    // ============================================================
-    if(true)
-    { 
-        // Print the normalized input file
-        xil_printf("\nNORMALIZED DATA\n");
-        for(int i = 0; i < n_data; i++){
-            xil_printf("%3i: ", i);
-            for(int j = 0; j < n_parameters-1; j++){
-                xil_printf("%5.3f ", data[i*n_parameters + j]);
-            }
-            xil_printf("%3i", labels[i]);
-            xil_printf("\n");
-        }
-        xil_printf("\n\n");
 
-        // Print the weights and biases
-        xil_printf("WEIGHTS\n");
-        for(int i = 0; i < n_weights; i++){
-            xil_printf("%5.3f ", weights[i]);
-        }
-        xil_printf("\n\n");
-        xil_printf("BIASES\n");
-        for(int i = 0; i < n_biases; i++){
-            xil_printf("%5.3f ", biases[i]);
-        }
-        xil_printf("\n\n");
+    // Normalize data (if needed)
+    int error = normalize_data(data, n_data, n_parameters);
+    if(error < 0){
+        xil_printf("ERROR while normalizing data.\n");
+        return (-1);
     }
 
     // Test the network in SW
     // ============================================================
-    xil_printf("Executing the network in SW.\n");
+    xil_printf("============================================\r\n");
+    xil_printf("                 SW Network.\r\n");
+    xil_printf("============================================\r\n");
 	int total = 0, correct = 0;
     int start_test_idx = (int)(train_data_proportion*n_data);
     out_spk = (bool*)malloc(n_outputs*n_steps*sizeof(bool));
     
-	
 	reset_clock();
     start_clock();
     for(int i = start_test_idx; i < n_data; i++){
@@ -79,25 +59,33 @@ int main(int argc, char *argv[]){
         int result = rate_code_result(out_spk, n_outputs, n_steps);
         if(result == labels[i]) correct++;
         total++;
+
+        xil_printf("%i. %i %i\n\r", i, labels[i], result);
     }
     stop_clock();
 
-    xil_printf("NETWORK EXECUTION RESULTS:\n");
     float percentage = ((float)correct)/((float)total) * 100.0; 
-    xil_printf("Correctly classified %i/%i flowers (%5.2f%%)", 
-        correct, total, percentage);
-    xil_printf("\n");
-    xil_printf("Total execution time:\t\t%.2f ms.\n", get_clock_ms());
+    xil_printf("Correctly classified %i/%i flowers (%i%%)", 
+        correct, total, (int)percentage);
+    xil_printf("\r\n");
+    xil_printf("Total execution time: %i ms.\r\n", (int)get_clock_ms());
 
 	free(out_spk);
 
     // Test the network in HW
     // ============================================================
-    xil_printf("Executing the network in HW.\n");
+    xil_printf("============================================\r\n");
+    xil_printf("                 HW network.\r\n");
+    xil_printf("============================================\r\n"); 
+
+    if (hw_setup() != XST_SUCCESS) {
+		xil_printf("Error initializing hardware blocks...\r\n");
+		return -1;
+	}
+
 	total = 0, correct = 0;
     start_test_idx = (int)(train_data_proportion*n_data);
     out_spk = (bool*)malloc(n_outputs*n_steps*sizeof(bool));
-
 
     reset_clock();
     start_clock();
@@ -118,10 +106,12 @@ int main(int argc, char *argv[]){
 
 	free(out_spk);
 
-    xil_printf("NETWORK EXECUTION RESULTS:\n");
+    xil_printf("NETWORK EXECUTION RESULTS:\r\n");
     percentage = ((float)correct)/((float)total) * 100.0; 
     xil_printf("Correctly classified %i/%i flowers (%5.2f%%)", 
         correct, total, percentage);
-    xil_printf("\n");
-    xil_printf("Total execution time:\t\t%.2f ms.\n", get_clock_ms());
+    xil_printf("\r\n");
+    xil_printf("Total execution time: %i ms.\r\n", (int)get_clock_ms());
+    
+    return 0;
 }
