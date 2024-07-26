@@ -1,5 +1,7 @@
 #include <ap_fixed.h>
 #include <ap_int.h>
+#include "hls_stream.h"
+#include "ap_axi_sdata.h" // AXI Stream interface configuration
 
 //typedef ap_fixed<14,8> fixed_t;
 typedef ap_uint<6> uint6_t;
