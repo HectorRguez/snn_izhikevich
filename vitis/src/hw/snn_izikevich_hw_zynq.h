@@ -9,6 +9,7 @@
 #include "xparameters.h"
 
 #include "../snn_defs.h"
+#include "../types.h"
 
 /*****************************************************************************
  *                          Hardware Definitions      		                 *
@@ -29,18 +30,12 @@
 #define INTR_DMA2_TX_ID		XPAR_FABRIC_AXI_DMA_2_MM2S_INTROUT_INTR
 #define INTR_DMA3_TX_ID		XPAR_FABRIC_AXI_DMA_3_MM2S_INTROUT_INTR
 
-#define STATE_INIT			0
-#define STATE_PROCESS		1
 
-#define SUCCESS_OK			1
 #define MAX_BURST_BYTES		15 * 1024 // 15K per burst
 
 /*****************************************************************************
  *                                Variables      		                     *
  *****************************************************************************/
-
-// IMPORTANT: Why does it report the fourth neuron???
-uint32_t neurons_to_report[2] = { NEURON_TO_PLOT, NUMBER_OF_NEURONS/4 };
 
 // Flags
 volatile uint32_t status, returnResult, processingDone, rxDone, intError;
@@ -55,8 +50,8 @@ static XAxiDma axiDma3;
 static XScuGic intrCtlr;
 
 // DMA arrays
-u32 dmaRegBase[] =  {0, 0, 0, 0};
-u32 dmaDeviceId[] =  { DMA0_DEVICE_ID, DMA1_DEVICE_ID, DMA2_DEVICE_ID, DMA3_DEVICE_ID };
+uint32_t dmaRegBase[] =  {0, 0, 0, 0};
+uint32_t dmaDeviceId[] =  { DMA0_DEVICE_ID, DMA1_DEVICE_ID, DMA2_DEVICE_ID, DMA3_DEVICE_ID };
 XAxiDma *dmaDeviceIns[] =  { &axiDma0, &axiDma1, &axiDma2, &axiDma3 };
 
 /*****************************************************************************
@@ -64,7 +59,7 @@ XAxiDma *dmaDeviceIns[] =  { &axiDma0, &axiDma1, &axiDma2, &axiDma3 };
  *****************************************************************************/
 
 static int hw_setup();
-static int hw_setup_dma(XAxiDma *axiDma, u32 deviceId, uint8_t rxInterrupt, uint8_t txInterrupt);
+static int hw_setup_dma(XAxiDma *axiDma, uint32_t deviceId, uint8_t rxInterrupt, uint8_t txInterrupt);
 static int hw_setup_interrupt(XScuGic *intrCtlr);
 static void hw_hls_isr(void *instancePtr);
 static void hw_dma_rx_isr(void *instancePtr);
@@ -104,7 +99,7 @@ static int hw_setup() {
 	}
 
 	// Setup  DMAs
-	for(u32 i = 0; i < AXI_WEIGHTS_PORTS; i++) {
+	for(uint32_t i = 0; i < AXI_WEIGHTS_PORTS; i++) {
 		status = hw_setup_dma(dmaDeviceIns[i], dmaDeviceId[i], (i == 0), true);
 		if (status != XST_SUCCESS) {
 			printf("HLS ERORR: Could not configure DMA%ld.\n\r", i);
@@ -120,7 +115,7 @@ static int hw_setup() {
 	return XST_SUCCESS;
 }
 
-static int hw_setup_dma(XAxiDma *axiDma, u32 deviceId, uint8_t rxInterrupt, uint8_t txInterrupt)
+static int hw_setup_dma(XAxiDma *axiDma, uint32_t deviceId, uint8_t rxInterrupt, uint8_t txInterrupt)
 {
 	XAxiDma_Config *config;
 
@@ -232,7 +227,7 @@ static void hw_hls_isr(void *instancePtr) {
 
 static void hw_dma_tx_isr(void *callback)
 {
-	u32 irqStatus, regBase;
+	uint32_t irqStatus, regBase;
 	XAxiDma *pAxiDmaInstance = (XAxiDma *)callback;
 
 	// Read & acknowledge pending interrupts
@@ -265,7 +260,7 @@ static void hw_dma_tx_isr(void *callback)
 
 	// If interrupt is asserted, then set the txDone flag
 	if ((irqStatus & XAXIDMA_IRQ_IOC_MASK)) {
-		for(u32 i = 0; i < AXI_WEIGHTS_PORTS; i++) {
+		for(uint32_t i = 0; i < AXI_WEIGHTS_PORTS; i++) {
 			if (regBase == dmaRegBase[i]) {
 				txDone[i] = 1;
 				return;
@@ -276,7 +271,7 @@ static void hw_dma_tx_isr(void *callback)
 
 static void hw_dma_rx_isr(void *callback)
 {
-	u32 irqStatus;	XAxiDma *pAxiDmaInstance = (XAxiDma *)callback;
+	uint32_t irqStatus;	XAxiDma *pAxiDmaInstance = (XAxiDma *)callback;
 
 	// Read & acknowledge pending interrupts
 	irqStatus = XAxiDma_IntrGetIrq(pAxiDmaInstance, XAXIDMA_DEVICE_TO_DMA);
@@ -322,11 +317,11 @@ static void hw_snn_izikevich_start() {
 	XHls_snn_izikevich_Start(&hlsInstance);
 }
 
-static int hw_send_axi_stream_burst(u32 stream_addr[], uint32_t streams_qty, uint32_t bytes_size) {
-	u32 offset; uint32_t bytes;
+static int hw_send_axi_stream_burst(uint32_t stream_addr[], uint32_t streams_qty, uint32_t bytes_size) {
+	uint32_t offset; uint32_t bytes;
 
 	// Cache flushing
-	for(u32 i = 0; i < streams_qty; i++)
+	for(uint32_t i = 0; i < streams_qty; i++)
 	{
 		Xil_DCacheFlushRange(stream_addr[i], bytes_size);
 	}
@@ -338,7 +333,7 @@ static int hw_send_axi_stream_burst(u32 stream_addr[], uint32_t streams_qty, uin
 		else bytes = bytes_size - offset;
 
 		// Transmit bytes
-		for (u32 i = 0; i < streams_qty; i++) {
+		for (uint32_t i = 0; i < streams_qty; i++) {
 			// Wait if interrupt flag is not yet completed (except first transfer)
 			while(offset > 0 && txDone[i] == 0);
 			// Clear interrupt flag
@@ -359,14 +354,14 @@ static int hw_send_axi_stream_burst(u32 stream_addr[], uint32_t streams_qty, uin
 		}
 	}
 	// Wait for last iteration to finish
-	for (u32 i = 0; i < streams_qty; i++) {
+	for (uint32_t i = 0; i < streams_qty; i++) {
 		while (txDone[i] == 0);
 		txDone[i] = 0;
 	}
 	return XST_SUCCESS;
 }
 
-static int hw_read_axi_stream_burst(u32 stream_addr, uint32_t bytes_size) {
+static int hw_read_axi_stream_burst(uint32_t stream_addr, uint32_t bytes_size) {
 
 	// Flush cache (if enabled) and transmit bytes
 	Xil_DCacheFlushRange(stream_addr, bytes_size);
@@ -387,41 +382,25 @@ static int hw_read_axi_stream_burst(u32 stream_addr, uint32_t bytes_size) {
 	return XST_SUCCESS;
 }
 
-
 /*****************************************************************************
- *                            External Functions    		                 *
+ *                               HW top Functions    		                 *
  *****************************************************************************/
-static int hw_snn_izikevich_config_network(uint64_t *network_stream, uint64_t *output_stream) {
+static int hw_snn_izikevich_config_network(float input_c[MAX_LAYER_SIZE], uint32_t n_inputs, uint32_t n_outputs, uint32_t n_per_layer[MAX_LAYER_COUNT], uint32_t n_layers) {
+    
+    // Set INIT state
+    XHls_snn_izikevich_Set_state(&hlsInstance, STATE_INIT);
 
-	// Set state and output indexes
-	XHls_snn_izikevich_Set_state(&hlsInstance, STATE_INIT);
-	XHls_snn_izikevich_Write_output_indexes_Words(&hlsInstance, 0, (word_type *)neurons_to_report, 2);
-
-	// Flush data input cache
-	Xil_DCacheFlushRange((u32)output_stream, AXI_OUTPUT_LENGTH * sizeof(uint64_t));
-
-	// Start the device and read the results
+	// Start the device
 	hw_snn_izikevich_start();
 
-	// Write inputs via AXI-Stream
-	u32 streams[1] = { (u32)network_stream };
+	// Set inputs and outputs
+    XHls_snn_izikevich_Write_input_c_Words(&hlsInstance, 0, (uint32_t*)input_c, n_inputs); // CHECK
+    XHls_snn_izikevich_Set_n_inputs(&hlsInstance, n_inputs);
+    XHls_snn_izikevich_Set_n_outputs(&hlsInstance, n_outputs);
 
-	hw_send_axi_stream_burst(streams, 1, AXI_NEURON_TYPE_LENGTH * sizeof(uint64_t));
-
-	if (status != XST_SUCCESS) {
-		printf("HLS ERROR: TX DMA transfer of %ld streams failed to be transfered.\n", AXI_NEURON_TYPE_LENGTH);
-		return XST_FAILURE;
-	}
-
-	// Read outputs via AXI-Stream
-	status = hw_read_axi_stream_burst((u32)output_stream, AXI_OUTPUT_LENGTH * sizeof(uint64_t));
-	if (status != XST_SUCCESS) {
-		printf("HLS ERROR: RX DMA transfer from HLS block failed.\n");
-		return XST_FAILURE;
-	}
-
-	// Wait until it is finished
-	while(!processingDone);
+    // Set network topology
+    XHls_snn_izikevich_Write_n_per_layer_Words(&hlsInstance, 0, n_per_layer, n_layers); // CHECK
+    XHls_snn_izikevich_Set_n_layers(&hlsInstance, n_layers);
 
 	// Check return result for verification
 	returnResult = XHls_snn_izikevich_Get_return(&hlsInstance);
@@ -433,26 +412,46 @@ static int hw_snn_izikevich_config_network(uint64_t *network_stream, uint64_t *o
 	return XST_SUCCESS;
 }
 
-static int hw_snn_izikevich_run_step(uint32_t *input_p, uint64_t weights_stream[AXI_WEIGHTS_PORTS][AXI_WEIGHTS_LENGTH], uint64_t *output_stream) {
+static int hw_snn_izikevich_run(float* weights, uint32_t n_weights, float* biases, uint32_t n_biases, uint32_t n_inputs, uint32_t n_outputs, uint32_t n_per_layer[MAX_LAYER_COUNT], uint32_t n_layers, bool*output) {
+    
+    // Generate the input stream
+    uint64_t input_stream = [AXI_PORTS][((MAX_LAYER_SIZE*(MAX_LAYER_SIZE+1))*MAX_LAYER_COUNT + AXI_PORTS - 1)/AXI_PORTS]; // Upper division
+    uint32_t input_idx = 0, weights_idx = 0, biases_idx = 0;
+    uint32_t n_prev_layer = n_inputs;
+    for(int i = 0; i < n_layers; i++){
+        // Add the corresponding number of biases
+        for(int j = 0; j < MAX_LAYER_SIZE; j+=2, input_idx++, biases_idx+=2){
+			if(j < n_per_layer[i])
+            	*(input_stream + input_idx) = (uint64_t)(biases[bias_idx], biases[biases_idx+1]);
+			else
+				*(input_stream + input_idx) = 0;
+	    }
+        // Add the corresponding number of weights
+        for(int j = 0; j < MAX_LAYER_SIZE*MAX_LAYER_SIZE; j+=2; input_idx++, biases_idx+=2){
+			if(j < n_per_layer[i]*n_prev_layer)
+            	*(input_stream +input_idx) = (uint64_t)float32_to_uint64(weights[weights_idx], weights[weights_idx+1]);
+			else
+				*(input_stream + input_idx) = 0;
+		}
+        n_prev_layer = n_per_layer[i];
+    }
 
-	// Set state and inputs
+	// Set state
 	XHls_snn_izikevich_Set_state(&hlsInstance, STATE_PROCESS);
-	//XHls_snn_izikevich_Write_p_input_Words(&hlsInstance, 0, (word_type *)input_p, AXI_INPUT_LENGTH); TODOOOOOO
-	XHls_snn_izikevich_Set_p_input(&hlsInstance, (int)*input_p);
 
 	// Start the device and read the results
 	hw_snn_izikevich_start();
 
 	// Write inputs via AXI-Stream
-	u32 streams[AXI_WEIGHTS_PORTS] = { (u32)weights_stream[0], (u32)weights_stream[1], (u32)weights_stream[2], (u32)weights_stream[3] };
-	hw_send_axi_stream_burst(streams, AXI_WEIGHTS_PORTS, AXI_WEIGHTS_LENGTH * sizeof(uint64_t));
+	uint32_t streams[AXI_PORTS] = { (uint32_t)input_stream[0], (uint32_t)input_stream[1], (uint32_t)input_stream[2], (uint32_t)input_stream[3] };
+	hw_send_axi_stream_burst(streams, AXI_PORTS, (n_weights + n_biases + 1) / 2 * sizeof(uint64_t)); // Upper division
 	if (status != XST_SUCCESS) {
 		printf("HLS ERROR: DMA transfer of %ld streams failed to be transfered.\n", AXI_WEIGHTS_LENGTH);
 		return XST_FAILURE;
 	}
 
 	// Read outputs via AXI-Stream
-	status = hw_read_axi_stream_burst((u64)output_stream, AXI_OUTPUT_LENGTH * sizeof(uint64_t));
+	status = hw_read_axi_stream_burst(output, (NUM_STEPS*n_outputs+7) / 8); // Upper division n_bytes
 	if (status != XST_SUCCESS) {
 		printf("HLS ERROR: DMA transfer from HLS block failed.\n");
 		return XST_FAILURE;
@@ -465,7 +464,9 @@ static int hw_snn_izikevich_run_step(uint32_t *input_p, uint64_t weights_stream[
 		printf("HLS ERROR: Expected return result %d and got %ld...\n", SUCCESS_OK, returnResult);
 		return XST_FAILURE;
 	}
+
 	return XST_SUCCESS;
 }
+
 
 #endif /* _SNN_IZIKEVICH_HW_ZYNQ_H_ */
