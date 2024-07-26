@@ -68,6 +68,10 @@ clean_vivado:
 	@rm -rf .srcs
 	@rm -rf .Xil
 	@rm -rf NA
+	@rm -rf ./vivado/checkpoints/opt.dcp
+	@rm -rf ./vivado/checkpoints/place.dcp
+	@rm -rf ./vivado/checkpoints/route.dcp
+	@rm -rf ./vivado/checkpoints/synth.dcp
 
 clean_vitis:
 	@rm -rf .Xil
