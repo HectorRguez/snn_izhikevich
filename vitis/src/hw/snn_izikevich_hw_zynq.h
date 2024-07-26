@@ -8,7 +8,7 @@
 #include "xscugic.h"
 #include "xparameters.h"
 
-#include "../../../snn_config/snn_defs.h"
+#include "./snn_defs.h"
 #include "../types.h"
 
 /*****************************************************************************

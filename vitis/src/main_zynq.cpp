@@ -1,4 +1,4 @@
-#include <xil_printf.h>
+#include "xil_printf.h"
 #include <stdbool.h>
 #include <stdlib.h>
 #include <string.h>
@@ -11,7 +11,7 @@
 
 // HW drivers
 #include "./hw/snn_izikevich_hw_zynq.h"
-
+ 
 // Simulation defines
 const float train_data_proportion = 0.7;
 const int n_steps = 30;
