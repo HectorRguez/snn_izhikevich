@@ -1,21 +1,16 @@
-#include <stdio.h>
+#include <xil_printf.h>
 #include <stdbool.h>
 #include <stdlib.h>
 #include <string.h>
-#include <unistd.h>
 
 #include "network_func.h"
 #include "aux_func.h"
-#include "../../../snn_config/network.h" // Network coefficients [AUTO GENERATED]
-#include "../../../snn_config/snn_defs.h" // Common definitions
+#include "network.h" // Network coefficients [AUTO GENERATED]
+#include "snn_defs.h" // Common definitions
 #include "data.h"    // Testing data [AUTO GENERATED]
 
 // HW drivers
 #include "./hw/snn_izikevich_hw_zynq.h"
-
-// Optget externs (avoid squiggly lines)
-extern char* optarg;
-extern int optopt;
 
 // Simulation defines
 const float train_data_proportion = 0.7;
@@ -41,33 +36,33 @@ int main(int argc, char *argv[]){
     if(true)
     { 
         // Print the normalized input file
-        printf("\nNORMALIZED DATA\n");
+        xil_printf("\nNORMALIZED DATA\n");
         for(int i = 0; i < n_data; i++){
-            printf("%3i: ", i);
+            xil_printf("%3i: ", i);
             for(int j = 0; j < n_parameters-1; j++){
-                printf("%5.3f ", data[i*n_parameters + j]);
+                xil_printf("%5.3f ", data[i*n_parameters + j]);
             }
-            printf("%3i", labels[i]);
-            printf("\n");
+            xil_printf("%3i", labels[i]);
+            xil_printf("\n");
         }
-        printf("\n\n");
+        xil_printf("\n\n");
 
         // Print the weights and biases
-        printf("WEIGHTS\n");
+        xil_printf("WEIGHTS\n");
         for(int i = 0; i < n_weights; i++){
-            printf("%5.3f ", weights[i]);
+            xil_printf("%5.3f ", weights[i]);
         }
-        printf("\n\n");
-        printf("BIASES\n");
+        xil_printf("\n\n");
+        xil_printf("BIASES\n");
         for(int i = 0; i < n_biases; i++){
-            printf("%5.3f ", biases[i]);
+            xil_printf("%5.3f ", biases[i]);
         }
-        printf("\n\n");
+        xil_printf("\n\n");
     }
 
     // Test the network in SW
     // ============================================================
-    printf("Executing the network in SW.\n");
+    xil_printf("Executing the network in SW.\n");
 	int total = 0, correct = 0;
     int start_test_idx = (int)(train_data_proportion*n_data);
     out_spk = (bool*)malloc(n_outputs*n_steps*sizeof(bool));
@@ -87,18 +82,18 @@ int main(int argc, char *argv[]){
     }
     stop_clock();
 
-    printf("NETWORK EXECUTION RESULTS:\n");
+    xil_printf("NETWORK EXECUTION RESULTS:\n");
     float percentage = ((float)correct)/((float)total) * 100.0; 
-    printf("Correctly classified %i/%i flowers (%5.2f%%)", 
+    xil_printf("Correctly classified %i/%i flowers (%5.2f%%)", 
         correct, total, percentage);
-    printf("\n");
-    printf("Total execution time:\t\t%.2f ms.\n", get_clock_ms());
+    xil_printf("\n");
+    xil_printf("Total execution time:\t\t%.2f ms.\n", get_clock_ms());
 
 	free(out_spk);
 
     // Test the network in HW
     // ============================================================
-    printf("Executing the network in HW.\n");
+    xil_printf("Executing the network in HW.\n");
 	int total = 0, correct = 0;
     int start_test_idx = (int)(train_data_proportion*n_data);
     out_spk = (bool*)malloc(n_outputs*n_steps*sizeof(bool));
@@ -123,10 +118,10 @@ int main(int argc, char *argv[]){
 
 	free(out_spk);
 
-    printf("NETWORK EXECUTION RESULTS:\n");
+    xil_printf("NETWORK EXECUTION RESULTS:\n");
     float percentage = ((float)correct)/((float)total) * 100.0; 
-    printf("Correctly classified %i/%i flowers (%5.2f%%)", 
+    xil_printf("Correctly classified %i/%i flowers (%5.2f%%)", 
         correct, total, percentage);
-    printf("\n");
-    printf("Total execution time:\t\t%.2f ms.\n", get_clock_ms());
+    xil_printf("\n");
+    xil_printf("Total execution time:\t\t%.2f ms.\n", get_clock_ms());
 }

@@ -1,8 +1,10 @@
-1. Check if I can separate .h files with functions into headers and .cpp files on the HLS
-13. Add fixed point conversions to start.h
-17. Add input generator from the python script
+1. Separate headers and cpp files in the zynq project
+17. Add input generator to automate the complete workflow
 18. Improve makefile targets and dependencies
-
+19. Change project name to snn_accelerator
+20. Add the LIF neuron option with defines in snn_config
+21. Update README.md
+22. Improve file dependency specification
 
 IMPORTANT OBSERVATIONS ABOUT THE ORIGINAL PROJECT
 1. snn_resutls.h main function has the same functionality as the function implemented inside snn_network_xor.h to save firings. Thus, keeping it makes no sense and it has been eliminated from the project.

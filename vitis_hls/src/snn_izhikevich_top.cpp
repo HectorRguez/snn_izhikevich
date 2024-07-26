@@ -74,8 +74,6 @@ void forward_linear_in(fixed_t*in_c, uint6_t n_in, fixed_t*out_c, uint6_t n_out,
 				uint64_t input3 = input_stream3.read().data;
 				weight_buffer[j+6] = (fixed_t)input3.range(63, 32);
 				weight_buffer[j+7] = (fixed_t)input3.range(31,0);
-
-				weight_buffer[j] = weights[i*n_in+j];
 			}
 			// Multiply inputs and accumulate
 			linear_compute_timesteps: for(uint6_t j = 0; j < NUM_STEPS; j++){
