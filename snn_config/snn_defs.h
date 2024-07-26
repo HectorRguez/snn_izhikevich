@@ -1,3 +1,6 @@
+#ifndef _SNN_DEFS_H_
+#define _SNN_DEFS_H_
+
 // Memory size and max loop iteration defines
 #define MAX_LAYER_SIZE 16
 #define NUM_STEPS 30
@@ -10,3 +13,5 @@
 
 // Interface
 #define AXI_PORTS           4
+
+#endif /* _SNN_DEFS_H_ */

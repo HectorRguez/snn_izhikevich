@@ -5,7 +5,7 @@
 
 extern const uint32_t n_inputs;
 extern const uint32_t n_outputs;
-extern int n_per_layer[];
+extern uint32_t n_per_layer[];
 extern const uint32_t n_layers;
 extern float weights[];
 extern const uint32_t n_weights;

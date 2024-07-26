@@ -52,7 +52,7 @@ vivado/checkpoints/route.dcp: vivado/checkpoints/synth.dcp
 vivado/snn_hw.xsa: vivado/checkpoints/route.dcp
 	@$(RUN_VIVADO) -source vivado/export_hw.tcl
 
-vitis/ws/*: vitis/src/* vivado/snn_hw.xsa
+vitis/ws/*: vitis/src/* vitis/src/hw/* vivado/snn_hw.xsa
 	rm -rf vitis/ws
 	@xsct vitis/create_project_vitis.tcl
 

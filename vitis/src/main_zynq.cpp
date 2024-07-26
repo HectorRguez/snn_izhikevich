@@ -8,7 +8,7 @@
 #include "network.h" // Network coefficients [AUTO GENERATED]
 #include "snn_defs.h" // Common definitions
 #include "data.h"    // Testing data [AUTO GENERATED]
-
+ 
 // HW drivers
 #include "./hw/snn_izikevich_hw_zynq.h"
  
@@ -94,8 +94,8 @@ int main(int argc, char *argv[]){
     // Test the network in HW
     // ============================================================
     xil_printf("Executing the network in HW.\n");
-	int total = 0, correct = 0;
-    int start_test_idx = (int)(train_data_proportion*n_data);
+	total = 0, correct = 0;
+    start_test_idx = (int)(train_data_proportion*n_data);
     out_spk = (bool*)malloc(n_outputs*n_steps*sizeof(bool));
 
 
@@ -119,7 +119,7 @@ int main(int argc, char *argv[]){
 	free(out_spk);
 
     xil_printf("NETWORK EXECUTION RESULTS:\n");
-    float percentage = ((float)correct)/((float)total) * 100.0; 
+    percentage = ((float)correct)/((float)total) * 100.0; 
     xil_printf("Correctly classified %i/%i flowers (%5.2f%%)", 
         correct, total, percentage);
     xil_printf("\n");
