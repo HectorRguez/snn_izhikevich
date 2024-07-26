@@ -2,7 +2,6 @@
 #define _AUX_FUN_H_
 
 // Includes
-#include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
 

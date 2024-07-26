@@ -1,4 +1,5 @@
 #include "snn_types.h"
+#include "../../snn_config/snn_defs.h"
 
 // Precalc Izhikevich coefficients 
 // [https://www.mdpi.com/2079-9292/13/5/909]
@@ -156,7 +157,7 @@ uint1_t hls_snn_izikevich(
 			if(i < n_layers){
 				// Execute linear
 				forward_linear_in(out_neuron_spk, n_prev_layer,
-						out_linear_c, n_layer[i], input_steam0, input_steam1, input_stream2, input_stream3);
+						out_linear_c, n_layer[i], input_stream0, input_stream1, input_stream2, input_stream3);
 
 				// Execute neuron
 				izhi_outer_loop: for(uint6_t j = 0; j < MAX_LAYER_SIZE; j++){

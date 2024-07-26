@@ -6,9 +6,9 @@
 
 #include "network_func.h"
 #include "aux_func.h"
-#include "network.h" // Network coefficients [AUTO GENERATED]
+#include "../../../snn_config/network.h" // Network coefficients [AUTO GENERATED]
+#include "../../../snn_config/snn_defs.h" // Common definitions
 #include "data.h"    // Testing data [AUTO GENERATED]
-#include "snn_defs.h"
 
 // HW drivers
 #include "./hw/snn_izikevich_hw_zynq.h"
