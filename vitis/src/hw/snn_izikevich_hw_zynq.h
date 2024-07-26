@@ -389,9 +389,6 @@ static int hw_snn_izikevich_config_network(float input_c[MAX_LAYER_SIZE], uint32
     // Set INIT state
     XHls_snn_izikevich_Set_state(&hlsInstance, STATE_INIT);
 
-	// Start the device
-	hw_snn_izikevich_start();
-
 	// Set inputs and outputs
     XHls_snn_izikevich_Write_in_c_Words(&hlsInstance, 0, (uint32_t*)input_c, n_inputs); // CHECK
     XHls_snn_izikevich_Set_n_in(&hlsInstance, n_inputs);
@@ -401,13 +398,15 @@ static int hw_snn_izikevich_config_network(float input_c[MAX_LAYER_SIZE], uint32
     XHls_snn_izikevich_Write_n_layer_Words(&hlsInstance, 0, n_per_layer, n_layers); // CHECK
     XHls_snn_izikevich_Set_n_layers(&hlsInstance, n_layers);
 
+	// Start the device
+	hw_snn_izikevich_start();
+
 	// Check return result for verification
 	returnResult = XHls_snn_izikevich_Get_return(&hlsInstance);
 	if (returnResult != SUCCESS_OK) {
-		xil_printf("HLS ERROR: Expected return result %d and got %ld...\r\n", SUCCESS_OK, returnResult);
+		xil_printf("HLS ERROR during setup: Expected return result %d and got %ld...\r\n", SUCCESS_OK, returnResult);
 		return XST_FAILURE;
 	}
-
 	return XST_SUCCESS;
 }
 
@@ -445,7 +444,7 @@ static int hw_snn_izikevich_run(float* weights, uint32_t n_weights, float* biase
 	uint32_t streams[AXI_PORTS] = { (uint32_t)input_stream[0], (uint32_t)input_stream[1], (uint32_t)input_stream[2], (uint32_t)input_stream[3] };
 	hw_send_axi_stream_burst(streams, AXI_PORTS, (n_weights + n_biases + 1) / 2 * sizeof(uint64_t)); // Upper division
 	if (status != XST_SUCCESS) {
-		xil_printf("HLS ERROR: DMA transfer of streams failed to be transfered.\r\n");
+		xil_printf("HLS ERROR: DMA transfer of streams failed to be transferred.\r\n");
 		return XST_FAILURE;
 	}
 
@@ -460,10 +459,9 @@ static int hw_snn_izikevich_run(float* weights, uint32_t n_weights, float* biase
 	// Check return result for verification
 	returnResult = XHls_snn_izikevich_Get_return(&hlsInstance);
 	if (returnResult != SUCCESS_OK) {
-		xil_printf("HLS ERROR: Expected return result %d and got %ld...\r\n", SUCCESS_OK, returnResult);
+		xil_printf("HLS ERROR during execution: Expected return result %d and got %ld...\r\n", SUCCESS_OK, returnResult);
 		return XST_FAILURE;
 	}
-
 	return XST_SUCCESS;
 }
 

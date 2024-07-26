@@ -135,7 +135,6 @@ uint1_t hls_snn_izikevich(
 
 	// Process logic
 	if (state == STATE_INIT) {
-
 		// Read inputs
 		read_inputs: for(uint9_t i = 0; i < NUM_STEPS*MAX_LAYER_SIZE; i++){
 			if(i < NUM_STEPS*n_in){
@@ -145,7 +144,6 @@ uint1_t hls_snn_izikevich(
 				out_neuron_spk[i] = 0;
 			}
 		}
-
 	}
 	else { // state == STATE_PROCESS
 
