@@ -386,6 +386,7 @@ static int hw_read_axi_stream_burst(uint32_t stream_addr, uint32_t bytes_size) {
  *****************************************************************************/
 static int hw_snn_izikevich_config_network(float input_c[MAX_LAYER_SIZE], uint32_t n_inputs, uint32_t n_outputs, uint32_t n_per_layer[MAX_LAYER_COUNT], uint32_t n_layers) {
     
+
     // Set INIT state
     XHls_snn_izikevich_Set_state(&hlsInstance, STATE_INIT);
 
@@ -398,8 +399,17 @@ static int hw_snn_izikevich_config_network(float input_c[MAX_LAYER_SIZE], uint32
     XHls_snn_izikevich_Write_n_layer_Words(&hlsInstance, 0, n_per_layer, n_layers); // CHECK
     XHls_snn_izikevich_Set_n_layers(&hlsInstance, n_layers);
 
+	// Invalidate cache
+	Xil_DCacheInvalidate();
+
 	// Start the device
 	hw_snn_izikevich_start();
+
+	// Wait until the device is configured
+	while(!processingDone);
+
+	// HLS IP wrote to DDR so we want application to read from DDR not ARM cached data
+	Xil_DCacheInvalidate();
 
 	// Check return result for verification
 	returnResult = XHls_snn_izikevich_Get_return(&hlsInstance);
@@ -437,6 +447,9 @@ static int hw_snn_izikevich_run(float* weights, uint32_t n_weights, float* biase
 	// Set state
 	XHls_snn_izikevich_Set_state(&hlsInstance, STATE_PROCESS);
 
+	// Invalidate cache
+	Xil_DCacheInvalidate();
+
 	// Start the device and read the results
 	hw_snn_izikevich_start();
 
@@ -448,6 +461,9 @@ static int hw_snn_izikevich_run(float* weights, uint32_t n_weights, float* biase
 		return XST_FAILURE;
 	}
 
+	// HLS IP wrote to DDR so we want application to read from DDR not ARM cached data
+	Xil_DCacheInvalidate();
+
 	// Read outputs via AXI-Stream
 	status = hw_read_axi_stream_burst((uint32_t)output, (NUM_STEPS*n_outputs+7) / 8); // Upper division n_bytes
 	if (status != XST_SUCCESS) {
@@ -456,6 +472,7 @@ static int hw_snn_izikevich_run(float* weights, uint32_t n_weights, float* biase
 	}
 	// Wait until it is finished or an error is detected
 	while(!processingDone);
+	
 	// Check return result for verification
 	returnResult = XHls_snn_izikevich_Get_return(&hlsInstance);
 	if (returnResult != SUCCESS_OK) {
