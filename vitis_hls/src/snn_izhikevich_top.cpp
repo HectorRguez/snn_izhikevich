@@ -219,7 +219,7 @@ uint1_t hls_snn_izikevich(
 		output_stream.write(stream);
 
 		// Send back second weight
-		uint64_t input0 = input_stream0.read().data;
+		input0 = input_stream0.read().data;
 		fixed_t weight_buffer1 = (fixed_t)input0.range(63, 32);
 		stream.data = *(uint32_t*)&weight_buffer1;
 		stream.last = 0;
