@@ -32,6 +32,15 @@
 
 #define MAX_BURST_BYTES		15 * 1024 // 15K per burst
 
+
+/*****************************************************************************
+ *                          Hardware Definitions      		                 *
+ *****************************************************************************/
+
+#define TRANSMISSION_SIZE ((MAX_LAYER_SIZE*(MAX_LAYER_SIZE+1))*MAX_LAYER_COUNT + AXI_PORTS - 1)/AXI_PORTS
+#define BIASES_SIZE (MAX_LAYER_SIZE*MAX_LAYER_COUNT + AXI_PORTS - 1)/AXI_PORTS
+#define WEIGHTS_SIZE  (MAX_LAYER_SIZE*MAX_LAYER_SIZE*MAX_LAYER_COUNT + AXI_PORTS - 1)/AXI_PORTS
+
 /*****************************************************************************
  *                                Variables      		                     *
  *****************************************************************************/
@@ -385,7 +394,6 @@ static int hw_read_axi_stream_burst(uint32_t stream_addr, uint32_t bytes_size) {
  *                               HW top Functions    		                 *
  *****************************************************************************/
 static int hw_snn_izikevich_config_network(float input_c[MAX_LAYER_SIZE], uint32_t n_inputs, uint32_t n_outputs, uint32_t n_per_layer[MAX_LAYER_COUNT], uint32_t n_layers) {
-    
 
     // Set INIT state
     XHls_snn_izikevich_Set_state(&hlsInstance, STATE_INIT);
@@ -396,20 +404,15 @@ static int hw_snn_izikevich_config_network(float input_c[MAX_LAYER_SIZE], uint32
     XHls_snn_izikevich_Set_n_out(&hlsInstance, n_outputs);
 
     // Set network topology
-    XHls_snn_izikevich_Write_n_layer_Words(&hlsInstance, 0, n_per_layer, n_layers); // CHECK
-    XHls_snn_izikevich_Set_n_layers(&hlsInstance, n_layers);
 
-	// Invalidate cache
-	Xil_DCacheInvalidate();
+    XHls_snn_izikevich_Set_n_layers(&hlsInstance, n_layers);
+    XHls_snn_izikevich_Write_n_layer_Words(&hlsInstance, 0, n_per_layer, n_layers); // CHECK
 
 	// Start the device
 	hw_snn_izikevich_start();
 
-	// Wait until the device is configured
+	// Wait untill it has finished configuring or an error is detected
 	while(!processingDone);
-
-	// HLS IP wrote to DDR so we want application to read from DDR not ARM cached data
-	Xil_DCacheInvalidate();
 
 	// Check return result for verification
 	returnResult = XHls_snn_izikevich_Get_return(&hlsInstance);
@@ -428,37 +431,39 @@ static int hw_snn_izikevich_run(float* weights, uint32_t n_weights, float* biase
     uint32_t n_prev_layer = n_inputs;
     for(uint32_t i = 0; i < n_layers; i++){
         // Add the corresponding number of biases
-        for(uint32_t j = 0; j < MAX_LAYER_SIZE; j+=2, input_idx++, biases_idx+=2){
-			if(j < n_per_layer[i])
-            	*((uint64_t*)(input_stream + input_idx)) = (uint64_t)float32_to_uint64(biases[biases_idx], biases[biases_idx+1]);
-			else
-				*((uint64_t*)(input_stream + input_idx)) = 0;
+        for(uint32_t j = 0; j < MAX_LAYER_SIZE; input_idx++){
+        	for(uint32_t k = 0; k < AXI_PORTS; k++, j+= 2, biases_idx+=2){
+        		if(j < n_per_layer[i])
+					input_stream[k][input_idx] = (uint64_t)float32_to_uint64(biases[biases_idx], biases[biases_idx+1]);
+				else
+					input_stream[k][input_idx] = 0;
+        	}
 	    }
         // Add the corresponding number of weights
-        for(uint32_t j = 0; j < MAX_LAYER_SIZE*MAX_LAYER_SIZE; j+=2, input_idx++, biases_idx+=2){
-			if(j < n_per_layer[i]*n_prev_layer)
-            	*((uint64_t*)(input_stream + input_idx)) = (uint64_t)float32_to_uint64(weights[weights_idx], weights[weights_idx+1]);
-			else
-				*((uint64_t*)(input_stream + input_idx)) = 0;
-		}
+        for(uint32_t j = 0; j < MAX_LAYER_SIZE*MAX_LAYER_SIZE; input_idx++){
+        	for(uint32_t k = 0; k < AXI_PORTS; k++, j+= 2, weights_idx+=2){
+        		if(j < n_per_layer[i]*n_prev_layer)
+					input_stream[k][input_idx] = (uint64_t)float32_to_uint64(weights[weights_idx], weights[weights_idx+1]);
+				else
+					input_stream[k][input_idx] = 0;
+        	}
+	    }
         n_prev_layer = n_per_layer[i];
     }
 
 	// Set state
 	XHls_snn_izikevich_Set_state(&hlsInstance, STATE_PROCESS);
 
-
 	// Start the device and read the results
 	hw_snn_izikevich_start();
 
 	// Write inputs via AXI-Stream
-	uint32_t streams[AXI_PORTS] = { (uint32_t)input_stream[0], (uint32_t)input_stream[1], (uint32_t)input_stream[2], (uint32_t)input_stream[3] };
-	hw_send_axi_stream_burst(streams, AXI_PORTS, (n_weights + n_biases + 1) / 2 * sizeof(uint64_t)); // Upper division
-	if (status != XST_SUCCESS) {
-		xil_printf("HLS ERROR: DMA transfer of streams failed to be transferred.\r\n");
-		return XST_FAILURE;
-	}
-
+	//uint32_t streams[AXI_PORTS] = { (uint32_t)input_stream[0], (uint32_t)input_stream[1], (uint32_t)input_stream[2], (uint32_t)input_stream[3] };
+	//hw_send_axi_stream_burst(streams, AXI_PORTS, (n_weights + n_biases + 1) / 2 * sizeof(uint64_t)); // Upper division
+	//if (status != XST_SUCCESS) {
+	//	xil_printf("HLS ERROR: DMA transfer of streams failed to be transferred.\r\n");
+	//	return XST_FAILURE;
+	//}
 
 	// Read outputs via AXI-Stream
 	status = hw_read_axi_stream_burst((uint32_t)output, 8); // Upper division n_bytes
@@ -468,7 +473,6 @@ static int hw_snn_izikevich_run(float* weights, uint32_t n_weights, float* biase
 	}
 	// Wait until it is finished or an error is detected
 	while(!processingDone);
-	
 	// Check return result for verification
 	returnResult = XHls_snn_izikevich_Get_return(&hlsInstance);
 	if (returnResult != SUCCESS_OK) {
