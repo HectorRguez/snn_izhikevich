@@ -103,7 +103,7 @@ void forward_linear_in(fixed_t*in_c, uint6_t n_in, fixed_t*out_c, uint6_t n_out,
 
 uint1_t hls_snn_izikevich(
 		uint1_t state,
-		fixed_t in_c[MAX_LAYER_SIZE],
+		uint32_t in_c[MAX_LAYER_SIZE],
 		uint32_t n_in,
 		uint32_t n_out,
 		uint32_t n_layers,
@@ -140,7 +140,7 @@ uint1_t hls_snn_izikevich(
 		read_inputs: for(uint6_t i = 0; i < MAX_LAYER_SIZE; i++){
 			for(uint6_t j = 0; j < NUM_STEPS; j++){
 				if(i < n_in){
-					out_neuron_spk[i*NUM_STEPS+j] = in_c[i];
+					out_neuron_spk[i*NUM_STEPS+j] = *(fixed_t*)(in_c + i);
 				}
 				else{
 					out_neuron_spk[i*NUM_STEPS+j] = 0;
@@ -189,7 +189,45 @@ uint1_t hls_snn_izikevich(
 		//}
 
 		//// Write outputs
-		axis64_t stream = input_stream0.read();
+		uint64_t data = input_stream0.read().data;
+		axis64_t stream;
+
+		// Send back state
+		stream.data = state;
+		stream.last = 0;
+		output_stream.write(stream);
+
+		// Send back in_c
+		for(uint32_t i = 0; i < n_in; i++){
+			stream.data = in_c[i];
+			stream.last = 0;
+			output_stream.write(stream);
+		}
+
+		// Send back n_layer
+		for(uint32_t i = 0; i < n_layers; i++){
+			stream.data = n_layer[i];
+			stream.last = 0;
+			output_stream.write(stream);
+		}
+
+		// Send back second bias
+		uint64_t input0 = input_stream0.read().data;
+		fixed_t bias_buffer1 = (fixed_t)input0.range(63, 32);
+		stream.data = *(uint32_t*)&bias_buffer1;
+		stream.last = 0;
+		output_stream.write(stream);
+
+		// Send back second weight
+		uint64_t input0 = input_stream0.read().data;
+		fixed_t weight_buffer1 = (fixed_t)input0.range(63, 32);
+		stream.data = *(uint32_t*)&weight_buffer1;
+		stream.last = 0;
+		output_stream.write(stream);
+
+		// Send back the data that was received in input_0
+		stream.data = data;
+		stream.last = 1;
 		output_stream.write(stream);
 
 		//uint9_t data_out_idx;
