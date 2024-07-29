@@ -447,8 +447,6 @@ static int hw_snn_izikevich_run(float* weights, uint32_t n_weights, float* biase
 	// Set state
 	XHls_snn_izikevich_Set_state(&hlsInstance, STATE_PROCESS);
 
-	// Invalidate cache
-	Xil_DCacheInvalidate();
 
 	// Start the device and read the results
 	hw_snn_izikevich_start();
@@ -461,11 +459,9 @@ static int hw_snn_izikevich_run(float* weights, uint32_t n_weights, float* biase
 		return XST_FAILURE;
 	}
 
-	// HLS IP wrote to DDR so we want application to read from DDR not ARM cached data
-	Xil_DCacheInvalidate();
 
 	// Read outputs via AXI-Stream
-	status = hw_read_axi_stream_burst((uint32_t)output, (NUM_STEPS*n_outputs+7) / 8); // Upper division n_bytes
+	status = hw_read_axi_stream_burst((uint32_t)output, 8); // Upper division n_bytes
 	if (status != XST_SUCCESS) {
 		xil_printf("HLS ERROR: DMA transfer from HLS block failed.\r\n");
 		return XST_FAILURE;

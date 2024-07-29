@@ -19,61 +19,62 @@ void forward_linear_in(fixed_t*in_c, uint6_t n_in, fixed_t*out_c, uint6_t n_out,
 	
 	// Load input biases
 	float biases[MAX_LAYER_SIZE];
-	for(uint6_t i = 0; i < MAX_LAYER_SIZE; i+=8){
+	linear_load_biases: for(uint6_t i = 0; i < MAX_LAYER_SIZE; i+=8){
 		// Input stream 0
 		uint64_t input0 = input_stream0.read().data;
-		biases[i] = (fixed_t)input0.range(63, 32);
-		biases[i+1] = (fixed_t)input0.range(31,0);
+		biases[i+1] = (fixed_t)input0.range(63, 32);
+		biases[i] = (fixed_t)input0.range(31,0);
 
 		// Input stream 1
 		uint64_t input1 = input_stream1.read().data;
-		biases[i+2] = (fixed_t)input1.range(63, 32);
-		biases[i+3] = (fixed_t)input1.range(31,0);
+		biases[i+3] = (fixed_t)input1.range(63, 32);
+		biases[i+2] = (fixed_t)input1.range(31,0);
 
 		// Input stream 2
 		uint64_t input2 = input_stream2.read().data;
-		biases[i+4] = (fixed_t)input2.range(63, 32);
-		biases[i+5] = (fixed_t)input2.range(31,0);
+		biases[i+5] = (fixed_t)input2.range(63, 32);
+		biases[i+4] = (fixed_t)input2.range(31,0);
 
 		// Input stream 3
 		uint64_t input3 = input_stream3.read().data;
-		biases[i+6] = (fixed_t)input3.range(63, 32);
-		biases[i+7] = (fixed_t)input3.range(31,0);
+		biases[i+7] = (fixed_t)input3.range(63, 32);
+		biases[i+6] = (fixed_t)input3.range(31,0);
 		
 	}
 	
 
     linear_outer_loop: for(uint6_t i = 0; i < MAX_LAYER_SIZE; i++){
 	#pragma HLS PIPELINE II=45
+
+		// Load weights buffer
+		fixed_t weight_buffer[MAX_LAYER_SIZE];
+		#pragma HLS ARRAY_PARTITION dim=1 type=complete variable=weight_buffer
+		linear_load_weight: for(uint6_t j = 0; j < MAX_LAYER_SIZE; j+=8){
+			// Input stream 0
+			uint64_t input0 = input_stream0.read().data;
+			weight_buffer[j+1] = (fixed_t)input0.range(63, 32);
+			weight_buffer[j] = (fixed_t)input0.range(31,0);
+
+			// Input stream 1
+			uint64_t input1 = input_stream1.read().data;
+			weight_buffer[j+3] = (fixed_t)input1.range(63, 32);
+			weight_buffer[j+2] = (fixed_t)input1.range(31,0);
+
+			// Input stream 2
+			uint64_t input2 = input_stream2.read().data;
+			weight_buffer[j+5] = (fixed_t)input2.range(63, 32);
+			weight_buffer[j+4] = (fixed_t)input2.range(31,0);
+
+			// Input stream 3
+			uint64_t input3 = input_stream3.read().data;
+			weight_buffer[j+7] = (fixed_t)input3.range(63, 32);
+			weight_buffer[j+6] = (fixed_t)input3.range(31,0);
+		}
+
     	if(i < n_out){
     		// Initialize output to the bias value
 			linear_init_variables: for(uint6_t j = 0; j < NUM_STEPS; j++){
 				out_c[i*NUM_STEPS+j] = biases[i];
-			}
-
-			// Load weights buffer
-			fixed_t weight_buffer[MAX_LAYER_SIZE];
-			#pragma HLS ARRAY_PARTITION dim=1 type=complete variable=weight_buffer
-			linear_load_weight: for(uint6_t j = 0; j < MAX_LAYER_SIZE; j+=8){
-				// Input stream 0
-				uint64_t input0 = input_stream0.read().data;
-				weight_buffer[j] = (fixed_t)input0.range(63, 32);
-				weight_buffer[j+1] = (fixed_t)input0.range(31,0);
-
-				// Input stream 1
-				uint64_t input1 = input_stream1.read().data;
-				weight_buffer[j+2] = (fixed_t)input1.range(63, 32);
-				weight_buffer[j+3] = (fixed_t)input1.range(31,0);
-
-				// Input stream 2
-				uint64_t input2 = input_stream2.read().data;
-				weight_buffer[j+4] = (fixed_t)input2.range(63, 32);
-				weight_buffer[j+5] = (fixed_t)input2.range(31,0);
-
-				// Input stream 3
-				uint64_t input3 = input_stream3.read().data;
-				weight_buffer[j+6] = (fixed_t)input3.range(63, 32);
-				weight_buffer[j+7] = (fixed_t)input3.range(31,0);
 			}
 			// Multiply inputs and accumulate
 			linear_compute_timesteps: for(uint6_t j = 0; j < NUM_STEPS; j++){
@@ -136,12 +137,14 @@ uint1_t hls_snn_izikevich(
 	// Process logic
 	if (state == STATE_INIT) {
 		// Read inputs
-		read_inputs: for(uint9_t i = 0; i < NUM_STEPS*MAX_LAYER_SIZE; i++){
-			if(i < NUM_STEPS*n_in){
-				out_neuron_spk[i] = in_c[i];
-			}
-			else{
-				out_neuron_spk[i] = 0;
+		read_inputs: for(uint6_t i = 0; i < MAX_LAYER_SIZE; i++){
+			for(uint6_t j = 0; j < NUM_STEPS; j++){
+				if(i < n_in){
+					out_neuron_spk[i*NUM_STEPS+j] = in_c[i];
+				}
+				else{
+					out_neuron_spk[i*NUM_STEPS+j] = 0;
+				}
 			}
 		}
 	}
@@ -189,9 +192,8 @@ uint1_t hls_snn_izikevich(
 		axis64_t stream_out;
 		uint9_t data_out_idx;
 		uint64_t data_out;
-		uint9_t n_data_out = n_out*NUM_STEPS;
-		for(int i = 0; i < MAX_LAYER_SIZE*NUM_STEPS; i+=2){
-			if(i < n_data_out){
+		for(int i = 0; i < MAX_LAYER_SIZE*NUM_STEPS; i++){
+			if(i < n_out*NUM_STEPS){
 				// Get value and write it on the output buffer
 				bool out = (out_neuron_spk[i] != 0);
 				data_out = data_out | (out << data_out_idx++);
@@ -199,18 +201,18 @@ uint1_t hls_snn_izikevich(
 				// Check if the output is complete and send it
 				if(data_out_idx > 63){
 					stream_out.data = data_out;
-					if(n_data_out - data_out_idx > 0) stream_out.last = 0;
-					else stream_out.last = 1;
+					stream_out.last = 1;
 					output_stream.write(stream_out);
 					data_out = 0;
 					data_out_idx = 0;
+					break;
 				}
 			}
-			else if(data_out_idx > 0){ // Send the last remaining bits(if necessary)
-				stream_out.data = data_out;
-				stream_out.last = 1;
-				output_stream.write(stream_out);
-			}
+			//else if(i == n_data_out){ // Send the last remaining bits(if necessary)
+			//	stream_out.data = data_out;
+			//	stream_out.last = 1;
+			//	output_stream.write(stream_out);
+			//}
 		}
 	}
 	return SUCCESS_OK;
