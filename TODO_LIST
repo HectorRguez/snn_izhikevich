@@ -5,6 +5,7 @@
 20. Add the LIF neuron option with defines in snn_config
 21. Update README.md
 22. Improve file dependency specification
+23. Improve make clean (delte ws, snn_ip and block_design)
 
 IMPORTANT OBSERVATIONS ABOUT THE ORIGINAL PROJECT
 1. snn_resutls.h main function has the same functionality as the function implemented inside snn_network_xor.h to save firings. Thus, keeping it makes no sense and it has been eliminated from the project.

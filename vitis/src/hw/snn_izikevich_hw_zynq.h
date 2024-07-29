@@ -431,7 +431,7 @@ static int hw_snn_izikevich_run(float* weights, uint32_t n_weights, float* biase
     uint32_t n_prev_layer = n_inputs;
     for(uint32_t i = 0; i < n_layers; i++){
         // Add the corresponding number of biases
-        for(uint32_t j = 0; j < MAX_LAYER_SIZE; input_idx++){
+        for(int j = 0; j < MAX_LAYER_SIZE; input_idx++){
         	for(uint32_t k = 0; k < AXI_PORTS; k++, j+= 2, biases_idx+=2){
         		if(j < n_per_layer[i])
 					input_stream[k][input_idx] = (uint64_t)float32_to_uint64(biases[biases_idx], biases[biases_idx+1]);
@@ -440,7 +440,7 @@ static int hw_snn_izikevich_run(float* weights, uint32_t n_weights, float* biase
         	}
 	    }
         // Add the corresponding number of weights
-        for(uint32_t j = 0; j < MAX_LAYER_SIZE*MAX_LAYER_SIZE; input_idx++){
+        for(int j = 0; j < MAX_LAYER_SIZE*MAX_LAYER_SIZE; input_idx++){
         	for(uint32_t k = 0; k < AXI_PORTS; k++, j+= 2, weights_idx+=2){
         		if(j < n_per_layer[i]*n_prev_layer)
 					input_stream[k][input_idx] = (uint64_t)float32_to_uint64(weights[weights_idx], weights[weights_idx+1]);
@@ -466,6 +466,12 @@ static int hw_snn_izikevich_run(float* weights, uint32_t n_weights, float* biase
 	//}
 
 	// Read outputs via AXI-Stream
+	uint32_t data = 0xBB;
+	status = hw_send_axi_stream_burst(&data, 1, 8); // Upper division
+	if (status != XST_SUCCESS) {
+		xil_printf("HLS ERROR: DMA transfer from HLS block failed.\r\n");
+		return XST_FAILURE;
+	}
 	status = hw_read_axi_stream_burst((uint32_t)output, 8); // Upper division n_bytes
 	if (status != XST_SUCCESS) {
 		xil_printf("HLS ERROR: DMA transfer from HLS block failed.\r\n");

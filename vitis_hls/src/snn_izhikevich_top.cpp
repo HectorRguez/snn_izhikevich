@@ -150,70 +150,72 @@ uint1_t hls_snn_izikevich(
 	}
 	else { // state == STATE_PROCESS
 
-		// Execute network
-		uint6_t n_prev_layer = n_in;
-		layer_propagation: for(uint6_t i = 0; i < MAX_LAYER_COUNT; i++){
-			if(i < n_layers){
-				// Execute linear
-				forward_linear_in(out_neuron_spk, n_prev_layer,
-						out_linear_c, n_layer[i], input_stream0, input_stream1, input_stream2, input_stream3);
+		//// Execute network
+		//uint6_t n_prev_layer = n_in;
+		//layer_propagation: for(uint6_t i = 0; i < MAX_LAYER_COUNT; i++){
+		//	if(i < n_layers){
+		//		// Execute linear
+		//		forward_linear_in(out_neuron_spk, n_prev_layer,
+		//				out_linear_c, n_layer[i], input_stream0, input_stream1, input_stream2, input_stream3);
 
-				// Execute neuron
-				izhi_outer_loop: for(uint6_t j = 0; j < MAX_LAYER_SIZE; j++){
-				#pragma HLS UNROLL
-					fixed_t membrane_v = 0, recovery_v = 0;
-					izhi_compute_timesteps: for(uint6_t k = 0; k < NUM_STEPS; k++){
-					#pragma HLS UNROLL off=true
-					#pragma HLS PIPELINE II=16
-						// Temporary variables
-						fixed_t v = membrane_v, u = recovery_v, I = out_linear_c[NUM_STEPS*j+k];
-						bool spike;
-						// Computation
-						spike = (v >= vth);
-						if(spike){
-							v = c;
-							u += d;
-						}
-						else{
-							v += a1*v*v + a2*v + a3*u + I;
-							u += b1*v + b2*u + b3;
-						}
-						// Outputs
-						membrane_v = v;
-						recovery_v = u;
-						out_neuron_spk[NUM_STEPS*j+k] = (spike) ? 1.0 : 0.0;
-					}
-				}
-				n_prev_layer = n_layer[i]; // Next iteration
-			}
-		}
+		//		// Execute neuron
+		//		izhi_outer_loop: for(uint6_t j = 0; j < MAX_LAYER_SIZE; j++){
+		//		#pragma HLS UNROLL
+		//			fixed_t membrane_v = 0, recovery_v = 0;
+		//			izhi_compute_timesteps: for(uint6_t k = 0; k < NUM_STEPS; k++){
+		//			#pragma HLS UNROLL off=true
+		//			#pragma HLS PIPELINE II=16
+		//				// Temporary variables
+		//				fixed_t v = membrane_v, u = recovery_v, I = out_linear_c[NUM_STEPS*j+k];
+		//				bool spike;
+		//				// Computation
+		//				spike = (v >= vth);
+		//				if(spike){
+		//					v = c;
+		//					u += d;
+		//				}
+		//				else{
+		//					v += a1*v*v + a2*v + a3*u + I;
+		//					u += b1*v + b2*u + b3;
+		//				}
+		//				// Outputs
+		//				membrane_v = v;
+		//				recovery_v = u;
+		//				out_neuron_spk[NUM_STEPS*j+k] = (spike) ? 1.0 : 0.0;
+		//			}
+		//		}
+		//		n_prev_layer = n_layer[i]; // Next iteration
+		//	}
+		//}
 
-		// Write outputs
-		axis64_t stream_out;
-		uint9_t data_out_idx;
-		uint64_t data_out;
-		for(int i = 0; i < MAX_LAYER_SIZE*NUM_STEPS; i++){
-			if(i < n_out*NUM_STEPS){
-				// Get value and write it on the output buffer
-				bool out = (out_neuron_spk[i] != 0);
-				data_out = data_out | (out << data_out_idx++);
+		//// Write outputs
+		axis64_t stream = input_stream0.read();
+		output_stream.write(stream);
 
-				// Check if the output is complete and send it
-				if(data_out_idx > 63){
-					stream_out.data = data_out;
-					stream_out.last = 1;
-					output_stream.write(stream_out);
-					data_out = 0;
-					data_out_idx = 0;
-					break;
-				}
-			}
-			//else if(i == n_data_out){ // Send the last remaining bits(if necessary)
-			//	stream_out.data = data_out;
-			//	stream_out.last = 1;
-			//	output_stream.write(stream_out);
-			//}
-		}
+		//uint9_t data_out_idx;
+		//uint64_t data_out;
+		//for(int i = 0; i < MAX_LAYER_SIZE*NUM_STEPS; i++){
+		//	if(i < n_out*NUM_STEPS){
+		//		// Get value and write it on the output buffer
+		//		bool out = (out_neuron_spk[i] != 0);
+		//		data_out = data_out | (out << data_out_idx++);
+
+		//		// Check if the output is complete and send it
+		//		if(data_out_idx > 63){
+		//			stream_out.data = data_out;
+		//			stream_out.last = 1;
+		//			output_stream.write(stream_out);
+		//			data_out = 0;
+		//			data_out_idx = 0;
+		//			break;
+		//		}
+		//	}
+		//	//else if(i == n_data_out){ // Send the last remaining bits(if necessary)
+		//	//	stream_out.data = data_out;
+		//	//	stream_out.last = 1;
+		//	//	output_stream.write(stream_out);
+		//	//}
+		//}
 	}
 	return SUCCESS_OK;
 }
