@@ -61,11 +61,11 @@ int rate_code_result(bool*out_spk, uint32_t n_out, uint32_t n_steps){
     for(uint32_t i = 0; i < n_out; i++){
         for(int j = 0; j < n_steps; j++){
             if(out_spk[i*n_steps+j]) absolute_freq[i]++;
-        }
+        } 
     }
 
     // Count the maximum number of spikes
-    uint32_t max_freq = 0, max_freq_idx = 0;
+    int max_freq = 0, max_freq_idx = 0;
     for(uint32_t i = 0; i < n_out; i++){
         if(absolute_freq[i] > max_freq){
             max_freq = absolute_freq[i];

@@ -138,7 +138,7 @@ xilinx.com:hls:hls_snn_izikevich:1.0\
    foreach ip_vlnv $list_check_ips {
       set ip_obj [get_ipdefs -all $ip_vlnv]
       if { $ip_obj eq "" } {
-         lappend list_ips_missing $ip_vlnv
+         lapend list_ips_missing $ip_vlnv
       }
    }
 

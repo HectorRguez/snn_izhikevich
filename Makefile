@@ -9,8 +9,8 @@ RUN_VIVADO:= vivado -mode batch -nojournal -nolog
 .PHONY: clean_hls clean_vivado clean_vitis run_app open_vitis
 
 # Default target
-all: create_ip clean_hls create_bd synth place_and_route export_hw\
-	clean_vivado create_app clean_vitis
+all: create_ip create_bd synth place_and_route export_hw\
+	create_app
 
 # Run application target
 run_app:
