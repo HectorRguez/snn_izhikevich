@@ -19,74 +19,73 @@ void forward_linear_in(fixed_t*in_c, uint6_t n_in, fixed_t*out_c, uint6_t n_out,
 	
 	// Load input biases
 	fixed_t biases[MAX_LAYER_SIZE];
-	linear_load_biases: for(uint6_t i = 0; i < MAX_LAYER_SIZE; i+=8){
+	linear_load_biases: for(uint6_t j = 0; j < MAX_LAYER_SIZE; j+=8){
 		// Input stream 0
-			uint64_t input0 = input_stream0.read().data;
-			uint32_t input0_h = input0.range(63, 32);
-			uint32_t input0_l = input0.range(31, 0);
-			biases[j+1] = *(fixed_t*)&input0_h;
-			biases[j] = *(fixed_t*)&input0_l;
+		uint64_t input0 = input_stream0.read().data;
+		uint32_t input0_h = input0.range(63, 32);
+		uint32_t input0_l = input0.range(31, 0);
+		biases[j+1] = *(fixed_t*)&input0_h;
+		biases[j] = *(fixed_t*)&input0_l;
 
-			// Input stream 1
-			uint64_t input1 = input_stream1.read().data;
-			uint32_t input1_h = input1.range(63, 32);
-			uint32_t input1_l = input1.range(31, 0);
-			biases[j+3] = *(fixed_t*)&input1_h;
-			biases[j+2] = *(fixed_t*)&input1_l;
+		// Input stream 1
+		uint64_t input1 = input_stream1.read().data;
+		uint32_t input1_h = input1.range(63, 32);
+		uint32_t input1_l = input1.range(31, 0);
+		biases[j+3] = *(fixed_t*)&input1_h;
+		biases[j+2] = *(fixed_t*)&input1_l;
 
-			// Input stream 2
-			uint64_t input2 = input_stream2.read().data;
-			uint32_t input2_h = input2.range(63, 32);
-			uint32_t input2_l = input2.range(31, 0);
-			biases[j+5] = *(fixed_t*)&input2_h;
-			biases[j+4] = *(fixed_t*)&input2_l;
+		// Input stream 2
+		uint64_t input2 = input_stream2.read().data;
+		uint32_t input2_h = input2.range(63, 32);
+		uint32_t input2_l = input2.range(31, 0);
+		biases[j+5] = *(fixed_t*)&input2_h;
+		biases[j+4] = *(fixed_t*)&input2_l;
 
-			// Input stream 3
-			uint64_t input3 = input_stream3.read().data;
-			uint32_t input3_h = input3.range(63, 32);
-			uint32_t input3_l = input3.range(31, 0);
-			biases[j+7] = *(fixed_t*)&input3_h;
-			biases[j+6] = *(fixed_t*)&input3_l;
+		// Input stream 3
+		uint64_t input3 = input_stream3.read().data;
+		uint32_t input3_h = input3.range(63, 32);
+		uint32_t input3_l = input3.range(31, 0);
+		biases[j+7] = *(fixed_t*)&input3_h;
+		biases[j+6] = *(fixed_t*)&input3_l;
 	}
 	
 
     linear_outer_loop: for(uint6_t i = 0; i < MAX_LAYER_SIZE; i++){
 		#pragma HLS PIPELINE II=45
-
-		// Load weights buffer
-		fixed_t weight_buffer[MAX_LAYER_SIZE];
-		#pragma HLS ARRAY_PARTITION dim=1 type=complete variable=weight_buffer
-		linear_load_weight: for(uint6_t j = 0; j < MAX_LAYER_SIZE; j+=8){
-			// Input stream 0
-			uint64_t input0 = input_stream0.read().data;
-			uint32_t input0_h = input0.range(63, 32);
-			uint32_t input0_l = input0.range(31, 0);
-			weight_buffer[j+1] = *(fixed_t*)&input0_h;
-			weight_buffer[j] = *(fixed_t*)&input0_l;
-
-			// Input stream 1
-			uint64_t input1 = input_stream1.read().data;
-			uint32_t input1_h = input1.range(63, 32);
-			uint32_t input1_l = input1.range(31, 0);
-			weight_buffer[j+3] = *(fixed_t*)&input1_h;
-			weight_buffer[j+2] = *(fixed_t*)&input1_l;
-
-			// Input stream 2
-			uint64_t input2 = input_stream2.read().data;
-			uint32_t input2_h = input2.range(63, 32);
-			uint32_t input2_l = input2.range(31, 0);
-			weight_buffer[j+5] = *(fixed_t*)&input2_h;
-			weight_buffer[j+4] = *(fixed_t*)&input2_l;
-
-			// Input stream 3
-			uint64_t input3 = input_stream3.read().data;
-			uint32_t input3_h = input3.range(63, 32);
-			uint32_t input3_l = input3.range(31, 0);
-			weight_buffer[j+7] = *(fixed_t*)&input3_h;
-			weight_buffer[j+6] = *(fixed_t*)&input3_l;
-		}
-
     	if(i < n_out){
+			// Load weights buffer
+			fixed_t weight_buffer[MAX_LAYER_SIZE];
+			#pragma HLS ARRAY_PARTITION dim=1 type=complete variable=weight_buffer
+			linear_load_weight: for(uint6_t j = 0; j < MAX_LAYER_SIZE; j+=8){
+				// Input stream 0
+				uint64_t input0 = input_stream0.read().data;
+				uint32_t input0_h = input0.range(63, 32);
+				uint32_t input0_l = input0.range(31, 0);
+				weight_buffer[j+1] = *(fixed_t*)&input0_h;
+				weight_buffer[j] = *(fixed_t*)&input0_l;
+
+				// Input stream 1
+				uint64_t input1 = input_stream1.read().data;
+				uint32_t input1_h = input1.range(63, 32);
+				uint32_t input1_l = input1.range(31, 0);
+				weight_buffer[j+3] = *(fixed_t*)&input1_h;
+				weight_buffer[j+2] = *(fixed_t*)&input1_l;
+
+				// Input stream 2
+				uint64_t input2 = input_stream2.read().data;
+				uint32_t input2_h = input2.range(63, 32);
+				uint32_t input2_l = input2.range(31, 0);
+				weight_buffer[j+5] = *(fixed_t*)&input2_h;
+				weight_buffer[j+4] = *(fixed_t*)&input2_l;
+
+				// Input stream 3
+				uint64_t input3 = input_stream3.read().data;
+				uint32_t input3_h = input3.range(63, 32);
+				uint32_t input3_l = input3.range(31, 0);
+				weight_buffer[j+7] = *(fixed_t*)&input3_h;
+				weight_buffer[j+6] = *(fixed_t*)&input3_l;
+			}
+
     		// Initialize output to the bias value
 			linear_init_variables: for(uint6_t j = 0; j < NUM_STEPS; j++){
 				out_c[i*NUM_STEPS+j] = biases[i];
@@ -164,7 +163,6 @@ uint1_t hls_snn_izikevich(
 		}
 	}
 	else { // state == STATE_PROCESS
-
 		// Execute network
 		uint6_t n_prev_layer = n_in;
 		layer_propagation: for(uint6_t i = 0; i < MAX_LAYER_COUNT; i++){
@@ -172,7 +170,7 @@ uint1_t hls_snn_izikevich(
 				// Execute linear
 				forward_linear_in(out_neuron_spk, n_prev_layer,
 						out_linear_c, n_layer[i], input_stream0, input_stream1, input_stream2, input_stream3);
-			// Execute neuron
+				// Execute neuron
 				izhi_outer_loop: for(uint6_t j = 0; j < MAX_LAYER_SIZE; j++){
 				#pragma HLS UNROLL
 					fixed_t membrane_v = 0, recovery_v = 0;
@@ -266,20 +264,21 @@ uint1_t hls_snn_izikevich(
 		// Send simple output data
 		axis64_t stream_out;
 		for(int i = 0; i < MAX_LAYER_SIZE*NUM_STEPS; i++){
-
-			// Float conversion to bool
-			fixed_t out_neuron_spk_f = out_neuron_spk[i];
-			uint32_t data = *(fixed_t*)&out_neuron_spk_f;
-			stream_out.data = data;
-			
-			// LAST flag
-			if(i == MAX_LAYER_SIZE*NUM_STEPS-1){
-				stream_out.last = 1;
+			if(i < n_out*NUM_STEPS){
+				// Float conversion to bool
+				fixed_t out_neuron_spk_f = out_neuron_spk[i];
+				uint32_t data = *(uint32_t*)&out_neuron_spk_f;
+				stream_out.data = data;
+				
+				// LAST flag
+				if(i == n_out*NUM_STEPS-1){
+					stream_out.last = 1;
+				}
+				else{
+					stream_out.last = 0;
+				}
+				output_stream.write(stream_out);
 			}
-			else{
-				stream_out.last = 0;
-			}
-			output_stream.write(stream_out);
 		}
 	}
 	return SUCCESS_OK;
