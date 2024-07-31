@@ -62,6 +62,7 @@ clean_hls :
 	@rm -rf vitis_hls/proj/
 	@rm -f  vitis_hls/snn_ip/export.zip
 	@rm -f  vitis_hls/config.ini
+	@rm -rf vitis_hls/snn_ip
 
 clean_vivado:
 	@rm -rf .srcs
@@ -75,3 +76,4 @@ clean_vivado:
 clean_vitis:
 	@rm -rf .Xil
 	@rm -f xrc.log
+	@rm -rf ./vitis/ws/

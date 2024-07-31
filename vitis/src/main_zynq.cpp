@@ -59,16 +59,19 @@ int main(int argc, char *argv[]){
         int result = rate_code_result(out_spk, n_outputs, n_steps);
         if(result == labels[i]) correct++;
         total++;
-
-        xil_printf("%i. %i %i\n\r", i, labels[i], result);
     }
     stop_clock();
 
-    float percentage = ((float)correct)/((float)total) * 100.0; 
-    xil_printf("Correctly classified %i/%i flowers (%i%%)", 
-        correct, total, (int)percentage);
-    xil_printf("\r\n");
-    xil_printf("Total execution time: %i ms.\r\n", (int)get_clock_ms());
+    {
+        float percentage = ((float)correct)/((float)total) * 100.0; 
+        xil_printf("Correctly classified %i/%i flowers (%i%%)", 
+            correct, total, (int)percentage);
+        xil_printf("\r\n");
+        float run_time = get_clock_ms();
+        int run_time_ms = (int)run_time;
+        int run_time_cent_ms = (int)((float) run_time *100.0) % 100;
+        xil_printf("Total execution time: %i.%i ms.\r\n", run_time_ms, run_time_cent_ms);
+    }
 
 	free(out_spk);
 
@@ -106,12 +109,16 @@ int main(int argc, char *argv[]){
 
 	free(out_spk);
 
-    xil_printf("NETWORK EXECUTION RESULTS:\r\n");
-    percentage = ((float)correct)/((float)total) * 100.0; 
-    xil_printf("Correctly classified %i/%i flowers (%5.2f%%)", 
-        correct, total, percentage);
-    xil_printf("\r\n");
-    xil_printf("Total execution time: %i ms.\r\n", (int)get_clock_ms());
+    {
+        float percentage = ((float)correct)/((float)total) * 100.0; 
+        xil_printf("Correctly classified %i/%i flowers (%i%%)", 
+            correct, total, (int)percentage);
+        xil_printf("\r\n");
+        float run_time = get_clock_ms();
+        int run_time_ms = (int)run_time;
+        int run_time_cent_ms = (int)((float) run_time *100.0) % 100;
+        xil_printf("Total execution time: %i.%i ms.\r\n", run_time_ms, run_time_cent_ms);
+    }
     
     return 0;
 }

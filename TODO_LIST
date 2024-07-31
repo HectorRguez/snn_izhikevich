@@ -7,6 +7,9 @@
 22. Improve file dependency specification
 23. Improve make clean (delte ws, snn_ip and block_design)
 24. Check if the last value is empty when transmitting the output spikes
+25. Correct the 64 bit transfers for the output spikes
+26. Add LIF model
+27. Improve readability
 
 IMPORTANT OBSERVATIONS ABOUT THE ORIGINAL PROJECT
 1. snn_resutls.h main function has the same functionality as the function implemented inside snn_network_xor.h to save firings. Thus, keeping it makes no sense and it has been eliminated from the project.

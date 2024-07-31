@@ -14,7 +14,7 @@ const fixed_t d   = 0.412;
 const fixed_t vth = 0.7;
 
 
-void forward_linear_in(fixed_t*in_c, uint6_t n_in, fixed_t*out_c, uint6_t n_out,
+void forward_linear_in(fixed_t*input_c, uint6_t n_in, fixed_t*out_c, uint6_t n_out,
     hls_stream_64_t& input_stream0,hls_stream_64_t& input_stream1,hls_stream_64_t& input_stream2,hls_stream_64_t& input_stream3){
 	
 	// Load input biases
@@ -93,22 +93,22 @@ void forward_linear_in(fixed_t*in_c, uint6_t n_in, fixed_t*out_c, uint6_t n_out,
 			// Multiply inputs and accumulate
 			linear_compute_timesteps: for(uint6_t j = 0; j < NUM_STEPS; j++){
 				linear_multiply_loop: for(uint6_t k = 0; k < MAX_LAYER_SIZE; k+=16){
-					out_c[i*NUM_STEPS+j] += weight_buffer[k+15]*in_c[(k+15)*NUM_STEPS+j] +
-										weight_buffer[k+14]*in_c[(k+14)*NUM_STEPS+j] +
-										weight_buffer[k+13]*in_c[(k+13)*NUM_STEPS+j] +
-										weight_buffer[k+12]*in_c[(k+12)*NUM_STEPS+j] +
-										weight_buffer[k+11]*in_c[(k+11)*NUM_STEPS+j] +
-										weight_buffer[k+10]*in_c[(k+10)*NUM_STEPS+j] +
-										weight_buffer[k+9]*in_c[(k+9)*NUM_STEPS+j] +
-										weight_buffer[k+8]*in_c[(k+8)*NUM_STEPS+j] +
-										weight_buffer[k+7]*in_c[(k+7)*NUM_STEPS+j] +
-										weight_buffer[k+6]*in_c[(k+6)*NUM_STEPS+j] +
-										weight_buffer[k+5]*in_c[(k+5)*NUM_STEPS+j] +
-										weight_buffer[k+4]*in_c[(k+4)*NUM_STEPS+j] +
-										weight_buffer[k+3]*in_c[(k+3)*NUM_STEPS+j] +
-									    weight_buffer[k+2]*in_c[(k+2)*NUM_STEPS+j] +
-										weight_buffer[k+1]*in_c[(k+1)*NUM_STEPS+j] +
-										weight_buffer[k]*in_c[k*NUM_STEPS+j];
+					out_c[i*NUM_STEPS+j] += weight_buffer[k+15]*input_c[(k+15)*NUM_STEPS+j] +
+										weight_buffer[k+14]*input_c[(k+14)*NUM_STEPS+j] +
+										weight_buffer[k+13]*input_c[(k+13)*NUM_STEPS+j] +
+										weight_buffer[k+12]*input_c[(k+12)*NUM_STEPS+j] +
+										weight_buffer[k+11]*input_c[(k+11)*NUM_STEPS+j] +
+										weight_buffer[k+10]*input_c[(k+10)*NUM_STEPS+j] +
+										weight_buffer[k+9]*input_c[(k+9)*NUM_STEPS+j] +
+										weight_buffer[k+8]*input_c[(k+8)*NUM_STEPS+j] +
+										weight_buffer[k+7]*input_c[(k+7)*NUM_STEPS+j] +
+										weight_buffer[k+6]*input_c[(k+6)*NUM_STEPS+j] +
+										weight_buffer[k+5]*input_c[(k+5)*NUM_STEPS+j] +
+										weight_buffer[k+4]*input_c[(k+4)*NUM_STEPS+j] +
+										weight_buffer[k+3]*input_c[(k+3)*NUM_STEPS+j] +
+									    weight_buffer[k+2]*input_c[(k+2)*NUM_STEPS+j] +
+										weight_buffer[k+1]*input_c[(k+1)*NUM_STEPS+j] +
+										weight_buffer[k]*input_c[k*NUM_STEPS+j];
 				}
 			}
     	}
@@ -154,7 +154,7 @@ uint1_t hls_snn_izikevich(
 		read_inputs: for(uint6_t i = 0; i < MAX_LAYER_SIZE; i++){
 			for(uint6_t j = 0; j < NUM_STEPS; j++){
 				if(i < n_in){
-					out_neuron_spk[i*NUM_STEPS+j] = *(fixed_t*)(in_c + i);
+					out_neuron_spk[i*NUM_STEPS+j] = *((fixed_t*)&in_c[i]);
 				}
 				else{
 					out_neuron_spk[i*NUM_STEPS+j] = 0;

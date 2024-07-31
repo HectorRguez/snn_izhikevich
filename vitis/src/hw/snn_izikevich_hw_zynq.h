@@ -37,7 +37,7 @@
  *                          Hardware Definitions      		                 *
  *****************************************************************************/
 
-#define TRANSMISSION_SIZE ((MAX_LAYER_SIZE*(MAX_LAYER_SIZE+1))*MAX_LAYER_COUNT + AXI_PORTS - 1)/AXI_PORTS
+#define TRANSMISSION_SIZE ((MAX_LAYER_SIZE*(MAX_LAYER_SIZE+1)) + AXI_PORTS - 1)/AXI_PORTS
 #define BIASES_SIZE (MAX_LAYER_SIZE*MAX_LAYER_COUNT + AXI_PORTS - 1)/AXI_PORTS
 #define WEIGHTS_SIZE  (MAX_LAYER_SIZE*MAX_LAYER_SIZE*MAX_LAYER_COUNT + AXI_PORTS - 1)/AXI_PORTS
 
@@ -399,13 +399,15 @@ static int hw_snn_izikevich_config_network(float input_c[MAX_LAYER_SIZE], uint32
     XHls_snn_izikevich_Set_state(&hlsInstance, STATE_INIT);
 
 	// Set inputs and outputs
+    Xil_DCacheFlushRange((uint32_t)input_c, n_inputs);
     XHls_snn_izikevich_Write_in_c_Words(&hlsInstance, 0, (uint32_t*)input_c, n_inputs); // CHECK
+    Xil_DCacheFlushRange((uint32_t)&n_inputs, 0);
     XHls_snn_izikevich_Set_n_in(&hlsInstance, n_inputs);
     XHls_snn_izikevich_Set_n_out(&hlsInstance, n_outputs);
 
     // Set network topology
-
     XHls_snn_izikevich_Set_n_layers(&hlsInstance, n_layers);
+    Xil_DCacheFlushRange((uint32_t)input_c, n_inputs);
     XHls_snn_izikevich_Write_n_layer_Words(&hlsInstance, 0, n_per_layer, n_layers); // CHECK
 
 	// Start the device
@@ -425,32 +427,50 @@ static int hw_snn_izikevich_config_network(float input_c[MAX_LAYER_SIZE], uint32
 
 static int hw_snn_izikevich_run(float* weights, uint32_t n_weights, float* biases, uint32_t n_biases, uint32_t n_inputs, uint32_t n_outputs, uint32_t n_per_layer[MAX_LAYER_COUNT], uint32_t n_layers, bool*output) {
     
-    // Generate the input stream
-    uint64_t input_stream [AXI_PORTS][((MAX_LAYER_SIZE*(MAX_LAYER_SIZE+1))*MAX_LAYER_COUNT + AXI_PORTS - 1)/AXI_PORTS]; // Upper division
-    uint32_t input_idx = 0, weights_idx = 0, biases_idx = 0;
-    uint32_t n_prev_layer = n_inputs;
-    for(uint32_t i = 0; i < n_layers; i++){
-        // Add the corresponding number of biases
-        for(int j = 0; j < MAX_LAYER_SIZE; input_idx++){
-        	for(uint32_t k = 0; k < AXI_PORTS; k++, j+= 2, biases_idx+=2){
-        		if(j < n_per_layer[i])
+	// Prepare inputs
+	uint64_t input_stream [AXI_PORTS][TRANSMISSION_SIZE*MAX_LAYER_COUNT/2] = {0}; // Upper division
+	uint32_t input_idx = 0, weights_idx = 0, biases_idx = 0;
+	uint32_t n_prev_layer = n_inputs;
+	uint32_t n_values_to_send = 0;
+	for(uint32_t i = 0; i < n_layers; i++){
+		// Add the corresponding number of biases
+		for(uint32_t j = 0; j < MAX_LAYER_SIZE; input_idx++){
+			for(uint32_t k = 0; k < AXI_PORTS; k++, j+= 2){
+				if(j + 1 < n_per_layer[i]){
 					input_stream[k][input_idx] = (uint64_t)float32_to_uint64(biases[biases_idx], biases[biases_idx+1]);
+					biases_idx+=2;
+				}
+				else if(j < n_per_layer[i]){
+					input_stream[k][input_idx] = (uint64_t)float32_to_uint64(biases[biases_idx], 0);
+					biases_idx++;
+				}
 				else
 					input_stream[k][input_idx] = 0;
-        	}
-	    }
-        // Add the corresponding number of weights
-        for(int j = 0; j < MAX_LAYER_SIZE*MAX_LAYER_SIZE; input_idx++){
-        	for(uint32_t k = 0; k < AXI_PORTS; k++, j+= 2, weights_idx+=2){
-        		if(j < n_per_layer[i]*n_prev_layer)
-					input_stream[k][input_idx] = (uint64_t)float32_to_uint64(weights[weights_idx], weights[weights_idx+1]);
-				else
-					input_stream[k][input_idx] = 0;
-        	}
-	    }
-        n_prev_layer = n_per_layer[i];
-    }
-
+			}
+			n_values_to_send++;
+		}
+		// Add the corresponding number of ordered weights
+		for(uint32_t j = 0; j < MAX_LAYER_SIZE; j++){
+			if(j < n_per_layer[i]){
+				for(uint32_t k = 0; k < MAX_LAYER_SIZE; input_idx++){
+					for(uint32_t m = 0; m < AXI_PORTS; m++, k+=2){
+						if(k + 1 < n_prev_layer){
+							input_stream[m][input_idx] = (uint64_t)float32_to_uint64(weights[weights_idx+j*n_prev_layer+k], weights[weights_idx+(j)*n_prev_layer+k+1]);
+						}
+						else if(k < n_prev_layer){
+							input_stream[m][input_idx] = (uint64_t)float32_to_uint64(weights[weights_idx+j*n_prev_layer+k], 0);
+						}
+						else{
+							input_stream[m][input_idx] = 0;
+						}
+					}
+					n_values_to_send++;
+				}
+			}
+		}
+		weights_idx += MAX_LAYER_SIZE*n_prev_layer;
+		n_prev_layer = n_per_layer[i];
+	}
 	// Set state
 	XHls_snn_izikevich_Set_state(&hlsInstance, STATE_PROCESS);
 
@@ -458,35 +478,43 @@ static int hw_snn_izikevich_run(float* weights, uint32_t n_weights, float* biase
 	hw_snn_izikevich_start();
 
 	// Write inputs via AXI-Stream
-	//uint32_t streams[AXI_PORTS] = { (uint32_t)input_stream[0], (uint32_t)input_stream[1], (uint32_t)input_stream[2], (uint32_t)input_stream[3] };
-	//hw_send_axi_stream_burst(streams, AXI_PORTS, (n_weights + n_biases + 1) / 2 * sizeof(uint64_t)); // Upper division
-	//if (status != XST_SUCCESS) {
-	//	xil_printf("HLS ERROR: DMA transfer of streams failed to be transferred.\r\n");
-	//	return XST_FAILURE;
-	//}
+	uint32_t streams[AXI_PORTS] = { (uint32_t)input_stream[0], (uint32_t)input_stream[1], (uint32_t)input_stream[2], (uint32_t)input_stream[3] };
+	hw_send_axi_stream_burst(streams, AXI_PORTS, (input_idx)*8);
+	if (status != XST_SUCCESS) {
+		xil_printf("HLS ERROR: DMA transfer of streams failed to be transferred.\r\n");
+		return XST_FAILURE;
+	}
+	uint32_t output_int[MAX_LAYER_SIZE*NUM_STEPS*2];
+	status = hw_read_axi_stream_burst((uint32_t)output_int, n_outputs*NUM_STEPS*8);
+	if (status != XST_SUCCESS) {
+		xil_printf("HLS ERROR: DMA transfer from HLS block failed.\r\n");
+		return XST_FAILURE;
+	}
 
-	// Read outputs via AXI-Stream
-	uint32_t data = 0xBB;
-	status = hw_send_axi_stream_burst(&data, 1, 8); // Upper division
-	if (status != XST_SUCCESS) {
-		xil_printf("HLS ERROR: DMA transfer from HLS block failed.\r\n");
-		return XST_FAILURE;
-	}
-	status = hw_read_axi_stream_burst((uint32_t)output, 8); // Upper division n_bytes
-	if (status != XST_SUCCESS) {
-		xil_printf("HLS ERROR: DMA transfer from HLS block failed.\r\n");
-		return XST_FAILURE;
-	}
 	// Wait until it is finished or an error is detected
 	while(!processingDone);
+
 	// Check return result for verification
 	returnResult = XHls_snn_izikevich_Get_return(&hlsInstance);
 	if (returnResult != SUCCESS_OK) {
 		xil_printf("HLS ERROR during execution: Expected return result %d and got %ld...\r\n", SUCCESS_OK, returnResult);
 		return XST_FAILURE;
 	}
+
+	// Transform to the output bool array
+	int output_idx = 0;
+	int output_int_idx = 0;
+	for(uint32_t i = 0; i < MAX_LAYER_SIZE; i++){
+		if(i < n_outputs){
+			for(uint32_t j = 0; j < NUM_STEPS; j++){
+				output[output_idx++] = (*((float*)&output_int[output_int_idx]) != 0.0);
+				output_int_idx += 2;
+			}
+		}
+	}
+
+
 	return XST_SUCCESS;
 }
-
 
 #endif /* _SNN_IZIKEVICH_HW_ZYNQ_H_ */
