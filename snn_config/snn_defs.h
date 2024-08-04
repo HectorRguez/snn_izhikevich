@@ -13,5 +13,9 @@
 
 // Interface
 #define AXI_PORTS           4
+#define TRANSMISSION_SIZE (((MAX_LAYER_SIZE*(MAX_LAYER_SIZE+1)) + AXI_PORTS - 1)/AXI_PORTS)
+
+// Training data
+#define TRAIN_DATA_PROPORTION 0.7f
 
 #endif /* _SNN_DEFS_H_ */

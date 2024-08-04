@@ -1,32 +1,20 @@
-#include "xil_printf.h"
+// Standard libraries
 #include <stdbool.h>
 #include <stdlib.h>
 #include <string.h>
 
-#include "network_func.h"
-#include "aux_func.h"
-#include "network.h" // Network coefficients [AUTO GENERATED]
-#include "snn_defs.h" // Common definitions
-#include "data.h"    // Testing data [AUTO GENERATED]
+// Custom libraries
+#include "snn_defs.h"       // Common definitions
+#include "network_func.h"   // Network execution in SW
+#include "aux_func.h"       // Auxiliary functions
+#include "network.h"        // Network coefficients [AUTO GENERATED]
+#include "data.h"           // Testing data [AUTO GENERATED]
  
-// HW drivers
-#include "./hw/snn_izikevich_hw_zynq.h"
- 
-// Simulation defines
-const float train_data_proportion = 0.7;
-const int n_steps = 30;
+// Network execution in HW
+#include "./hw/snn_izhikevich_hw_zynq.h"
 
-// Time libraries
-#include "xtime_l.h"
-
-#define COUNTS_PER_MS	(COUNTS_PER_SECOND/1000)
-XTime clk_start, clk_end, clk_duration = 0;
-void start_clock() { XTime_GetTime(&clk_start); }
-void stop_clock()  { XTime_GetTime(&clk_end); clk_duration += (clk_end - clk_start); }
-
-void reset_clock() { clk_duration = 0; }
-float get_clock_ms()  { return (1.0 * clk_duration) / COUNTS_PER_MS; }
-
+// PYNQ libraries
+#include "xil_printf.h"
 
 int main(int argc, char *argv[]){
     // Dynamically allocated memory
@@ -45,8 +33,8 @@ int main(int argc, char *argv[]){
     xil_printf("                 SW Network.\r\n");
     xil_printf("============================================\r\n");
 	int total = 0, correct = 0;
-    int start_test_idx = (int)(train_data_proportion*n_data);
-    out_spk = (bool*)malloc(n_outputs*n_steps*sizeof(bool));
+    int start_test_idx = (int)(TRAIN_DATA_PROPORTION*n_data);
+    out_spk = (bool*)malloc(n_outputs*NUM_STEPS*sizeof(bool));
     
 	reset_clock();
     start_clock();
@@ -56,7 +44,7 @@ int main(int argc, char *argv[]){
         forward_network_izhi(in_c, n_inputs, n_outputs, out_spk, 
             n_per_layer, n_layers, weights, biases);
         // Check results
-        int result = rate_code_result(out_spk, n_outputs, n_steps);
+        int result = rate_code_result(out_spk, n_outputs, NUM_STEPS);
         if(result == labels[i]) correct++;
         total++;
     }
@@ -87,8 +75,8 @@ int main(int argc, char *argv[]){
 	}
 
 	total = 0, correct = 0;
-    start_test_idx = (int)(train_data_proportion*n_data);
-    out_spk = (bool*)malloc(n_outputs*n_steps*sizeof(bool));
+    start_test_idx = (int)(TRAIN_DATA_PROPORTION*n_data);
+    out_spk = (bool*)malloc(n_outputs*NUM_STEPS*sizeof(bool));
 
     reset_clock();
     start_clock();
@@ -101,7 +89,7 @@ int main(int argc, char *argv[]){
         hw_snn_izikevich_run(weights, n_weights, biases, n_biases, n_inputs, n_outputs, n_per_layer, n_layers, out_spk);
 
         // Check results
-        int result = rate_code_result(out_spk, n_outputs, n_steps);
+        int result = rate_code_result(out_spk, n_outputs, NUM_STEPS);
         if(result == labels[i]) correct++;
         total++;
     }

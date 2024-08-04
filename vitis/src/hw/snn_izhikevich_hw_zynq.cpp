@@ -1,49 +1,10 @@
-#ifndef _SNN_IZIKEVICH_HW_ZYNQ_H_
-#define _SNN_IZIKEVICH_HW_ZYNQ_H_
+#include "snn_izhikevich_hw_zynq.h"
 
-#include "xhls_snn_izikevich.h"
-#include "xaxidma.h"
-#include "xscugic.h"
-#include "xparameters.h"
-#include "xil_printf.h"
-
-#include "../snn_defs.h" 
-#include "../types.h"
-
-/*****************************************************************************
- *                          Hardware Definitions      		                 *
- *****************************************************************************/
-
-#define	HLS_DEVICE_ID		XPAR_HLS_SNN_IZIKEVICH_0_DEVICE_ID
-#define INTC_DEVICE_ID		XPAR_SCUGIC_SINGLE_DEVICE_ID
-#define DMA0_DEVICE_ID		XPAR_AXI_DMA_0_DEVICE_ID
-#define DMA1_DEVICE_ID		XPAR_AXI_DMA_1_DEVICE_ID
-#define DMA2_DEVICE_ID		XPAR_AXI_DMA_2_DEVICE_ID
-#define DMA3_DEVICE_ID		XPAR_AXI_DMA_3_DEVICE_ID
-
-
-#define INTR_HLS_ID			XPAR_FABRIC_HLS_SNN_IZIKEVICH_0_INTERRUPT_INTR
-#define INTR_DMA0_RX_ID		XPAR_FABRIC_AXI_DMA_0_S2MM_INTROUT_INTR
-#define INTR_DMA0_TX_ID		XPAR_FABRIC_AXI_DMA_0_MM2S_INTROUT_INTR
-#define INTR_DMA1_TX_ID		XPAR_FABRIC_AXI_DMA_1_MM2S_INTROUT_INTR
-#define INTR_DMA2_TX_ID		XPAR_FABRIC_AXI_DMA_2_MM2S_INTROUT_INTR
-#define INTR_DMA3_TX_ID		XPAR_FABRIC_AXI_DMA_3_MM2S_INTROUT_INTR
-
-
-#define MAX_BURST_BYTES		15 * 1024 // 15K per burst
-
-
-/*****************************************************************************
- *                          Hardware Definitions      		                 *
- *****************************************************************************/
-
-#define TRANSMISSION_SIZE ((MAX_LAYER_SIZE*(MAX_LAYER_SIZE+1)) + AXI_PORTS - 1)/AXI_PORTS
-#define BIASES_SIZE (MAX_LAYER_SIZE*MAX_LAYER_COUNT + AXI_PORTS - 1)/AXI_PORTS
-#define WEIGHTS_SIZE  (MAX_LAYER_SIZE*MAX_LAYER_SIZE*MAX_LAYER_COUNT + AXI_PORTS - 1)/AXI_PORTS
 
 /*****************************************************************************
  *                                Variables      		                     *
  *****************************************************************************/
+// This section was developed by Felipe Galindo for his Thesis Project
 
 // Flags
 volatile uint32_t status, returnResult, processingDone, rxDone, intError;
@@ -62,21 +23,11 @@ uint32_t dmaRegBase[] =  {0, 0, 0, 0};
 uint32_t dmaDeviceId[] =  { DMA0_DEVICE_ID, DMA1_DEVICE_ID, DMA2_DEVICE_ID, DMA3_DEVICE_ID };
 XAxiDma *dmaDeviceIns[] =  { &axiDma0, &axiDma1, &axiDma2, &axiDma3 };
 
-/*****************************************************************************
- *                                Prototypes    		                     *
- *****************************************************************************/
-
-static int hw_setup();
-static int hw_setup_dma(XAxiDma *axiDma, uint32_t deviceId, uint8_t rxInterrupt, uint8_t txInterrupt);
-static int hw_setup_interrupt(XScuGic *intrCtlr);
-static void hw_hls_isr(void *instancePtr);
-static void hw_dma_rx_isr(void *instancePtr);
-static void hw_dma_tx_isr(void *instancePtr);
-static void hw_snn_izikevich_start();
 
 /*****************************************************************************
  *                              Setup Functions    		                     *
  *****************************************************************************/
+// This section was developed by Felipe Galindo for his Thesis Project
 
 static int hw_setup() {
 
@@ -484,8 +435,8 @@ static int hw_snn_izikevich_run(float* weights, uint32_t n_weights, float* biase
 		xil_printf("HLS ERROR: DMA transfer of streams failed to be transferred.\r\n");
 		return XST_FAILURE;
 	}
-	uint32_t output_int[MAX_LAYER_SIZE*NUM_STEPS*2];
-	status = hw_read_axi_stream_burst((uint32_t)output_int, n_outputs*NUM_STEPS*8);
+	uint32_t output_int[(MAX_LAYER_SIZE*NUM_STEPS+63)/64 * 8]; // Check notebook to document
+	status = hw_read_axi_stream_burst((uint32_t)output_int, (n_outputs*NUM_STEPS+63)/64 * 8);
 	if (status != XST_SUCCESS) {
 		xil_printf("HLS ERROR: DMA transfer from HLS block failed.\r\n");
 		return XST_FAILURE;
@@ -501,20 +452,19 @@ static int hw_snn_izikevich_run(float* weights, uint32_t n_weights, float* biase
 		return XST_FAILURE;
 	}
 
-	// Transform to the output bool array
-	int output_idx = 0;
-	int output_int_idx = 0;
-	for(uint32_t i = 0; i < MAX_LAYER_SIZE; i++){
-		if(i < n_outputs){
-			for(uint32_t j = 0; j < NUM_STEPS; j++){
-				output[output_idx++] = (*((float*)&output_int[output_int_idx]) != 0.0);
-				output_int_idx += 2;
+	// Parse the outputs
+	uint32_t output_int_idx = 0;
+	uint32_t output_word_idx = 0;
+	for(uint32_t i = 0; i < n_outputs; i++){
+		for(uint32_t j = 0; j < NUM_STEPS; j++){
+			out_spk[output_idx++] = (output_int[output_int_idx] & ((uint64_t)1 << output_word_idx)) >> output_word_idx;
+			output_word_idx++;
+			// Read 32 bit words
+			if(output_word_idx == 32){
+				output_int_idx++;
+				output_word_idx = 0;
 			}
 		}
 	}
-
-
 	return XST_SUCCESS;
 }
-
-#endif /* _SNN_IZIKEVICH_HW_ZYNQ_H_ */

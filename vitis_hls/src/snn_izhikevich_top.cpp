@@ -172,7 +172,7 @@ uint1_t hls_snn_izikevich(
 						out_linear_c, n_layer[i], input_stream0, input_stream1, input_stream2, input_stream3);
 				// Execute neuron
 				izhi_outer_loop: for(uint6_t j = 0; j < MAX_LAYER_SIZE; j++){
-				#pragma HLS UNROLL
+				#pragma HLS UNROLL factor=16
 					fixed_t membrane_v = 0, recovery_v = 0;
 					izhi_compute_timesteps: for(uint6_t k = 0; k < NUM_STEPS; k++){
 					#pragma HLS UNROLL off=true
@@ -199,86 +199,31 @@ uint1_t hls_snn_izikevich(
 				n_prev_layer = n_layer[i]; // Next iteration
 			}
 		}
-		//// Write outputs
-		//uint64_t data = input_stream0.read().data;
-		//axis64_t stream;
-
-		//// Send back state
-		//stream.data = state;
-		//stream.last = 0;
-		//output_stream.write(stream);
-
-		// Send back in_c
-		//for(uint32_t i = 0; i < n_in; i++){
-		//	stream.data = in_c[i];
-		//	stream.last = 0;
-		//	output_stream.write(stream);
-		//}
-
-		// Send back n_layer
-		//for(uint32_t i = 0; i < n_layers; i++){
-		//	stream.data = n_layer[i];
-		//	stream.last = 0;
-		//	output_stream.write(stream);
-		//}
-
-		// Send back second bias
-		//uint64_t input0 = input_stream0.read().data;
-		//stream.data = input0.range(63, 32);
-		//stream.last = 0;
-		//output_stream.write(stream);
-
-		// Send back second weight
-		//input0 = input_stream0.read().data;
-		//uint32_t input0_value = input0.range(63, 32);
-		//fixed_t weight_buffer1 = *(fixed_t*)&input0_value;
-		//stream.data = *(uint32_t*)&weight_buffer1;
-		//stream.last = 0;
-		//output_stream.write(stream);
-
-		// Send back the data that was received in input_0
-		//stream.data = data;
-		//stream.last = 1;
-		//output_stream.write(stream);
 
 		// Send output data
-		//uint9_t data_out_idx;
-		//uint64_t data_out;
-		//for(int i = 0; i < MAX_LAYER_SIZE*NUM_STEPS; i++){
-		//	// Get value and write it on the output buffer
-		//	bool out = (out_neuron_spk[i] != 0);
-		//	data_out = data_out | (out << data_out_idx++);
-		//	// Check if the output is complete and send it
-		//	if(data_out_idx > 63){
-		//		stream_out.data = data_out;
-		//		stream_out.last = 0;
-		//		output_stream.write(stream_out);
-		//		data_out = 0;
-		//		data_out_idx = 0;
-		//	}
-		//}
-		//stream_out.data = data_out;
-		//stream_out.last = 1;
-		//output_stream.write(stream_out);
-
-		// Send simple output data
 		axis64_t stream_out;
-		for(int i = 0; i < MAX_LAYER_SIZE*NUM_STEPS; i++){
+		uint64_t output_word;
+		uint9_t output_word_idx;
+		write_outputs: for(int i = 0; i < MAX_LAYER_SIZE*NUM_STEPS; i++){
 			if(i < n_out*NUM_STEPS){
 				// Float conversion to bool
-				fixed_t out_neuron_spk_f = out_neuron_spk[i];
-				uint32_t data = *(uint32_t*)&out_neuron_spk_f;
-				stream_out.data = data;
-				
-				// LAST flag
-				if(i == n_out*NUM_STEPS-1){
-					stream_out.last = 1;
+				uint1_t out_neuron_spk_b = (out_neuron_spk[i] != 0.0);
+				output_word[output_word_idx++] = out_neuron_spk_b;
+
+				// Transmit 64 bit words (last to 1 if it is the last word)
+				if(output_word_idx == 64){
+					stream_out.data = output_word;
+					stream_out.last = (i == n_out*NUM_STEPS-1) ? 1 : 0;
+					output_stream.write(stream_out);
+					output_word_idx = 0;
+					output_word = 0;
 				}
-				else{
-					stream_out.last = 0;
-				}
-				output_stream.write(stream_out);
 			}
+		}
+		if(output_word_idx > 0){ // Send remaining data if needed
+			stream_out.data = output_word;
+			stream_out.last = 1;
+			output_stream.write(stream_out);
 		}
 	}
 	return SUCCESS_OK;
