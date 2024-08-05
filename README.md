@@ -46,6 +46,7 @@ The network topology and the different weights and biases are stored in a serial
 <pre>
 ├── Makefile
 ├── README.md
+├── docs                                  # Documentation diagrams
 ├── snn_config
 │   ├── databases                         # Input data and labels
 │   ├── networks                          # Serialized network weights and biases
@@ -92,15 +93,20 @@ The network topology and the different weights and biases are stored in a serial
 
 ## Execution flow
 The Makefile automates the execution of all the project scripts, which target *Vitis HLS*, *Vivado* and *Vitis*. 
+
+
 ![Execution flow diagram](https://github.com/des-cei/snn_izhikevich/blob/main/docs/accelerator_diagram.png)
 
 
-### Vitis HLS
-1. The SNN accelerator is designed in Vitis HLS. The *C* or *C++* source files must be copied to the `vitis_hls/src` folder
-2. The file `vitis_hls/run_hls.tcl` will read the source code, set up the top function as the one named `hls_snn_izikevich`, configure the technology and clock rate, which by default are a **xc7z020clg400-1** board with a **40ns** clock. The generated IP will be exported in the *ip_catalog* format. The generated IP can be found on `vitis_hls/snn_ip`
-
-*This section is being worked on*
 
 ## HW architecture
+The hardware accelerator executes the network in multiple steps, depending on its size. Each one is composed of two elements: the **linear layer** and the **Izhikevich layer**. The outputs of the linear layer are stored in the same buffer that will be used as the input for the neuron layer, and vice versa. At the beginning of the execution, the inputs are stored in the first buffer. When the execution is terminated, the outputs are taken from the output of the second buffer.
 
-![Execution flow diagram](https://github.com/des-cei/snn_izhikevich/blob/main/docs/execution_flow_diagram.png)
+Regarding the execution of the **linear** section, with maximum unrolling, one linear output is computed on every clock cycle. This means that the layer operations will be computed in N iterations, with N being the number of timesteps multiplied by the number of output neurons. The main benefit of computing all the time steps of the same neuron consecutively is that the weights and biases can be reduced. However, they must have been sent via AXI stream in the order in which they will be required. This way, the number of memory accesses is greatly reduced. The accelerator will only store a small number of values at the same time, which can be done in a fully partitioned buffer.
+
+If the **Izhikevich** neuron section has maximum unrolling, it will execute one timestep of every neuron on a single iteration. This shows the other excellent benefit of computing the output of each neuron in consecutive time steps. The neuron membrane voltage and the recovery voltage can be stored in individual local registers because these values will only be needed for the next iteration. Afterwards, they can be overwritten by new values because they will not be required for any further calculations.
+
+Imagine a network with a four-neuron layer being executed with an unroll factor of 4 (which would be the maximum). The neuron membrane voltage and recovery variable registers are reset, and the first timestep is computed simultaneously for every neuron. The output is stored in the corresponding buffer, and the new voltages are updated on the individual registers of each neuron. They will be used to compute the following timestep, which will compute the outputs of every neuron in the second timestep, and so forth.
+
+
+![Hardware diagram](https://github.com/des-cei/snn_izhikevich/blob/main/docs/execution_flow_diagram.png)
