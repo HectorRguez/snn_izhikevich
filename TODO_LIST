@@ -1,10 +1,6 @@
-18. Improve makefile targets and dependencies (add snn_ip automatic deletion before generation, as well as the vitis ws)
-19. Change project name to snn_accelerator
 20. Add the LIF neuron option in the makefile
 21. Update README.md
-22. Improve file dependency specification
-25. Correct the 64 bit transfers for the output spikes
-26. Add LIF model
+25. Debug the 64-bit transfers
 27. Improve readability
 28. Document output data size calculation
 29. Correct izikevich typo and use a more general word such as snn accelerator

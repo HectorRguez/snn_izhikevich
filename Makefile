@@ -69,13 +69,6 @@ vitis/ws/*: vitis/src/* vitis/src/hw/* vivado/snn_hw.xsa snn_config/*
 	@$(RUN_VITIS) vitis/create_project_vitis.tcl
 
 
-# Utilities
-# ===============================================================
-
-# Run application target
-run_app:
-	@$(RUN_VITIS) vitis/run_vitis.tcl
-
 # Delete temporal project files
 # ===============================================================
 clean : clean_sources clean_hls clean_vivado clean_vitis
