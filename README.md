@@ -54,7 +54,7 @@ The network topology and the different weights and biases are stored in a serial
 │   ├── data.h                            # Data header
 │   ├── network.c                         # [AUTO-GENERATED] Network source file
 │   ├── network.h                         # Network header
-│   └── snn_defs.h                        # Training/testing division, network dimensions for memory allocation
+│   └── snn_defs.h                        # Network dimensions for memory allocation, train/test division
 ├── vitis
 │   ├── create_project_vitis.tcl          # Script that adds the Vitis sources and creates workspace.
 │   ├── run_vitis.tcl                     # Script that executes the Vitis App on the target board.
@@ -91,7 +91,9 @@ The network topology and the different weights and biases are stored in a serial
 </pre>
 
 ## Execution flow
-The **Makefile** automates the execution of all the project scripts, which target *Vitis HLS*, *Vivado* and *Vitis*. 
+The Makefile automates the execution of all the project scripts, which target *Vitis HLS*, *Vivado* and *Vitis*. 
+![Execution flow diagram](https://github.com/des-cei/snn_izhikevich/blob/main/docs/accelerator_diagram?raw=true)
+
 
 ### Vitis HLS
 1. The SNN accelerator is designed in Vitis HLS. The *C* or *C++* source files must be copied to the `vitis_hls/src` folder
