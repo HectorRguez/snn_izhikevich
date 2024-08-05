@@ -1,6 +1,6 @@
 # Configuration
 BOARD:= xc7z020clg400-1
-ORIGIN_DATA = 	./snn_config/data/iris.data
+ORIGIN_DATA = 	./snn_config/databases/iris.data
 RIGIN_NETWORK =	./snn_config/networks/irisNetwork.pt
 
 # Run scripts
@@ -47,11 +47,12 @@ snn_config/network.c: $(ORIGIN_NETWORK)
 
 vitis_hls/snn_ip/component.xml : vitis_hls/src/*
 	@echo "part=$(BOARD)" > vitis_hls/config.ini
+	@rm -rf vitis_hls/snn_ip
 	@$(RUN_HLS) -f vitis_hls/run_hls.tcl
 	@unzip vitis_hls/snn_ip/export.zip -d vitis_hls/snn_ip
 
 vivado/block_design/block_design.bd: vivado/create_bd.tcl \
-	vitis_hls/snn_ip/component.
+	vitis_hls/snn_ip/component.xml
 	@$(RUN_VIVADO) -source vivado/create_bd.tcl -tclargs $(BOARD)
 
 vivado/checkpoints/opt.dcp: vivado/block_design/block_design.bd
@@ -64,6 +65,7 @@ vivado/snn_hw.xsa: vivado/checkpoints/route.dcp
 	@$(RUN_VIVADO) -source vivado/export_hw.tcl
 
 vitis/ws/*: vitis/src/* vitis/src/hw/* vivado/snn_hw.xsa snn_config/*
+	@rm -rf vitis/ws
 	@$(RUN_VITIS) vitis/create_project_vitis.tcl
 
 
@@ -74,13 +76,9 @@ vitis/ws/*: vitis/src/* vitis/src/hw/* vivado/snn_hw.xsa snn_config/*
 run_app:
 	@$(RUN_VITIS) vitis/run_vitis.tcl
 
-# Open vitis GUI
-open_vitis :
-	@$(RUN_VITIS) -workspace vitis/ws/
-
 # Delete temporal project files
 # ===============================================================
-clean : clean_sources cleal_hls clean_vivado clean_vitis
+clean : clean_sources clean_hls clean_vivado clean_vitis
 
 clean_sources :
 	@rm -f snn_config/data.cpp
@@ -89,7 +87,6 @@ clean_sources :
 clean_hls : 
 	@rm -f  vitis_hls.log
 	@rm -rf vitis_hls/proj/
-	@rm -f  vitis_hls/snn_ip/export.zip
 	@rm -f  vitis_hls/config.ini
 	@rm -rf vitis_hls/snn_ip
 

@@ -57,6 +57,7 @@ void forward_linear_in(fixed_t*input_c, uint6_t n_in, fixed_t*out_c, uint6_t n_o
 			fixed_t weight_buffer[MAX_LAYER_SIZE];
 			#pragma HLS ARRAY_PARTITION dim=1 type=complete variable=weight_buffer
 			linear_load_weight: for(uint6_t j = 0; j < MAX_LAYER_SIZE; j+=8){
+				#pragma HLS unroll factor=1
 				// Input stream 0
 				uint64_t input0 = input_stream0.read().data;
 				uint32_t input0_h = input0.range(63, 32);
@@ -92,23 +93,9 @@ void forward_linear_in(fixed_t*input_c, uint6_t n_in, fixed_t*out_c, uint6_t n_o
 			}
 			// Multiply inputs and accumulate
 			linear_compute_timesteps: for(uint6_t j = 0; j < NUM_STEPS; j++){
-				linear_multiply_loop: for(uint6_t k = 0; k < MAX_LAYER_SIZE; k+=16){
-					out_c[i*NUM_STEPS+j] += weight_buffer[k+15]*input_c[(k+15)*NUM_STEPS+j] +
-										weight_buffer[k+14]*input_c[(k+14)*NUM_STEPS+j] +
-										weight_buffer[k+13]*input_c[(k+13)*NUM_STEPS+j] +
-										weight_buffer[k+12]*input_c[(k+12)*NUM_STEPS+j] +
-										weight_buffer[k+11]*input_c[(k+11)*NUM_STEPS+j] +
-										weight_buffer[k+10]*input_c[(k+10)*NUM_STEPS+j] +
-										weight_buffer[k+9]*input_c[(k+9)*NUM_STEPS+j] +
-										weight_buffer[k+8]*input_c[(k+8)*NUM_STEPS+j] +
-										weight_buffer[k+7]*input_c[(k+7)*NUM_STEPS+j] +
-										weight_buffer[k+6]*input_c[(k+6)*NUM_STEPS+j] +
-										weight_buffer[k+5]*input_c[(k+5)*NUM_STEPS+j] +
-										weight_buffer[k+4]*input_c[(k+4)*NUM_STEPS+j] +
-										weight_buffer[k+3]*input_c[(k+3)*NUM_STEPS+j] +
-									    weight_buffer[k+2]*input_c[(k+2)*NUM_STEPS+j] +
-										weight_buffer[k+1]*input_c[(k+1)*NUM_STEPS+j] +
-										weight_buffer[k]*input_c[k*NUM_STEPS+j];
+				linear_multiply_loop: for(uint6_t k = 0; k < MAX_LAYER_SIZE; k++){
+					#pragma HLS unroll factor=1
+					out_c[i*NUM_STEPS+j] += weight_buffer[k]*input_c[k*NUM_STEPS+j];
 				}
 			}
     	}
@@ -128,7 +115,6 @@ uint1_t hls_snn_izikevich(
 		hls_stream_64_t& input_stream3,
 		hls_stream_64_t& output_stream) {
 	#pragma HLS TOP name=hls_snn_izhikevich
-
 	#pragma HLS INTERFACE s_axilite port=return bundle=control
 	#pragma HLS INTERFACE s_axilite port=state bundle=control
 	#pragma HLS INTERFACE s_axilite port=in_c bundle=control
@@ -151,8 +137,8 @@ uint1_t hls_snn_izikevich(
 	// Process logic
 	if (state == STATE_INIT) {
 		// Read inputs
-		read_inputs: for(uint6_t i = 0; i < MAX_LAYER_SIZE; i++){
-			for(uint6_t j = 0; j < NUM_STEPS; j++){
+		read_inputs_outer: for(uint6_t i = 0; i < MAX_LAYER_SIZE; i++){
+			read_inputs_inner: for(uint6_t j = 0; j < NUM_STEPS; j++){
 				if(i < n_in){
 					out_neuron_spk[i*NUM_STEPS+j] = *((fixed_t*)&in_c[i]);
 				}
@@ -172,10 +158,10 @@ uint1_t hls_snn_izikevich(
 						out_linear_c, n_layer[i], input_stream0, input_stream1, input_stream2, input_stream3);
 				// Execute neuron
 				izhi_outer_loop: for(uint6_t j = 0; j < MAX_LAYER_SIZE; j++){
-				#pragma HLS UNROLL factor=16
+				#pragma HLS UNROLL
 					fixed_t membrane_v = 0, recovery_v = 0;
 					izhi_compute_timesteps: for(uint6_t k = 0; k < NUM_STEPS; k++){
-					#pragma HLS UNROLL off=true
+					#pragma HLS unroll factor=1
 					#pragma HLS PIPELINE II=16
 						// Temporary variables
 						fixed_t v = membrane_v, u = recovery_v, I = out_linear_c[NUM_STEPS*j+k];
@@ -202,6 +188,7 @@ uint1_t hls_snn_izikevich(
 
 		// Send output data
 		axis64_t stream_out;
+		stream_out.last = 0;
 		uint64_t output_word;
 		uint9_t output_word_idx;
 		write_outputs: for(int i = 0; i < MAX_LAYER_SIZE*NUM_STEPS; i++){
@@ -213,21 +200,16 @@ uint1_t hls_snn_izikevich(
 				// Transmit 64 bit words (last to 1 if it is the last word)
 				if(output_word_idx == 64){
 					stream_out.data = output_word;
-					stream_out.last = (i == n_out*NUM_STEPS-1) ? 1 : 0;
 					output_stream.write(stream_out);
 					output_word_idx = 0;
 					output_word = 0;
 				}
 			}
 		}
-		if(output_word_idx > 0){ // Send remaining data if needed
-			stream_out.data = output_word;
-			stream_out.last = 1;
-			output_stream.write(stream_out);
-		}
+		// Send remaining data
+		stream_out.data = output_word;
+		stream_out.last = 1;
+		output_stream.write(stream_out);
 	}
 	return SUCCESS_OK;
 }
-
-
-

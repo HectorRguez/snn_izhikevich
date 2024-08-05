@@ -14,7 +14,7 @@ n_parameters = in_out_data.shape[1]
 n_data = in_out_data.shape[0]
 
 # Write file
-with open('data.c', 'w') as file:
+with open('snn_config/data.c', 'w') as file:
     file.write('#include "data.h"\n')
 
     # DATA

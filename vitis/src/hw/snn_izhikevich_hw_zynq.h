@@ -36,13 +36,18 @@
  *                                Prototypes    		                     *
  *****************************************************************************/
 
-static int hw_setup();
-static int hw_setup_dma(XAxiDma *axiDma, uint32_t deviceId, uint8_t rxInterrupt, uint8_t txInterrupt);
-static int hw_setup_interrupt(XScuGic *intrCtlr);
-static void hw_hls_isr(void *instancePtr);
-static void hw_dma_rx_isr(void *instancePtr);
-static void hw_dma_tx_isr(void *instancePtr);
-static void hw_snn_izikevich_start();
+// "Private" prototypes
+int hw_setup_dma(XAxiDma *axiDma, uint32_t deviceId, uint8_t rxInterrupt, uint8_t txInterrupt);
+int hw_setup_interrupt(XScuGic *intrCtlr);
+void hw_hls_isr(void *instancePtr);
+void hw_dma_rx_isr(void *instancePtr);
+void hw_dma_tx_isr(void *instancePtr);
+void hw_snn_izikevich_start();
+
+// Public prototypes
+int hw_setup();
+int hw_snn_izikevich_run(float* weights, uint32_t n_weights, float* biases, uint32_t n_biases, uint32_t n_inputs, uint32_t n_outputs, uint32_t n_per_layer[MAX_LAYER_COUNT], uint32_t n_layers, bool*output);
+int hw_snn_izikevich_config_network(float input_c[MAX_LAYER_SIZE], uint32_t n_inputs, uint32_t n_outputs, uint32_t n_per_layer[MAX_LAYER_COUNT], uint32_t n_layers);
 
 
 #endif /* _SNN_IZIKEVICH_HW_ZYNQ_H_ */

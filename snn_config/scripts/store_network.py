@@ -71,7 +71,7 @@ n_outputs = n_per_layer[-1]
 #ascii_binary_values = ascii_binary_int_values + ascii_binary_float_values
 
 # Write file
-with open('network.c', 'w') as file:
+with open('snn_config/network.cpp', 'w') as file:
 
     # HEADER
     file.write('#include "network.h"\n')
