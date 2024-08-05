@@ -92,7 +92,7 @@ The network topology and the different weights and biases are stored in a serial
 
 ## Execution flow
 The Makefile automates the execution of all the project scripts, which target *Vitis HLS*, *Vivado* and *Vitis*. 
-![Execution flow diagram](https://github.com/des-cei/snn_izhikevich/blob/main/docs/accelerator_diagram?raw=true)
+![Execution flow diagram](https://github.com/des-cei/snn_izhikevich/blob/main/docs/accelerator_diagram.png)
 
 
 ### Vitis HLS
