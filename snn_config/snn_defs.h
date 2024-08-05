@@ -1,6 +1,9 @@
 #ifndef _SNN_DEFS_H_
 #define _SNN_DEFS_H_
 
+// Training data
+#define TRAIN_DATA_PROPORTION 0.7f
+
 // Memory size and max loop iteration defines
 #define MAX_LAYER_SIZE 16
 #define NUM_STEPS 30
@@ -15,7 +18,6 @@
 #define AXI_PORTS           4
 #define TRANSMISSION_SIZE (((MAX_LAYER_SIZE*(MAX_LAYER_SIZE+1)) + AXI_PORTS - 1)/AXI_PORTS)
 
-// Training data
-#define TRAIN_DATA_PROPORTION 0.7f
+
 
 #endif /* _SNN_DEFS_H_ */
