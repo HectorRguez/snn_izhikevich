@@ -102,3 +102,5 @@ The Makefile automates the execution of all the project scripts, which target *V
 *This section is being worked on*
 
 ## HW architecture
+
+![Execution flow diagram](https://github.com/des-cei/snn_izhikevich/blob/main/docs/execution_flow_diagram.png)
