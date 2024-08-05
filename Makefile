@@ -2,6 +2,8 @@
 BOARD:= xc7z020clg400-1
 ORIGIN_NETWORK = ./snn_config/networks/irisNetwork.pt
 ORIGIN_DATA = 	 ./snn_config/databases/iris.data
+#NEURON_TYPE = IZHI 
+NEURON_TYPE = LIF
 
 # Run scripts
 RUN_HLS := vitis_hls
@@ -48,6 +50,12 @@ snn_config/network.c: $(ORIGIN_NETWORK)
 vitis_hls/snn_ip/component.xml : vitis_hls/src/*
 	@echo "part=$(BOARD)" > vitis_hls/config.ini
 	@rm -rf vitis_hls/snn_ip
+	@if [ $(NEURON_TYPE) = "IZHI" ]; then\
+        echo "[HLS]\nsyn.file=src/snn_izhikevich_top.cpp" > vitis_hls/sources.ini ;\
+	fi
+	@if [ $(NEURON_TYPE) = "LIF" ]; then\
+        echo "[HLS]\nsyn.file=src/snn_LIF_top.cpp" > vitis_hls/sources.ini ;\
+	fi
 	@$(RUN_HLS) -f vitis_hls/run_hls.tcl
 	@unzip vitis_hls/snn_ip/export.zip -d vitis_hls/snn_ip
 

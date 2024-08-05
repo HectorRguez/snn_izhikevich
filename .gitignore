@@ -6,6 +6,7 @@ vivado/snn_hw.bit
 vitis_hls/snn_ip/
 vitis_hls/proj/
 vitis_hls/config.ini
+vitis_hls/sources.ini
 
 vitis/ws/
 

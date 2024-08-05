@@ -35,6 +35,8 @@ The network topology and the different weights and biases are stored in a serial
 
 3. **Data selection:** The execution data is indicated by the `ORIGIN_DATA` variable on the makefile. Data is assumed to be normalized, and is stored in a csv format. 
 
+3. **Neuron type selection:** `NEURON_TYPE` can be *IZHI* or *LIF*. This repository is focused in the Izhikevich neuron model. However, for comparison purposes, Leaky Integrate & Fire neurons are also supported.
+
 3. **Generating Vitis HLS IP, the HW platform and the Vitis Workspace** After selecting the board and network, please execute: ```make```. The default target generates the snn IP, exports the hardware and creates a new Vitis workspace inside `Vitis/ws`.
 
 4. **Running the network:**  The generated workspace can be opened directly with Vitis and can be executed directly to the target board.
@@ -74,7 +76,8 @@ The network topology and the different weights and biases are stored in a serial
 ├── vitis_hls
 │   ├── run_hls.tcl                       # Script that adds the Vitis HLS sources.
 │   ├── snn_ip                            # [AUTO-GENERATED] SNN IP in Vivado catalog mode.
-│   ├── config.ini                        # [AUTO-GENERATED] Vitis HLS project config.
+│   ├── config.ini                        # [AUTO-GENERATED] Vitis HLS project config to select board.
+│   ├── sources.ini                       # [AUTO-GENERATED] Vitis HLS project config to select top file.
 │   └── src
 │       ├── snn_izhikevich_top.cpp        # Network execution code for HLS.
 │       └── snn_types.h                   # Custom type definitions.
