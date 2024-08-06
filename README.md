@@ -95,8 +95,9 @@ The network topology and the different weights and biases are stored in a serial
 ## Execution flow
 The Makefile automates the execution of all the project scripts, which target *Vitis HLS*, *Vivado* and *Vitis*. 
 
-
-<img src="https://github.com/des-cei/snn_izhikevich/blob/main/docs/execution_flow_diagram.png" width="400">
+<div align="center">
+    <img src="https://github.com/des-cei/snn_izhikevich/blob/main/docs/execution_flow_diagram.png" width="400">
+</div>
 
 
 
@@ -109,9 +110,9 @@ If the **Izhikevich** neuron section has maximum unrolling, it will execute one 
 
 Imagine a network with a four-neuron layer being executed with an unroll factor of 4 (which would be the maximum). The neuron membrane voltage and recovery variable registers are reset, and the first timestep is computed simultaneously for every neuron. The output is stored in the corresponding buffer, and the new voltages are updated on the individual registers of each neuron. They will be used to compute the following timestep, which will compute the outputs of every neuron in the second timestep, and so forth.
 
-
+<div align="center">
 <img src="https://github.com/des-cei/snn_izhikevich/blob/main/docs/accelerator_diagram.png" width="400">
-
+</div>
 
 The AXI Interconnection was designed by Felipe Galindo for his Thesis Project. It aims to provide maximum bandwidth to transmit the network weights to the accelerator.
 
