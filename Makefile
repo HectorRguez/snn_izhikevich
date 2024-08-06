@@ -89,6 +89,7 @@ clean_hls :
 	@rm -f  vitis_hls.log
 	@rm -rf vitis_hls/proj/
 	@rm -f  vitis_hls/config.ini
+	@rm -f  vitis_hls/sources.ini
 	@rm -rf vitis_hls/snn_ip
 
 clean_vivado:

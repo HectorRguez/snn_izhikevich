@@ -1,8 +1,6 @@
 # Izhikevich Spiked Neural Network
 This repository automates the workflow to create the hardware platform required to use a spiking neural network (SNN) **hardware accelerator** on the Vitis IDE. The SNN computes neuron firings based on the Izhikevich neuron model, which is more biologically accurate than the commonly used Integrate and Fire (I&F) SNNs.
 
-Thus far, this repository includes execution automation using **.tcl scripts** of Felipe Galindo's Thesis Project, which has been considerably restructured.
-
 ## Table of contents
 - [Software requirements](#software-requirements)
 - [Getting started](#getting-started)
@@ -20,7 +18,7 @@ Thus far, this repository includes execution automation using **.tcl scripts** o
 
 * [GTK - 3.0](https://docs.gtk.org/gtk3/) is required to run [Vitis xsct commands](https://docs.xilinx.com/r/en-US/ug1400-vitis-embedded/XSCT-Commands), which are used in this project.
 
-* The configuration file for the Bash shell [bashrc](https://www.gnu.org/software/bash/manual/html_node/Bash-Startup-Files.html) must include as a source the shell script that allows the execution of vitis_hls, vivado and vitis from the terminal. This was discussed on [this thread](https://support.xilinx.com/s/question/0D52E00006hpO2CSAU/how-to-start-with-vivado-in-linux?language=en_US)
+* The configuration file for the Bash shell [bashrc](https://www.gnu.org/software/bash/manual/html_node/Bash-Startup-Files.html) must include as a source the shell script that allows the execution of vitis_hls, vivado and vitis from the terminal. The necessary steps are discussed on [this thread](https://support.xilinx.com/s/question/0D52E00006hpO2CSAU/how-to-start-with-vivado-in-linux?language=en_US).
 
 [^1]: The `block_design.tcl` file was exported automatically from the Vivado 2023.1 GUI. It performs a Version check that must be manually deleted to run it this scripts on the 2022.2 version. 
 
@@ -113,3 +111,8 @@ Imagine a network with a four-neuron layer being executed with an unroll factor 
 
 
 ![Hardware diagram](https://github.com/des-cei/snn_izhikevich/blob/main/docs/execution_flow_diagram.png)
+
+The AXI Interconnection was designed by Felipe Galindo for his Thesis Project. It aims to provide maximum bandwidth to transmit the network weights to the accelerator, which is the main limiting factor of the accelerator.
+
+
+![AXI Interconnect diagram](https://github.com/des-cei/snn_izhikevich/blob/main/docs/AXI_interconnection_diagram.png)
