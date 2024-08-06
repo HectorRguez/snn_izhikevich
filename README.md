@@ -1,5 +1,5 @@
 # Izhikevich Spiked Neural Network
-This repository automates the workflow to create the hardware platform required to use a spiking neural network (SNN) **hardware accelerator** on the Vitis IDE. The SNN computes neuron firings based on the Izhikevich neuron model, which is more biologically accurate than the commonly used Integrate and Fire (I&F) SNNs.
+This repository automates the workflow to create the hardware platform required to use a spiking neural network (SNN) **hardware accelerator** on the Vitis IDE. The SNN computes neuron firings based on the Izhikevich neuron model, which is more biologically accurate than the commonly used Leaky Integrate and Fire (LIF) SNNs.
 
 ## Table of contents
 - [Software requirements](#software-requirements)
@@ -112,7 +112,7 @@ Imagine a network with a four-neuron layer being executed with an unroll factor 
 
 ![Hardware diagram](https://github.com/des-cei/snn_izhikevich/blob/main/docs/execution_flow_diagram.png)
 
-The AXI Interconnection was designed by Felipe Galindo for his Thesis Project. It aims to provide maximum bandwidth to transmit the network weights to the accelerator, which is the main limiting factor of the accelerator.
+The AXI Interconnection was designed by Felipe Galindo for his Thesis Project. It aims to provide maximum bandwidth to transmit the network weights to the accelerator.
 
 
 ![AXI Interconnect diagram](https://github.com/des-cei/snn_izhikevich/blob/main/docs/AXI_interconnection_diagram.png)
