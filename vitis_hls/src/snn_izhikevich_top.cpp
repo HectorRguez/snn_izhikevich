@@ -188,9 +188,8 @@ uint1_t hls_snn_izikevich(
 
 		// Send output data
 		axis64_t stream_out;
-		stream_out.last = 0;
-		uint64_t output_word;
-		uint9_t output_word_idx;
+		uint64_t output_word = 0;
+		uint9_t output_word_idx = 0;
 		write_outputs: for(int i = 0; i < MAX_LAYER_SIZE*NUM_STEPS; i++){
 			if(i < n_out*NUM_STEPS){
 				// Float conversion to bool
@@ -199,6 +198,7 @@ uint1_t hls_snn_izikevich(
 
 				// Transmit 64 bit words (last to 1 if it is the last word)
 				if(output_word_idx == 64){
+					stream_out.last = 0;
 					stream_out.data = output_word;
 					output_stream.write(stream_out);
 					output_word_idx = 0;

@@ -148,10 +148,10 @@ uint1_t hls_snn_izikevich(
 				forward_linear_in(out_neuron_spk, n_prev_layer,
 						out_linear_c, n_layer[i], input_stream0, input_stream1, input_stream2, input_stream3);
 				// Execute neuron
-				izhi_outer_loop: for(uint6_t j = 0; j < MAX_LAYER_SIZE; j++){
+				LIF_outer_loop: for(uint6_t j = 0; j < MAX_LAYER_SIZE; j++){
 				#pragma HLS UNROLL
 					fixed_t membrane_v = 0;
-					izhi_compute_timesteps: for(uint6_t k = 0; k < NUM_STEPS; k++){
+					LIF_compute_timesteps: for(uint6_t k = 0; k < NUM_STEPS; k++){
 					#pragma HLS unroll factor=1
 					#pragma HLS PIPELINE II=16
 						// Temporary variables
@@ -171,9 +171,8 @@ uint1_t hls_snn_izikevich(
 
 		// Send output data
 		axis64_t stream_out;
-		stream_out.last = 0;
-		uint64_t output_word;
-		uint9_t output_word_idx;
+		uint64_t output_word = 0;
+		uint9_t output_word_idx = 0;
 		write_outputs: for(int i = 0; i < MAX_LAYER_SIZE*NUM_STEPS; i++){
 			if(i < n_out*NUM_STEPS){
 				// Float conversion to bool
@@ -183,6 +182,7 @@ uint1_t hls_snn_izikevich(
 				// Transmit 64 bit words (last to 1 if it is the last word)
 				if(output_word_idx == 64){
 					stream_out.data = output_word;
+					stream_out.last = 0;
 					output_stream.write(stream_out);
 					output_word_idx = 0;
 					output_word = 0;

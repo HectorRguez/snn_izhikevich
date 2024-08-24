@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdint.h>
+#include "snn_defs.h"
 
 // Neuron type
 enum Neuron_type {NONE, LIF, IZHI};
@@ -16,9 +17,7 @@ void forward_izhi(float* in_c, bool*output_spk, uint32_t n_neurons, uint32_t n_s
 void forward_LIF(float* in_c, bool*output_spk, uint32_t n_neurons, uint32_t n_steps);
 void forward_linear_in(float*in_c, uint32_t n_in, float*out_c, uint32_t n_out, 
     float*weights, float*biases, uint32_t n_steps);
-void forward_linear_spk(bool*in_spk, uint32_t n_in, float*out_c, uint32_t n_out, 
-    float*weights, float*biases, uint32_t n_steps);
-void forward_network_izhi(float* in_c, uint32_t n_in, uint32_t n_out, bool*out_spk, uint32_t*n_layer, 
-    uint32_t n_layers, float*weights, float*biases);
+int forward_network(float* in_c, uint32_t n_in, bool*out_spk, uint32_t*n_layer,
+    uint32_t n_layers, float*weights, float*biases, enum Neuron_type neuron);
 
 #endif /* _NETWORK_FUN_H_ */
