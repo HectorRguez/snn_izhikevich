@@ -7,9 +7,6 @@
 #include <stdint.h>
 #include "snn_defs.h"
 
-// Neuron type
-enum Neuron_type {NONE, LIF, IZHI};
-
 // Function prototypes
 bool step_izhi(float *membrane_v, float *recovery_v, float in_c);
 bool step_LIF(float *membrane_v, float input_v);

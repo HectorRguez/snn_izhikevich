@@ -9,6 +9,12 @@
 #define NUM_STEPS       30
 #define MAX_LAYER_COUNT 8
 
+// Neuron type
+#define NONE 0
+#define LIF  1
+#define IZHI 2
+#define NEURON_MODEL IZHI
+
 // Accelerator state machine
 #define STATE_INIT			0
 #define STATE_PROCESS		1
@@ -17,7 +23,5 @@
 // Interface
 #define AXI_PORTS           4
 #define TRANSMISSION_SIZE (((MAX_LAYER_SIZE*(MAX_LAYER_SIZE+1)) + AXI_PORTS - 1)/AXI_PORTS)
-
-
 
 #endif /* _SNN_DEFS_H_ */

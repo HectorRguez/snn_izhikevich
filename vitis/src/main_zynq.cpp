@@ -17,9 +17,6 @@
 #include "xil_printf.h"
 
 int main(int argc, char *argv[]){
-    // Configure neuron type
-    enum Neuron_type neuron_model_sw = IZHI;
-
     // Normalize data (if needed)
     int error = normalize_data(data, n_data, n_parameters);
     if(error < 0){
@@ -44,7 +41,7 @@ int main(int argc, char *argv[]){
 			// Execute network
 			float* in_c = &data[i*n_parameters];
 			forward_network(in_c, n_inputs, out_spk,
-				n_per_layer, n_layers, weights, biases, neuron_model_sw);
+				n_per_layer, n_layers, weights, biases, NEURON_MODEL);
 			// Check results
 			int result = rate_code_result(out_spk, n_outputs, NUM_STEPS);
 			if(result == labels[i]) correct++;

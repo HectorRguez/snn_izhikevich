@@ -98,17 +98,17 @@ with open('snn_config/network.cpp', 'w') as file:
     #file.write(';')
 
     # N_INPUTS
-    file.write('const int n_inputs = ')
+    file.write('const uint32_t n_inputs = ')
     file.write(str(n_inputs))
     file.write(';\n')
 
     # N_OUTPUTS
-    file.write('const int n_outputs = ')
+    file.write('const uint32_t n_outputs = ')
     file.write(str(n_outputs))
     file.write(';\n')
 
     # N_PER_LAYER
-    file.write('int n_per_layer [] = {')
+    file.write('uint32_t n_per_layer [] = {')
     idx = 0
     for n in n_per_layer:
         file.write(str(n))
@@ -118,7 +118,7 @@ with open('snn_config/network.cpp', 'w') as file:
     file.write('};\n')
 
     # N_LAYERS
-    file.write('const int n_layers = ')
+    file.write('const uint32_t n_layers = ')
     file.write(str(len(n_per_layer)))
     file.write(';\n')
 
@@ -138,7 +138,7 @@ with open('snn_config/network.cpp', 'w') as file:
     file.write('};\n')
 
     # N_WEIGHTS
-    file.write('const int n_weights = ')
+    file.write('const uint32_t n_weights = ')
     file.write(str(len(weights)))
     file.write(';\n')
 
@@ -158,6 +158,6 @@ with open('snn_config/network.cpp', 'w') as file:
     file.write('};\n')
 
     # N_BIASES
-    file.write('const int n_biases = ')
+    file.write('const uint32_t n_biases = ')
     file.write(str(len(biases)))
     file.write(';\n')

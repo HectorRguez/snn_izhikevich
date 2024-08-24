@@ -7,11 +7,9 @@ open_project proj -reset
 # Create a solution
 open_solution solution -reset 
 
-# Load configuration
-apply_ini {sources.ini}
-
 # Add design files
 add_files ../snn_config/snn_defs.h
+add_files src/snn_izhikevich_top.cpp
 add_files src/snn_types.h 
 
 # Set the top-level function

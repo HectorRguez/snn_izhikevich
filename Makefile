@@ -1,9 +1,7 @@
 # Configuration
 BOARD:= xc7z020clg400-1
 ORIGIN_NETWORK = ./snn_config/networks/irisNetwork.pt
-ORIGIN_DATA = 	 ./snn_config/databases/iris.data
-NEURON_TYPE = IZHI 
-#NEURON_TYPE = LIF
+ORIGIN_DATA = 	 ./snn_config/databases/iris.data 
 
 # Run scripts
 RUN_HLS := vitis_hls
@@ -12,7 +10,7 @@ RUN_VITIS := xsct
 SCRIPT = python3
 
 # Phony targets
-.PHONY: clean_sources clean_hls clean_vivado clean_vitis run_app open_vitis
+.PHONY: create_sources clean_sources clean_hls clean_vivado clean_vitis run_app open_vitis
 
 # Default target
 # ===============================================================
@@ -20,9 +18,9 @@ all: create_sources create_ip create_platform create_app
 
 # Secondary targets
 # ===============================================================
-create_sources: snn_config/data.c snn_config/network.c
+create_sources: snn_config/data.cpp snn_config/network.cpp Makefile 
 
-create_ip: vitis_hls/snn_ip/component.xml
+create_ip: vitis_hls/snn_ip/component.xml 
 
 create_platform: create_bd synth place_and_route export_hw
 
@@ -38,24 +36,17 @@ place_and_route : vivado/checkpoints/route.dcp
 
 export_hw : vivado/snn_hw.xsa
 
-
 # Dependencies
 # ===============================================================
-snn_config/data.c: $(ORIGIN_DATA)
+snn_config/data.cpp: $(ORIGIN_DATA) Makefile
 	$(SCRIPT) snn_config/scripts/store_data.py $(ORIGIN_DATA)
 
-snn_config/network.c: $(ORIGIN_NETWORK)
+snn_config/network.cpp: $(ORIGIN_NETWORK) Makefile
 	$(SCRIPT) snn_config/scripts/store_network.py $(ORIGIN_NETWORK)
 
-vitis_hls/snn_ip/component.xml : vitis_hls/src/*
+vitis_hls/snn_ip/component.xml : vitis_hls/src/* snn_config/*
 	@echo "part=$(BOARD)" > vitis_hls/config.ini
 	@rm -rf vitis_hls/snn_ip
-	@if [ $(NEURON_TYPE) = "IZHI" ]; then\
-        echo "[HLS]\nsyn.file=src/snn_izhikevich_top.cpp" > vitis_hls/sources.ini ;\
-	fi
-	@if [ $(NEURON_TYPE) = "LIF" ]; then\
-        echo "[HLS]\nsyn.file=src/snn_LIF_top.cpp" > vitis_hls/sources.ini ;\
-	fi
 	@$(RUN_HLS) -f vitis_hls/run_hls.tcl
 	@unzip vitis_hls/snn_ip/export.zip -d vitis_hls/snn_ip
 

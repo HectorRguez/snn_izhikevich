@@ -99,7 +99,7 @@ void forward_linear_spk(bool*in_spk, int n_in, float*out_c, int n_out,
 }
 
 int forward_network(float* in_c, uint32_t n_in, bool*out_spk, uint32_t*n_layer,
-    uint32_t n_layers, float*weights, float*biases, enum Neuron_type Neuron){
+    uint32_t n_layers, float*weights, float*biases, uint32_t Neuron){
 
     // Neuron type
     void (*forward)(float*, bool*, int);
