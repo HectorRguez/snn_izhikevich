@@ -343,7 +343,8 @@ int hw_read_axi_stream_burst(uint32_t stream_addr, uint32_t bytes_size) {
 /*****************************************************************************
  *                               HW top Functions    		                 *
  *****************************************************************************/
-int hw_snn_izikevich_config_network(float input_c[MAX_LAYER_SIZE], uint32_t n_inputs, uint32_t n_outputs, uint32_t n_per_layer[MAX_LAYER_COUNT], uint32_t n_layers) {
+int hw_snn_izikevich_config_network(float input_c[MAX_LAYER_SIZE], uint32_t n_inputs,
+	uint32_t n_outputs, uint32_t n_per_layer[MAX_LAYER_COUNT], uint32_t n_layers) {
 
     // Set INIT state
     XHls_snn_izikevich_Set_state(&hlsInstance, STATE_INIT);
@@ -375,10 +376,11 @@ int hw_snn_izikevich_config_network(float input_c[MAX_LAYER_SIZE], uint32_t n_in
 	return XST_SUCCESS;
 }
 
-int hw_snn_izikevich_run(float* weights, uint32_t n_weights, float* biases, uint32_t n_biases, uint32_t n_inputs, uint32_t n_outputs, uint32_t n_per_layer[MAX_LAYER_COUNT], uint32_t n_layers, bool*output) {
-    
+int hw_snn_izikevich_prepare_weight_bias_stream(float* weights, uint32_t n_weights,
+	float* biases, uint32_t n_biases, uint32_t n_inputs, uint32_t n_per_layer[MAX_LAYER_COUNT],
+	uint32_t n_layers, uint64_t input_stream [AXI_PORTS][TRANSMISSION_SIZE*MAX_LAYER_COUNT/2]){
+
 	// Prepare inputs
-	uint64_t input_stream [AXI_PORTS][TRANSMISSION_SIZE*MAX_LAYER_COUNT/2] = {0}; // Upper division
 	uint32_t input_idx = 0, weights_idx = 0, biases_idx = 0;
 	uint32_t n_prev_layer = n_inputs;
 	uint32_t n_values_to_send = 0;
@@ -421,6 +423,11 @@ int hw_snn_izikevich_run(float* weights, uint32_t n_weights, float* biases, uint
 		weights_idx += MAX_LAYER_SIZE*n_prev_layer;
 		n_prev_layer = n_per_layer[i];
 	}
+	return input_idx;
+}
+int hw_snn_izikevich_run(uint64_t input_stream [AXI_PORTS][TRANSMISSION_SIZE*MAX_LAYER_COUNT/2],
+	uint32_t n_input_stream, uint32_t n_outputs, bool*output) {
+
 	// Set state
 	XHls_snn_izikevich_Set_state(&hlsInstance, STATE_PROCESS);
 
@@ -429,7 +436,7 @@ int hw_snn_izikevich_run(float* weights, uint32_t n_weights, float* biases, uint
 
 	// Write inputs via AXI-Stream
 	uint32_t streams[AXI_PORTS] = { (uint32_t)input_stream[0], (uint32_t)input_stream[1], (uint32_t)input_stream[2], (uint32_t)input_stream[3] };
-	hw_send_axi_stream_burst(streams, AXI_PORTS, (input_idx)*8);
+	hw_send_axi_stream_burst(streams, AXI_PORTS, (n_input_stream)*8);
 	if (status != XST_SUCCESS) {
 		xil_printf("HLS ERROR: DMA transfer of streams failed to be transferred.\r\n");
 		return XST_FAILURE;

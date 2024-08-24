@@ -46,8 +46,12 @@ void hw_snn_izikevich_start();
 
 // Public prototypes
 int hw_setup();
-int hw_snn_izikevich_run(float* weights, uint32_t n_weights, float* biases, uint32_t n_biases, uint32_t n_inputs, uint32_t n_outputs, uint32_t n_per_layer[MAX_LAYER_COUNT], uint32_t n_layers, bool*output);
-int hw_snn_izikevich_config_network(float input_c[MAX_LAYER_SIZE], uint32_t n_inputs, uint32_t n_outputs, uint32_t n_per_layer[MAX_LAYER_COUNT], uint32_t n_layers);
-
+int hw_snn_izikevich_config_network(float input_c[MAX_LAYER_SIZE], uint32_t n_inputs, 
+	uint32_t n_outputs, uint32_t n_per_layer[MAX_LAYER_COUNT], uint32_t n_layers);
+int hw_snn_izikevich_prepare_weight_bias_stream(float* weights, uint32_t n_weights, 
+    float* biases, uint32_t n_biases, uint32_t n_inputs, uint32_t n_per_layer[MAX_LAYER_COUNT], 
+    uint32_t n_layers, uint64_t input_stream [AXI_PORTS][TRANSMISSION_SIZE*MAX_LAYER_COUNT/2]);
+int hw_snn_izikevich_run(uint64_t input_stream [AXI_PORTS][TRANSMISSION_SIZE*MAX_LAYER_COUNT/2],
+    uint32_t n_input_stream, uint32_t n_outputs, bool*output);
 
 #endif /* _SNN_IZIKEVICH_HW_ZYNQ_H_ */

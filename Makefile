@@ -2,8 +2,8 @@
 BOARD:= xc7z020clg400-1
 ORIGIN_NETWORK = ./snn_config/networks/irisNetwork.pt
 ORIGIN_DATA = 	 ./snn_config/databases/iris.data
-#NEURON_TYPE = IZHI 
-NEURON_TYPE = LIF
+NEURON_TYPE = IZHI 
+#NEURON_TYPE = LIF
 
 # Run scripts
 RUN_HLS := vitis_hls

@@ -18,7 +18,7 @@
 
 int main(int argc, char *argv[]){
     // Configure neuron type
-    enum Neuron_type neuron_model = IZHI;
+    enum Neuron_type neuron_model_sw = IZHI;
 
     // Normalize data (if needed)
     int error = normalize_data(data, n_data, n_parameters);
@@ -44,7 +44,7 @@ int main(int argc, char *argv[]){
 			// Execute network
 			float* in_c = &data[i*n_parameters];
 			forward_network(in_c, n_inputs, out_spk,
-				n_per_layer, n_layers, weights, biases, neuron_model);
+				n_per_layer, n_layers, weights, biases, neuron_model_sw);
 			// Check results
 			int result = rate_code_result(out_spk, n_outputs, NUM_STEPS);
 			if(result == labels[i]) correct++;
@@ -66,7 +66,7 @@ int main(int argc, char *argv[]){
     // ============================================================
     xil_printf("============================================\r\n");
     xil_printf("                 HW network.\r\n");
-    xil_printf("============================================\r\n"); 
+    xil_printf("============================================\r\n");
 
     // HW Testing
     {
@@ -75,6 +75,11 @@ int main(int argc, char *argv[]){
     			xil_printf("Error initializing hardware blocks...\r\n");
     			return -1;
 		}
+
+        // Prepare network input stream
+        uint64_t input_stream [AXI_PORTS][TRANSMISSION_SIZE*MAX_LAYER_COUNT/2] = {0};
+        uint32_t n_input_stream = hw_snn_izikevich_prepare_weight_bias_stream(weights, n_weights, biases,  n_biases,
+            n_inputs, n_per_layer, n_layers, input_stream);
 
     	int total = 0, correct = 0;
 		int start_test_idx = (int)(TRAIN_DATA_PROPORTION*n_data);
@@ -88,7 +93,7 @@ int main(int argc, char *argv[]){
 			hw_snn_izikevich_config_network(in_c, n_inputs, n_outputs, n_per_layer, n_layers);
 
 			// Run network accelerator
-			hw_snn_izikevich_run(weights, n_weights, biases, n_biases, n_inputs, n_outputs, n_per_layer, n_layers, out_spk);
+			hw_snn_izikevich_run(input_stream, n_input_stream, n_outputs, out_spk);
 
 			// Check results
 			int result = rate_code_result(out_spk, n_outputs, NUM_STEPS);
