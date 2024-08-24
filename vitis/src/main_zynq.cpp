@@ -54,7 +54,7 @@ int main(int argc, char *argv[]){
 
 		// Compute accuracy and print execution time
 		float percentage = ((float)correct)/((float)total) * 100.0;
-		xil_printf("Correctly classified %i/%i flowers (%i%%)",
+		xil_printf("Correctly classified %i/%i (%i%%)",
 			correct, total, (int)percentage);
 		xil_printf("\r\n");
 		float run_time = get_clock_ms();
@@ -104,7 +104,7 @@ int main(int argc, char *argv[]){
 
 		// Compute accuracy and print execution time
 		float percentage = ((float)correct)/((float)total) * 100.0;
-		xil_printf("Correctly classified %i/%i flowers (%i%%)",
+		xil_printf("Correctly classified %i/%i (%i%%)",
 			correct, total, (int)percentage);
 		xil_printf("\r\n");
 		float run_time = get_clock_ms();
