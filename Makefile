@@ -1,7 +1,7 @@
 # Configuration
 BOARD:= xc7z020clg400-1
-ORIGIN_NETWORK = ./snn_config/networks/irisNetwork.pt
-ORIGIN_DATA = 	 ./snn_config/databases/iris.data 
+ORIGIN_NETWORK = ./snn_config/networks/wineNetwork.pt
+ORIGIN_DATA = 	 ./snn_config/databases/wine.data 
 
 # Run scripts
 RUN_HLS := vitis_hls

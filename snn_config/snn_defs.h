@@ -13,7 +13,7 @@
 #define NONE 0
 #define LIF  1
 #define IZHI 2
-#define NEURON_MODEL IZHI
+#define NEURON_MODEL LIF
 
 // Accelerator state machine
 #define STATE_INIT			0
