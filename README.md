@@ -33,7 +33,7 @@ The network topology and the different weights and biases are stored in a serial
 
 3. **Data selection:** The execution data is indicated by the `ORIGIN_DATA` variable on the makefile. Data is assumed to be normalized, and is stored in a csv format. 
 
-3. **Neuron type selection:** `NEURON_TYPE` can be `IZHI` or `LIF`. This repository is focused on the Izhikevich neuron model. However, for comparison purposes, Leaky Integrate & Fire neurons are also supported.
+3. **Network configuration:** Inside the `snn_config/snn_defs.h` file, the neuron type and the maximum dimensions of the network are configured. Furthermore, the percentage of testing data to use is also selected. The neuron model can be `IZHI` or `LIF`. This repository is focused on the Izhikevich neuron model. However, for comparison purposes, Leaky Integrate & Fire neurons are also supported.
 
 3. **Generating Vitis HLS IP, the HW platform and the Vitis Workspace** After selecting the board and network, please execute: ```make```. The default target generates the snn IP, exports the hardware and creates a new Vitis workspace inside `Vitis/ws`.
 
@@ -55,7 +55,7 @@ The network topology and the different weights and biases are stored in a serial
 │   ├── data.h                            # Data header
 │   ├── network.c                         # [AUTO-GENERATED] Network source file
 │   ├── network.h                         # Network header
-│   └── snn_defs.h                        # Network dimensions for memory allocation, train/test division
+│   └── snn_defs.h                        # Neuron model, network dimension, train/test division
 ├── vitis
 │   ├── create_project_vitis.tcl          # Script that adds the Vitis sources and creates workspace.
 │   ├── run_vitis.tcl                     # Script that executes the Vitis App on the target board.
@@ -77,7 +77,7 @@ The network topology and the different weights and biases are stored in a serial
 │   ├── config.ini                        # [AUTO-GENERATED] Vitis HLS project config to select board.
 │   ├── sources.ini                       # [AUTO-GENERATED] Vitis HLS project config to select top file.
 │   └── src
-│       ├── snn_izhikevich_top.cpp        # Network execution code for HLS.
+│       ├── snn_izhikevich_top.cpp        # Network code for HLS.
 │       └── snn_types.h                   # Custom type definitions.
 └── vivado
     ├── block_design.tcl                  # Block design exported from the Vivado GUI.
